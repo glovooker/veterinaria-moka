@@ -30,47 +30,60 @@
         <h1>Creación de cuenta</h1>
     </div>
     <form action="">
-        <div>
-            <label for="txtNombre">Nombre Completo</label>
-            <input type="text" id="txtNombre">
-        </div>
-        <div>
-            <label for="txtUusuario">Nombre de usuario</label>
-            <input type="text" id="txtUusuario">
-        </div>
-        <div>
-            <label for="txtCorreo">Correo electrónico</label>
-            <input type="email">
-        </div>
-        <div>
-            <label for="contrasenna">Contraseña</label>
-            <input type="password">
-        </div>
-        <div>
-            <label for="contrasenna">Confirmar contraseña</label>
-            <input type="password">
-        </div>
-        <div id="">
-            <div>
-                <label for="num_identificacion">Numero de identificación</label>
-                <input type="text">
-            </div>
-            <div>
-                <label for="numTel">Numero de telefono</label>
-                <input type="tel" name="telefono" placeholder="(+506)0000-000" title="Digite su número de telefono sin guiones">
-            </div>
-        </div>
-        <div>
-            <label for="txtDireccionExacta">Dirección Exacta</label>
-            <input type="text">
-        </div>
-        <button type="button">Registrar</button>
-    </form>
 
+        <div>
+            <label for="txtNombre" id="lblNombre" class="lblInput">Nombre Completo</label>
+            <input type="text" id="txtNombre" required>
+        </div>        
+
+        <div>
+            <label for="txtUsuario" id="lblUsuario" class="lblInput">Nombre de Usuario</label>
+            <input type="text" id="txtUsuario" required>
+        </div>
+
+        <div>
+            <label for="txtCorreo" id="lblCorreo" class="lblInput">Correo Electrónico</label>
+            <input type="email" id="txtCorreo" required>
+        </div>        
+
+        <div>
+            <label for="txtPass" id="lblPass" class="lblInput">Contraseña</label>
+            <input type="password" id="txtPass" required>
+        </div>
+
+        <div>
+            <label for="txtPass2" id="lblPass2" class="lblInput">Confirmar Contraseña</label>
+            <input type="password" id="txtPass2" required>
+        </div>
+
+        <div>
+            <label for="txtidentificacion" id="lblidentificacion" class="lblInput">Número de identificación</label>
+            <input type="text" id="txtidentificacion" required>
+        </div>   
+
+        <div>
+            <label for="txtTelefono" id="lblTelefono" class="lblInput">Número de teléfono</label>
+            <input type="tel" id="txtTelefono" placeholder="(+506)0000-000" title="Digite su número de telefono sin guiones" required>
+        </div>
+ 
+        <div>
+            <label for="txtDireccion" id="lblDireccion" class="lblInput">Dirección</label>
+            <input type="text" id="txtDireccion" required>
+        </div>
+
+        <button type= button id="btnRegistrar">Registrar</button> 
+
+    </form>
 
     <footer>
         <h5>Clever Solutions - 2022</h5>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="./js/CreacionCuentaService.js"></script> -->
+    <script src="./js/controllers/ControllerGeneral.js"></script>
+    <script src="./js/controllers/CreacionCuentaController.js"></script>
+
 </body>
 
 </html>
