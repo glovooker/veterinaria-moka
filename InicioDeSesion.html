@@ -31,20 +31,27 @@
         <h1>Iniciar Sesión</h1>
         <div>
             <form>
-                <label for="txt_username">Usuario</label>
-                <input type="text" id="txt_username">
+                <label for="txtUsuario" class="lblInput">Usuario</label>
+                <input type="text" id="txtUsuario" required>
                 <br>
-                <label for="txt_password">Contraseña</label>
-                <input type="password" id="txt_password">
+                <label for="txtContrasenna" class="lblInput">Contraseña</label>
+                <input type="password" id="txtContrasenna" required>
             </form>
         </div>
         <div>¿Aún no tienes cuenta? <a href="">Registro</a></div>
         <div>
-            <button type="button">Ingresar</button>
+            <button type="button" id="btnIngresar">Ingresar</button>
         </div>
         <footer>
             <h5>Clever Solutions - 2022</h5>
         </footer>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- <script src="./js/CreacionCuentaService.js"></script> -->
+        <script src="./JS/services/InicioDeSesionService.js"></script>
+        <script src="./js/controllers/ControllerGeneral.js"></script>
+        <script src="./js/controllers/InicioDeSesionController.js"></script>
     </body>
 
 </html>
