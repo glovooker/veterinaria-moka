@@ -30,13 +30,13 @@ function IniciarSesion() {
 function RedireccionarUsuario(pUsuario){
     // aca se va a dirigir cada uno de los usuarios a sus paginas correspondientes
    /*  let rol = pUsuario.Rol;
-    if (rol == 'Client') {
+    if (rol == 'Cliente') {
         location.href = 'IndexCliente.html';
     }
     if (rol == 'Secretaria') {
         location.href = 'IndexSecretaria.html';
     }
-    if (rol == 'Admin') {
+    if (rol == 'Administrador') {
         location.href = 'IndexAdmin.html';
     } */
 
