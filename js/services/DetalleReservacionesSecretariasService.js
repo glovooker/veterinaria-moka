@@ -1,20 +1,23 @@
 'use strict';
 
-let reservaciones = [
-    { Cliente: 'Andrey Villalobos', Mascota: 'Rocky', Fecha: '30/07/2022', Hora: '08:00', Doctor: 'Gabriel Lobo', Estado: 'Admin' },
-    { Nombre: 'Anabelle', Apellido1: 'Velasquez', Apellido2: '', User: 'avelasquez', Password: '8899!', Rol: 'Client' },
-    { Nombre: 'Dereck', Apellido1: 'Carmiol', Apellido2: '', User: 'dcarmiol', Password: '9876', Rol: 'Secretaria' }
+let listaReserva = [
+    { NumReserva: 1, Cliente: 'Andrey Villalobos', Mascota: 'Rocky', FechaEntra: '30/07/2022', HoraEntra: '08:00', FechaSale: '02/08/2022', HoraSale: '18:00', Cuidados: 'No come atún' },
+    { NumReserva: 2, Cliente: 'Johel Lopez', Mascota: 'Perlita', FechaEntra: '30/07/2022', HoraEntra: '09:00', FechaSale: '31/07/2022', HoraSale: '13:00',  Cuidados: 'Ponerle frasada al dormir' },
+    { NumReserva: 3, Cliente: 'Randall Badilla', Mascota: 'Princesa', FechaEntra: '31/07/2022', HoraEntra: '13:00', FechaSale: '05/08/2022', HoraSale: '16:00', Cuidados: 'Es muy chineada, cuidarla que no se moje' },
+    { NumReserva: 4, Cliente: 'Cris Hemsworth', Mascota: 'Killer', FechaEntra: '3107/2022', HoraEntra: '14:00',  FechaSale: '01/08/2022', HoraSale: '17:00',Cuidados: 'Darle el juguete de llanta' },
 ];
 
-function RegistrarLibros(psTitulo, psEditorial, pnPrecio){
-    let nuevoLibro = [];
-    //aca crea el libro
-    nuevoLibro.push(psTitulo, psEditorial, pnPrecio);
-
-    //aca guarada el liubro en la lista de Libros
-    listaLibros.push(nuevoLibro);
+function ObtenerReservas(){
+    return listaReserva;
 }
 
-function ObtenerListaLibros(){
-    return listaLibros;
+function ObtenerReserva(pNumReserva) {
+    let result = null;
+    for (let i = 0; i < listaReserva.length; i++) {
+        if (listaReserva[i].NumReserva == pNumReserva) {
+            result = listaReserva[i];
+            break;
+        }
+    }  
+    return result;
 }
