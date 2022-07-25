@@ -47,6 +47,25 @@
         </div>
 
         <div>
+            <label for="selRol" id="lblRol" class="lblSelect">Rol</label>
+            <select id="selRol" required>
+                <option value="">-Seleccione-</option>
+                <option value="V">Veterinario(a)</option> 
+                <option value="S">Secretario(a)</option> 
+                <option value="C">Cliente</option>
+            </select>
+        </div>    
+
+        <div>
+            <label for="selEstado" id="lblEstado" class="lblSelect">Estado</label>
+            <select id="selEstado" required>
+                <option value="">-Seleccione-</option>
+                <option selected = "selected" value="A">Activo</option> 
+                <option value="I">Inactivo</option>  
+            </select>
+        </div>            
+
+        <div>
             <label for="txtPass" id="lblPass" class="lblInput">Contraseña</label>
             <input type="password" id="txtPass" required>
         </div>
@@ -68,7 +87,7 @@
 
         <div>
             <label for="txtDireccion" id="lblDireccion" class="lblInput">Dirección</label>
-            <input type="text" id="txtDireccion" required>
+            <input type="text" id="txtDireccion" class="clsDireccion" required>
         </div>
 
         <button type=button id="btnRegistrar">Registrar</button>
