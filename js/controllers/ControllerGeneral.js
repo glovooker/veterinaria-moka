@@ -102,15 +102,14 @@ function ValidarCampos(){
             //valido los campos INPUTS tipo NUMBER
             if (inputs[i].type.toLowerCase() == 'number') {
                 if (inputs[i].value == "" || inputs[i].value == null || inputs[i].value == undefined){       
-                //ImprimirMsjError('Cantidad requerida, ¡Favor validar!');
-                ImprimirMsjError(lblInputs[i].textContent + ' es requerido, ¡Favor validar!');            
-                ResaltarInputInvalido(inputs[i].id);
-                ResaltarLabelInvalido(lblInputs[i].id);
-                return false;
+                    ImprimirMsjError(lblInputs[i].textContent + ' es requerido, ¡Favor validar!');            
+                    ResaltarInputInvalido(inputs[i].id);
+                    ResaltarLabelInvalido(lblInputs[i].id);
+                    return false;
                 } else { 
                     if (Number(inputs[i].min) > 0) {
                         if ( Number(inputs[i].value) < Number(inputs[i].min) ) {
-                            ImprimirMsjError('Cantidad '+ inputs[i].value +' debe ser mayor o igual a ' + inputs[i].min + ' ¡Favor validar!');            
+                            ImprimirMsjError(lblInputs[i].textContent + ' debe ser mayor o igual a ' + inputs[i].min + ' ¡Favor validar!');            
                             ResaltarInputInvalido(inputs[i].id);
                             ResaltarLabelInvalido(lblInputs[i].id);
                             return false;
@@ -119,7 +118,7 @@ function ValidarCampos(){
 
                     if (Number(inputs[i].max > 0)) {
                         if ( Number(inputs[i].value) > Number(inputs[i].max)) {
-                        ImprimirMsjError('Cantidad '+ inputs[i].value +' debe ser menor o igual ' + inputs[i].max + ' ¡Favor validar!');            
+                        ImprimirMsjError(lblInputs[i].textContent +' debe ser menor o igual ' + inputs[i].max + ' ¡Favor validar!');            
                         ResaltarInputInvalido(inputs[i].id);
                         ResaltarLabelInvalido(lblInputs[i].id);
                         return false;

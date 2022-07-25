@@ -1,17 +1,36 @@
 'use strict'
 
 let pNumCliente = 4;
+let pCliente = 'Cris Hemsworth';
 
-imprimirMetodosPago(pNumCliente);
+btnRegistrar.addEventListener('click', Validaciones);
 
-function imprimirMetodosPago(pNumCliente){
-    let option = document.createElement('option');
-    let valor = new Date().getTime();
-    let listaMetodos = ObtenerMetodoPagoCliente(pNumCliente);
-    for (let i = 0; i < listaMetodos.length; i++) { 
-        option.value = listaMetodos[i].NumTarjeta;
-        console.log(listaMetodos[i].NumTarjeta); 
-        option.text = 'Tarjeta';
-        selMetodoPago.appendChild(option);        
+function Validaciones(){
+    if (ValidarCampos() == false){
+        return false;
+    } else if(ValidarFecha()==false){
+        return false;
+    } else {
+        /***********************************************************************/
+        guardarMetodoPago(pNumCliente,pCliente,document.getElementById('txtNumTarjeta').value, document.getElementById('txtExpiracion').value,document.getElementById('txtCVV').value, document.getElementById('txtNombreTarjeta').value );
+        Swal.fire({
+            title:'Success!',
+            text: 'Todos los campos requeridos han sido ingresados',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        });  
+        
+        return true;
     }
-};
+}
+
+function ValidarFecha(){
+    let fecha = document.getElementById('txtExpiracion');
+    if (new Date(fecha.value) < new Date) {
+        //fecha debe ser mayor a HOY
+        ImprimirMsjError('Fecha de Expiración debe ser superior a hoy, ¡Favor validar!');            
+        ResaltarInputInvalido('txtExpiracion');
+        ResaltarLabelInvalido('lblExpiracion');     
+        return false;   
+    }
+}
