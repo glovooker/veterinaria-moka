@@ -108,11 +108,22 @@ function ValidarCampos(){
                 ResaltarLabelInvalido(lblInputs[i].id);
                 return false;
                 } else { 
-                    if (Number(inputs[i].value) < Number(inputs[i].min) || Number(inputs[i].value) > Number(inputs[i].max)) {
-                    ImprimirMsjError('Cantidad '+ inputs[i].value +' debe estar entre ' + inputs[i].min + ' y ' +inputs[i].max + ' ¡Favor validar!');            
-                    ResaltarInputInvalido(inputs[i].id);
-                    ResaltarLabelInvalido(lblInputs[i].id);
-                    return false;
+                    if (Number(inputs[i].min) > 0) {
+                        if ( Number(inputs[i].value) < Number(inputs[i].min) ) {
+                            ImprimirMsjError('Cantidad '+ inputs[i].value +' debe ser mayor o igual a ' + inputs[i].min + ' ¡Favor validar!');            
+                            ResaltarInputInvalido(inputs[i].id);
+                            ResaltarLabelInvalido(lblInputs[i].id);
+                            return false;
+                            }
+                    }
+
+                    if (Number(inputs[i].max > 0)) {
+                        if ( Number(inputs[i].value) > Number(inputs[i].max)) {
+                        ImprimirMsjError('Cantidad '+ inputs[i].value +' debe ser menor o igual ' + inputs[i].max + ' ¡Favor validar!');            
+                        ResaltarInputInvalido(inputs[i].id);
+                        ResaltarLabelInvalido(lblInputs[i].id);
+                        return false;
+                        }
                     }
                 }
             }
