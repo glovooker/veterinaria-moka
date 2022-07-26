@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservar Cita</title>
+</head>
+<header>
+    <nav>
+        <div class="logo-container">
+            <a href="#">
+                <img src="" alt="Logo">
+            </a>
+            <h2>Veterinaria Moka</h2>
+        </div>
+
+        <div class="navegation-container">
+            <a href="">Inicio</a>
+            <a href="">Clínica</a>
+            <a href="">Hotel</a>
+        </div>
+
+    </nav>
+</header>
+
+<body>
+    <h2>Reservar una cita</h2>
+
+    <div>
+        <label for="txtTipoMascota" id="lblTipoMascota" class="lblSelect">Seleccione una Mascota</label>
+        <select id="txtTipoMascota" required>
+            <option value="">-Seleccione-</option>
+            <option value="1">Pluto</option>
+            <option value="2">Garfield</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="txtFechaCita" id="lblFechaCita" class="lblInput">Fecha de la Cita</label>
+        <input type="date" id="txtFechaCita" required>
+    </div>
+
+    <div>
+        <label for="txtHoraCita" id="lblHoraCita" class="lblInput">Hora de la Cita</label>
+        <input type="time" id="txtHoraCita" required>
+    </div>
+
+    <div>
+        <label for="txtMedico" id="lblMedico" class="lblSelect">Seleccione un Médico</label>
+        <select id="txtMedico" required>
+            <option value="">-Seleccione-</option>
+            <option value="1">VT Garcia</option>
+            <option value="2">VT Gomez</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="txtMotivoCita" id="lblMotivoCita" class="lblTextArea">Indique el Motivo de la Cita</label>
+        <textarea id="txtMotivoCita" cols="30" rows="9" required></textarea>
+    </div>
+
+    <button type="button" id="btnRegistrar">Registrar</button>
+
+    <footer>
+        <h5>Clever Solutions - 2022</h5>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="JS/controllers/ControllerGeneral.js"></script>
+    <script src="JS/controllers/"></script>
+    <script src="JS/ReservarCitaController.js"></script>
+</body>
+
+</html>
