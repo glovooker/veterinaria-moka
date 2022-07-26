@@ -23,45 +23,54 @@
         </div>
 
     </nav>
-</header>  
+</header>
 
 <body>
     <h2>Reservar una cita</h2>
 
     <div>
-        <label for="" id="" class="">Seleccione una Mascota</label>
-        <select id="" required>
-            <option value="">-Seleccione-</option> 
+        <label for="txtTipoMascota" id="lblTipoMascota" class="lblSelect">Seleccione una Mascota</label>
+        <select id="txtTipoMascota" required>
+            <option value="">-Seleccione-</option>
+            <option value="1">Pluto</option>
+            <option value="2">Garfield</option>
         </select>
-    </div>     
+    </div>
 
     <div>
-        <label for="" id="" class="">Fecha de la Cita</label>
-        <input type="date" id="" class="" required>
-    </div>  
+        <label for="txtFechaCita" id="lblFechaCita" class="lblInput">Fecha de la Cita</label>
+        <input type="date" id="txtFechaCita" required>
+    </div>
 
     <div>
-        <label for="" id="" class="">Hora de la Cita</label>
-        <input type="time" id="" class="" required>
-    </div>  
+        <label for="txtHoraCita" id="lblHoraCita" class="lblInput">Hora de la Cita</label>
+        <input type="time" id="txtHoraCita" required>
+    </div>
 
     <div>
-        <label for="" id="" class="">Seleccione un Médico</label>
-        <select id="" required>
-            <option value="">-Seleccione-</option> 
+        <label for="txtMedico" id="lblMedico" class="lblSelect">Seleccione un Médico</label>
+        <select id="txtMedico" required>
+            <option value="">-Seleccione-</option>
+            <option value="1">VT Garcia</option>
+            <option value="2">VT Gomez</option>
         </select>
-    </div>   
+    </div>
 
     <div>
-        <label for="" id="" class="">Indique el Motivo de la Cita</label>               
-        <textarea name="" id="" cols="30" rows="9" required></textarea>
-    </div>    
+        <label for="txtMotivoCita" id="lblMotivoCita" class="lblTextArea">Indique el Motivo de la Cita</label>
+        <textarea id="txtMotivoCita" cols="30" rows="9" required></textarea>
+    </div>
 
-    <button>Registrar</button> 
+    <button type="button" id="btnRegistrar">Registrar</button>
 
     <footer>
-            <h5>Clever Solutions - 2022</h5>
-    </footer> 
+        <h5>Clever Solutions - 2022</h5>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="JS/services/ReservarCitaServices.js"></script>
+    <script src="JS/controllers/ControllerGeneral.js"></script>
+    <script src="JS/controllers/ReservarCitaController.js"></script>
 </body>
 
 </html>
