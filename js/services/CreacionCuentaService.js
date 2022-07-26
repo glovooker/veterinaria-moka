@@ -18,6 +18,7 @@ function ObtenerCuenta(pNumCuenta) {
     }  
     return result;
 }
+
 function guardarCuenta(pNombre, pUsuario, pCorreo,pRol,pEstado,pPassword,pCedula,pTelefono,pDireccion){
     let nuevaCuenta = {} 
     nuevaCuenta.NumCuenta = ListaCuentas.length + 1;

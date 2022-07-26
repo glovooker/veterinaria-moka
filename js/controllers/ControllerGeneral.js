@@ -101,6 +101,16 @@ function ValidarCampos(){
                 }
             }
 
+            //valido los campos INPUTS tipo TIME
+            if (inputs[i].type.toLowerCase() == 'time') {
+                if ((inputs[i].value == "" || inputs[i].value == null || inputs[i].value == undefined)){   
+                    ImprimirMsjError(lblInputs[i].textContent + ' es requerido, ¡Favor validar!');            
+                    ResaltarInputInvalido(inputs[i].id);
+                    ResaltarLabelInvalido(lblInputs[i].id);
+                    return false;
+                }
+            }            
+
             //valido los campos INPUTS tipo NUMBER
             if (inputs[i].type.toLowerCase() == 'number') {
                 if (inputs[i].value == "" || inputs[i].value == null || inputs[i].value == undefined){       
