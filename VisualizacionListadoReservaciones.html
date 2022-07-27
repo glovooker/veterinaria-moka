@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización de Listado de las reservaciones</title>
+</head>
+<header>
+    <nav>
+        <div class="logo-container">
+            <a href="#">
+                <img src="" alt="Logo">
+            </a>
+            <h2>Veterinaria Moka</h2>
+        </div>
+
+        <div class="navegation-container">
+            <a href="">Inicio</a>
+            <a href="">Clínica</a>
+            <a href="">Hotel</a>
+        </div>
+
+    </nav>
+</header>
+
+<body>
+    <main>
+        <section>
+            <h1>Control de las Reservaciones</h1>
+            <form >
+                <label for="" id="txtfecha1">Seleccione una fecha de entrada</label>
+                <input type="date" id="txtfecha1">
+                <label for="" id="txtfecha2">Seleccione una fecha de salida</label>
+                <input type="date"id="txtfecha2">
+                <button type="button">Filtrar</button>
+            </form>
+        </section>
+
+        <h3>Reservaciones del dia</h3>
+
+                
+        <section>
+            <table id="tablaReservaciones">
+                <thead>
+                    <tr>
+                        <th>Fecha de entrada</th>
+                        <th>Fecha de salida</th>
+                        <th>Hora de entrada</th>
+                        <th>Hora de salida</th>
+                        <th>Cliente</th>
+                        <th>Nombre de la mascota</th>
+                        <th>Detalles</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot></tfoot>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <h5>Clever Solutions - 2022</h5>
+    </footer>
+
+    <script src="./js/services/ListadoReserServices.js"></script>
+    <script src="./js/controllers/ListadoReserController.js"></script>
+  
+
+</body>
+</html>
+
+
+
+                    
+                       
+                    
+
+
