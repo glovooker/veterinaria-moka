@@ -23,48 +23,57 @@
         </div>
 
     </nav>
-</header>  
+</header>
 
 <body>
     <h2>Reservar una Habitación</h2>
 
     <div>
-        <label for="" id="" class="">Seleccione una Mascota</label>
-        <select id="" required>
-            <option value="">-Seleccione-</option> 
+        <label for="txtMascota" id="lblMascota" class="lblSelect">Seleccione una Mascota</label>
+        <select id="txtMascota" required>
+            <option value="">-Seleccione-</option>
+            <option value="1"> Oscarin </option>
+            <option value="2"> Mechitas </option>
         </select>
-    </div>     
+    </div>
 
     <div>
-        <label for="" id="" class="">Fecha de Entrada</label>
-        <input type="date" id="" class="" required>
-    </div>  
+        <label for="txtFechaDeEntrada" id="lblFechaDeEntrada" class="lblInput">Fecha de Entrada</label>
+        <input type="date" id="txtFechaDeEntrada" required>
+    </div>
 
     <div>
-        <label for="" id="" class="">Hora de Entrada</label>
-        <input type="time" id="" class="" required>
-    </div>  
+        <label for="txtHoraDeEntrada" id="lblHoraDeEntrada" class="lblInput">Hora de Entrada</label>
+        <input type="time" id="txtHoraDeEntrada" required>
+    </div>
 
     <div>
-        <label for="" id="" class="">Fecha de Salida</label>
-        <input type="date" id="" class="" required>
-    </div>  
+        <label for="txtFechaDeSalida" id="lblFechaDeSalida" class="lblInput">Fecha de Salida</label>
+        <input type="date" id="txtFechaDeSalida" required>
+    </div>
 
     <div>
-        <label for="" id="" class="">Hora de Salida</label>
-        <input type="time" id="" class="" required>
-    </div>      
+        <label for="txtHoraDeSalida" id="lblHoraDeSalida" class="lblInput">Hora de Salida</label>
+        <input type="time" id="txtHoraDeSalida" required>
+    </div>
 
     <div>
-        <label for="" id="" class="">Indique los Cuidados para su Mascota</label>               
-        <textarea name="" id="" cols="30" rows="9" required></textarea>
-    </div>    
+        <label for="txtCuidadosExtras" id="lblCuidadosExtras" class="lblTextArea">Indique los Cuidados para su
+            Mascota</label>
+        <textarea id="txtCuidadosExtras" cols="30" rows="9" required></textarea>
+    </div>
 
-    <button>Registrar</button> 
+    <button type="button" id="btnRegistrar">Registrar</button>
 
     <footer>
-            <h5>Clever Solutions - 2022</h5>
-    </footer> 
+        <h5>Clever Solutions - 2022</h5>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="JS/services/ReservarHabitacionServices.js"></script>
+    <script src="JS/controllers/ControllerGeneral.js"></script>
+    <script src="JS/controllers/ReservarHabitacionController.js"></script>
+
 </body>
 
 </html>
