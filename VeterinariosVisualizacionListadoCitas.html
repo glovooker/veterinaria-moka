@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización de Listado de las citas</title>
+</head>
+<header>
+    <nav>
+        <div class="logo-container">
+            <a href="#">
+                <img src="" alt="Logo">
+            </a>
+            <h2>Veterinaria Moka</h2>
+        </div>
+
+        <div class="navegation-container">
+            <a href="">Inicio</a>
+            <a href="">Clínica</a>
+            <a href="">Hotel</a>
+        </div>
+
+    </nav>
+</header>
+
+<body>
+    <main>
+        <section>
+            <h1>Control de citas</h1>
+            <form >
+                <label for="" id="txtfecha">Seleccione una fecha</label>
+                <input type="date" id="txtfecha">
+                <label for="" id="txtveterianrio">Seleccione un veterinario</label>
+                <select name="" id="txtveterianrio">
+                    <option value="0" disabled selected>Seleccione un veterinario</option>
+                </select>
+                <input type="checkbox">Citas asignadas a mi
+                <input type="checkbox">Citas no asignadas
+                <button type="button">Filtrar</button>
+            </form>
+        </section>
+
+        <h3>Cita del día</h3>
+
+        <section>
+            <table id="tablaCitas">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Cliente</th>
+                        <th>Doctor asignado</th>
+                        <th>Nombre de la mascota</th>
+                        <th>Estado</th>
+                        <th>Detalles</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot></tfoot>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <h5>Clever Solutions - 2022</h5>
+    </footer>
+    
+    <script src="./js/services/ListadoCitaVeteServices.js"></script>
+    <script src="./js/controllers/ListadoCitaVeteController.js"></script>
+
+</body>
+</html>
