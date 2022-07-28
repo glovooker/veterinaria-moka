@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio De sesion</title>
+</head>
+<header>
+    <nav>
+        <div class="logo-container">
+            <a href="#">
+                <img src="" alt="Logo">
+            </a>
+            <h2>Veterinaria Moka</h2>
+        </div>
+
+        <div class="navegation-container">
+            <a href="">Inicio</a>
+            <a href="">Clínica</a>
+            <a href="">Hotel</a>
+        </div>
+
+    </nav>
+</header>
+
+<body>
+
+    <body>
+        <h1>Iniciar Sesión</h1>
+        <div>
+            <form>
+                <label for="txtUsuario" class="lblInput">Usuario</label>
+                <input type="text" id="txtUsuario" required>
+                <br>
+                <label for="txtContrasenna" class="lblInput">Contraseña</label>
+                <input type="password" id="txtContrasenna" required>
+            </form>
+        </div>
+        <div>¿Aún no tienes cuenta? <a href="">Registro</a></div>
+        <div>
+            <button type="button" id="btnIngresar">Ingresar</button>
+        </div>
+        <footer>
+            <h5>Clever Solutions - 2022</h5>
+        </footer>
+
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!-- <script src="./js/CreacionCuentaService.js"></script> -->
+        <script src="./js/services/InicioDeSesionService.js"></script>
+        <script src="./js/controllers/ControllerGeneral.js"></script>
+        <script src="./js/controllers/InicioDeSesionController.js"></script>
+    </body>
+
+</html>
