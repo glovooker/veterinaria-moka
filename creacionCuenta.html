@@ -27,7 +27,7 @@
 
 <body>
     <div>
-        <h1>Creación de cuenta</h1>
+        <h3>Creación de cuenta</h3>
     </div>
     <form action="">
 
@@ -47,6 +47,25 @@
         </div>
 
         <div>
+            <label for="selRol" id="lblRol" class="lblSelect">Rol</label>
+            <select id="selRol" required>
+                <option value="">-Seleccione-</option>
+                <option value="V">Veterinario(a)</option> 
+                <option value="S">Secretario(a)</option> 
+                <option value="C">Cliente</option>
+            </select>
+        </div>    
+
+        <div>
+            <label for="selEstado" id="lblEstado" class="lblSelect">Estado</label>
+            <select id="selEstado" required>
+                <option value="">-Seleccione-</option>
+                <option selected = "selected" value="A">Activo</option> 
+                <option value="I">Inactivo</option>  
+            </select>
+        </div>            
+
+        <div>
             <label for="txtPass" id="lblPass" class="lblInput">Contraseña</label>
             <input type="password" id="txtPass" required>
         </div>
@@ -62,14 +81,13 @@
         </div>
 
         <div>
-            <label for="txtTelefono" id="lblTelefono" class="lblInput">Número de teléfono</label>
-            <input type="number" id="txtTelefono" placeholder="(+506)0000-000"
-                title="Digite su número de telefono sin guiones" required>
+            <label for="txtTelefono" id="lblTelefono" class="lblInput">Número de Teléfono</label>
+            <input type="number" id="txtTelefono" title="Número de teléfono sin guiones" required>
         </div>
 
         <div>
             <label for="txtDireccion" id="lblDireccion" class="lblInput">Dirección</label>
-            <input type="text" id="txtDireccion" required>
+            <input type="text" id="txtDireccion" class="clsDireccion" required>
         </div>
 
         <button type=button id="btnRegistrar">Registrar</button>
@@ -81,7 +99,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!-- <script src="./js/CreacionCuentaService.js"></script> -->
+    <script src="./js/services/CreacionCuentaService.js"></script>  
     <script src="./js/controllers/ControllerGeneral.js"></script>
     <script src="./js/controllers/CreacionCuentaController.js"></script>
 
