@@ -30,17 +30,18 @@
         <section>
             <h1>Control de las Reservaciones</h1>
             <form >
-                <label for="">Seleccione una fecha de entrada</label>
-                <input type="date">
-                <label for="">Seleccione una fecha de salida</label>
-                <input type="date">
+                <label for="" id="txtfecha1">Seleccione una fecha de entrada</label>
+                <input type="date" id="txtfecha1">
+                <label for="" id="txtfecha2">Seleccione una fecha de salida</label>
+                <input type="date"id="txtfecha2">
                 <button type="button">Filtrar</button>
             </form>
         </section>
+
+        <h3>Reservaciones del dia</h3>
                 
         <section>
-            <table>
-                <caption>Reservaciones del dia</caption>
+            <table id="tablaReservaciones">
                 <thead>
                     <tr>
                         <th>Fecha de entrada</th>
@@ -60,13 +61,9 @@
     <footer>
         <h5>Clever Solutions - 2022</h5>
     </footer>
+
+    <script src="./js/services/ListadoReserServices.js"></script>
+    <script src="./js/controllers/ListadoReserController.js"></script>
+  
 </body>
 </html>
-
-
-
-                    
-                       
-                    
-
-

@@ -30,10 +30,10 @@
         <section>
             <h1>Control de citas</h1>
             <form >
-                <label for="">Seleccione una fecha</label>
-                <input type="date">
-                <label for="">Seleccione un veterinario</label>
-                <select name="" id="">
+                <label for="" id="txtfecha">Seleccione una fecha</label>
+                <input type="date" id="txtfecha">
+                <label for="" id="txtveterianrio">Seleccione un veterinario</label>
+                <select name="" id="txtveterianrio">
                     <option value="0" disabled selected>Seleccione un veterinario</option>
                 </select>
                 <input type="checkbox">Citas asignadas a mi
@@ -41,9 +41,11 @@
                 <button type="button">Filtrar</button>
             </form>
         </section>
+
+        <h3>Cita del día</h3>
+
         <section>
-            <table>
-                <caption>Cita del día</caption>
+            <table id="tablaCitas">
                 <thead>
                     <tr>
                         <th>Fecha</th>
@@ -63,13 +65,9 @@
     <footer>
         <h5>Clever Solutions - 2022</h5>
     </footer>
+    
+    <script src="./js/services/ListadoCitaVeteServices.js"></script>
+    <script src="./js/controllers/ListadoCitaVeteController.js"></script>
+
 </body>
 </html>
-
-
-
-                    
-                       
-                    
-
-
