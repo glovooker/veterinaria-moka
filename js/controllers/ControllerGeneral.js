@@ -44,24 +44,22 @@ function ValidarCampos(){
         if (inputs[i].required == true) {
 
             //valido los campos INPUTS tipo TEXT  
-            if (inputs[i].type.toLowerCase() == 'text') {
-                if (inputs[i].value == "" || inputs[i].value == null || inputs[i].value == undefined) {       
-                    ImprimirMsjError(lblInputs[i].textContent + ' es requerido. ¡Favor validar!');            
-                    ResaltarInputInvalido(inputs[i].id);
-                    ResaltarLabelInvalido(lblInputs[i].id);
-                    return false;
-                } else {
-                    if (inputs[i].className == null) {
-                        let valFormatoText = /^[A-Za-z\s]+$/;
-                        if (valFormatoText.test(inputs[i].value) == false) {
-                            ImprimirMsjError(lblInputs[i].textContent + ' tiene formato inválido. ¡Favor validar!');            
-                            ResaltarInputInvalido(inputs[i].id);
-                            ResaltarLabelInvalido(inputs[i].id);
-                            return false;
-                        }
-                    } 
-                }
-            } 
+            if ((inputs[i].type.toLowerCase() == 'text') 
+            && (inputs[i].value == "" || inputs[i].value == null || inputs[i].value == undefined)) {       
+                ImprimirMsjError(lblInputs[i].textContent + ' es requerido. ¡Favor validar!');            
+                ResaltarInputInvalido(inputs[i].id);
+                ResaltarLabelInvalido(lblInputs[i].id);
+                return false;
+            }
+
+            //valido los campos INPUTS tipo TEL  
+            if ((inputs[i].type.toLowerCase() == 'tel') 
+            && (inputs[i].value == "" || inputs[i].value == null || inputs[i].value == undefined)) {       
+                ImprimirMsjError(lblInputs[i].textContent + ' es requerido. ¡Favor validar!');            
+                ResaltarInputInvalido(inputs[i].id);
+                ResaltarLabelInvalido(lblInputs[i].id);
+                return false;
+            }            
 
             //valido los campos email 
             if (inputs[i].type.toLowerCase() == 'email') {
@@ -71,8 +69,8 @@ function ValidarCampos(){
                     ResaltarLabelInvalido(inputs[i].id);
                     return false;
                 } else {
-                    let valFormatoCorreo = /^[a-z._\d]+@[a-z\d]+\.[a-z]+\.?[a-z]+?$/;
-                    if (valFormatoCorreo.test(inputs[i].value) == false) {
+                    let valArroba = /^[a-z._\d]+@[a-z\d]+\.[a-z]+\.?[a-z]+?$/;
+                    if (valArroba.test(inputs[i].value) == false) {
                         ImprimirMsjError(lblInputs[i].textContent+' tiene formato inválido. ¡Favor validar!');            
                         ResaltarInputInvalido(inputs[i].id);
                         ResaltarLabelInvalido(inputs[i].id);
@@ -101,48 +99,20 @@ function ValidarCampos(){
                 }
             }
 
-            //valido los campos INPUTS tipo TIME
-            if (inputs[i].type.toLowerCase() == 'time') {
-                if ((inputs[i].value == "" || inputs[i].value == null || inputs[i].value == undefined)){   
-                    ImprimirMsjError(lblInputs[i].textContent + ' es requerido, ¡Favor validar!');            
-                    ResaltarInputInvalido(inputs[i].id);
-                    ResaltarLabelInvalido(lblInputs[i].id);
-                    return false;
-                }
-            }            
-
             //valido los campos INPUTS tipo NUMBER
             if (inputs[i].type.toLowerCase() == 'number') {
                 if (inputs[i].value == "" || inputs[i].value == null || inputs[i].value == undefined){       
-                    ImprimirMsjError(lblInputs[i].textContent + ' es requerido, ¡Favor validar!');            
+                //ImprimirMsjError('Cantidad requerida, ¡Favor validar!');
+                ImprimirMsjError(lblInputs[i].textContent + ' es requerido, ¡Favor validar!');            
+                ResaltarInputInvalido(inputs[i].id);
+                ResaltarLabelInvalido(lblInputs[i].id);
+                return false;
+                } else { 
+                    if (Number(inputs[i].value) < Number(inputs[i].min) || Number(inputs[i].value) > Number(inputs[i].max)) {
+                    ImprimirMsjError('Cantidad '+ inputs[i].value +' debe estar entre ' + inputs[i].min + ' y ' +inputs[i].max + ' ¡Favor validar!');            
                     ResaltarInputInvalido(inputs[i].id);
                     ResaltarLabelInvalido(lblInputs[i].id);
                     return false;
-                } else { 
-                    let valFormatoNumber = /^[0-9]*(\.?)[0-9]+$/; //^[0-9]+$/;
-                    if (valFormatoNumber.test(inputs[i].value) == false) {
-                        ImprimirMsjError(lblInputs[i].textContent+' tiene formato inválido. ¡Favor validar!');            
-                        ResaltarInputInvalido(inputs[i].id);
-                        ResaltarLabelInvalido(inputs[i].id);
-                        return false;
-                    }
-
-                    if (Number(inputs[i].min) > 0) {
-                        if ( Number(inputs[i].value) < Number(inputs[i].min) ) {
-                            ImprimirMsjError(lblInputs[i].textContent + ' debe ser mayor o igual a ' + inputs[i].min + ' ¡Favor validar!');            
-                            ResaltarInputInvalido(inputs[i].id);
-                            ResaltarLabelInvalido(lblInputs[i].id);
-                            return false;
-                            }
-                    }
-
-                    if (Number(inputs[i].max > 0)) {
-                        if ( Number(inputs[i].value) > Number(inputs[i].max)) {
-                        ImprimirMsjError(lblInputs[i].textContent +' debe ser menor o igual ' + inputs[i].max + ' ¡Favor validar!');            
-                        ResaltarInputInvalido(inputs[i].id);
-                        ResaltarLabelInvalido(lblInputs[i].id);
-                        return false;
-                        }
                     }
                 }
             }
