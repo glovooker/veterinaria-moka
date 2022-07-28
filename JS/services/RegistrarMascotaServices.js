@@ -18,12 +18,12 @@ function ObtenerRegistroMascota(pNumCuenta) {
   }
   return result;
 }
-function GuardarRegistroMascota(pNombreMascota, pTipoMascota, pInfoAdicional) {
+function GuardarRegistroMascota(pNombreMascota, pTipoMascota, pClaseMascota, pInfoAdicional) {
   let nuevoRegistro = {};
   nuevoRegistro.NumCuenta = ListaRegistroMascota.length + 1;
   nuevoRegistro.NombreMascota = pNombreMascota;
   nuevoRegistro.TipoMascota = pTipoMascota;
-//   nuevoRegistro.FotoMascota = pFotoMascota;
+  nuevoRegistro.ClaseMascota = pClaseMascota;
   nuevoRegistro.InfoAdicional = pInfoAdicional;
   ListaRegistroMascota[ListaRegistroMascota.length] = nuevoRegistro;
 }

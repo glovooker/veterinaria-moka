@@ -11,8 +11,8 @@ function RegistrarMascota() {
     GuardarRegistroMascota(
       document.getElementById("txtNombreMascota").value,
       document.getElementById("txtTipoDeMascota").value,
-    //   document.getElementById("btnSubirImg").value,
-      document.getElementById("txtInfoAdicional").value,
+      document.getElementById("txtMascota").value,
+      document.getElementById("txtInfoAdicional").value
     );
     Swal.fire({
       title: "Success!",
