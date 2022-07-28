@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio De sesion</title>
+</head>
+<header>
+    <nav>
+        <div class="logo-container">
+            <a href="#">
+                <img src="" alt="Logo">
+            </a>
+            <h2>Veterinaria Moka</h2>
+        </div>
+
+        <div class="navegation-container">
+            <a href="">Inicio</a>
+            <a href="">Clínica</a>
+            <a href="">Hotel</a>
+        </div>
+
+    </nav>
+</header>
+
+<body>
+
+    <body>
+        <h1>Registro de la Mascota</h1>
+        <div>
+            <form>
+
+                <div>
+                    <label for="txtNombreMascota" id="lblNombreMascota" class="lblInput">Nombre de la Mascota</label>
+                    <input type="text" id="txtNombreMascota" required>
+                </div>
+
+
+                <div>
+                    <label for="txtTipoDeMascota" id="lblMedico" class="lblSelect">Tipo de Mascota</label>
+                    <select id="txtTipoDeMascota" required>
+                        <option value="">-Seleccione-</option>
+                        <option value="1">Perro</option>
+                        <option value="2">Gato</option>
+                        <option value="3">Vaca</option>
+                        <option value="4">Hamster</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="btnSubirImg" id="lblSubirImg">Foto de la Mascota</label>
+                    <button type="button" id="btnSubirImg ">Subir Imagen</button>
+                </div>
+
+                <div>
+                    <label for="txtInfoAdicional" id="lblInfoAdicional" class="lblTextArea">Información
+                        Adicional</label>
+                    <textarea id="txtInfoAdicional" cols="30" rows="9" required></textarea>
+                </div>
+
+                <div>
+                    <button type="button" id="btnAgregar">Agregar</button>
+                </div>
+            </form>
+        </div>
+
+        <footer>
+            <h5>Clever Solutions - 2022</h5>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="JS/services/RegistrarMascotaServices.js"></script>
+        <script src="JS/controllers/ControllerGeneral.js"></script>
+        <script src="JS/controllers/RegistrarMascotaController.js"></script>
+    </body>
+
+</html>
