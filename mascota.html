@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template</title>
+    <title>Perfil Mascota</title>
 </head>
 <header>
     <nav>
@@ -34,24 +34,20 @@
                 <img src="" alt="">
             </div>
             <div>
-                <label for="outNombre">Nombre</label>  
-                <output id="outNombre" name="" for=""></output>    
-            </div>
-            <div>
-                <label for="txtduenno">Dueño</label>
-            </div>
-            <div>
-                <h3>Contacto</h3> 
-                <label for="outNumero">Numero de contacto</label> 
-                <output id="outNumero" name="" for=""></output>
+                <label for="outNombre">Nombre:</label>  
+                <output id="outNombre" name="" for=""></output>
+                <br>    
+                <label for="txtTipoMascota">Tipo de mascota:</label>
+                <output id="txtTipoMascota"></output>
                 <br>
-                <label for="direccion">Dirección exacta</label> 
-                <output id="direccion" name="" for=""></output>
+                <label for="txtDuennoMascota">Dueño de la mascota:</label>
+                <output id="txtDuennoMascota"></output>
             </div>
             <div>
-                <label for="txtAddInfo">Información adicional</label>
-                <br>
-                <textarea name="" id="txtAddInfo" ></textarea>  <!-- Puse un txtarea para representar la info adicional -->
+                <h3>Detalles</h3>
+                <label for="txtPadecimientos">Padecimientos:</label>
+                <output id="txtPadecimientos"></output> 
+                
             </div>
         </div>
     </section>
@@ -59,6 +55,8 @@
     <footer>
         <h5>Clever Solutions - 2022</h5>
     </footer>
+    <script src="js/services/UsuariosService.js"></script>
+    <script src="js/controllers/PerfilMascotaController.js"></script>
 </body>
 
 </html>

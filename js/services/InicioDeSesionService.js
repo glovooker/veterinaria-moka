@@ -1,15 +1,15 @@
 'use strict';
 
 let usuarios = [
-    { Nombre: 'Alvaro', Apellido1: 'Castillo', Apellido2: 'Gonzalez', Usuario: 'lvroc', Contrasenna: 'moka2022', Rol: 'Veterinario' },
-    { Nombre: 'Anabelle', Apellido1: 'Velasquez', Apellido2: '', Usuario: 'avelasquez', Contrasenna: 'moka2022', Rol: 'Secretaria' },
-    { Nombre: 'Gabriel', Apellido1: 'Lobo', Apellido2: 'Ulloa', Usuario: 'galobo', Contrasenna: 'moka2022', Rol: 'Veterinario' },
-    { Nombre: 'Jeremy', Apellido1: 'Villegas', Apellido2: 'Rodriguez', Usuario: 'jeville', Contrasenna: 'moka2022', Rol: 'Administrador' },
-    { Nombre: 'Andrey', Apellido1: 'Villalobos', Apellido2: 'Gomez', Usuario: 'anvilla', Contrasenna: 'moka2022', Rol: 'Cliente' },
-    { Nombre: 'Brandon', Apellido1: 'Villalobos', Apellido2: 'Rojas', Usuario: 'bravilla', Contrasenna: 'moka2022', Rol: 'Administrador' },
-    { Nombre: 'Johel', Apellido1: 'Lopez', Apellido2: 'Velasquez', Usuario: 'jlopez', Contrasenna: 'moka2022', Rol: 'Cliente' },
-    { Nombre: 'Randall', Apellido1: 'Badilla', Apellido2: 'Solano', Usuario: 'rbadilla', Contrasenna: 'moka2022', Rol: 'Cliente' },
-    { Nombre: 'Cris', Apellido1: 'Hemsworth', Apellido2: '', Usuario: 'thor', Contrasenna: 'moka2022', Rol: 'Cliente' }    
+    { Nombre: 'Alvaro Castillo', Usuario: 'lvroc', Contrasenna: 'moka2022', Rol: 'Veterinario', Telefono:'22611398'},
+    { Nombre: 'Anabelle Velasquez', Usuario: 'avelasquez', Contrasenna: 'moka2022', Rol: 'Secretaria', Telefono:'86962712'},
+    { Nombre: 'Gabriel Lobo', Usuario: 'galobo', Contrasenna: 'moka2022', Rol: 'Veterinario' },
+    { Nombre: 'Jeremy Villegas',Usuario: 'jeville', Contrasenna: 'moka2022', Rol: 'Administrador',Telefono:'86203040' },
+    { Nombre: 'Andrey Villalobos', Usuario: 'anvilla', Contrasenna: 'moka2022', Rol: 'Cliente', Telefono:'80405060', Mascota: 'Rocky'},
+    { Nombre: 'Brandon Villalobos', Usuario: 'bravilla', Contrasenna: 'moka2022', Rol: 'Administrador', Telefono:'80102030'},
+    { Nombre: 'Johel Lopez', Usuario: 'jlopez', Contrasenna: 'moka2022', Rol: 'Cliente', Telefono:'87605040', Mascota:'Perlita'},
+    { Nombre: 'Randall Badilla', Usuario: 'rbadilla', Contrasenna: 'moka2022', Rol: 'Cliente', Telefono:'88402090', Mascota:'Princesa'},
+    { Nombre: 'Cris Hemsworth', Usuario: 'thor', Contrasenna: 'moka2022', Rol: 'Cliente', Telefono:'80108050', Mascota:'Killer'}    
 ];
 
 function AutenticarUsuario(pUsuario, pContrasenna) {
