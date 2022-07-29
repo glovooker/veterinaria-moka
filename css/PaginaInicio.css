@@ -1,0 +1,185 @@
+/* Clever Solutions */
+body {
+  margin: 0 auto;
+  font-family: "lexendregular";
+  background-color: #f4f1de;
+}
+
+.navbar {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  flex-direction: row;
+  background-color: #81b29a;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navbar a img {
+  width: 20vh;
+}
+
+.navbar .navegation-container {
+  width: 35vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .navegation-container a {
+  text-decoration: none;
+  color: white;
+  font-size: 2.5vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+}
+
+.navbar .navegation-container a:hover {
+  font-size: 2.6vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+}
+
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-dropdown:hover .dropdown-content {
+  display: block;
+  right: -60px;
+}
+
+.profile-dropdown .profile-icon {
+  color: #fff;
+  font-size: 6vh;
+}
+
+.profile-dropdown .profile-icon:hover {
+  font-size: 6vh;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #81b29a;
+  min-width: 160px;
+  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  z-index: 1;
+  border-radius: 0 0 10px 10px;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 2.5vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+}
+
+.dropdown-content a:hover {
+  font-size: 2.6vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+}
+
+.footer {
+  margin-top: 5vh;
+  width: 100%;
+  height: 25vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #a56905;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  font-weight: 600;
+  font-family: "lexendbold";
+}
+
+.footer h5 {
+  margin: 0;
+  margin-bottom: 25px;
+}
+
+/* Specific Styles */
+
+.banner img {
+  width: 100%;
+  height: 100%;
+}
+
+.welcome {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-container {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #a56905;
+}
+
+.welcome-container h2 {
+  font-size: 4vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+  align-self: flex-start;
+}
+
+.welcome-container h3 {
+  font-size: 3vh;
+  font-weight: 600;
+  font-family: "lexendmedium";
+}
+
+.area-btns-container {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.area-btns-container .btn {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  background-color: #81b29a;
+  width: 10vw;
+  height: 10vh;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 15px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.area-btns-container .btn a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 2.5vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+}
+
+.area-btns-container .btn a p {
+  margin: 0;
+  margin-top: 15px;
+}
