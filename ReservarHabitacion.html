@@ -5,70 +5,97 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservar Habitación</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/StyleGeneral.css">
+    <link rel="stylesheet" href="./css/ReservarHabitacion.css">
+    <link rel="stylesheet" href="./css/webfont/stylesheet.css">
+    <title>Moka | Hotel</title>
 </head>
 <header>
-    <nav>
+    <nav class="navbar">
         <div class="logo-container">
-            <a href="#">
-                <img src="" alt="Logo">
+            <a href="./PaginaInicio.html">
+                <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
             </a>
-            <h2>Veterinaria Moka</h2>
         </div>
-
         <div class="navegation-container">
-            <a href="">Inicio</a>
-            <a href="">Clínica</a>
-            <a href="">Hotel</a>
+            <a href="./PaginaInicio.html">Inicio</a>
+            <a href="./ReservarCita.html">Clínica</a>
+            <a href="./ReservarHabitacion.html">Hotel</a>
+            <a href="./SobreNosotros.html">Sobre Nosotros</a>
         </div>
-
+        <div class="profile-dropdown">
+            <a href="" class="profile-icon">
+                <i class="fa-solid fa-circle-user"></i>
+            </a>
+            <div class="dropdown-content">
+                <a href="">Mi Perfil</a>
+                <a href="">Mascotas</a>
+                <a href="">Citas</a>
+                <a href="">Reservaciones</a>
+                <a href="">Métodos de Pago</a>
+                <a href="">Cerrar Sesión</a>
+            </div>
+        </div>
     </nav>
 </header>
 
 <body>
-    <h2>Reservar una Habitación</h2>
 
-    <div>
-        <label for="txtMascota" id="lblMascota" class="lblSelect">Seleccione una Mascota</label>
-        <select id="txtMascota" required>
-            <option value="">-Seleccione-</option>
-            <option value="1"> Oscarin </option>
-            <option value="2"> Mechitas </option>
-        </select>
-    </div>
+    <section class="reservar-habitacion">
+        <div class="form-container">
+            <div class="title-container">
+                <i class="fa-solid fa-bed"></i>
+                <h2>Reservar una Habitación</h2>
+            </div>
 
-    <div>
-        <label for="txtFechaDeEntrada" id="lblFechaDeEntrada" class="lblInput">Fecha de Entrada</label>
-        <input type="date" id="txtFechaDeEntrada" required>
-    </div>
+            <div class="form-select">
+                <label for="txtMascota" id="lblMascota" class="lblSelect">Seleccione una Mascota</label>
+                <select id="txtMascota" required>
+                    <option value="">-Seleccione-</option>
+                    <option value="1"> Oscarin </option>
+                    <option value="2"> Mechitas </option>
+                </select>
+            </div>
 
-    <div>
-        <label for="txtHoraDeEntrada" id="lblHoraDeEntrada" class="lblInput">Hora de Entrada</label>
-        <input type="time" id="txtHoraDeEntrada" required>
-    </div>
+            <div class="form-date">
+                <label for="txtFechaDeEntrada" id="lblFechaDeEntrada" class="lblInput">Fecha de Entrada</label>
+                <input type="date" id="txtFechaDeEntrada" required>
+            </div>
 
-    <div>
-        <label for="txtFechaDeSalida" id="lblFechaDeSalida" class="lblInput">Fecha de Salida</label>
-        <input type="date" id="txtFechaDeSalida" required>
-    </div>
+            <div class="form-time">
+                <label for="txtHoraDeEntrada" id="lblHoraDeEntrada" class="lblInput">Hora de Entrada</label>
+                <input type="time" id="txtHoraDeEntrada" required>
+            </div>
 
-    <div>
-        <label for="txtHoraDeSalida" id="lblHoraDeSalida" class="lblInput">Hora de Salida</label>
-        <input type="time" id="txtHoraDeSalida" required>
-    </div>
+            <div class="form-date">
+                <label for="txtFechaDeSalida" id="lblFechaDeSalida" class="lblInput">Fecha de Salida</label>
+                <input type="date" id="txtFechaDeSalida" required>
+            </div>
 
-    <div>
-        <label for="txtCuidadosExtras" id="lblCuidadosExtras" class="lblTextArea">Indique los Cuidados para su
-            Mascota</label>
-        <textarea id="txtCuidadosExtras" cols="30" rows="9" required></textarea>
-    </div>
+            <div class="form-time">
+                <label for="txtHoraDeSalida" id="lblHoraDeSalida" class="lblInput">Hora de Salida</label>
+                <input type="time" id="txtHoraDeSalida" required>
+            </div>
 
-    <button type="button" id="btnRegistrar">Registrar</button>
+            <div class="form-text-area">
+                <label for="txtCuidadosExtras" id="lblCuidadosExtras" class="lblTextArea">Indique los Cuidados para su
+                    Mascota</label>
+                <textarea id="txtCuidadosExtras" cols="30" rows="9" required></textarea>
+            </div>
 
-    <footer>
-        <h5>Clever Solutions - 2022</h5>
+            <button type="button" id="btnRegistrar" class="form-btn">Registrar</button>
+
+        </div>
+    </section>
+    <footer class="footer">
+        <h5>Powered by</h5>
+        <a href="https://glovooker.github.io/landing-page-bisoft-1/">
+            <img src="./img/LogoCleverSolutions.svg" alt="Logo Clever Solutions">
+        </a>
     </footer>
 
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="JS/services/ReservarHabitacionServices.js"></script>
     <script src="JS/controllers/ControllerGeneral.js"></script>

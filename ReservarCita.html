@@ -5,68 +5,94 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reservar Cita</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/StyleGeneral.css">
+    <link rel="stylesheet" href="./css/ReservarCita.css">
+    <link rel="stylesheet" href="./css/webfont/stylesheet.css">
+    <title>Moka | Clínica</title>
 </head>
 <header>
-    <nav>
+    <nav class="navbar">
         <div class="logo-container">
-            <a href="#">
-                <img src="" alt="Logo">
+            <a href="./PaginaInicio.html">
+                <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
             </a>
-            <h2>Veterinaria Moka</h2>
         </div>
-
         <div class="navegation-container">
-            <a href="">Inicio</a>
-            <a href="">Clínica</a>
-            <a href="">Hotel</a>
+            <a href="./PaginaInicio.html">Inicio</a>
+            <a href="./ReservarCita.html">Clínica</a>
+            <a href="./ReservarHabitacion.html">Hotel</a>
+            <a href="./SobreNosotros.html">Sobre Nosotros</a>
         </div>
-
+        <div class="profile-dropdown">
+            <a href="" class="profile-icon">
+                <i class="fa-solid fa-circle-user"></i>
+            </a>
+            <div class="dropdown-content">
+                <a href="">Mi Perfil</a>
+                <a href="">Mascotas</a>
+                <a href="">Citas</a>
+                <a href="">Reservaciones</a>
+                <a href="">Métodos de Pago</a>
+                <a href="">Cerrar Sesión</a>
+            </div>
+        </div>
     </nav>
 </header>
 
 <body>
-    <h2>Reservar una cita</h2>
+    <section class="reservar-cita">
+        <div class="form-container">
+            <div class="title-container">
+                <i class="fa-solid fa-book-medical"></i>
+                <h2>Reservar una Cita</h2>
+            </div>
 
-    <div>
-        <label for="txtTipoMascota" id="lblTipoMascota" class="lblSelect">Seleccione una Mascota</label>
-        <select id="txtTipoMascota" required>
-            <option value="">-Seleccione-</option>
-            <option value="1">Pluto</option>
-            <option value="2">Garfield</option>
-        </select>
-    </div>
+            <div class="form-select">
+                <label for="txtTipoMascota" id="lblTipoMascota" class="lblSelect">Seleccione una Mascota</label>
+                <select id="txtTipoMascota" required>
+                    <option value="">-Seleccione-</option>
+                    <option value="1">Pluto</option>
+                    <option value="2">Garfield</option>
+                </select>
+            </div>
 
-    <div>
-        <label for="txtFechaCita" id="lblFechaCita" class="lblInput">Fecha de la Cita</label>
-        <input type="date" id="txtFechaCita" required>
-    </div>
+            <div class="form-date">
+                <label for="txtFechaCita" id="lblFechaCita" class="lblInput">Fecha de la Cita</label>
+                <input type="date" id="txtFechaCita" required>
+            </div>
 
-    <div>
-        <label for="txtHoraCita" id="lblHoraCita" class="lblInput">Hora de la Cita</label>
-        <input type="time" id="txtHoraCita" required>
-    </div>
+            <div class="form-time">
+                <label for="txtHoraCita" id="lblHoraCita" class="lblInput">Hora de la Cita</label>
+                <input type="time" id="txtHoraCita" required>
+            </div>
 
-    <div>
-        <label for="txtMedico" id="lblMedico" class="lblSelect">Seleccione un Médico</label>
-        <select id="txtMedico" required>
-            <option value="">-Seleccione-</option>
-            <option value="1">VT Garcia</option>
-            <option value="2">VT Gomez</option>
-        </select>
-    </div>
+            <div class="form-select">
+                <label for="txtMedico" id="lblMedico" class="lblSelect">Seleccione un Médico</label>
+                <select id="txtMedico" required>
+                    <option value="">-Seleccione-</option>
+                    <option value="1">VT Garcia</option>
+                    <option value="2">VT Gomez</option>
+                </select>
+            </div>
 
-    <div>
-        <label for="txtMotivoCita" id="lblMotivoCita" class="lblTextArea">Indique el Motivo de la Cita</label>
-        <textarea id="txtMotivoCita" cols="30" rows="9" required></textarea>
-    </div>
+            <div class="form-text-area">
+                <label for="txtMotivoCita" id="lblMotivoCita" class="lblTextArea">Indique el Motivo de la Cita</label>
+                <textarea id="txtMotivoCita" cols="30" rows="9" required></textarea>
+            </div>
 
-    <button type="button" id="btnRegistrar">Registrar</button>
+            <button type="button" id="btnRegistrar" class="form-btn">Registrar</button>
+        </div>
+    </section>
 
-    <footer>
-        <h5>Clever Solutions - 2022</h5>
+    <footer class="footer">
+        <h5>Powered by</h5>
+        <a href="https://glovooker.github.io/landing-page-bisoft-1/">
+            <img src="./img/LogoCleverSolutions.svg" alt="Logo Clever Solutions">
+        </a>
     </footer>
 
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="JS/services/ReservarCitaServices.js"></script>
     <script src="JS/controllers/ControllerGeneral.js"></script>
