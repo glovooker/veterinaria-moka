@@ -8,44 +8,42 @@
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/StyleGeneral.css">
     <link rel="stylesheet" href="./css/ReservarHabitacion.css">
+    <link rel="stylesheet" href="./css/Tabla.css">
     <link rel="stylesheet" href="./css/webfont/stylesheet.css">
     <title>Moka | Hotel</title>
 </head>
-<header>
-    <nav class="navbar">
-        <div class="logo-container">
-            <a href="./PaginaInicio.html">
-                <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
-            </a>
-        </div>
-        <div class="navegation-container">
-            <a href="./PaginaInicio.html">Inicio</a>
-            <a href="./ReservarCita.html">Clínica</a>
-            <a href="./ReservarHabitacion.html">Hotel</a>
-            <a href="./SobreNosotros.html">Sobre Nosotros</a>
-        </div>
-        <div class="profile-dropdown">
-            <a href="" class="profile-icon">
-                <i class="fa-solid fa-circle-user"></i>
-            </a>
-            <div class="dropdown-content">
-                <a href="">Mi Perfil</a>
-                <a href="">Mascotas</a>
-                <a href="">Citas</a>
-                <a href="">Reservaciones</a>
-                <a href="">Métodos de Pago</a>
-                <a href="">Cerrar Sesión</a>
-            </div>
-        </div>
-    </nav>
-</header>
 
 <body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a href="./PaginaInicio.html">
+                    <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
+                </a>
+            </div>
+            <div class="navegation-container">
+                <a href="./PaginaInicio.html">Inicio</a>
+                <a href="./ReservarCita.html">Clínica</a>
+                <a href="./ReservarHabitacion.html">Hotel</a>
+            </div>
+            <div class="profile-dropdown">
+                <a href="" class="profile-icon">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="./Cliente.html">Mi Perfil</a>
+                    <a href="./Mascotas.html">Mascotas</a>
+                    <a href="./InicioDeSesion.html">Cerrar Sesión</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
 
     <section class="reservar-habitacion">
         <div class="form-container">
-            <div class="title-container">
-                <i class="fa-solid fa-bed"></i>
+            <div class="title-container-reservar-habitacion">
+                <i class="fa-solid fa-shield-cat"></i>
                 <h2>Reservar una Habitación</h2>
             </div>
 
@@ -88,6 +86,56 @@
 
         </div>
     </section>
+
+    <section class="visualizacion-reservaciones">
+
+        <div class="reservaciones-container">
+            <div class="title-container-mis-reservaciones">
+                <i class="fa-solid fa-calendar-check"></i>
+                <h2>Mis Reservaciones</h2>
+            </div>
+
+            <div class="table-filters">
+                <table class="table" id="tablaReservacionesEliminar">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Hora de entrada</th>
+                            <th>Hora de salida</th>
+                            <th>Mascota</th>
+                            <th>Estado</th>
+                            <th>Detalles</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div class="filter-container">
+                    <form>
+                        <div class="filter">
+                            <label for=""><i class="fa-solid fa-calendar-day"></i> Fecha</label>
+                            <input type="date" id="fecha" class="form-date">
+                        </div>
+                        <div class="filter">
+                            <label for=""><i class="fa-solid fa-user-doctor"></i> Veterinario</label>
+                            <select name="" id="" class="form-select">
+                                <option value="0" disabled selected>Seleccione un veterinario</option>
+                            </select>
+                        </div>
+                        <div class="filter">
+                            <label for=""><i class="fa-solid fa-paw"></i> Mascotas</label>
+                            <select name="" id="" class="form-select">
+                                <option value="0" disabled selected>Seleccione una mascota</option>
+                            </select>
+                        </div>
+                        <button type="button" class="filter-btn"><i class="fa-solid fa-arrow-down-wide-short"></i>
+                            Filtrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
     <footer class="footer">
         <h5>Powered by</h5>
         <a href="https://glovooker.github.io/landing-page-bisoft-1/">
@@ -95,11 +143,13 @@
         </a>
     </footer>
 
+    <script src="./js/services/EliminarReservacionesService.js"></script>
+    <script src="./js/controllers/EliminarReseController.js"></script>
     <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="JS/services/ReservarHabitacionServices.js"></script>
-    <script src="JS/controllers/ControllerGeneral.js"></script>
-    <script src="JS/controllers/ReservarHabitacionController.js"></script>
+    <script src="./js/services/ReservarHabitacionServices.js"></script>
+    <script src="./js/controllers/ControllerGeneral.js"></script>
+    <script src="./js/controllers/ReservarHabitacionController.js"></script>
 
 </body>
 

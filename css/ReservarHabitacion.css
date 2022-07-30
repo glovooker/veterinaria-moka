@@ -1,6 +1,6 @@
 .reservar-habitacion {
-  padding-top: 15vh;
-  padding-bottom: 15vh;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
   width: 100%;
   height: 45vh;
   display: flex;
@@ -27,7 +27,7 @@
   align-self: flex-start;
 }
 
-.form-container input {
+input {
   width: 40%;
   height: 2vh;
   border-radius: 10px;
@@ -37,7 +37,7 @@
   font-family: "lexendregular";
 }
 
-.form-container select {
+select {
   width: 40%;
   height: 4.5vh;
   border-radius: 10px;
@@ -47,7 +47,7 @@
   font-family: "lexendregular";
 }
 
-.form-container textarea {
+textarea {
   width: 40%;
   height: 5vh;
   border-radius: 10px;
@@ -57,11 +57,10 @@
   font-family: "lexendregular";
 }
 
-.title-container {
+.title-container-reservar-habitacion {
   align-self: flex-start;
   font-size: 4vh;
   width: 60%;
-  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -115,5 +114,98 @@
   background-color: #81b29a;
   color: #fff;
   font-size: 2vh;
+  cursor: pointer;
+}
+
+.visualizacion-reservaciones {
+  margin-top: 10vh;
+  padding: 5vh;
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.reservaciones-container {
+  width: 55%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: #a56905;
+  font-size: 2.2vh;
+}
+
+.reservaciones-container h2 {
+  font-size: 4vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+  align-self: flex-start;
+}
+
+.title-container-mis-reservaciones {
+  margin-bottom: -5vh;
+  align-self: flex-start;
+  font-size: 4vh;
+  width: 42%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.table-filters {
+  padding: 5vh;
+  width: 150%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.filter-container {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.filter {
+  margin-bottom: 3vh;
+}
+
+.filter .form-select {
+  margin-top: 0.5vh;
+  width: 111%;
+  height: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter .form-date {
+  margin-top: 0.5vh;
+  width: 100%;
+  height: 3vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-btn {
+  width: 120px;
+  height: 30px;
+  background-color: #81b29a;
+  color: #fff;
+  border: 0 solid;
+  border-radius: 10px;
+  font-family: "lexendbold";
+  font-size: 1.5vh;
   cursor: pointer;
 }

@@ -5,85 +5,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pago de Servicios</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/PagoServicios.css">
+    <link rel="stylesheet" href="./css/StyleGeneral.css">
+    <link rel="stylesheet" href="./css/webfont/stylesheet.css">
+    <title>Moka | Pago de Servicios</title>
 </head>
-<header>
-    <nav>
-        <div class="logo-container">
-            <a href="#">
-                <img src="" alt="Logo">
-            </a>
-            <h2>Veterinaria Moka</h2>
-        </div>
 
-        <div class="navegation-container">
-            <a href="">Inicio</a>
-            <a href="">Clínica</a>
-            <a href="">Hotel</a>
-        </div>
-
-    </nav>
-</header>
 <body>
-    <div>
-        <h3>Pago de Servicios</h3>
-    </div>
-    <section id="section1">
-        <div>
-            <div> <!-- Foto de perfil-->
-                <img src="" alt="">
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a href="./PaginaInicio.html">
+                    <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
+                </a>
             </div>
-
-            <div>
-                <label for="outMascota">Mascota</label>
-                <output id="outMascota"></output>
+            <div class="navegation-container">
+                <a href="./PaginaInicio.html">Inicio</a>
+                <a href="./ReservarCita.html">Clínica</a>
+                <a href="./ReservarHabitacion.html">Hotel</a>
             </div>
-
-            <div>
-                <label for="outCliente">Cliente</label>
-                <output id="outCliente"></output>
+            <div class="profile-dropdown">
+                <a href="" class="profile-icon">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="./Cliente.html">Mi Perfil</a>
+                    <a href="./Mascotas.html">Mascotas</a>
+                    <a href="./InicioDeSesion.html">Cerrar Sesión</a>
+                </div>
             </div>
+        </nav>
+    </header>
 
-            <div>
-                <label for="outValoracion">Valoración del Veterinario</label>  
-                <output id="outValoracion"></output>   
+    <body>
+        <section id="section1" class="payment">
+            <div class="payment-container">
+                <h2>Pago de Servicios</h2>
+
+                <div class="outputs">
+                    <label for="outMascota">Mascota</label>
+                    <output id="outMascota"></output>
+
+                    <label for="outCliente">Cliente</label>
+                    <output id="outCliente"></output>
+
+                    <label for="outValoracion">Valoración del Veterinario</label>
+                    <output id="outValoracion"><i class="fa-solid fa-star" id="star1" onclick="changeStar(star1)"></i><i
+                            class="fa-solid fa-star" id="star2" onclick="changeStar(star2)"></i><i
+                            class="fa-solid fa-star" id="star3" onclick="changeStar(star3)"></i><i
+                            class="fa-solid fa-star" id="star4" onclick="changeStar(star4)"></i><i
+                            class="fa-regular fa-star" id="star5" onclick="changeStar(star5)"></i></output>
+
+                    <label for="txtObservaciones" id="lblObservaciones" class="lblTextArea">Observaciones</label>
+                    <textarea name="" id="txtObservaciones" cols="30" rows="9"></textarea>
+
+                    <label for="outTotal">Total a Pagar </label>
+                    <output id="outTotal"></output>
+
+                    <label for="selMetodoPago" id="lblMetodoPago" class="lblSelect">Método de Pago</label>
+                    <select id="selMetodoPago">
+
+                    </select>
+                </div>
+
+                <button type="button" class="form-btn" id="btnPagar">Realizar Pago</button>
+                <button type="button" class="form-btn" id="btnAgregarMetodo">Agregar Método</button>
+
             </div>
+        </section>
 
-            <div>
-                <label for="txtObservaciones" id="lblObservaciones" class="lblTextArea">Observaciones</label>               
-                <textarea name="" id="txtObservaciones" cols="30" rows="9"></textarea>
-            </div>
+        <footer class="footer">
+            <h5>Powered by</h5>
+            <a href="https://glovooker.github.io/landing-page-bisoft-1/">
+                <img src="./img/LogoCleverSolutions.svg" alt="Logo Clever Solutions">
+            </a>
+        </footer>
 
+        <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="./js/controllers/ControllerGeneral.js"></script>
+        <script src="./js/services/MetodosPagoService.js"></script>
+        <script src="./js/services/PagoServiciosService.js"></script>
+        <script src="./js/controllers/PagoServiciosController.js"></script>
 
-            <div>
-                <label for="outTotal">Total a Pagar </label>  
-                <output id="outTotal"></output>   
-            </div>     
-
-            <div>
-                <label for="selMetodoPago" id="lblMetodoPago" class="lblSelect">Método de Pago</label>
-                <select id="selMetodoPago" >
-                    <option value="">-Seleccione-</option>
-                </select>   
-
-                <button type=button id="btnPagar">Realizar Pago</button>
-                <button type=button id="btnAgregarMetodo">Agregar Método</button>                       
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <h5>Clever Solutions - 2022</h5>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
-    <script src="./js/services/MetodosPagoService.js"></script> 
-    <script src="./js/services/PagoServiciosService.js"></script>      
-    <script src="./js/controllers/ControllerGeneral.js"></script> 
-    <script src="./js/controllers/PagoServiciosController.js"></script>
-
-</body>
+    </body>
 
 </html>
-
-

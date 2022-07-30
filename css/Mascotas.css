@@ -2,7 +2,7 @@
   padding-top: 10vh;
   padding-bottom: 10vh;
   width: 100%;
-  height: 55vh;
+  height: 45vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,7 +60,7 @@ textarea {
 .title-container-reservar-cita {
   align-self: flex-start;
   font-size: 4vh;
-  width: 60%;
+  width: 45%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -120,7 +120,7 @@ textarea {
 .visualizacion-citas {
   margin-top: -5vh;
   width: 100%;
-  height: 80vh;
+  height: 45vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -149,7 +149,7 @@ textarea {
   margin-bottom: -5vh;
   align-self: flex-start;
   font-size: 4vh;
-  width: 26%;
+  width: 35%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

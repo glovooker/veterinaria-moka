@@ -135,6 +135,20 @@ function ValidarCampos() {
         }
       }
 
+      //valido los campos INPUTS tipo DATE
+      if (inputs[i].type.toLowerCase() == "time") {
+        if (
+          inputs[i].value == "" ||
+          inputs[i].value == null ||
+          inputs[i].value == undefined
+        ) {
+          ImprimirMsjError("¡" + lblInputs[i].textContent + " es requerido!");
+          ResaltarInputInvalido(inputs[i].id);
+          ResaltarLabelInvalido(lblInputs[i].id);
+          return false;
+        }
+      }
+
       //valido los campos INPUTS tipo NUMBER
       if (inputs[i].type.toLowerCase() == "number") {
         if (
@@ -149,24 +163,6 @@ function ValidarCampos() {
           ResaltarInputInvalido(inputs[i].id);
           ResaltarLabelInvalido(lblInputs[i].id);
           return false;
-        } else {
-          if (
-            Number(inputs[i].value) < Number(inputs[i].min) ||
-            Number(inputs[i].value) > Number(inputs[i].max)
-          ) {
-            ImprimirMsjError(
-              "Cantidad " +
-                inputs[i].value +
-                " debe estar entre " +
-                inputs[i].min +
-                " y " +
-                inputs[i].max +
-                " ¡Favor validar!"
-            );
-            ResaltarInputInvalido(inputs[i].id);
-            ResaltarLabelInvalido(lblInputs[i].id);
-            return false;
-          }
         }
       }
     }
@@ -255,13 +251,14 @@ function ImprimirMsjError(pmensaje) {
     title: "¡Error!",
     text: pmensaje,
     icon: "error",
+    confirmButtonColor: "#3D405B",
     confirmButtonText: "Ok",
   });
 }
 function ResaltarLabelInvalido(pLabelId) {
   var elementLabel = document.getElementById(pLabelId);
   var styleOrigin = elementLabel.style;
-  elementLabel.style = "color:red";
+  elementLabel.style = "color:#E07A5F";
   setTimeout(function () {
     elementLabel.style = styleOrigin;
   }, 5000);
@@ -270,7 +267,7 @@ function ResaltarLabelInvalido(pLabelId) {
 function ResaltarInputInvalido(pInputId) {
   var elementLabel = document.getElementById(pInputId);
   var styleOrigin = elementLabel.style;
-  elementLabel.style = "border: 1px solid red;";
+  elementLabel.style = "border: 2px solid #E07A5F;";
   setTimeout(function () {
     elementLabel.style = styleOrigin;
   }, 5000);

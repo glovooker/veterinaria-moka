@@ -1,7 +1,6 @@
 "use strict";
 
-let mascota = document.getElementById("mascota");
-let date = document.getElementById("fecha");
+let mascotaRese = document.getElementById("mascota");
 
 const tablaReservaciones = document.querySelector(
   "#tablaReservacionesEliminar tbody"
@@ -21,9 +20,6 @@ function imprimirReservaciones() {
     fila.insertCell().innerHTML = listaReservaciones[i].FechaEntra;
     fila.insertCell().innerHTML = listaReservaciones[i].HoraEntra;
     fila.insertCell().innerHTML = listaReservaciones[i].HoraSale;
-    fila.insertCell().innerHTML = listaReservaciones[i].Mascota;
-    fila.insertCell().innerHTML = listaReservaciones[i].Estado;
     fila.insertCell().innerHTML = listaReservaciones[i].Cuidados;
-    fila.insertCell().innerHTML = listaReservaciones[i].Accion;
   }
 }

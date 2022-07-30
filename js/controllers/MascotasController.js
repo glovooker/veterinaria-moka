@@ -6,23 +6,20 @@ let date = document.getElementById("fecha");
 
 const tablaCitasEliminar = document.querySelector("#tablaCitasEliminar tbody");
 
-imprimirCitas();
+imprimirMascotas();
 
 function limpiar() {
   formulario.reset();
 }
 
-function imprimirCitas() {
+function imprimirMascotas() {
   tablaCitasEliminar.innerHTML = "";
-  let listaCitas = obtenerListaCita();
+  let listaCitas = obtenerListaMascota();
   for (let i = 0; i < listaCitas.length; i++) {
     let fila = tablaCitasEliminar.insertRow();
-    fila.insertCell().innerHTML = listaCitas[i].Fecha;
-    fila.insertCell().innerHTML = listaCitas[i].Hora;
-    fila.insertCell().innerHTML = listaCitas[i].Doctor;
-    fila.insertCell().innerHTML = listaCitas[i].Mascota;
-    fila.insertCell().innerHTML = listaCitas[i].Estado;
-    fila.insertCell().innerHTML = listaCitas[i].Motivo;
+    fila.insertCell().innerHTML = listaCitas[i].Nombre;
+    fila.insertCell().innerHTML = listaCitas[i].TipoMascota;
+    fila.insertCell().innerHTML = listaCitas[i].Informacion;
     fila.insertCell().innerHTML = listaCitas[i].Accion;
   }
 }

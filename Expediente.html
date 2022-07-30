@@ -5,124 +5,161 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expediente</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/StyleGeneral.css">
+    <link rel="stylesheet" href="./css/Expediente.css">
+    <link rel="stylesheet" href="./css/Tabla.css">
+    <link rel="stylesheet" href="./css/webfont/stylesheet.css">
+    <title>Moka | Expediente</title>
 </head>
-<header>
-    <nav>
-        <div class="logo-container">
-            <a href="#">
-                <img src="" alt="Logo">
-            </a>
-            <h2>Veterinaria Moka</h2>
-        </div>
 
-        <div class="navegation-container">
-            <a href="">Inicio</a>
-            <a href="">Clínica</a>
-            <a href="">Hotel</a>
-        </div>
-
-    </nav>
-</header>
 <body>
-    <main>
-        <h1>Mascota</h1>
-        <section>
-            <div>
-                <div> 
-                    <img src="" alt="">
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a href="./PaginaInicio.html">
+                    <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
+                </a>
+            </div>
+            <div class="navegation-container">
+                <a href="./PaginaInicio.html">Inicio</a>
+                <a href="./ReservarCita.html">Clínica</a>
+                <a href="./ReservarHabitacion.html">Hotel</a>
+            </div>
+            <div class="profile-dropdown">
+                <a href="" class="profile-icon">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="./Cliente.html">Mi Perfil</a>
+                    <a href="./Mascotas.html">Mascotas</a>
+                    <a href="./InicioDeSesion.html">Cerrar Sesión</a>
                 </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="expediente">
+            <div class="expediente-container">
+                <h2>Expediente</h2>
                 <div>
                     <label for="txtNumeroExpediente">Número de expediente:</label>
-                    <output></output>
+                    <output>255</output>
                 </div>
                 <div>
-                    <label for="txtCalificacion">Calificación</label>
-                    <output id="txtCalificacion"></output>
+                    <label for="txtCalificacion">Calificación:</label>
+                    <output id="txtCalificacion"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                            class="fa-solid fa-star"></i></output>
                 </div>
                 <div>
                     <h3>Datos de la mascota</h3>
-                    <label for="outNombre">Nombre:</label>  
-                    <output id="outNombre" name="" for=""></output>
-                    <br>    
+                    <label for="outNombre">Nombre:</label>
+                    <output id="outNombre" name="" for="">Whiskers</output>
+                    <br>
                     <label for="txtTipoMascota">Tipo de mascota:</label>
-                    <output id="txtTipoMascota"></output>
-                    
+                    <output id="txtTipoMascota">Gato</output>
+
                 </div>
                 <div>
                     <h3>Datos del dueño</h3>
                     <label for="txtDuennoMascota">Nombre:</label>
-                    <output id="txtDuennoMascota"></output>
+                    <output id="txtDuennoMascota">Jeremy Villegas</output>
                     <br>
                     <label for="txtUsuario">Usuario:</label>
-                    <output id="txtUsuario"></output>
+                    <output id="txtUsuario">jeville</output>
                     <br>
                     <label for="txtIdentificacion">Numero de identificación:</label>
-                    <output id="txtIdentificacion"></output>
+                    <output id="txtIdentificacion">1-8888-8888</output>
                     <br>
                     <label for="txtDireccion">Dirección:</label>
-                    <output id="txtDireccion"></output>
+                    <output id="txtDireccion">Alajuelita, San Jose</output>
                     <br>
-                    <label for="txtTelefono">Número de contacto:</label>
-                    <output id="txtTelefono"></output>
+                    <label for="txtTelefono">Número de teléfono:</label>
+                    <output id="txtTelefono">86203040</output>
                     <br>
                     <label for="txtEmail">Correo electrónico:</label>
-                    <output id="txtEmail"></output>
+                    <output id="txtEmail">jeville@gmail.com</output>
                 </div>
                 <div>
                     <h3>Datos médicos</h3>
                     <label for="txtPadecimientos">Padecimientos:</label>
-                    <output id="txtPadecimientos"></output> 
+                    <output id="txtPadecimientos">Fractura en la pata trasera izquierda a causa de un maltratro cuando
+                        era callejero.</output>
                     <br>
                 </div>
             </div>
         </section>
-                   
-                   
-                    
-                
-                    
-        <!--tabla para mostrar las citas hechas por la mascota-->
-        <section>
-            <table>
-                <caption>Citas asistidas</caption>
-                <thead>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Doctor asignado</th>
-                        <th>Motivo de la cita</th>
-                        <th>Observaciones del medico</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-                <tfoot></tfoot>
-            </table>
-        </section> <!-- fin de la section de la tabla de citas-->
 
-        <!-- tabla con la informacion de las reservaciones hechas por el paciente-->
-        <section>
-            <table>
-                <caption>Reservaciones hechas</caption>
-                <thead>
-                    <tr>
-                        <th>Fecha de entrada</th>
-                        <th>Fecha de salida</th>
-                        <th>Hora de entrada</th>
-                        <th>Hora de salida</th>
-                        <th>Detalles</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-                <tfoot></tfoot>
-            </table>
+
+
+
+
+        <section class="visualizacion-citas">
+
+            <div class="citas-container">
+                <div class="title-container-mis-citas">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <h2>Citas</h2>
+                </div>
+
+                <div class="table-filters">
+                    <table class="table" id="tablaCitasEliminar">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Doctor</th>
+                                <th>Motivo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </section>
-    </main>
+
+        <section class="visualizacion-reservaciones">
+
+            <div class="citas-container">
+                <div class="title-container-mis-citas">
+                    <i class="fa-solid fa-calendar-check"></i>
+                    <h2>Reservaciones</h2>
+                </div>
+
+                <div class="table-filters">
+                    <table class="table" id="tablaReservacionesEliminar">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Hora de Entrada</th>
+                                <th>Hora de Salida</th>
+                                <th>Motivo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
 
 
-    <footer>
-        <h5>Clever Solutions - 2022</h5>
-    </footer>
+        <footer class="footer">
+            <h5>Powered by</h5>
+            <a href="https://glovooker.github.io/landing-page-bisoft-1/">
+                <img src="./img/LogoCleverSolutions.svg" alt="Logo Clever Solutions">
+            </a>
+        </footer>
+
+        <script src="./js/controllers/ControllerGeneral.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+        <script src="./js/services/EliminarCitaService.js"></script>
+        <script src="./js/services/EliminarReservacionesService.js"></script>
+        <script src="./js/controllers/CitasExpedienteController.js"></script>
+        <script src="./js/controllers/ReservacionesExpedienteController.js"></script>
 </body>
 
 </html>

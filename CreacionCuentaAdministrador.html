@@ -6,33 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./css/CreacionCuenta.css">
+    <link rel="stylesheet" href="./css/CreacionCuentaAdministrador.css">
     <link rel="stylesheet" href="./css/StyleGeneral.css">
     <link rel="stylesheet" href="./css/webfont/stylesheet.css">
-    <title>Moka | Registrarme</title>
+    <title>Moka | Agregar Personal</title>
 </head>
 
 <body>
     <header>
         <nav class="navbar">
             <div class="logo-container">
-                <a href="./CreacionCuenta.html">
+                <a href="./PaginaInicio.html">
                     <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
                 </a>
             </div>
             <div class="navegation-container">
-                <!-- <a href="./PaginaInicio.html">Inicio</a>
+                <a href="./PaginaInicio.html">Inicio</a>
                 <a href="./ReservarCita.html">Clínica</a>
                 <a href="./ReservarHabitacion.html">Hotel</a>
-                <a href="./SobreNosotros.html">Sobre Nosotros</a> -->
             </div>
             <div class="profile-dropdown">
                 <a href="" class="profile-icon">
                     <i class="fa-solid fa-circle-user"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="./InicioDeSesion.html">Iniciar Sesión</a>
-                    <a href="./CreacionCuenta.html">Registrarme</a>
+                    <a href="./Cliente.html">Mi Perfil</a>
+                    <a href="./Mascota.html">Mascotas</a>
+                    <a href="./InicioDeSesion.html">Cerrar Sesión</a>
                 </div>
             </div>
         </nav>
@@ -42,7 +42,7 @@
         <div class="signup-container">
 
             <div class="form-container">
-                <h2>Creación de Cuenta</h2>
+                <h2>Agregar Personal</h2>
                 <form>
                     <label for="txtNombre" id="lblNombre" class="lblInput">Nombre Completo</label>
                     <input type="text" id="txtNombre" required>
@@ -52,6 +52,21 @@
 
                     <label for="txtCorreo" id="lblCorreo" class="lblInput">Correo Electrónico</label>
                     <input type="email" id="txtCorreo" required>
+
+                    <label for="selRol" id="lblRol" class="lblSelect">Rol</label>
+                    <select id="selRol" required>
+                        <option value="">-Seleccione-</option>
+                        <option value="V">Veterinario(a)</option>
+                        <option value="S">Secretario(a)</option>
+                        <option value="C">Cliente</option>
+                    </select>
+
+                    <label for="selEstado" id="lblEstado" class="lblSelect">Estado</label>
+                    <select id="selEstado" required>
+                        <option value="">-Seleccione-</option>
+                        <option selected="selected" value="A">Activo</option>
+                        <option value="I">Inactivo</option>
+                    </select>
 
                     <label for="txtPass" id="lblPass" class="lblInput">Contraseña</label>
                     <input type="password" id="txtPass" required>
