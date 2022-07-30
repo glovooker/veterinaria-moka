@@ -4,6 +4,42 @@ let pNumServicio = 4;
 let pNumCliente = 4;
 let selMetodoPago = document.getElementById("selMetodoPago");
 
+let star1 = document.getElementById("star1");
+let star2 = document.getElementById("star2");
+let star3 = document.getElementById("star3");
+let star4 = document.getElementById("star4");
+let star5 = document.getElementById("star5");
+
+star1.addEventListener("click", function selectStar() {
+  let selectedStar = document.getElementById("star1");
+
+  changeStar(selectedStar);
+});
+
+star2.addEventListener("click", function selectStar() {
+  let selectedStar = document.getElementById("star2");
+
+  changeStar(selectedStar);
+});
+
+star3.addEventListener("click", function selectStar() {
+  let selectedStar = document.getElementById("star3");
+
+  changeStar(selectedStar);
+});
+
+star4.addEventListener("click", function selectStar() {
+  let selectedStar = document.getElementById("star4");
+
+  changeStar(selectedStar);
+});
+
+star5.addEventListener("click", function selectStar() {
+  let selectedStar = document.getElementById("star5");
+
+  changeStar(selectedStar);
+});
+
 btnAgregarMetodo.addEventListener("click", nuevoMetodoPago);
 btnPagar.addEventListener("click", realizarPago);
 
@@ -51,9 +87,7 @@ function realizarPago() {
   }
 }
 
-function changeStar(star) {
-  selectedStar = document.getElementById(star);
-
+function changeStar(selectedStar) {
   if (selectedStar.classList.contains("fa-solid")) {
     selectedStar.classList.remove("fa-solid");
     selectedStar.classList.add("fa-regular");
