@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Expedientes</title>
+</head>
+<header>
+    <nav>
+        <div class="logo-container">
+            <a href="#">
+                <img src="" alt="Logo">
+            </a>
+            <h2>Veterinaria Moka</h2>
+        </div>
+
+        <div class="navegation-container">
+            <a href="">Inicio</a>
+            <a href="">Clínica</a>
+            <a href="">Hotel</a>
+        </div>
+
+    </nav>
+</header>
+<body>
+    <main>
+        <h1>Control de expedientes</h1>
+        <label for="txtNumeroExpediente">Número de expediente</label>
+        <input type="text"  id="txtNumeroExpediente">
+        <br>
+        <label for="txtUsuarioCliente">Usuario</label>
+        <input type="text" id="txtUsuarioCliente">
+        <br>
+        <button type="button">Buscar</button>
+
+        <section>
+            <table>
+                <caption>Expedientes</caption>
+                <thead>
+                    <tr>
+                        <th>Número Expediente</th>
+                        <th>Nombre Mascota</th>
+                        <th>Dueño de la mascota</th> <!--Nombre completo del cliente-->
+                        <th>Usuario</th> <!--es el username-->
+                        <th>Detalles</th> <!-- bajo esta celda va un boton que mostrara el expediente, en caso que el cliente tenga varias mascotas, se listaran y el veterinario o secretaria podra seleccionar el expediente deacuerdo a la mascota-->
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot></tfoot>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <h5>Clever Solutions - 2022</h5>
+    </footer>
+</body>
+</html>
+        
+
+

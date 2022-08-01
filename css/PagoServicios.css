@@ -1,0 +1,88 @@
+.payment {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.payment-container {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: #a56905;
+    font-size: 2.2vh;
+}
+
+.payment-container h2 {
+    font-size: 4vh;
+    font-weight: 600;
+    font-family: "lexendbold";
+    align-self: flex-start;
+}
+
+label {
+    font-size: 2.2vh;
+    font-weight: 600;
+    font-family: "lexendbold";
+    align-self: flex-start;
+}
+
+output {
+    width: 40%;
+    height: 2vh;
+    border-radius: 10px;
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "lexendregular";
+}
+
+select {
+    width: 40%;
+    height: 4.5vh;
+    border-radius: 10px;
+    border: 2px solid #a56905;
+    padding: 10px;
+    margin-top: 20px;
+    font-family: "lexendregular";
+}
+
+textarea {
+    width: 40%;
+    height: 20vh;
+    border-radius: 10px;
+    border: 2px solid #a56905;
+    padding: 10px;
+    margin-top: 20px;
+    font-family: "lexendregular";
+}
+
+.form-btn {
+    margin-top: 2vh;
+    width: 25%;
+    min-height: 50px;
+    font-family: "lexendbold";
+    border-radius: 10px;
+    border: 0 solid;
+    background-color: #81b29a;
+    color: #fff;
+    font-size: 2vh;
+    cursor: pointer;
+}
+
+.outputs {
+    margin-left: 5vw;
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,45 @@
+.table {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    width: 80%;
+    height: 100%;
+    border: 2px #81b29a solid;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+
+.table thead tr {
+    background-color: #81b29a;
+    color: #fff;
+}
+
+.table th {
+    padding: 1.5vh;
+}
+
+.table td {
+    padding: 1.5vh;
+    border-bottom: 2px #81b29a solid;
+}
+
+.table td button {
+    margin: 5px;
+    width: 120px;
+    height: 30px;
+    background-color: #81b29a;
+    color: #fff;
+    border: 0 solid;
+    border-radius: 10px;
+    font-family: "lexendbold";
+    font-size: 1.5vh;
+    cursor: pointer;
+}
+
+.table .eliminarBtn {
+    background-color: #E07A5F;
+}
+
+.table .modificarBtn {
+    background-color: #3D405B;
+}

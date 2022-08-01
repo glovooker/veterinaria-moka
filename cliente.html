@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/Cliente.css">
+    <link rel="stylesheet" href="./css/StyleGeneral.css">
+    <link rel="stylesheet" href="./css/webfont/stylesheet.css">
+    <title>Moka | Mi Perfil</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a href="./PaginaInicio.html">
+                    <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
+                </a>
+            </div>
+            <div class="navegation-container">
+                <a href="./PaginaInicio.html">Inicio</a>
+                <a href="./ReservarCita.html">Clínica</a>
+                <a href="./ReservarHabitacion.html">Hotel</a>
+            </div>
+            <div class="profile-dropdown">
+                <a href="" class="profile-icon">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="./Cliente.html">Mi Perfil</a>
+                    <a href="./Mascotas.html">Mascotas</a>
+                    <a href="./InicioDeSesion.html">Cerrar Sesión</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="section1" class="profile">
+        <div class="profile-container">
+
+            <h2>Mi Perfil</h2>
+            <div class="outputs-container">
+                <div class="info-container">
+                    <div class="profile-icon">
+                        <i class="fa-solid fa-address-card"></i>
+                    </div>
+                    <h3>General</h3>
+                    <div class="outputs">
+                        <label for="outNombre">Nombre completo:</label> <!-- Visualización del nombre del cliente-->
+                        <output id="outNombre"></output> <!-- Visualización del nombre del cliente-->
+                        <br>
+                        <label for="outUsuario">Usuario:</label>
+                        <output id="outUsuario"></output>
+                    </div>
+                </div>
+                <div class="contact-container">
+                    <h3>Contacto</h3>
+                    <div class="outputs">
+                        <label for="outNumero">Número de Teléfono:</label> <!-- Numero-->
+                        <output id="outNumero"></output>
+                        <br>
+                        <label for="outDireccion">Dirección:</label>
+                        <!--Dirección-->
+                        <output id="outDireccion"></output>
+                        <br>
+                        <label for="outNumeroCedula">Número de Identificación:</label>
+                        <output id="outNumeroCedula"></output>
+                        <br>
+                        <label for="outEmail">Correo Electrónico:</label>
+                        <output id="outEmail"></output>
+                    </div>
+                </div>
+                <div class="profile-options">
+                    <button type="button" onclick="location.href = `./MetodosPago.html`;">Ver Métodos de Pago</button>
+                </div>
+                <div class="admin-options">
+                    <h3>Opciones de Administrador</h3>
+                    <!-- <button type="button">Ver Facturas</button> -->
+                    <button type="button" onclick="location.href = `./CreacionCuentaAdministrador.html`;">Agregar
+                        Personal</button>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <h5>Powered by</h5>
+        <a href="https://glovooker.github.io/landing-page-bisoft-1/">
+            <img src="./img/LogoCleverSolutions.svg" alt="Logo Clever Solutions">
+        </a>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="js/services/UsuariosService.js"></script>
+    <script src="js/controllers/PerfilClienteController.js"></script>
+</body>
+
+
+</html>

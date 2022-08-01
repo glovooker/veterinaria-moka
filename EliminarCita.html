@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Cita</title>
+</head>
+<header>
+    <nav>
+        <div class="logo-container">
+            <a href="#">
+                <img src="" alt="Logo">
+            </a>
+            <h2>Veterinaria Moka</h2>
+        </div>
+
+        <div class="navegation-container">
+            <a href="">Inicio</a>
+            <a href="">Clínica</a>
+            <a href="">Hotel</a>
+        </div>
+
+    </nav>
+</header>  
+
+<body>
+    <main>
+    <h2>Mis citas</h2>
+    
+    <form >
+        <label for="">Seleccione una fecha</label>
+        <input type="date" id="fecha">
+        <label for="">Veterinario</label>
+        <select name="" id="">
+            <option value="0" disabled selected>Seleccione un veterinario</option>
+        </select>
+        <label for="">Mascotas</label>
+        <select name="" id="">
+            <option value="0" disabled selected>Seleccione una mascota</option>
+        </select>
+        <button type="button">Filtrar</button>
+    </form>
+
+    <h3>Expediente de citas</h3>
+
+    <section>
+        <table id="tablaCitasEliminar">
+            <thead>
+                 <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Cliente</th>
+                    <th>Doctor asignado</th>
+                    <th>Nombre de la mascota</th>
+                    <th>Estado</th>
+                    <th>Detalles</th>
+                </tr>
+            </thead>
+
+            <tbody>            
+                
+            </tbody>
+        </table>
+        </table>
+        <div>
+            <button type="button">Eliminar</button>
+        </div>
+    </section>
+    </main>
+    <footer>
+            <h5>Clever Solutions - 2022</h5>
+    </footer> 
+</body>
+
+<script src="./js/services/EliminarCitaService.js"></script>
+<script src="./js/controllers/EliminarCitasController.js"></script>
+
+</html>
