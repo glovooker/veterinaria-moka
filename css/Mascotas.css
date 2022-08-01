@@ -1,0 +1,209 @@
+.reservar-cita {
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  width: 100%;
+  height: 45vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: #a56905;
+  font-size: 2.2vh;
+}
+
+.form-container h2 {
+  font-size: 4vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+  align-self: flex-start;
+}
+
+input {
+  width: 40%;
+  height: 2vh;
+  border-radius: 10px;
+  border: 2px solid #a56905;
+  padding: 10px;
+  margin-top: 20px;
+  font-family: "lexendregular";
+}
+
+select {
+  width: 40%;
+  height: 4.5vh;
+  border-radius: 10px;
+  border: 2px solid #a56905;
+  padding: 10px;
+  margin-top: 20px;
+  font-family: "lexendregular";
+}
+
+textarea {
+  width: 40%;
+  height: 5vh;
+  border-radius: 10px;
+  border: 2px solid #a56905;
+  padding: 10px;
+  margin-top: 20px;
+  font-family: "lexendregular";
+}
+
+.title-container-reservar-cita {
+  align-self: flex-start;
+  font-size: 4vh;
+  width: 45%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.form-select {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-date {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-time {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-text-area {
+  margin-top: 3vh;
+  margin-bottom: 5vh;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.form-btn {
+  width: 25%;
+  min-height: 50px;
+  font-family: "lexendbold";
+  border-radius: 10px;
+  border: 0 solid;
+  background-color: #81b29a;
+  color: #fff;
+  font-size: 2vh;
+  cursor: pointer;
+}
+
+.visualizacion-citas {
+  margin-top: -5vh;
+  width: 100%;
+  height: 45vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.citas-container {
+  width: 55%;
+  height: 150%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: #a56905;
+  font-size: 2.2vh;
+}
+
+.citas-container h2 {
+  font-size: 4vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+  align-self: flex-start;
+}
+
+.title-container-mis-citas {
+  margin-bottom: -5vh;
+  align-self: flex-start;
+  font-size: 4vh;
+  width: 35%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.table-filters {
+  width: 150%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.filter-container {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.filter {
+  margin-bottom: 3vh;
+}
+
+.filter .form-select {
+  margin-top: 0.5vh;
+  width: 111%;
+  height: 5vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter .form-date {
+  margin-top: 0.5vh;
+  width: 100%;
+  height: 3vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-btn {
+  width: 120px;
+  height: 30px;
+  background-color: #81b29a;
+  color: #fff;
+  border: 0 solid;
+  border-radius: 10px;
+  font-family: "lexendbold";
+  font-size: 1.5vh;
+  cursor: pointer;
+}
