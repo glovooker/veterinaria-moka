@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización De Reportes</title>
+</head>
+<header>
+    <nav>
+        <div class="logo-container">
+            <a href="#">
+                <img src="" alt="Logo">
+            </a>
+            <h2>Veterinaria Moka</h2>
+        </div>
+
+        <div class="navegation-container">
+            <a href="">Inicio</a>
+            <a href="">Clínica</a>
+            <a href="">Hotel</a>
+        </div>
+
+    </nav>
+</header>
+
+<body>
+    <form action="" id="formulario">
+        <container>
+            <h1>Visualización Reportes Calificación</h1>
+            <div>
+                <h3>Filtros</h3>
+                <label for="">Veterinario</label>
+                <input type="text">
+                <div>
+                    <form>
+                    </form>
+                </div>
+                <button id="bttn" type="button" onclick="limpiar()" >Limpiar Filtros</button>
+            </div>
+            <div>
+                <table id="tablaReportes">
+                    <caption>Reportes</caption>
+                    <thead>
+                        <tr>
+                            <th>Doctor</th>
+                            <th>Calificación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+        </container>
+    </form>
+
+    <footer>
+        <h5>Clever Solutions - 2022</h5>
+    </footer>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./js/services/ServiceReportes.js"></script>
+<script src="./js/controllers/VisualizacionReportesCalifiController.js"></script>
+
+
+</html>
