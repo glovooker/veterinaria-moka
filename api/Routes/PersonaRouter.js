@@ -35,7 +35,7 @@ router.post('/RegistrarPersona',(req, res)=>{
     });
 });
 
-router.get('/ListarPersonas', (req, res)=>{
+router.get('/ListarPersonas', (req, res)=>{ 
     Persona.find((err, ListaPersonasBD) => {
         if (err) {
             res.json({
@@ -50,7 +50,7 @@ router.get('/ListarPersonas', (req, res)=>{
                 ListaPersonasBD
             });
         }
-    });
+    }).sort({Nombre:1, Rol:1});
 });
 
 router.get('/BuscarPersona', (req, res) => {
