@@ -1,13 +1,13 @@
 'use strict';
 
-async function AutenticarPersona(pEmail, pPassword) {
+async function AutenticarPersona(pCorreo, pPassword) {
     let result = {};
     await axios({
         method: 'get',
         url: apiUrl + '/AutenticarPersona',
         responseType: 'json',
         params: {
-            'Email': pEmail,
+            'Correo': pCorreo,
             'Password': pPassword
         }
     }).then((res) => {
@@ -24,4 +24,17 @@ async function AutenticarPersona(pEmail, pPassword) {
 function SetSesionActiva(pDatosPerfil){
     localStorage.setItem('datosSesionActiva', JSON.stringify(pDatosPerfil));
     console.log(pDatosPerfil);
+}
+
+function CerrarSesionActiva(){
+    localStorage.removeItem('datosSesionActiva');
+}
+
+function GetSesionActiva() {
+    let datosSesionActiva = null;
+    let localStorageData = localStorage.getItem('datosSesionActiva');
+    if (localStorageData != null && localStorageData != undefined && localStorageData != '') {
+        datosSesionActiva = JSON.parse(localStorageData);
+    }
+    return datosSesionActiva;
 }

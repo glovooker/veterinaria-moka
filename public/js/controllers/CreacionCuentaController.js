@@ -43,7 +43,7 @@ function ValidarPass() {
    if (result.resultado == true) {
        ImprimirMsjSuccess(result.msj);
        const timeoutId = setTimeout(function(){
-             window.location.replace("./InicioDeSesion.html");}, 5000);         
+             window.location.replace("./InicioDeSesion.html");}, 2000);         
       } else {
         if (result.err.code = 1100) {   
           ImprimirMsjError('La cédula y/o correo indicado ya existen. ¡Favor validar!');
