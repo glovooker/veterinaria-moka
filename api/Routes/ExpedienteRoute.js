@@ -71,4 +71,26 @@ router.delete('/EliminarExpediente', function(req, res){
     });
 });
 
+router.put('/ActualizarExpediente', function(req, res){
+    let body = req.body
+    Expediente.updateOne({_id:body._id}, {
+        $set: req.body
+    }, function (err, info){
+        if(err){
+            res.json({
+                resultado:false,
+                msj: 'Ha ocurrido un error inesperado y no se pudo actualizar la información',
+                err
+            })
+        }else{
+            res.json({
+                resultado:false,
+                msj: 'Los datos se han actualizado con éxtio',
+                info
+            });
+        }
+    });
+});
+
+
 module.exports = router;
