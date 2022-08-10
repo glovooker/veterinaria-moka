@@ -11,7 +11,7 @@ router.post('/RegistrarTarjeta', (req, res) => {
     FecExpira: body.FecExpira,
     Cvv: body.Cvv,
     Nombre: body.Nombre,
-    Cliente: body.Cliente,
+    // Cliente: body.Cliente,
   });
   nuevaTarjeta.save((err, tarjetaDB) => {
     if (err) {
