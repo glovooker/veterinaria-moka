@@ -20,14 +20,12 @@ async function GetListaPersonas() {
 }
 
 async function ImprimirDatos() {
+    let filtro = inputFiltro.value;
     var tbody = document.getElementById('tbdPersonas');
     tbody.innerHTML = '';
 
-    let filtro = inputFiltro.value;
-
     for (let i = 0; i < listaPersonas.length; i++) {
-        if( listaPersonas[i].Nombre.toLowerCase().includes(filtro) ||
-            listaPersonas[i].Cedula.toLowerCase().includes(filtro) ||
+        if( listaPersonas[i].Nombre.toLowerCase().includes(filtro) || 
             ObtenerRol(listaPersonas[i].Rol).toLowerCase.includes(filtro) || 
             ObtenerEstado(listaPersonas[i].Estado).toLowerCase().includes(filtro)
         ){
@@ -40,32 +38,51 @@ async function ImprimirDatos() {
             let celdaEstado = fila.insertCell(); 
             let celdaAcciones = fila.insertCell();
 
-            let btnEdit = document.createElement('button');
-            btnEdit.onclick = function(){
-            };
-
-            btnEdit.type = 'button';
-            btnEdit.innerText = '✏️​';
-            btnEdit.title = 'Editar';
-            btnEdit.classList.add('modificarBtn');
-
-            
+            ////////////////////////////////////////////////////
+            //VER PERFIL PERSONA
+            ////////////////////////////////////////////////////            
             let btnPerfil = document.createElement('button');
             btnPerfil.onclick = function(){
+                LimpiarLSPersonaConsultada();
+                SetPersonaConsultada(listaPersonas[i]);                
                 const timeoutId = setTimeout(function(){
-                window.location.replace("./PerfilUsuario.html");}, 1000);  
+                window.location.replace("./PerfilPersona.html");}, 1000);  
             };
             btnPerfil.type = 'button';
             btnPerfil.innerText = '🔍​';
             btnPerfil.title = 'Ver Perfil';
             btnPerfil.classList.add('DetalleBtn');
 
+            ////////////////////////////////////////////////////
+            //MODIFICAR PERSONA
+            ////////////////////////////////////////////////////
+            let btnEdit = document.createElement('button');
+            btnEdit.onclick = function(){
+                LimpiarLSPersonaConsultada();
+                SetPersonaConsultada(listaPersonas[i]);
+                const timeoutId = setTimeout(function(){
+                // desplegar los datos de la persona consultada para que puedan ser modificados
+                window.location.replace("./CrearCuentaCliente.html");}, 1000);                  
+                
+            };
+            btnEdit.type = 'button';
+            btnEdit.innerText = '✏️​';
+            btnEdit.title = 'Editar';
+            btnEdit.classList.add('modificarBtn');
 
-           /* let btnInactivar = document.createElement('button');
+            ////////////////////////////////////////////////////
+            //BORRADO LOGICO DE LA PERSONA
+            ////////////////////////////////////////////////////            
+           let btnInactivar = document.createElement('button');
             btnInactivar.onclick = async function(){
                 let confirmacion = false;
+                let msj = 'Desea inactivar el registro de ' + listaPersonas[i].Nombre;
+                if  (listaPersonas[i].Estado == 0){
+                    msj = 'Desea activar el registro de ' + listaPersonas[i].Nombre;
+                }
+
                 await Swal.fire({
-                    title: 'Desea inactivar el registro de ' + listaPersonas[i].Nombre,
+                    title: msj,
                     showDenyButton: true,
                     confirmButtonText: 'Confirmar',
                     denyButtonText: 'Cancelar',
@@ -73,26 +90,33 @@ async function ImprimirDatos() {
                 }).then((res) => {
                     confirmacion = res.isConfirmed;
                 });
-                if (confirmacion == true) {
-                    let result =  await DesactivarPersona(listaPersonas[i]._id);
+                if (confirmacion == true) {                    
+                    let vEstado = 0;
+                    if  (listaPersonas[i].Estado == 0){
+                        vEstado = 1;
+                    }
+
+                    let result =  await ModificarPersona(listaPersonas[i]._id, listaPersonas[i].Cedula, listaPersonas[i].Nombre, listaPersonas[i].Correo, listaPersonas[i].Password, listaPersonas[i].Telefono, listaPersonas[i].Direccion, listaPersonas[i].PerfilFB, listaPersonas[i].PerfilIG, listaPersonas[i].PerfilTW, listaPersonas[i].FotoPerfil, vEstado); 
+
                     if (result.resultado == true) {
                         ImprimirMsjSuccess(result.msj);
                     } else {
                         ImprimirMsjError(result.msj);
                     }
+
                     await GetListaPersonas();
                 }
             };
-            btnInactivar.type = 'button';
-            btnInactivar.innerText = 'Off';
-            btnInactivar.title = 'INACTIVAR';
-            btnInactivar.classList.add('btnTabla');*/
 
+            btnInactivar.type = 'button';
+            btnInactivar.innerText = '💡'; 
+            btnInactivar.title = 'Activar/Desactivar';
+            btnInactivar.classList.add('eliminarBtn');
 
             let divBtns = document.createElement('div');
-            divBtns.appendChild(btnEdit);
             divBtns.appendChild(btnPerfil);
-           // divBtns.appendChild(btnInactivar);
+            divBtns.appendChild(btnEdit);            
+            divBtns.appendChild(btnInactivar);
 
             celdaCedula.innerHTML = listaPersonas[i].Cedula;
             celdaNombre.innerHTML = listaPersonas[i].Nombre;

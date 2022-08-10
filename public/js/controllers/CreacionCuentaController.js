@@ -1,5 +1,8 @@
 "use strict";
 
+let personaConsultada = GetPersonaConsultada();
+desplegarDatosConsultados();
+
 btnRegistrar.addEventListener("click", Validaciones);
 
 function Validaciones() {
@@ -9,7 +12,15 @@ function Validaciones() {
     return false;
   } else {
   /*********************************************************************/
-  CrearPersona();
+  if (personaConsultada != null) {
+    ActualizarPersona();
+    LimpiarLSPersonaConsultada();
+    const timeoutId = setTimeout(function(){
+      window.location.replace("./CrudPersonas.html");}, 2000);        
+  } else {
+    CrearPersona();
+  }
+  
   /*********************************************************************/
   }
 }
@@ -51,4 +62,37 @@ function ValidarPass() {
               ImprimirMsjError(result.msj);
         }
       }
+  }
+
+  async function ActualizarPersona(){
+    let result = await ModificarPersona(personaConsultada._id, 
+      document.getElementById("txtidentificacion").value,     
+      document.getElementById("txtNombre").value,
+      document.getElementById("txtCorreo").value,
+      document.getElementById("txtPass").value,      
+      document.getElementById("txtTelefono").value,
+      document.getElementById("txtDireccion").value,
+      personaConsultada.PerfilFB,
+      personaConsultada.PerfilIG,
+      personaConsultada.PerfilTW,
+      personaConsultada.FotoPerfil,
+      personaConsultada.Estado); 
+ 
+    if (result.resultado == true) {
+        ImprimirMsjSuccess(result.msj);       
+       } else {
+           ImprimirMsjError(result.msj);
+       }
+   }
+
+  function desplegarDatosConsultados(){    
+        if (personaConsultada != null) {
+        document.getElementById("txtidentificacion").value =  personaConsultada.Cedula;
+        document.getElementById("txtNombre").value = personaConsultada.Nombre;
+        document.getElementById("txtCorreo").value = personaConsultada.Correo;
+        document.getElementById("txtPass").value = personaConsultada.Password; 
+        document.getElementById("txtPass2").value = personaConsultada.Password;      
+        document.getElementById("txtTelefono").value = personaConsultada.Telefono;
+        document.getElementById("txtDireccion").value = personaConsultada.Direccion;
+    }
   }

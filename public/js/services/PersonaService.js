@@ -61,7 +61,7 @@ async function BuscarPersona(p_id, pCedula) {
     return result;
 }
 
-async function ModificarPersona(p_id, pCedula, pNombre, pCorreo, pPassword,pTelefono,pDireccion,pFotoPerfil,pEstado) {
+async function ModificarPersona(p_id, pCedula, pNombre, pCorreo, pPassword,pTelefono,pDireccion,pPerfilFB,pPerfilIG, pPerfilTW, pFotoPerfil,pEstado) {
     let result = {};
     await axios({
         method: 'post',
@@ -75,8 +75,11 @@ async function ModificarPersona(p_id, pCedula, pNombre, pCorreo, pPassword,pTele
             'Password': pPassword,
             'Telefono': pTelefono,
             'Direccion': pDireccion,
+            'PerfilFB': pPerfilFB,
+            'PerfilIG': pPerfilIG,
+            'PerfilTW': pPerfilTW,            
             'FotoPerfil': pFotoPerfil,
-            'Estado':pEstado
+            'Estado' :pEstado 
         }
     }).then((res) => {
         result = res.data;
@@ -85,3 +88,4 @@ async function ModificarPersona(p_id, pCedula, pNombre, pCorreo, pPassword,pTele
     });
     return result;
 }
+
