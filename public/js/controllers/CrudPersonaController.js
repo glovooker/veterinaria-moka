@@ -11,8 +11,7 @@ async function GetListaPersonas() {
     let result = await ObtenerListaPersonas();
     if (result != {} && result.resultado == true) {
         listaPersonas = result.ListaPersonasBD;
-        ImprimirDatos();
-        console.log(listaPersonas);
+        ImprimirDatos(); 
     } else {
         imprimirMsjError(result.msj);
         return;

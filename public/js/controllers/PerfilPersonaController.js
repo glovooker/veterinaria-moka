@@ -6,12 +6,13 @@ desplegarDatosConsultados();
 
 function desplegarDatosConsultados(){    
         if (personaConsultada != null) {
-        document.getElementById("txtidentificacion").value =  personaConsultada.Cedula;
-        document.getElementById("txtNombre").value = personaConsultada.Nombre;
-        document.getElementById("txtCorreo").value = personaConsultada.Correo;
-        document.getElementById("txtPass").value = personaConsultada.Password; 
-        document.getElementById("txtPass2").value = personaConsultada.Password;      
-        document.getElementById("txtTelefono").value = personaConsultada.Telefono;
-        document.getElementById("txtDireccion").value = personaConsultada.Direccion;
+        document.getElementById("outCedula").value =  personaConsultada.Cedula;
+        document.getElementById("outNombre").value = personaConsultada.Nombre;
+        document.getElementById("outEmail").value = personaConsultada.Correo;
+        document.getElementById("outTelefono").value = personaConsultada.Telefono;
+        document.getElementById("outDireccion").value = personaConsultada.Direccion;
+        document.getElementById("linkFB").href = personaConsultada.PerfilFB;
+        document.getElementById("linkIG").href = personaConsultada.PerfilIG;
+        document.getElementById("linkTW").href = personaConsultada.PerfilTW;
     }
   }
