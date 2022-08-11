@@ -19,19 +19,16 @@ async function GetListaPersonas() {
 }
 
 async function ImprimirDatos() {
-    let filtro = inputFiltro.value.toUpperCase();
+    let filtro = inputFiltro.value.toLowerCase();
     var tbody = document.getElementById('tbdPersonas');
     tbody.innerHTML = '';
 
-    for (let i = 0; i < listaPersonas.length; i++) {
-        let upperNombre =  listaPersonas[i].Nombre.toUpperCase();
-        let upperRol =  ObtenerRol(listaPersonas[i].Rol).toUpperCase();
-        let upperEstado =  ObtenerEstado(listaPersonas[i].Estado).toUpperCase();
-            
-        if(upperNombre.includes(filtro) || 
-           upperRol.includes(filtro) || 
-           upperEstado.includes(filtro)
-        ){
+    for (let i = 0; i < listaPersonas.length; i++) { 
+
+        if(listaPersonas[i].Nombre.toLowerCase().includes(filtro)|| 
+        ObtenerRol(listaPersonas[i].Rol).toLowerCase().includes(filtro) || 
+        ObtenerEstado(listaPersonas[i].Estado).toLowerCase().includes(filtro)
+        ){ 
             let fila = tbody.insertRow();
             let celdaCedula = fila.insertCell();
             let celdaNombre = fila.insertCell();
