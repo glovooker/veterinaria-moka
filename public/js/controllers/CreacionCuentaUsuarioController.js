@@ -61,7 +61,10 @@ function ValidarPass() {
      document.getElementById("txtPass").value,      
      document.getElementById("txtTelefono").value,
      document.getElementById("txtDireccion").value,
-     3,"","","",""); 
+     document.getElementById("selRol").value, 
+     document.getElementById("txtFacebook").value,
+     document.getElementById("txtInstagram").value,
+     document.getElementById("txtTwitter").value,""); 
 
    if (result.resultado == true) {
        ImprimirMsjSuccess(result.msj);

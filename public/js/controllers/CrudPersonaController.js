@@ -49,7 +49,8 @@ async function ImprimirDatos() {
                 LimpiarLSPersonaConsultada();
                 SetPersonaConsultada(listaPersonas[i]);                
                 const timeoutId = setTimeout(function(){
-                window.location.replace("./PerfilPersona.html");}, 1000);  
+                window.location.replace("./PerfilPersona.html?acc=Q");
+            }, 1000);  
             };
             btnPerfil.type = 'button';
             btnPerfil.innerText = '🔍​';
