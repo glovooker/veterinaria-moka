@@ -42,46 +42,52 @@
         <div class="profile-container">
 
             <h2>Mi Perfil</h2>
+
             <div class="outputs-container">
+
                 <div class="info-container">
                     <div class="profile-icon">
                         <i class="fa-solid fa-address-card"></i>
                     </div>
-                    <h3>General</h3>
+                    <h3>Información General</h3>
                     <div class="outputs">
-                        <label for="outNombre">Nombre completo:</label> <!-- Visualización del nombre del cliente-->
-                        <output id="outNombre"></output> <!-- Visualización del nombre del cliente-->
-                        <br>
-                        <label for="outUsuario">Usuario:</label>
-                        <output id="outUsuario"></output>
+                        <label for="outCedula">Cédula</label>
+                        <output id="outCedula"></output>
+                        <br>                          
+                        <label for="outNombre">Nombre</label> 
+                        <output id="outNombre"></output> 
                     </div>
                 </div>
+
                 <div class="contact-container">
-                    <h3>Contacto</h3>
-                    <div class="outputs">
-                        <label for="outNumero">Número de Teléfono:</label> <!-- Numero-->
-                        <output id="outNumero"></output>
+                    <h3>Información Contacto</h3>
+                    <div class="outputs">          
+                        <label for="outEmail">Correo Electrónico</label>
+                        <output id="outEmail"></output>
+                        <br>                                    
+                        <label for="outTelefono">Teléfono</label>
+                        <output id="outTelefono"></output>
                         <br>
                         <label for="outDireccion">Dirección:</label>
-                        <!--Dirección-->
                         <output id="outDireccion"></output>
                         <br>
-                        <label for="outNumeroCedula">Número de Identificación:</label>
-                        <output id="outNumeroCedula"></output>
-                        <br>
-                        <label for="outEmail">Correo Electrónico:</label>
-                        <output id="outEmail"></output>
                     </div>
                 </div>
-                <div class="profile-options">
-                    <button type="button" onclick="location.href = `./MetodosPago.html`;">Ver Métodos de Pago</button>
+
+                <div>
+                    <a id="linkFB" href="" target="blank">
+                        <i class="fab fa-facebook-square fa-2x" style ="color: rgb(13, 47, 131)"></i>
+                    </a>
+
+                    <a id="linkIG" href="" target="blank">
+                        <i class="fab fa-instagram-square fa-2x" style ="color: rgb(131, 35, 13)"></i>
+                    </a>
+                    
+                    <a id="linkTW" href="" target="blank">
+                        <i class="fab fa-twitter-square fa-2x" style ="color: rgb(93, 211, 238)"></i>
+                    </a>                                        
                 </div>
-                <div class="admin-options">
-                    <h3>Opciones de Administrador</h3>
-                    <!-- <button type="button">Ver Facturas</button> -->
-                    <button type="button" onclick="location.href = `./CreacionCuentaAdministrador.html`;">Agregar
-                        Personal</button>
-                </div>
+
             </div>
         </div>
         </div>
@@ -94,9 +100,14 @@
         </a>
     </footer>
 
-    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
-    <script src="js/services/UsuariosService.js"></script>
-    <script src="js/controllers/PerfilClienteController.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>    
+    <script src="js/Constantes.js"></script>
+    <script src="js/services/PersonaService.js"></script>
+    <script src="js/services/CrudPersonasService.js"></script>
+    <script src="js//controllers/PerfilPersonaController.js"></script>
 </body>
 
 

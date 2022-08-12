@@ -9,7 +9,7 @@ let listaCitas = [
     Estado: "Confirmada",
     Motivo: "Revisión general",
     Accion:
-      '<button type="button" id="btnModificar" class="modificarBtn" onclick="ModificarCita()"><i class="fa-solid fa-pen"></i>  Modificar</button><button type="button" id="btnEliminar" class="eliminarBtn" onclick="EliminarCita()"><i class="fa-solid fa-trash"></i> Cancelar</button>',
+      '<button type="button" id="btnModificar" class="modificarBtn" onclick="ModificarCita()"><i class="fa-solid fa-2x fa-pen"></i></button><button type="button" id="btnEliminar" class="eliminarBtn" onclick="EliminarCita()"><i class="fa-solid fa-2x fa-circle-info"></i></button>',
   },
   {
     NumCita: 2,
@@ -21,7 +21,7 @@ let listaCitas = [
     Estado: "Cancelada",
     Motivo: "Desparasitar",
     Accion:
-      '<button type="button" id="btnModificar" class="modificarBtn" onclick="ModificarCita()" disabled><i class="fa-solid fa-pen"></i>  Modificar</button><button type="button" id="btnEliminar" class="eliminarBtn" onclick="EliminarCita()" disabled><i class="fa-solid fa-trash"></i> Cancelar</button>',
+      '<button type="button" id="btnModificar" class="modificarBtn" onclick="ModificarCita()" disabled><i class="fa-solid fa-pen"></i></button><button type="button" id="btnEliminar" class="eliminarBtn" onclick="EliminarCita()" disabled><i class="fa-solid fa-trash"></i></button>',
   },
   {
     NumCita: 3,
@@ -45,7 +45,7 @@ let listaCitas = [
     Estado: "Terminada",
     Motivo: "Seguimiento de cirugía",
     Accion:
-      '<button type="button" id="btnModificar" class="modificarBtn" onclick="ModificarCita()" disabled><i class="fa-solid fa-pen"></i>  Modificar</button><button type="button" id="btnEliminar" class="eliminarBtn" onclick="EliminarCita()" disabled><i class="fa-solid fa-trash"></i> Cancelar</button>',
+      '<button type="button" id="btnModificar" class="modificarBtn" onclick="ModificarCita()" disabled><i class="fa-solid fa-pen"></i></button><button type="button" id="btnEliminar" class="eliminarBtn" onclick="EliminarCita()" disabled><i class="fa-solid fa-trash"></i></button>',
   },
 ];
 

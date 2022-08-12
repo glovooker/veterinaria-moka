@@ -11,4 +11,4 @@ const schemaMascota = new mongoose.Schema({
     Cliente : {type: Schema.ObjectId, ref: "Cliente" }
 });
 
-module.exports = mongoose.model('Mascota', schemaMascota, 'Mascotas');
+module.exports = mongoose.model('Mascota', schemaMascota, 'Mascotas'); 
