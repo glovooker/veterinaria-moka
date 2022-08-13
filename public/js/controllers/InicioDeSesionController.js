@@ -1,48 +1,44 @@
-let inputUsuario = document.getElementById("txtUsuario");
-let inputContrasenna = document.getElementById("txtContrasenna");
-btnIngresar.addEventListener("click", IniciarSesion);
+btnIngresar.addEventListener("click", Validaciones);
 
-function IniciarSesion() {
-  let usuario = inputUsuario.value;
-  let contrasenna = inputContrasenna.value;
-
+function Validaciones() {
   if (ValidarCampos() == false) {
     return false;
-  }
-
-  let resultado = AutenticarUsuario(usuario, contrasenna);
-
-  if (resultado != null) {
-    RedireccionarUsuario(resultado);
   } else {
-    Swal.fire({
-      icon: "error",
-      title: "Error",
-      text: "Usuario y Contraseña incorrectos!",
-    });
+  /*********************************************************************/
+    IniciarSesion();
+  /*********************************************************************/
   }
 }
 
-function RedireccionarUsuario(pUsuario) {
-  // aca se va a dirigir cada uno de los usuarios a sus paginas correspondientes
-  /*  let rol = pUsuario.Rol;
-    if (rol == 'Cliente') {
-        location.href = 'IndexCliente.html';
-    }
-    if (rol == 'Secretaria') {
-        location.href = 'IndexSecretaria.html';
-    }
-    if (rol == 'Administrador') {
-        location.href = 'IndexAdmin.html';
-    } */
+async function IniciarSesion(){
+   let result = await AutenticarPersona(document.getElementById('txtCorreo').value, document.getElementById('txtContrasenna').value);
+  if (result != null && result.resultado == true && result.personaDB != null) {
+      Redireccionar(result.personaDB);
+  } else {
+      Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: result.msj
+      });
+  }
+}
 
-  // este sweet alert es solo para indicar que todo el proceso se realizo bien
+function Redireccionar(pPersonaDB){ 
+  if(pPersonaDB.Rol == 0){
+      location.href = 'indexAdmin.html';
+  }
+  if(pPersonaDB.Rol == 1){
+      location.href = 'indexSecretaria.html';
+  }
+  if(pPersonaDB.Rol == 2){
+      location.href = 'indexVeterinario.html';
+  }
+  if(pPersonaDB.Rol == 3){
+      location.href = 'indexCliente.html';
+  }  
+}
 
-  Swal.fire({
-    title: "¡Credencial Aprobada!",
-    text: "Se redireccionará automáticamente.",
-    icon: "success",
-    confirmButtonText: "Ok",
-  });
-  window.location.replace("./PaginaInicio.html");
+function CerrarSesion() {
+  CerrarSesionActiva();
+  location.href = 'PaginaInicio.html';
 }
