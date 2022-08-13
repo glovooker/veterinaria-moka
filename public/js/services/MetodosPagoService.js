@@ -1,24 +1,42 @@
 "use strict";
 
-async function RegistrarPersona(pCedula, pNombre, pCorreo, pPassword) {
-    let result = {};
-    await axios({
-        method: 'post',
-        url: apiUrl + '/RegistrarPersona',
-        responseType: 'json',
-        data: { 
-            'Cedula': pCedula,
-            'Nombre': pNombre,
-            'Correo': pCorreo,
-            'Password': pPassword,
-        }
-    }).then((res) => {
-        result = res.data;
-        console.log(result);
-    }).catch((err) => {
-        console.log(err);
+async function RegistrarTarjeta(pNumTarjeta, pFecExpira, pCvv, pNombre) {
+  let result = {};
+  await axios({
+    method: "post",
+    url: apiUrl + "/RegistrarTarjeta",
+    responseType: "json",
+    data: {
+      NumTarjeta: pNumTarjeta,
+      FecExpira: pFecExpira,
+      Cvv: pCvv,
+      Nombre: pNombre,
+    },
+  })
+    .then((res) => {
+      result = res.data;
+      console.log(result);
+    })
+    .catch((err) => {
+      console.log(err);
     });
-    return result;
+  return result;
+}
+
+async function ObtenerListaTarjetas() {
+  let result = {};
+  await axios({
+    method: "get",
+    url: apiUrl + "/ListarTarjetas",
+    responseType: "json",
+  })
+    .then((res) => {
+      result = res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  return result;
 }
 
 // let ListaMetodosPago = [
