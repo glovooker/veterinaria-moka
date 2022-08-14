@@ -7,17 +7,15 @@ async function RegistrarTarjeta(pNumTarjeta, pFecExpira, pCvv, pNombre) {
     url: apiUrl + "/RegistrarTarjeta",
     responseType: "json",
     data: {
-      NumTarjeta: pNumTarjeta,
-      FecExpira: pFecExpira,
-      Cvv: pCvv,
-      Nombre: pNombre,
-    },
-  })
-    .then((res) => {
+      'NumTarjeta': pNumTarjeta,
+      'FecExpira': pFecExpira,
+      'Cvv': pCvv,
+      'Nombre': pNombre,
+    }
+    }).then((res) => {
       result = res.data;
       console.log(result);
-    })
-    .catch((err) => {
+    }).catch((err) => {
       console.log(err);
     });
   return result;
@@ -29,11 +27,9 @@ async function ObtenerListaTarjetas() {
     method: "get",
     url: apiUrl + "/ListarTarjetas",
     responseType: "json",
-  })
-    .then((res) => {
+  }).then((res) => {
       result = res.data;
-    })
-    .catch((err) => {
+    }).catch((err) => {
       console.log(err);
     });
   return result;

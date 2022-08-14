@@ -9,17 +9,8 @@ function Validaciones() {
     return false;
   } else {
     /***********************************************************************/
-    guardarMetodoPago(
-      pNumCliente,
-      pCliente,
-      document.getElementById("txtNumTarjeta").value,
-      document.getElementById("txtExpiracion").value,
-      document.getElementById("txtCVV").value,
-      document.getElementById("txtNombreTarjeta").value
-    );
-
     CrearTarjeta();
-    
+    /***********************************************************************/
     Swal.fire({
       title: "Success!",
       text: "Todos los campos requeridos han sido ingresados",

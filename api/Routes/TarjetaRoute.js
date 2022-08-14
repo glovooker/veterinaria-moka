@@ -1,10 +1,10 @@
 "use strict";
 
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Tarjeta = require('../Models/TarjetaModel');
+const Tarjeta = require("../Models/TarjetaModel");
 
-router.post('/RegistrarTarjeta', (req, res) => {
+router.post("/RegistrarTarjeta", (req, res) => {
   let body = req.body;
   let nuevaTarjeta = new Tarjeta({
     NumTarjeta: body.NumTarjeta,
@@ -17,50 +17,70 @@ router.post('/RegistrarTarjeta', (req, res) => {
     if (err) {
       res.json({
         resultado: false,
-        msj: 'No se pudo registrar la tarjeta, ocurrio el siguiente error: ',
+        msj: "No se pudo registrar la tarjeta, ocurrio el siguiente error: ",
         err,
       });
     } else {
       res.json({
         resultado: true,
-        msj: 'Registro realizado de manera correcta',
+        msj: "Registro realizado de manera correcta",
         tarjetaDB,
       });
     }
   });
 });
 
-router.get('/ListarTarjetas', (req, res) => {
+router.get("/ListarTarjetas", (req, res) => {
   Tarjeta.find((err, ListaTarjetasBD) => {
     if (err) {
       res.json({
         resultado: false,
-        msj: 'No se pudo obtener los datos: ',
+        msj: "No se pudo obtener los datos: ",
         err,
       });
     } else {
       res.json({
         resultado: true,
-        msj: 'Los datos se obtuvieron de manera correcta: ',
+        msj: "Los datos se obtuvieron de manera correcta: ",
         ListaTarjetasBD,
       });
     }
   });
 });
 
-router.delete('/EliminarTarjetas', function (req, res) {
-  let body = req.body;
-  Tarjeta.remove({ _id: body._id }, (err, result) => {
+router.get("/ListarTarjetasCliente", (req, res) => {
+  let params = req.query;
+   if ((params._id != "" && params._id != null && params._id!= undefined) && (params.Cedula == "" || params.Cedula == null || params.Cedula == undefined)){
+   Tarjeta.findOne({ _id: params._id }, (err, tarjetaDB) => {
     if (err) {
       res.json({
         resultado: false,
-        msj: 'No se pudo eliminar los datos: ',
+        msj: "No se pudo obtener datos: ",
         err,
       });
     } else {
       res.json({
         resultado: true,
-        msj: 'Los datos se eliminarion de manera correcta',
+        msj: "Los datos se obtuvieron de manera correcta por id: ",
+        tarjetaDB,
+      });
+    }
+  });
+}});
+
+router.delete("/EliminarTarjetas", function (req, res) {
+  let body = req.body;
+  Tarjeta.remove({ _id: body._id }, (err, result) => {
+    if (err) {
+      res.json({
+        resultado: false,
+        msj: "No se pudo eliminar los datos: ",
+        err,
+      });
+    } else {
+      res.json({
+        resultado: true,
+        msj: "Los datos se eliminarion de manera correcta",
         result,
       });
     }
