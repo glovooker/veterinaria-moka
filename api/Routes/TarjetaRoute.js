@@ -11,7 +11,7 @@ router.post("/RegistrarTarjeta", (req, res) => {
     FecExpira: body.FecExpira,
     Cvv: body.Cvv,
     Nombre: body.Nombre,
-    // Cliente: body.Cliente,
+    _idPersona: body._idPersona,
   });
   nuevaTarjeta.save((err, tarjetaDB) => {
     if (err) {
@@ -50,8 +50,8 @@ router.get("/ListarTarjetas", (req, res) => {
 
 router.get("/ListarTarjetasCliente", (req, res) => {
   let params = req.query;
-   if ((params._id != "" && params._id != null && params._id!= undefined) && (params.Cedula == "" || params.Cedula == null || params.Cedula == undefined)){
-   Tarjeta.findOne({ _id: params._id }, (err, tarjetaDB) => {
+   if ((params._idPersona != "" && params._idPersona != null && params._idPersona!= undefined) && (params.Cedula == "" || params.Cedula == null || params.Cedula == undefined)){
+   Tarjeta.find({ _idPersona: params._idPersona }, (err, tarjetaDB) => {
     if (err) {
       res.json({
         resultado: false,

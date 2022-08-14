@@ -7,7 +7,7 @@ const schemaTarjeta = new mongoose.Schema({
   FecExpira: { type: String, requiered: true, unique: false },
   Cvv: { type: Number, requiered: true, unique: false },
   Nombre: { type: String, requiered: false, unique: false },
-  idPersona: { type: String, required: true, unique: true },
+  _idPersona: { type: String, required: true, unique: false },
 });
 
 module.exports = mongoose.model("Tarjeta", schemaTarjeta, "Tarjetas");
