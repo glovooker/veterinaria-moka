@@ -1,9 +1,20 @@
 "use strict";
 
-let personaConsultada = GetPersonaConsultada();
-desplegarDatosConsultados();
+let personaConsultada;
+let queryString = window.location.search;
+let urlParams = new URLSearchParams(queryString);
+let acc = urlParams.get('acc'); //M = Modificar C=Crear nuevo(CrudPersonas.html)
+if (acc == null) {
+  acc = 'N'; //Nuevo  (no se llama desde el CRUD)  
+} 
 
 btnRegistrar.addEventListener("click", Validaciones);
+linkVolver.addEventListener("click", Volver);
+
+desplegarDatosConsultados();
+
+//////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////
 
 function Validaciones() {
   if (ValidarCampos() == false) {
@@ -12,19 +23,19 @@ function Validaciones() {
     return false;
   } else {
   /*********************************************************************/
-  if (personaConsultada != null) {
+  if (acc == 'M') {
     ActualizarPersona();
     LimpiarLSPersonaConsultada();
     const timeoutId = setTimeout(function(){
       window.location.replace("./CrudPersonas.html");}, 2000);        
   } else {
     CrearPersona();
-  }
-  
+  }  
   /*********************************************************************/
   }
 }
 
+///////////////////////////////////////////////////////////////////////////
 function ValidarPass() {
   /*Valida que password y confirmacion sean iguales */
   let pass1 = document.getElementById("txtPass");
@@ -42,6 +53,7 @@ function ValidarPass() {
   }
 }
 
+///////////////////////////////////////////////////////////////////////////
  async function CrearPersona(){
    let result = await RegistrarPersona(document.getElementById("txtidentificacion").value,    
      document.getElementById("txtNombre").value,
@@ -53,8 +65,14 @@ function ValidarPass() {
 
    if (result.resultado == true) {
        ImprimirMsjSuccess(result.msj);
-       const timeoutId = setTimeout(function(){
-             window.location.replace("./InicioDeSesion.html");}, 2000);         
+       const timeoutId = setTimeout(function(){             
+            if (acc == 'N') {  
+              window.location.replace("./InicioDeSesion.html");
+            } else {
+              window.location.replace("./CrudPersonas.html");
+            }
+
+            }, 2000);         
       } else {
         if (result.err.code = 1100) {   
           ImprimirMsjError('La cédula y/o correo indicado ya existen. ¡Favor validar!');
@@ -72,6 +90,7 @@ function ValidarPass() {
       document.getElementById("txtPass").value,      
       document.getElementById("txtTelefono").value,
       document.getElementById("txtDireccion").value,
+      3,
       personaConsultada.PerfilFB,
       personaConsultada.PerfilIG,
       personaConsultada.PerfilTW,
@@ -84,9 +103,11 @@ function ValidarPass() {
            ImprimirMsjError(result.msj);
        }
    }
-
-  function desplegarDatosConsultados(){    
-        if (personaConsultada != null) {
+  
+  function desplegarDatosConsultados(){
+    if (acc == 'M') {
+        personaConsultada = GetPersonaConsultada();
+        document.getElementById('txtInicio').innerHTML = 'Actualizar Persona';
         document.getElementById("txtidentificacion").value =  personaConsultada.Cedula;
         document.getElementById("txtNombre").value = personaConsultada.Nombre;
         document.getElementById("txtCorreo").value = personaConsultada.Correo;
@@ -94,5 +115,15 @@ function ValidarPass() {
         document.getElementById("txtPass2").value = personaConsultada.Password;      
         document.getElementById("txtTelefono").value = personaConsultada.Telefono;
         document.getElementById("txtDireccion").value = personaConsultada.Direccion;
+    }
+  }
+
+  function Volver(){
+    LimpiarLSPersonaConsultada();
+    let linkVolver = document.getElementById('linkVolver');     
+    if (acc == 'C' || acc == 'M'){    
+      linkVolver.href = "./CrudPersonas.html";  
+    } else {
+      linkVolver.href = "./PaginaInicio.html";
     }
   }
