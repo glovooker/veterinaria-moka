@@ -48,7 +48,7 @@ table.meta:after, table.balance:after { clear: both; content: ""; display: table
 
 /* table meta */
 
-table.meta th { width: 40%; }
+table.meta th { width: 30%; }
 table.meta td { width: 60%; }
 
 /* table items */

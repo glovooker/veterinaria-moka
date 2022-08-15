@@ -64,6 +64,7 @@ async function ObtenerPersona(){
 
 
 function ImprimirDatosDetalles(){
+    let fechaFormateada, fecha;
     let tbody = document.getElementById('tlbTable');
     tbody.innerHTML = '';
 
@@ -80,10 +81,12 @@ function ImprimirDatosDetalles(){
             celdaDescripcion.innerHTML = listaDetalles[i].Descripcion;
             celdaCantidad.innerHTML = listaDetalles[i].Cantidad;
             celdaPrecio.innerHTML = '₡' + listaDetalles[i].PrecioUnitario;
-            celdaSubtotal.innerHTML = listaDetalles[i].SubTotal; 
-            document.getElementById('outputTotal').innerHTML= totalAPagar;
+            celdaSubtotal.innerHTML = '₡' + listaDetalles[i].SubTotal; 
+            document.getElementById('outputTotal').innerHTML= '₡' + totalAPagar;
             document.getElementById('outputNumeroFactura').innerHTML= id_factura;
-            document.getElementById('outputFecha').innerHTML= fechaFactura;
+            fecha = new Date(fechaFactura);
+            fechaFormateada = formatDate(fecha);
+            document.getElementById('outputFecha').innerHTML= fechaFormateada;
             document.getElementById('outputIdentificacion').innerHTML = identificacionPersona;
             document.getElementById('outputNombre').innerHTML =  nombrePersona; 
             document.getElementById('outputEmail').innerHTML = emailPersona;
@@ -95,7 +98,6 @@ function ImprimirDatosDetalles(){
 
 
    
-
    
          
     
