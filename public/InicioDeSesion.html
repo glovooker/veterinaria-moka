@@ -43,14 +43,15 @@
             <div class="form-container">
                 <h2>Iniciar Sesión</h2>
                 <form>
-                    <label for="txtUsuario" class="lblInput">Usuario</label>
-                    <input type="text" id="txtUsuario" required>
+                    <label for="txtCorreo" id="lblCorreo" class="lblInput">Correo Electrónico</label>
+                    <input type="email" id="txtCorreo" required>
                     <br>
                     <label for="txtContrasenna" class="lblInput">Contraseña</label>
                     <input type="password" id="txtContrasenna" required>
                 </form>
             </div>
-            <div class="no-account">¿No tienes cuenta? <br><a href="./CreacionCuenta.html">Crea una aquí</a></div>
+
+            <div class="no-account">¿No tienes cuenta? <br><a href="./CrearCuentaCliente.html">Crea una aquí</a></div>
 
             <button type="button" id="btnIngresar" class="form-btn">Ingresar</button>
 
@@ -63,10 +64,12 @@
         </a>
     </footer>
 
-    <script src="./js/controllers/ControllerGeneral.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
-    <!-- <script src="./js/CreacionCuentaService.js"></script> -->
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>    
+    <script src="./js/controllers/ControllerGeneral.js"></script>
+    <script src="js/Constantes.js"></script>
+    <script src="./js/services/PersonaService.js"></script>  
     <script src="./js/services/InicioDeSesionService.js"></script>
     <script src="./js/controllers/InicioDeSesionController.js"></script>
 </body>
