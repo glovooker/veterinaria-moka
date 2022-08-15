@@ -7,8 +7,8 @@ const schemaMascota = new mongoose.Schema({
     Especie: {type: String, requiered: true, unique: false},
     Estrellas: {type: Number, requiered: true, unique: false}, 
     Observaciones: {type: String, requiered: false, unique: false},    
-    FotoPerfil: {type: String, requiered:false, unique: false},
-    Cliente : {type: Schema.ObjectId, ref: "Cliente" }
+    FotoMascota: {type: String, requiered:false, unique: false},
+    IdPersona:{type: Number, requiered:false, unique: false}
 });
 
 module.exports = mongoose.model('Mascota', schemaMascota, 'Mascotas'); 
