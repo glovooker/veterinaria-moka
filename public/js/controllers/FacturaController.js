@@ -1,5 +1,7 @@
 'user strict';
 let arregloDetallesFacturas = [];
+let arregloListaFacturas=[];
+let numeroFactura;
 let sumaTotal;
 
 let inputCantidad = document.getElementById('txtCantidad');
@@ -22,7 +24,8 @@ async function Guardar(){
     }
     let fechaActual = new Date();
     let sIdentificacion = '19753258' //CEDULA QUEMADA X AHORA
-    await RegistrarFactura(sIdentificacion,sumaTotal,fechaActual, JSON.stringify(arregloDetallesFacturas));
+    await ObtenerListaFacturas();
+    await RegistrarFactura(sIdentificacion,sumaTotal,fechaActual, JSON.stringify(arregloDetallesFacturas),numeroFactura);
     Limpiar();
 }
 
@@ -41,6 +44,18 @@ function Agregar(){
     arregloDetallesFacturas.push(detalles);
     imprimirDatos();
 
+}
+
+async function ObtenerListaFacturas() {
+    let result = await ObtenerFacturaBaseDatos();
+    if (result != {} && result.resultado == true) {
+        arregloListaFacturas= result.ListaFacturasDB;
+        numeroFactura = (arregloListaFacturas.length)+1;
+        console.log(arregloListaFacturas);
+    } else {
+        imprimirMsjError(result.msj);
+        return;
+    }
 }
 
 

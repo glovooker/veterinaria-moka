@@ -1,6 +1,6 @@
 'use strict'
 
-async function RegistrarFactura(pIdentificacion, pSumaTotal, pFecha, pDetalles) {
+async function RegistrarFactura(pIdentificacion, pSumaTotal, pFecha, pDetalles,pNumeroFactura) {
     let result = {};
     await axios({
         method: 'post',
@@ -9,7 +9,8 @@ async function RegistrarFactura(pIdentificacion, pSumaTotal, pFecha, pDetalles) 
         data: {
             'Identificacion': pIdentificacion,
             'TotalAPagar': pSumaTotal,
-            'Fecha': pFecha
+            'Fecha': pFecha,
+            'NumeroFactura': pNumeroFactura
         }
     }).then(async(res) => {
         result = res.data;
@@ -36,6 +37,22 @@ async function  RegistrarDetalles(p_id, pDetalles){
     }).then((res) =>{
         result = res.data;
     }).catch((err) => {
+        console.log(err);
+    });
+    return result;
+}
+
+
+async function ObtenerFacturaBaseDatos(){
+    let result = {};
+    await axios({
+        method: 'get',
+        url: apiUrl + '/ListarFacturas',
+        responseType: 'json'
+
+    }).then((res)=>{
+        result = res.data;
+    }).catch((err)=>{
         console.log(err);
     });
     return result;

@@ -1,7 +1,7 @@
 'use strict'
 let listaDetalles = [];
-let _id = '62fab9b978b13dc1b3324892' //dato quemado, el el flujo de este script se va a buscar con id de factura luego buscar la persona con la cedula que aparezca en la factura
-let id_factura;
+let _id = '62fad4e2627f7a77e96e44ba' //dato quemado, el el flujo de este script se va a buscar con id de factura luego buscar la persona con la cedula que aparezca en la factura
+let numeroFactura;
 let identificacionPersona;
 let fechaFactura;
 let totalAPagar;
@@ -19,7 +19,7 @@ async function ObtenerFactura(){
     if(result != {} && result.resultado == true){
         datosFactura =  result.FacturaDB;
         listaDetalles = datosFactura.Detalles;
-        id_factura = datosFactura._id;
+        numeroFactura = datosFactura.NumeroFactura;
         identificacionPersona = datosFactura.Identificacion;
         fechaFactura = datosFactura.Fecha;
         totalAPagar = datosFactura.TotalAPagar;
@@ -83,7 +83,7 @@ function ImprimirDatosDetalles(){
             celdaPrecio.innerHTML = '₡' + listaDetalles[i].PrecioUnitario;
             celdaSubtotal.innerHTML = '₡' + listaDetalles[i].SubTotal; 
             document.getElementById('outputTotal').innerHTML= '₡' + totalAPagar;
-            document.getElementById('outputNumeroFactura').innerHTML= id_factura;
+            document.getElementById('outputNumeroFactura').innerHTML= numeroFactura;
             fecha = new Date(fechaFactura);
             fechaFormateada = formatDate(fecha);
             document.getElementById('outputFecha').innerHTML= fechaFormateada;

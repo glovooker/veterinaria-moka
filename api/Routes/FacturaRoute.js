@@ -13,7 +13,8 @@ router.post('/RegistrarFactura', (req,res) => {
         Identificacion:  body.Identificacion,
         TotalAPagar: body.TotalAPagar,
         Fecha: body.Fecha,
-        Estado: 0
+        Estado: 0,
+        NumeroFactura:body.NumeroFactura
 
     });
     nuevaFactura.save((err,FacturaDB) => {
