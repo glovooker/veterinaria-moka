@@ -36,7 +36,7 @@ router.post('/RegistrarFactura', (req,res) => {
 
 
 router.get('/ListarFacturas', (req, res) => {
-    Factura.find((err, ListaFacturasBD) => {
+    Factura.find((err, ListaFacturasDB) => {
       if (err) {
         res.json({
           resultado: false,
@@ -47,7 +47,7 @@ router.get('/ListarFacturas', (req, res) => {
         res.json({
           resultado: true,
           msj: 'Los datos se obtuvieron de manera correcta: ',
-          ListaFacturasBD,
+          ListaFacturasDB,
         });
       }
     });
@@ -98,6 +98,28 @@ router.get('/ListarFacturas', (req, res) => {
             msj: 'Los datos se actualizaron de manera correcta',
         });
     }
+});
+
+
+
+
+router.get('/BuscarFacturaPorId', (req, res) => {
+    let params = req.query;
+    Factura.findOne({ _id: params._id }, (err, FacturaDB) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                FacturaDB
+            });
+        }
+    });
 });
 
 module.exports = router;

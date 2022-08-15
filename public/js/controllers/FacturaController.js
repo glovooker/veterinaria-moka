@@ -21,7 +21,7 @@ async function Guardar(){
           return false
     }
     let fechaActual = new Date();
-    let sIdentificacion = '1-1320-402'
+    let sIdentificacion = '109610013' //CEDULA QUEMADA X AHORA
     await RegistrarFactura(sIdentificacion,sumaTotal,fechaActual, JSON.stringify(arregloDetallesFacturas));
     Limpiar();
 }
