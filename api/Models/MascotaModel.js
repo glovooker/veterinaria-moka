@@ -8,7 +8,7 @@ const schemaMascota = new mongoose.Schema({
   Estrellas: { type: Number, requiered: true, unique: false },
   Observaciones: { type: String, requiered: false, unique: false },
   FotoMascota: { type: String, requiered: false, unique: false },
-  IdPersona: { type: String, requiered: false, unique: false },
+  IdPersona: { type: String, requiered: true, unique: false },
 });
 
 module.exports = mongoose.model('Mascota', schemaMascota, 'Mascotas');
