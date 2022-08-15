@@ -88,9 +88,15 @@ async function ImprimirDatos() {
            let btnInactivar = document.createElement('button');
             btnInactivar.onclick = async function(){
                 let confirmacion = false;
-                let msj = 'Desea inactivar el registro de ' + listaPersonas[i].Nombre;
+                let msj;
+                let vEstado; 
+
                 if  (listaPersonas[i].Estado == 0){
                     msj = 'Desea activar el registro de ' + listaPersonas[i].Nombre;
+                    vEstado = 1;
+                } else  {
+                    msj  = 'Desea inactivar el registro de ' + listaPersonas[i].Nombre;
+                    vEstado = 0;
                 }
 
                 await Swal.fire({
@@ -102,13 +108,8 @@ async function ImprimirDatos() {
                 }).then((res) => {
                     confirmacion = res.isConfirmed;
                 });
-                if (confirmacion == true) {                    
-                    let vEstado = 0;
-                    if  (listaPersonas[i].Estado == 0){
-                        vEstado = 1;
-                    }
-
-                    let result =  await ModificarPersona(listaPersonas[i]._id, listaPersonas[i].Cedula, listaPersonas[i].Nombre, listaPersonas[i].Correo, listaPersonas[i].Password, listaPersonas[i].Telefono, listaPersonas[i].Direccion, listaPersonas[i].Rol, listaPersonas[i].PerfilFB, listaPersonas[i].PerfilIG, listaPersonas[i].PerfilTW, listaPersonas[i].FotoPerfil, vEstado); 
+                if (confirmacion == true) {                  
+                    let result =  await ModificarPersona(listaPersonas[i]._id, listaPersonas[i].Cedula, listaPersonas[i].Nombre, listaPersonas[i].Correo, listaPersonas[i].Password, listaPersonas[i].Telefono, listaPersonas[i].Direccion, listaPersonas[i].Rol,listaPersonas[i].PerfilFB, listaPersonas[i].PerfilIG, listaPersonas[i].PerfilTW, listaPersonas[i].FotoPerfil, vEstado); 
 
                     if (result.resultado == true) {
                         ImprimirMsjSuccess(result.msj);
