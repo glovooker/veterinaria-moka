@@ -1,6 +1,6 @@
 'use strict'
 let listaDetalles = [];
-let _id = '62faa696becd74dc2c882cf7' //dato quemado, el el flujo de este script se va a buscar con id de factura luego buscar la persona con la cedula que aparezca en la factura
+let _id = '62fab9b978b13dc1b3324892' //dato quemado, el el flujo de este script se va a buscar con id de factura luego buscar la persona con la cedula que aparezca en la factura
 let id_factura;
 let identificacionPersona;
 let fechaFactura;
