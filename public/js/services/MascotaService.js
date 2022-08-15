@@ -49,23 +49,20 @@ async function ObtenerListaMascota() {
   return result;
 }
 
-async function BuscarMascota(pIdPersona, pNombre) {
+async function BuscarMascota(p_id) {
   let result = {};
   await axios({
-    method: 'get',
-    url: apiUrl + '/BuscarMascota',
-    responseType: 'json',
-    params: {
-      'IdPersona': pIdPersona,
-      'Nombre': pNombre,
-    },
-  })
-    .then((res) => {
+      method: 'get',
+      url: apiUrl + '/BuscarMascota',
+      responseType: 'json',
+      params: {
+          '_id': p_id 
+      }
+  }).then((res) => {
       result = res.data;
-    })
-    .catch((err) => {
+  }).catch((err) => {
       console.log(err);
-    });
+  });
   return result;
 }
 

@@ -50,50 +50,27 @@ router.get('/ListarMascota', (req, res) => {
 });
 
 router.get('/BuscarMascota', (req, res) => {
-  let params = req.query;
-  if (
-    params.Nombre != '' &&
-    params.Nombre != null &&
-    params.Nombre != undefined
-  ) {
-    Mascota.findOne({ Nombre: params.Nombre }, (err, mascotaDB) => {
-      if (err) {
-        res.json({
-          resultado: false,
-          msj: 'No se pudo obtener datos: ',
-          err,
-        });
-      } else {
-        res.json({
-          resultado: true,
-          msj: 'Los datos se obtuvieron de manera correcta: ',
-          mascotaDB,
-        });
-      }
-    });
-  } else if (
-    params.IdPersona != '' &&
-    params.IdPersona != null &&
-    params.IdPersona != undefined &&
-    (params.Nombre == '' || params.Nombre == null || params.Nombre == undefined)
-  ) {
-    Mascota.findOne({ _id: params.IdPersona }, (err, mascotaDB) => {
-      if (err) {
-        res.json({
-          resultado: false,
-          msj: 'No se pudo obtener datos: ',
-          err,
-        });
-      } else {
-        res.json({
-          resultado: true,
-          msj: 'Los datos se obtuvieron de manera correcta por id: ',
-          mascotaDB,
-        });
-      }
-    });
-  }
-});
+    let params = req.query;
+    if (params._id != "" && params._id != null && params._id!= undefined) {
+       Mascota.findOne({_id: params._id}, (err, mascotaDB) => {
+            if (err) {
+                res.json({
+                    resultado: false,
+                    msj: 'No se pudo obtener datos: ',
+                    err
+                });
+            } else {
+
+                res.json({
+                    resultado: true,
+                    msj: 'Los datos se obtuvieron de manera correcta por id: ',
+                    mascotaDB
+                });
+            }
+        } 
+        );
+    }
+} );
 
 router.post('/ModificarMascota', function (req, res) {
   let body = req.body;

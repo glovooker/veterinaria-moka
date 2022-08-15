@@ -79,4 +79,27 @@ router.post('/ModificarCita', function(req, res){
     );
 });
 
+router.get('/BuscarCita', (req, res) => {
+    let params = req.query;
+    if (params._id != "" && params._id != null && params._id!= undefined) {
+        Cita.findOne({_id: params._id}, (err, citaDB) => {
+            if (err) {
+                res.json({
+                    resultado: false,
+                    msj: 'No se pudo obtener datos: ',
+                    err
+                });
+            } else {
+
+                res.json({
+                    resultado: true,
+                    msj: 'Los datos se obtuvieron de manera correcta por id: ',
+                    citaDB
+                });
+            }
+        } 
+        );
+    }
+} );
+
 module.exports = router;

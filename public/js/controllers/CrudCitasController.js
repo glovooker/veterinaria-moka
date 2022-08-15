@@ -7,14 +7,23 @@ let listaCitas = [];
 
 GetListaCitas();
 
-async function nombrePersona(p_id, pCedula){
-    let result = await BuscarPersona(p_id, pCedula);
-   if (result != null && result.resultado == true && result.personaDB != null) {
-       return result.personaDB.Nombre;
+async function DatosPersona(p_id, pCedula){
+   let result = await BuscarPersona(p_id, pCedula);
+   if (result != null && result.resultado == true && result.personaDB != null) { 
+      return(result.personaDB); 
    } else {
-       return "";
+      return (" ");
    }
  }
+
+ async function DatosMascota(pIdMascota){
+    let result = await BuscarMascota(pIdMascota);
+    if (result != null && result.resultado == true && result.mascotaDB != null) { 
+       return(result.mascotaDB); 
+    } else {
+       return (" ");
+    }
+  } 
 
 async function GetListaCitas() {
     let result = await ObtenerListaCitas();
@@ -48,7 +57,20 @@ async function ImprimirDatos() {
             let celdaAcciones = fila.insertCell();
 
             ////////////////////////////////////////////////////
-            //VER PERFIL PERSONA
+            //Detalle de la Cita
+            ////////////////////////////////////////////////////
+            let btnDetalle = document.createElement('button');
+            btnDetalle.onclick = function(){              
+                const timeoutId = setTimeout(function(){                   
+                window.location.replace("./CrearCita.html?id="+ listaCitas[i]._id);}, 1000);  
+            };
+            btnDetalle.type = 'button';
+            btnDetalle.innerText = '🔍​';
+            btnDetalle.title = 'Ver Detalle Cita';
+            btnDetalle.classList.add('DetalleBtn');
+
+            ////////////////////////////////////////////////////
+            //Aprobar Cita
             ////////////////////////////////////////////////////            
             let btnPerfil = document.createElement('button');
             btnPerfil.onclick = function(){
@@ -58,8 +80,8 @@ async function ImprimirDatos() {
                 window.location.replace("./PerfilCita.html");}, 1000);  
             };
             btnPerfil.type = 'button';
-            btnPerfil.innerText = '🔍​';
-            btnPerfil.title = 'Ver Perfil';
+            btnPerfil.innerText = 'A​';
+            btnPerfil.title = 'Aprobar Cita';
             btnPerfil.classList.add('DetalleBtn');
 
             ////////////////////////////////////////////////////
@@ -75,8 +97,8 @@ async function ImprimirDatos() {
                 
             };
             btnEdit.type = 'button';
-            btnEdit.innerText = '✏️​';
-            btnEdit.title = 'Editar';
+            btnEdit.innerText = 'C​';
+            btnEdit.title = 'Cancelar Cita';
             btnEdit.classList.add('modificarBtn');
 
             ////////////////////////////////////////////////////
@@ -118,20 +140,32 @@ async function ImprimirDatos() {
             };
 
             btnInactivar.type = 'button';
-            btnInactivar.innerText = '💡'; 
-            btnInactivar.title = 'Activar/Desactivar';
+            btnInactivar.innerText = 'F'; 
+            btnInactivar.title = 'Finalizar Cita';
             btnInactivar.classList.add('eliminarBtn');
 
             let divBtns = document.createElement('div');
+            divBtns.appendChild(btnDetalle);
             divBtns.appendChild(btnPerfil);
             divBtns.appendChild(btnEdit);            
             divBtns.appendChild(btnInactivar);
 
+            ///////////////////////////////////////////
+            //Imorimir Datos de la Cita
+            ///////////////////////////////////////////
+
             celdaFecha.innerHTML = listaCitas[i].FecInicio;
             celdaHora.innerHTML = listaCitas[i].HoraInicio;
-            celdaVeterinario.innerHTML = listaCitas[i].Correo;
-            celdaCliente.innerHTML = listaCitas[i]._idCliente ;    
-            celdaMascota.innerHTML = listaCitas[i]._idVeterinario; 
+
+            let veterinario = await DatosPersona(listaCitas[i]._idVeterinario, null);
+            celdaVeterinario.innerHTML = veterinario.Nombre;
+
+            let cliente = await DatosPersona(listaCitas[i]._idCliente, null);
+            celdaCliente.innerHTML = cliente.Nombre ;   
+            
+            let mascota = await DatosMascota(listaCitas[i]._idMascota);
+            celdaMascota.innerHTML = mascota.Nombre; 
+
             celdaEstado.innerHTML = ObtenerEstadoCita(listaCitas[i].Estado);
             celdaAcciones.appendChild(divBtns);
        // }
