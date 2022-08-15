@@ -52,3 +52,8 @@ function hadleError(res, reason, message, code) {
 
  const mascota = require('./Routes/MascotaRouter');
  app.use('/api',mascota);
+ 
+ const citas = require('./Routes/CitaRouter');
+ app.use('/api', citas); 
+
+
