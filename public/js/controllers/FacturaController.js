@@ -23,7 +23,7 @@ async function Guardar(){
           return false
     }
     let fechaActual = new Date();
-    let sIdentificacion = '19753258' //CEDULA QUEMADA X AHORA
+    let sIdentificacion = '62f568480fc58edc6cdbd266' //aqui se refiere al id_cliente  no la cedula  QUEMADA X AHORA
     await ObtenerListaFacturas();
     await RegistrarFactura(sIdentificacion,sumaTotal,fechaActual, JSON.stringify(arregloDetallesFacturas),numeroFactura);
     Limpiar();

@@ -40,7 +40,6 @@ function ImprimirMsjSuccess(msj) {
     })
 }
 
-//formato fecha
 function formatDate(date) {
     return (
         [
@@ -56,7 +55,6 @@ function formatDate(date) {
         ].join(':')
     );
 }
-
 function padTo2Digits(num) {
     return num.toString().padStart(2, '0');
 }

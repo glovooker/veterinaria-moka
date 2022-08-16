@@ -152,9 +152,9 @@ router.post('/ModificarPersona', function(req, res){
     );
 });
 
-router.get('/BuscarPersonaPorCedula',(req, res) => {
+router.get('/BuscarPersonaPorId',(req, res) => {
     let params = req.query;
-    Persona.findOne({Cedula: params.Cedula},(err,personaDB)=>{
+    Persona.findOne({_id: params._id},(err,personaDB)=>{
         if(err || personaDB===null){
             res.json({
                 resultado:false,

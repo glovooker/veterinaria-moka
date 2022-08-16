@@ -1,6 +1,7 @@
 'use strict'
 let listaDetalles = [];
-let _id = '62fad4e2627f7a77e96e44ba' //dato quemado, el el flujo de este script se va a buscar con id de factura luego buscar la persona con la cedula que aparezca en la factura
+//Se busca la factura en especifico con el id de la factura, luego en la factura se obtiene el id del cliente(campo identificacion) y con ese id se busca los datos del cliente en buscar persona.
+let _id = '62fae8a64cacf559098bb262'; //id de la factura
 let numeroFactura;
 let identificacionPersona;
 let fechaFactura;
@@ -9,7 +10,8 @@ let datosFactura
 let datosPersona;
 let nombrePersona;
 let emailPersona;
-let telefonoPersona;
+let TelefonoPersona;
+let cedulaPersona;
 ObtenerFactura();
 
 
@@ -28,19 +30,20 @@ async function ObtenerFactura(){
         console.log(datosFactura);
         ImprimirDatosDetalles();
     }else{
-        ImprimirMsjError(result.msj);
+        imprimirMsjError(result.msj);
         return;
     }
 }
 
 
 async function ObtenerPersona(){
-    let result = await BuscarPersonaPorCedula(identificacionPersona);
+    let result = await BuscarPersonaPorId(identificacionPersona);
     if(result != {} && result.resultado == true){
         datosPersona =  result.personaDB;
         nombrePersona = datosPersona.Nombre;
         emailPersona = datosPersona.Correo;
-        telefonoPersona = datosPersona.Telefono
+        TelefonoPersona = datosPersona.Telefono;
+        cedulaPersona = datosPersona.Cedula;
 
         console.log(nombrePersona)
        /*  ImprimirDatos(); */
@@ -64,7 +67,8 @@ async function ObtenerPersona(){
 
 
 function ImprimirDatosDetalles(){
-    let fechaFormateada, fecha;
+    let fecha;
+    let fechaFormateada;
     let tbody = document.getElementById('tlbTable');
     tbody.innerHTML = '';
 
@@ -81,16 +85,17 @@ function ImprimirDatosDetalles(){
             celdaDescripcion.innerHTML = listaDetalles[i].Descripcion;
             celdaCantidad.innerHTML = listaDetalles[i].Cantidad;
             celdaPrecio.innerHTML = '₡' + listaDetalles[i].PrecioUnitario;
-            celdaSubtotal.innerHTML = '₡' + listaDetalles[i].SubTotal; 
+            celdaSubtotal.innerHTML = '₡' +  listaDetalles[i].SubTotal; 
             document.getElementById('outputTotal').innerHTML= '₡' + totalAPagar;
             document.getElementById('outputNumeroFactura').innerHTML= numeroFactura;
             fecha = new Date(fechaFactura);
             fechaFormateada = formatDate(fecha);
+        
             document.getElementById('outputFecha').innerHTML= fechaFormateada;
-            document.getElementById('outputIdentificacion').innerHTML = identificacionPersona;
+            document.getElementById('outputIdentificacion').innerHTML = cedulaPersona;
             document.getElementById('outputNombre').innerHTML =  nombrePersona; 
             document.getElementById('outputEmail').innerHTML = emailPersona;
-            document.getElementById('outputTelefono').innerHTML = telefonoPersona;
+            document.getElementById('outputTelefono').innerHTML = TelefonoPersona;
     
             
         }
@@ -98,6 +103,7 @@ function ImprimirDatosDetalles(){
 
 
    
+
    
          
     
