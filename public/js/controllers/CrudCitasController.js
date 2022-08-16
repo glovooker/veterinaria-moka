@@ -1,12 +1,11 @@
 'use strict';
 
-const inputFiltro = document.getElementById('txtFiltro');
-inputFiltro.addEventListener('keyup', ImprimirDatos);
-
 let PersonaLogueada = GetSesionActiva();
 
-let listaCitas = [];
+const inputFiltro = document.getElementById('txtFiltro');
+//inputFiltro.addEventListener('keyup', ImprimirDatos);
 
+let listaCitas = [];
 GetListaCitas();
 
 async function DatosPersona(p_id, pCedula){
@@ -44,19 +43,23 @@ async function ImprimirDatos() {
     tbody.innerHTML = '';
 
     for (let i = 0; i < listaCitas.length; i++) { 
-/*
-        if(listaCitas[i].Nombre.toLowerCase().includes(filtro)|| 
-        ObtenerRol(listaCitas[i].Rol).toLowerCase().includes(filtro) || 
-        ObtenerEstado(listaCitas[i].Estado).toLowerCase().includes(filtro)
-        ){ */
+        ////////////////////////////////////////////////////////////////////
+        let veterinario = await DatosPersona(listaCitas[i]._idVeterinario,null); 
+        let cliente = await DatosPersona(listaCitas[i]._idCliente,null);           
+        let mascota = await DatosMascota(listaCitas[i]._idMascota);     
+        let estadoCita = ObtenerEstadoCita(listaCitas[i].Estado);   
+        //FILTROS //////////////////////////////////////////////////////////
+        /* if(veterinario.Nombre.toLowerCase().includes(filtro)|| 
+        cliente.Nombre.toLowerCase().includes(filtro)|| 
+        mascota.Nombre.toLowerCase().includes(filtro)|| 
+        estadoCita.toLowerCase().includes(filtro) 
+        ){  */
+        //////////////////////////////////////////////////////////////////    
         if ((PersonaLogueada.Rol==0||PersonaLogueada.Rol==1)
         ||(PersonaLogueada.Rol==2 && PersonaLogueada._id==listaCitas[i]._idVeterinario)
         ||(PersonaLogueada.Rol==3 && PersonaLogueada._id==listaCitas[i]._idCliente)) {
         //////////////////////////////////////////////////////////////////
-        let veterinario = await DatosPersona(listaCitas[i]._idVeterinario,null); 
-        let cliente = await DatosPersona(listaCitas[i]._idCliente,null);           
-        let mascota = await DatosMascota(listaCitas[i]._idMascota);        
-        ////////////////////////////////////////////////////////////////
+
             let fila = tbody.insertRow();
             let celdaFecha = fila.insertCell();
             let celdaHora = fila.insertCell();
@@ -255,10 +258,10 @@ async function ImprimirDatos() {
             celdaVeterinario.innerHTML = veterinario.Nombre;
             celdaCliente.innerHTML = cliente.Nombre ;   
             celdaMascota.innerHTML = mascota.Nombre; 
-            celdaEstado.innerHTML = ObtenerEstadoCita(listaCitas[i].Estado);
+            celdaEstado.innerHTML = estadoCita;
             celdaAcciones.appendChild(divBtns);
-        }
-       // }
+        } //roles
+       //}//filtros
        
     }
 }
