@@ -31,3 +31,23 @@ async function BuscarCita(p_id) {
     });
     return result;
   }
+
+  async function ModificarCita(p_id, pMotivoCancela, pEstado, pEstrellas) {
+    let result = {};
+    await axios({
+        method: 'post',
+        url: apiUrl + '/ModificarCita',
+        responseType: 'json',
+        data: {
+            '_id': p_id,
+            'MotivoCancela': pMotivoCancela,
+            'Estado': pEstado,
+            'Estrellas': pEstrellas
+        }
+    }).then((res) => {
+        result = res.data;
+    }).catch((err) => {
+        console.log(err);
+    });
+    return result;
+}
