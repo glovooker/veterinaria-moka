@@ -1,5 +1,8 @@
 'use strict';
 
+btnUser.addEventListener("click", CrearUser);
+btnCliente.addEventListener("click", CrearCliente);
+
 const inputFiltro = document.getElementById('txtFiltro');
 inputFiltro.addEventListener('keyup', ImprimirDatos);
 
@@ -26,8 +29,8 @@ async function ImprimirDatos() {
     for (let i = 0; i < listaPersonas.length; i++) { 
 
         if(listaPersonas[i].Nombre.toLowerCase().includes(filtro)|| 
-        ObtenerRol(listaPersonas[i].Rol).toLowerCase().includes(filtro) || 
-        ObtenerEstado(listaPersonas[i].Estado).toLowerCase().includes(filtro)
+           ObtenerRol(listaPersonas[i].Rol).toLowerCase().includes(filtro) || 
+           ObtenerEstado(listaPersonas[i].Estado).toLowerCase().includes(filtro)
         ){ 
             let fila = tbody.insertRow();
             let celdaCedula = fila.insertCell();
@@ -46,7 +49,8 @@ async function ImprimirDatos() {
                 LimpiarLSPersonaConsultada();
                 SetPersonaConsultada(listaPersonas[i]);                
                 const timeoutId = setTimeout(function(){
-                window.location.replace("./PerfilPersona.html");}, 1000);  
+                window.location.replace("./PerfilPersona.html?acc=Q");
+            }, 1000);  
             };
             btnPerfil.type = 'button';
             btnPerfil.innerText = '🔍​';
@@ -62,7 +66,15 @@ async function ImprimirDatos() {
                 SetPersonaConsultada(listaPersonas[i]);
                 const timeoutId = setTimeout(function(){
                 // desplegar los datos de la persona consultada para que puedan ser modificados
-                window.location.replace("./CrearCuentaCliente.html");}, 1000);                  
+                if (listaPersonas[i].Rol == 1 ||listaPersonas[i].Rol == 2) {
+                    //Secretaria o Veterinario 
+                    window.location.replace("./CrearCuentaUsuario.html?acc=M");
+                }else if (listaPersonas[i].Rol == 3) {
+                    //Cliente
+                    window.location.replace("./CrearCuentaCliente.html?acc=M");
+                }
+            
+            }, 1000);                  
                 
             };
             btnEdit.type = 'button';
@@ -76,9 +88,15 @@ async function ImprimirDatos() {
            let btnInactivar = document.createElement('button');
             btnInactivar.onclick = async function(){
                 let confirmacion = false;
-                let msj = 'Desea inactivar el registro de ' + listaPersonas[i].Nombre;
+                let msj;
+                let vEstado; 
+
                 if  (listaPersonas[i].Estado == 0){
                     msj = 'Desea activar el registro de ' + listaPersonas[i].Nombre;
+                    vEstado = 1;
+                } else  {
+                    msj  = 'Desea inactivar el registro de ' + listaPersonas[i].Nombre;
+                    vEstado = 0;
                 }
 
                 await Swal.fire({
@@ -90,13 +108,8 @@ async function ImprimirDatos() {
                 }).then((res) => {
                     confirmacion = res.isConfirmed;
                 });
-                if (confirmacion == true) {                    
-                    let vEstado = 0;
-                    if  (listaPersonas[i].Estado == 0){
-                        vEstado = 1;
-                    }
-
-                    let result =  await ModificarPersona(listaPersonas[i]._id, listaPersonas[i].Cedula, listaPersonas[i].Nombre, listaPersonas[i].Correo, listaPersonas[i].Password, listaPersonas[i].Telefono, listaPersonas[i].Direccion, listaPersonas[i].PerfilFB, listaPersonas[i].PerfilIG, listaPersonas[i].PerfilTW, listaPersonas[i].FotoPerfil, vEstado); 
+                if (confirmacion == true) {                  
+                    let result =  await ModificarPersona(listaPersonas[i]._id, listaPersonas[i].Cedula, listaPersonas[i].Nombre, listaPersonas[i].Correo, listaPersonas[i].Password, listaPersonas[i].Telefono, listaPersonas[i].Direccion, listaPersonas[i].Rol,listaPersonas[i].PerfilFB, listaPersonas[i].PerfilIG, listaPersonas[i].PerfilTW, listaPersonas[i].FotoPerfil, vEstado); 
 
                     if (result.resultado == true) {
                         ImprimirMsjSuccess(result.msj);
@@ -128,3 +141,11 @@ async function ImprimirDatos() {
         }
     }
 }
+
+function CrearUser() {
+    window.location.replace("./CrearCuentaUsuario.html?acc=C");  
+}
+
+function CrearCliente() { 
+    window.location.replace("./CrearCuentaCliente.html?acc=C");
+} 

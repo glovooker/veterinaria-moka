@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/PagoServicios.css">
     <link rel="stylesheet" href="./css/StyleGeneral.css">
     <link rel="stylesheet" href="./css/webfont/stylesheet.css">
-    <title>Moka | Pago de Servicios</title>
+    <title>Moka | Valoración Mascota</title>
 </head>
 
 <body>
@@ -41,7 +41,7 @@
     <body>
         <section id="section1" class="payment">
             <div class="payment-container">
-                <h2>Pago de Servicios</h2>
+                <h2>Valoración de la Mascota</h2>
 
                 <div class="outputs">
                     <label for="outMascota">Mascota</label>
@@ -50,7 +50,7 @@
                     <label for="outCliente">Cliente</label>
                     <output id="outCliente"></output>
 
-                    <label for="outValoracion">Valoración del Veterinario</label>
+                    <label for="outValoracion">Valoración de la Mascota</label>
                     <output id="outValoracion">
                         <i class="fa-solid fa-star" id="star1"></i>
                         <i class="fa-solid fa-star" id="star2"></i>
@@ -62,15 +62,10 @@
                     <label for="txtObservaciones" id="lblObservaciones" class="lblTextArea">Observaciones</label>
                     <textarea name="" id="txtObservaciones" cols="30" rows="9"></textarea>
 
-                    <label for="selMetodoPago" id="lblMetodoPago" class="lblSelect">Método de Pago</label>
-                    <select id="selMetodoPago">
-
                     </select>
                 </div>
 
-                <button type="button" class="form-btn" id="btnPagar">Realizar Pago</button>
-                <button type="button" class="form-btn" id="btnAgregarMetodo">Agregar Método</button>
-
+                <button type="button" class="form-btn" id="btnFinalizar">Finalizar</button>
             </div>
         </section>
 
@@ -84,9 +79,6 @@
         <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="./js/controllers/ControllerGeneral.js"></script>
-        <script src="./js/services/MetodosPagoService.js"></script>
-        <script src="./js/services/PagoServiciosService.js"></script>
-        <script src="./js/controllers/PagoServiciosController.js"></script>
 
     </body>
 
