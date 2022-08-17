@@ -38,6 +38,7 @@ const mostrarTabla = async () => {
         confirmButtonText: "¡Sí, eliminar!",
       }).then((result) => {
         if (result.isConfirmed) {
+          eliminarDatos("/EliminarTarjetas", tarjeta._id);
           Swal.fire("¡Tarjeta eliminada!", "La tarjeta fue borrada", "success");
         }
       });

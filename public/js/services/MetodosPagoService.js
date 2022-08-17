@@ -47,6 +47,34 @@ const getDatos = async (endpoint) => {
 
   return listaDatos;
 };
+
+const eliminarDatos = async (endpoint, _id) => {
+  let url = `http://localhost:3000/api/${endpoint}`;
+  await axios({
+    url: url,
+    method: "delete",
+    responseType: "json",
+    data: {
+      _id: _id,
+    },
+  })
+    .then((response) => {
+      Swal.fire({
+        icon: "success",
+        title: response.data.msj,
+      });
+      setTimeout(() => {
+        window.location.reload();
+      }, 3000);
+    })
+    .catch((error) => {
+      Swal.fire({
+        icon: "error",
+        text: error,
+      });
+    });
+};
+
 // const getDatosMetodos = async (endpoint) => {
 //   let url = `http://localhost:3000/api${endpoint}`;
 //   let listaDatosMetodos = [];
