@@ -25,35 +25,33 @@ async function ImprimirDatos() {
     tbody.innerHTML = '';
 
     for (let i = 0; i < listaCitas.length; i++) { 
-        ////////////////////////////////////////////////////////////////////
-        let veterinario = await DatosPersona(listaCitas[i]._idVeterinario,null); 
+        //////////////////////////////////////////////////////////////////// 
         let cliente = await DatosPersona(listaCitas[i]._idCliente,null);           
         let mascota = await DatosMascota(listaCitas[i]._idMascota);     
         let estadoCita = ObtenerEstadoCita(listaCitas[i].Estado);   
         //FILTROS //////////////////////////////////////////////////////////
-        /* if(veterinario.Nombre.toLowerCase().includes(filtro)|| 
-        cliente.Nombre.toLowerCase().includes(filtro)|| 
+        /* if(cliente.Nombre.toLowerCase().includes(filtro)|| 
         mascota.Nombre.toLowerCase().includes(filtro)|| 
         estadoCita.toLowerCase().includes(filtro) 
         ){  */
         //////////////////////////////////////////////////////////////////    
-        if (listaCitas[i].Tipo == 'C') {
+        if (listaCitas[i].Tipo == 'R') {
             if ((PersonaLogueada.Rol==0||PersonaLogueada.Rol==1)
-            ||(PersonaLogueada.Rol==2 && PersonaLogueada._id==listaCitas[i]._idVeterinario)
             ||(PersonaLogueada.Rol==3 && PersonaLogueada._id==listaCitas[i]._idCliente)) {
             //////////////////////////////////////////////////////////////////
 
                 let fila = tbody.insertRow();
                 let celdaFecha = fila.insertCell();
                 let celdaHora = fila.insertCell();
-                let celdaVeterinario = fila.insertCell();
+                let celdaFechaFin = fila.insertCell();
+                let celdaHoraFin = fila.insertCell();    
                 let celdaCliente = fila.insertCell();
                 let celdaMascota = fila.insertCell();
                 let celdaEstado = fila.insertCell(); 
                 let celdaAcciones = fila.insertCell();
 
                 ////////////////////////////////////////////////////
-                //Detalle de la Cita
+                //Detalle de la Reservación
                 ////////////////////////////////////////////////////
                 let btnDetalle = document.createElement('button');
                 btnDetalle.onclick = function(){              
@@ -62,44 +60,10 @@ async function ImprimirDatos() {
                 };
                 btnDetalle.type = 'button';
                 btnDetalle.innerText = '🔍​';
-                btnDetalle.title = 'Ver Detalle Cita';
+                btnDetalle.title = 'Ver Detalle Reservación';
                 btnDetalle.classList.add('DetalleBtn');
-
                 ////////////////////////////////////////////////////
-                //Aprobar Cita
-                ////////////////////////////////////////////////////            
-                let btnAprobar = document.createElement('button');
-                btnAprobar.onclick = async function(){
-                    let confirmacion = false;
-                    await Swal.fire({
-                        title: 'Desea Aprobar la cita ' + mascota.Nombre,
-                        showDenyButton: true,
-                        confirmButtonText: 'Confirmar',
-                        denyButtonText: 'Cancelar',
-                        icon: 'warning'
-                    }).then((res) => {
-                        confirmacion = res.isConfirmed;
-                    });
-                    if (confirmacion == true) {
-
-                        let result =  await ModificarCita(listaCitas[i]._id,'','A',listaCitas[i].Estrellas); 
-
-                        if (result.resultado == true) {
-                            ImprimirMsjSuccess(result.msj);
-                        } else {
-                            ImprimirMsjError(result.msj);
-                        }
-
-                        await GetListaCitas();
-                    }
-                };
-                btnAprobar.type = 'button';
-                btnAprobar.innerText = 'A​';
-                btnAprobar.title = 'Aprobar Cita';
-                btnAprobar.classList.add('DetalleBtn');
-
-                ////////////////////////////////////////////////////
-                //Cancelar Cita
+                //Cancelar Reservación
                 ////////////////////////////////////////////////////
                 let btnCancelar = document.createElement('button');
                 btnCancelar.onclick = async function(){
@@ -130,11 +94,11 @@ async function ImprimirDatos() {
 
                 btnCancelar.type = 'button';
                 btnCancelar.innerText = 'C​';
-                btnCancelar.title = 'Cancelar Cita';
+                btnCancelar.title = 'Cancelar Reservación';
                 btnCancelar.classList.add('modificarBtn');
 
                 ////////////////////////////////////////////////////
-                //Finalizar Cita
+                //Finalizar Reservación
                 ////////////////////////////////////////////////////            
             let btnFinalizar = document.createElement('button');
 
@@ -166,11 +130,11 @@ async function ImprimirDatos() {
 
                 btnFinalizar.type = 'button';
                 btnFinalizar.innerText = 'F'; 
-                btnFinalizar.title = 'Finalizar Cita';
+                btnFinalizar.title = 'Finalizar Reservación';
                 btnFinalizar.classList.add('eliminarBtn');
 
                 ////////////////////////////////////////////////////
-                //Pagar Cita
+                //Pagar Reservación
                 ////////////////////////////////////////////////////            
                 let btnPagar = document.createElement('button');
 
@@ -202,7 +166,7 @@ async function ImprimirDatos() {
     
                 btnPagar.type = 'button';
                 btnPagar.innerText = 'P'; 
-                btnPagar.title = 'Pagar Cita';
+                btnPagar.title = 'Pagar Reservación';
                 btnPagar.classList.add('modificarBtn');            
 
                 ////////////////////////////////////
@@ -211,12 +175,6 @@ async function ImprimirDatos() {
 
                 let divBtns = document.createElement('div');
                 divBtns.appendChild(btnDetalle);
-
-                if (PersonaLogueada.Rol == 0 || PersonaLogueada.Rol == 1){
-                    if (listaCitas[i].Estado == 'R'){
-                        divBtns.appendChild(btnAprobar);
-                    }
-                }
 
                 if (listaCitas[i].Estado == 'R' || listaCitas[i].Estado == 'A'){
                     divBtns.appendChild(btnCancelar); 
@@ -233,17 +191,18 @@ async function ImprimirDatos() {
                 }
 
                 ///////////////////////////////////////////
-                //Imorimir Datos de la Cita
+                //Imorimir Datos de la Reservación
                 ///////////////////////////////////////////
                 celdaFecha.innerHTML = listaCitas[i].FecInicio;
                 celdaHora.innerHTML = listaCitas[i].HoraInicio;
-                celdaVeterinario.innerHTML = veterinario.Nombre;
+                celdaFechaFin.innerHTML = listaCitas[i].FecFinal;
+                celdaHoraFin.innerHTML = listaCitas[i].HoraFinal;   
                 celdaCliente.innerHTML = cliente.Nombre ;   
                 celdaMascota.innerHTML = mascota.Nombre; 
                 celdaEstado.innerHTML = estadoCita;
                 celdaAcciones.appendChild(divBtns);
             } //roles
-        }//citas
+        }//Reservaciones
        //}//filtros
        
     }
