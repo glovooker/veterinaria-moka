@@ -11,7 +11,7 @@ router.post("/RegistrarTarjeta", (req, res) => {
     NumTarjeta: body.NumTarjeta,
     FecExpira: body.FecExpira,
     Cvv: body.Cvv,
-    Nombre: body.Nombre
+    Nombre: body.Nombre,
   });
   nuevaTarjeta.save((err, tarjetaDB) => {
     if (err) {
@@ -46,6 +46,27 @@ router.get("/obtener-tarjetas", (req, res) => {
   });
 });
 
+router.delete("/EliminarTarjetas", function (req, res) {
+  let body = req.body;
+  Tarjeta.remove({ _id: body._id }, (err, result) => {
+    if (err) {
+      res.json({
+        resultado: false,
+        msj: "No se pudo eliminar los datos: ",
+        err,
+      });
+    } else {
+      res.json({
+        resultado: true,
+        msj: "Los datos se eliminarion de manera correcta",
+        result,
+      });
+    }
+  });
+});
+
+module.exports = router;
+
 // router.get("/ListarTarjetasCliente", (req, res) => {
 //   let params = req.query;
 //   if (
@@ -70,24 +91,3 @@ router.get("/obtener-tarjetas", (req, res) => {
 //     });
 //   }
 // });
-
-router.delete("/EliminarTarjetas", function (req, res) {
-  let body = req.body;
-  Tarjeta.remove({ _id: body._id }, (err, result) => {
-    if (err) {
-      res.json({
-        resultado: false,
-        msj: "No se pudo eliminar los datos: ",
-        err,
-      });
-    } else {
-      res.json({
-        resultado: true,
-        msj: "Los datos se eliminarion de manera correcta",
-        result,
-      });
-    }
-  });
-});
-
-module.exports = router;
