@@ -39,29 +39,44 @@
         </nav>
     </header>
 
-    <h3>Tabla de tarjetas</h3>
+    <section class="agregar-metodo-pago">
+        <div class="form-container">
+            <div class="title-container-agregar-metodo-pago">
+                <i class="fa-solid fa-credit-card"></i>
+                <h2>Agregar Método de Pago</h2>
+            </div>
+            <div class="form-date">
+                <label for="txtNumTarjeta" id="lblNumTarjeta" class="lblInput">Número de Tarjeta</label>
+                <div class="card-input">
+                    <input type="number" id="txtNumTarjeta" title="Número de tarjeta sin guiones" required>
+                    <div class="methods">
+                        <i class="fa-brands fa-cc-visa"></i>
+                        <i class="fa-brands fa-cc-mastercard"></i>
+                    </div>
+                </div>
+            </div>
 
-    <div class="filter-container">
-        <div class="filter">
-            <label for="txtFiltro" id="lblFiltro"><i class="fa-solid fa-filter"></i>Filtro</label>
-            <input type="text" id="txtFiltro">
+            <div class="form-date">
+                <label for="txtExpiracion" id="lblExpiracion" class="lblInput">Fecha de Expiración</label>
+                <input type="date" id="txtExpiracion" required>
+            </div>
+
+            <div class="form-date">
+                <label for="txtCVV" id="lblCVV" class="lblInput">Código de Seguridad</label>
+                <input type="number" id="txtCVV" title="Número al Reverso de la Tarjeta" required>
+            </div>
+
+            <div class="form-date">
+                <label for="txtNombreTarjeta" id="lblNombreTarjeta" class="lblInput">Nombre del Tarjeta Habiente</label>
+                <input type="text" id="txtNombreTarjeta" required>
+            </div>
+
+            <div>
+                <button type=button id="btnRegistrar" class="form-btn">Registrar</button>
+            </div>
         </div>
-    </div>
-    <div class="table-filters">
-        <table class="table" id="tablaTarjetas">
-            <thead>
-                <tr>
-                    <th>Número de Tarjeta</th>
-                    <th>Fecha de Expiración</th>
-                    <th>Código de Seguridad</th>
-                    <th>Nombre del Tarjetahabiente</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="tbdTarjetas"></tbody>
-            <tfoot id="tftTarjetas"></tfoot>
-        </table>
-    </div>
+    </section>
+
 
     <footer class="footer">
         <h5>Powered by</h5>
@@ -70,12 +85,12 @@
         </a>
     </footer>
 
-    <script src="./js/controllers/ControllerGeneral.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/controllers/ControllerGeneral.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
     <script src="js/services/MetodosPagoService.js"></script>
-    <script src="js/services/CrudMetodosPagoService.js"></script>
-    <script src="js/controllers/CrudMetodosPagoController.js"></script>
+    <script src="js/controllers/MetodosPagoController.js"></script>
 
 </body>
 

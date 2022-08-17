@@ -62,5 +62,4 @@ function hadleError(res, reason, message, code) {
 // const personas = require('./Routes/PersonaRoute');
 // app.use('/api',personas);
 
-const tarjeta = require("./Routes/TarjetaRoute");
-app.use("/api", tarjeta);
+app.use("/api", require("./Routes/MetodosPagoRoute"));

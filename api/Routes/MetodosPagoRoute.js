@@ -1,8 +1,9 @@
 "use strict";
 
 const express = require("express");
+const mongoose = require("mongoose");
 const router = express.Router();
-const Tarjeta = require("../Models/TarjetaModel");
+const Tarjeta = require("../Models/MetodosPagoModel");
 
 router.post("/RegistrarTarjeta", (req, res) => {
   let body = req.body;
@@ -10,8 +11,7 @@ router.post("/RegistrarTarjeta", (req, res) => {
     NumTarjeta: body.NumTarjeta,
     FecExpira: body.FecExpira,
     Cvv: body.Cvv,
-    Nombre: body.Nombre,
-    _idPersona: body._idPersona,
+    Nombre: body.Nombre
   });
   nuevaTarjeta.save((err, tarjetaDB) => {
     if (err) {
@@ -30,43 +30,46 @@ router.post("/RegistrarTarjeta", (req, res) => {
   });
 });
 
-router.get("/ListarTarjetas", (req, res) => {
-  Tarjeta.find((err, ListaTarjetasBD) => {
-    if (err) {
+router.get("/obtener-tarjetas", (req, res) => {
+  Tarjeta.find((error, lista) => {
+    if (error) {
       res.json({
-        resultado: false,
-        msj: "No se pudo obtener los datos: ",
-        err,
+        msj: "No se pudo hacer el listado de usuarios",
+        error,
       });
     } else {
       res.json({
-        resultado: true,
-        msj: "Los datos se obtuvieron de manera correcta: ",
-        ListaTarjetasBD,
+        msj: "Usuario listados correctamente",
+        lista,
       });
     }
   });
 });
 
-router.get("/ListarTarjetasCliente", (req, res) => {
-  let params = req.query;
-   if ((params._idPersona != "" && params._idPersona != null && params._idPersona!= undefined) && (params.Cedula == "" || params.Cedula == null || params.Cedula == undefined)){
-   Tarjeta.find({ _idPersona: params._idPersona }, (err, tarjetaDB) => {
-    if (err) {
-      res.json({
-        resultado: false,
-        msj: "No se pudo obtener datos: ",
-        err,
-      });
-    } else {
-      res.json({
-        resultado: true,
-        msj: "Los datos se obtuvieron de manera correcta por id: ",
-        tarjetaDB,
-      });
-    }
-  });
-}});
+// router.get("/ListarTarjetasCliente", (req, res) => {
+//   let params = req.query;
+//   if (
+//     params._idPersona != "" &&
+//     params._idPersona != null &&
+//     params._idPersona != undefined
+//   ) {
+//     Tarjeta.find({ _idPersona: params._idPersona }, (err, tarjetaDB) => {
+//       if (err) {
+//         res.json({
+//           resultado: false,
+//           msj: "No se pudo obtener datos: ",
+//           err,
+//         });
+//       } else {
+//         res.json({
+//           resultado: true,
+//           msj: "Los datos se obtuvieron de manera correcta por id: ",
+//           tarjetaDB,
+//         });
+//       }
+//     });
+//   }
+// });
 
 router.delete("/EliminarTarjetas", function (req, res) {
   let body = req.body;
