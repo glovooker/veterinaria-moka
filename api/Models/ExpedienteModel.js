@@ -2,8 +2,11 @@
 
 const mongoose = require('mongoose');
 
-const schemaExpediente = new mongoose.Schema({  
+const schemaExpediente = new mongoose.Schema({
+    NumeroExpediente:{type: Number, requiered: true, unique: true},
     Nombre: {type: String, requiered: true, unique: false},
+    Duenno: {type: String, requiered: true, unique: false},
+    Usuario: {type: String, requiered: true, unique: false},
     Especie: {type: String, requiered: true, unique: false},
     Estrellas: {type: Number, requiered: true, unique: false}, 
     Observaciones: {type: String, requiered: false, unique: false},    

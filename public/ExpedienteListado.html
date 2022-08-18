@@ -27,34 +27,48 @@
 <body>
     <main>
         <h1>Control de expedientes</h1>
-        <label for="txtNumeroExpediente">Número de expediente</label>
-        <input type="text"  id="txtNumeroExpediente">
-        <br>
-        <label for="txtUsuarioCliente">Usuario</label>
-        <input type="text" id="txtUsuarioCliente">
-        <br>
-        <button type="button">Buscar</button>
+
+        <label for="filtro">Buscar</label>
+        <input type="text" id="filtro">
 
         <section>
-            <table>
+            <table id="tblExpediente">
                 <caption>Expedientes</caption>
                 <thead>
                     <tr>
                         <th>Número Expediente</th>
-                        <th>Nombre Mascota</th>
+                        <th>Nombre de la Mascota</th>
                         <th>Dueño de la mascota</th> <!--Nombre completo del cliente-->
                         <th>Usuario</th> <!--es el username-->
-                        <th>Detalles</th> <!-- bajo esta celda va un boton que mostrara el expediente, en caso que el cliente tenga varias mascotas, se listaran y el veterinario o secretaria podra seleccionar el expediente deacuerdo a la mascota-->
+                        <th>Especie</th>
+                        <th>Estrellas</th>
+                        <th>Observaciones</th>
+                        <th>Padecimientos</th>
+                        <th>Citas</th>  
+                        <th>Reservaciones</th> 
                     </tr>
                 </thead>
-                <tbody></tbody>
+                <tbody id="cuerpoExpedientetbl">
+
+                </tbody>
                 <tfoot></tfoot>
             </table>
+            <div id="divButton">
+                <input type="button" id="btnRegistro" onclick="location.href='Actualizar_RegistrarExpediente.html'" value="Registrar Expediente">
+            </div>
         </section>
     </main>
     <footer>
         <h5>Clever Solutions - 2022</h5>
     </footer>
+
+    <script src='//unpkg.com/axios/dist/axios.min.js'></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./js/Constantes.js"></script>
+
+    <script src="./js/services/ListarExpServices.js"></script>
+    <script src="./js/controllers/ListarExpController.js"></script>
 </body>
 </html>
         

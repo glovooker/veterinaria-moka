@@ -54,7 +54,7 @@ router.get('/ListarExpediente',(req, res)=>{
 
 router.delete('/EliminarExpediente', function(req, res){
     let body = req.body;
-    Expediente.remove({_id: body._id}, (err, result)=>{
+    Expediente.deleteMany({_id: body._id}, (err, result)=>{
         if(err){
             res.json({
                 resultado: false,
