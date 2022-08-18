@@ -133,7 +133,7 @@ async function ImprimirDatos() {
             let btnMascota = document.createElement('button');
             btnMascota.onclick = function(){                
                 const timeoutId = setTimeout(function(){
-                window.location.replace("./MascotaCreacion.html?_idC"+listaPersonas[i]._id);
+                window.location.replace("./MascotaCreacion.html?_idC="+listaPersonas[i]._id);
             }, 1000);  
             };
             btnMascota.type = 'button';
@@ -146,7 +146,7 @@ async function ImprimirDatos() {
             let btnCita = document.createElement('button');
             btnCita.onclick = function(){                
                 const timeoutId = setTimeout(function(){
-                window.location.replace("./CrearCita.html?_idC"+listaPersonas[i]._id);
+                window.location.replace("./CrearCita.html?_idC="+listaPersonas[i]._id);
             }, 1000);  
             };
             btnCita.type = 'button';
@@ -159,7 +159,7 @@ async function ImprimirDatos() {
             let btnHotel = document.createElement('button');
             btnHotel.onclick = function(){                
                 const timeoutId = setTimeout(function(){
-                window.location.replace("./CrearReservacion.html?_idC"+listaPersonas[i]._id);
+                window.location.replace("./CrearReservacion.html?_idC="+listaPersonas[i]._id);
             }, 1000);  
             };
             btnHotel.type = 'button';
@@ -172,7 +172,7 @@ async function ImprimirDatos() {
             let btnTarjeta = document.createElement('button');
             btnTarjeta.onclick = function(){                
                 const timeoutId = setTimeout(function(){
-                window.location.replace("./MetodosPagoCreacion.html?_idC"+listaPersonas[i]._id);
+                window.location.replace("./MetodosPagoCreacion.html?_idC="+listaPersonas[i]._id);
             }, 1000);  
             };
             btnTarjeta.type = 'button';

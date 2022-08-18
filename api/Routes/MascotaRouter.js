@@ -119,27 +119,6 @@ router.get('/BuscarMascotasPersona', (req, res) => {
         });
       }
     });
-  } else if (
-    params.IdPersona != '' &&
-    params.IdPersona != null &&
-    params.IdPersona != undefined &&
-    (params.Nombre == '' || params.Nombre == null || params.Nombre == undefined)
-  ) {
-    Mascota.find({ IdPersona: params.IdPersona }, (err, IdPersonaBD) => {
-      if (err) {
-        res.json({
-          resultado: false,
-          msj: 'No se pudo obtener datos: ',
-          err,
-        });
-      } else {
-        res.json({
-          resultado: true,
-          msj: 'Los datos se obtuvieron de manera correcta por id: ',
-          IdPersonaBD,
-        });
-      }
-    });
   }
 });
 

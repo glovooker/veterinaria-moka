@@ -1,10 +1,10 @@
 'use strict';
 
-async function RegistrarCita(pCedula, pNombre, pCorreo, pPassword,pTelefono,pDireccion,pRol,pPerfilFB,pPerfilIG,pPerfilTW,pFotoPerfil) {
+async function GenerarCita(pFecInicio, pHoraInicio, pFecFinal, pHoraFinal,pTipo,pObservaciones,pMotivoCancela,pEstado,p_idVeterinario,p_idCliente,p_idMascota) {
     let result = {};
     await axios({
         method: 'post',
-        url: apiUrl + '/RegistrarPersona',
+        url: apiUrl + '/RegistrarCita',
         responseType: 'json',
         data: { 
             'FecInicio': pFecInicio,

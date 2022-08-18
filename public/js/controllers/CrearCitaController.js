@@ -1,141 +1,110 @@
 'use strict';
+  let PersonaLogueada = GetSesionActiva();
+  let queryString = window.location.search;
+  let urlParams = new URLSearchParams(queryString);
+  let idCita = urlParams.get("_idCita"); 
+  let idClteCita;
 
-/*Imprimir opciones en el select
-function imprimirTarjetas(pNumCliente) {
-    let option;
-    let listaMetodos = ObtenerMetodoPagoCliente(pNumCliente);
-    console.log(listaMetodos.length);
-    for (let i = 0; i < listaMetodos.length; i++) {
+  let fechaIni = document.getElementById("txtFechaIni");   
+  let selMascotas = document.getElementById("selMascotas");
+  let selDoctor = document.getElementById("selDoctor");
+  let linkVolver = document.getElementById('linkVolver'); 
+
+  btnRegistrar.addEventListener("click", Validaciones);
+  linkVolver.addEventListener("click", Volver);
+
+  if (PersonaLogueada.Rol != 3) {
+    idClteCita = urlParams.get("_idC"); 
+  } else {
+    idClteCita = PersonaLogueada._id; 
+  }
+
+  imprimirMascotasCliente(idClteCita);
+  imprimirDoctores();
+
+//////////////////////////////////////////////////////////////////////////
+//Llenar select de mascotas
+async function imprimirMascotasCliente(pidClteCita) {
+    let option; 
+    let mascotasCliente = await ObtenerMascotasCliente(pidClteCita);
+    for (let i = 0; i < mascotasCliente.length; i++) {
       option = document.createElement("option");
-      option.value = listaMetodos[i].NumTarjeta;
-      option.text = listaMetodos[i].NumTarjeta;
-      selMetodoPago.appendChild(option);
+      option.value = mascotasCliente[i]._id;
+      option.text = mascotasCliente[i].Nombre;
+      selMascotas.appendChild(option);
     }
   }
-  */
 
-  let personaConsultada;
-let queryString = window.location.search;
-let urlParams = new URLSearchParams(queryString);
-let acc = urlParams.get('acc'); //M = Modificar C=Crear nuevo(CrudPersonas.html)
-if (acc == null) {
-  acc = 'N'; //Nuevo  (no se llama desde el CRUD)  
-} 
-
-btnRegistrar.addEventListener("click", Validaciones);
-linkVolver.addEventListener("click", Volver);
-
-desplegarDatosConsultados();
-
+////////////////////////////////////////////////////////////////////////// 
+//Llenar select de doctores
+async function imprimirDoctores() {
+    let option;
+    let listaDoc = await GetPersonasRol(2);
+    for (let i = 0; i < listaDoc.length; i++) {
+      option = document.createElement("option");
+      option.value = listaDoc[i]._id;
+      option.text = listaDoc[i].Nombre;
+      selDoctor.appendChild(option);
+    }
+  }
 //////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
-
+//validaciones de los campos 
 function Validaciones() {
   if (ValidarCampos() == false) {
     return false;
-  } else if (ValidarPass() == false) {
+  } else if (ValidarFecha() == false) {
     return false;
   } else {
   /*********************************************************************/
-  if (acc == 'M') {
-    ActualizarPersona();
-    LimpiarLSPersonaConsultada();
-    const timeoutId = setTimeout(function(){
-      window.location.replace("./CrudPersonas.html");}, 2000);        
-  } else {
-    CrearPersona();
-  }  
+    CrearCita(); 
   /*********************************************************************/
   }
 }
+////////////////////////////////////////////////////////////////////////
+function ValidarFecha() {
+  let fecHoy =  new Date();
+  let fechaCita = new Date(fechaIni.value.replace('-','/'));
 
-///////////////////////////////////////////////////////////////////////////
-function ValidarPass() {
-  /*Valida que password y confirmacion sean iguales */
-  let pass1 = document.getElementById("txtPass");
-  let pass2 = document.getElementById("txtPass2");
+  if (fechaCita < fecHoy) {
+    //fecha debe ser mayor a HOY
+    //alert(fecha.value);
+    //alert(new Date(fecha.value) + " " + new Date());
 
-  if (pass1.value != pass2.value) {
-    ImprimirMsjError(
-      "Contraseña y confirmación deben ser iguales, ¡Favor validar!"
-    );
-    ResaltarInputInvalido("txtPass");
-    ResaltarLabelInvalido("lblPass");
-    ResaltarInputInvalido("txtPass2");
-    ResaltarLabelInvalido("lblPass2");
+    ImprimirMsjError("La fecha de la cita " + fechaCita +" debe ser mayor a hoy "+ fecHoy);
+    ResaltarInputInvalido("txtFechaIni");
+    ResaltarLabelInvalido("txtFechaIni");
     return false;
   }
 }
-
 ///////////////////////////////////////////////////////////////////////////
- async function CrearPersona(){
-   let result = await RegistrarPersona(document.getElementById("txtidentificacion").value,    
-     document.getElementById("txtNombre").value,
-     document.getElementById("txtCorreo").value,
-     document.getElementById("txtPass").value,      
-     document.getElementById("txtTelefono").value,
-     document.getElementById("txtDireccion").value,
-     3,"","","",""); 
+ async function CrearCita(){
+   let estadoCita;
+   if (PersonaLogueada.Rol ==3) {
+      estadoCita = 'R';
+   }else{
+      estadoCita = 'A';
+   }
+
+   let result = await GenerarCita(fechaIni.value,
+   document.getElementById("txtHoraCitaIni").value,"","","C", document.getElementById("txtMotivoCita").value,"",estadoCita,selDoctor.value,idClteCita,selMascotas.value);
 
    if (result.resultado == true) {
        ImprimirMsjSuccess(result.msj);
        const timeoutId = setTimeout(function(){             
-            if (acc == 'N') {  
-              window.location.replace("./InicioDeSesion.html");
+           if (PersonaLogueada.Rol ==3) {  
+              window.location.replace("./PaginaInicio.html");
             } else {
-              window.location.replace("./CrudPersonas.html");
+              window.location.replace("./CrudCitas.html");
             }
 
             }, 2000);         
-      } else {
-        if (result.err.code = 1100) {   
-          ImprimirMsjError('La cédula y/o correo indicado ya existen. ¡Favor validar!');
-          } else { 
-              ImprimirMsjError(result.msj);
-        }
+      } else { 
+           ImprimirMsjError(result.msj); 
       }
   }
-
-  async function ActualizarPersona(){
-    let result = await ModificarPersona(personaConsultada._id, 
-      document.getElementById("txtidentificacion").value,     
-      document.getElementById("txtNombre").value,
-      document.getElementById("txtCorreo").value,
-      document.getElementById("txtPass").value,      
-      document.getElementById("txtTelefono").value,
-      document.getElementById("txtDireccion").value,
-      3,
-      personaConsultada.PerfilFB,
-      personaConsultada.PerfilIG,
-      personaConsultada.PerfilTW,
-      personaConsultada.FotoPerfil,
-      personaConsultada.Estado); 
- 
-    if (result.resultado == true) {
-        ImprimirMsjSuccess(result.msj);       
-       } else {
-           ImprimirMsjError(result.msj);
-       }
-   }
   
-  function desplegarDatosConsultados(){
-    if (acc == 'M') {
-        personaConsultada = GetPersonaConsultada();
-        document.getElementById('txtInicio').innerHTML = 'Actualizar Persona';
-        document.getElementById("txtidentificacion").value =  personaConsultada.Cedula;
-        document.getElementById("txtNombre").value = personaConsultada.Nombre;
-        document.getElementById("txtCorreo").value = personaConsultada.Correo;
-        document.getElementById("txtPass").value = personaConsultada.Password; 
-        document.getElementById("txtPass2").value = personaConsultada.Password;      
-        document.getElementById("txtTelefono").value = personaConsultada.Telefono;
-        document.getElementById("txtDireccion").value = personaConsultada.Direccion;
-    }
-  }
-
-  function Volver(){
-    LimpiarLSPersonaConsultada();
-    let linkVolver = document.getElementById('linkVolver');     
-    if (acc == 'C' || acc == 'M'){    
+  function Volver(){         
+    if (PersonaLogueada.Rol !=3){    
       linkVolver.href = "./CrudPersonas.html";  
     } else {
       linkVolver.href = "./PaginaInicio.html";
