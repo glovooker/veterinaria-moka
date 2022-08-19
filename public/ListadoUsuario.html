@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización De Reportes</title>
+</head>
+<header>
+    <nav>
+        <div class="logo-container">
+            <a href="#">
+                <img src="" alt="Logo">
+            </a>
+            <h2>Veterinaria Moka</h2>
+        </div>
+
+        <div class="navegation-container">
+            <a href="">Inicio</a>
+            <a href="">Clínica</a>
+            <a href="">Hotel</a>
+        </div>
+
+    </nav>
+</header>
+
+<body>
+    <form action="" id="formulario">
+        <container>
+            <h1>Administrar Usuarios</h1>
+            <div>
+                <h3>Filtros</h3>
+                <div>
+                    <form>
+                        <label for="filtrar">Buscar</label>
+                        <input id="filtrar" type="text">
+                        <button  type="button" id="buscar" onclick="filtrar()">Buscar</button>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <table id="tablaUsuario">
+                    <caption>Usuarios</caption>
+                    <thead>
+                        <tr>
+                            <th>Nombre del cliente</th>
+                            <th>Usuario</th>
+                            <th>Rol</th>
+                            <th>Teléfono</th>
+                            <th>Email</th>
+                            <th>Cedula</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>
+            </div>
+        </container>
+    </form>
+
+    <footer>
+        <h5>Clever Solutions - 2022</h5>
+    </footer>
+    <script src="./js/controllers/ListadoUsuariosController.js"></script>
+    <script src="./js/services/UsuariosService.js"></script>
+</body>

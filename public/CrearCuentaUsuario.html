@@ -16,10 +16,10 @@
     <header>
         <nav class="navbar">
             <div class="logo-container">
-                <a href="./CreacionCuenta.html">
+                <a id="linkVolver" href="">
                     <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
                 </a>
-            </div>
+            </div>            
             <div class="navegation-container">
                 <!-- <a href="./PaginaInicio.html">Inicio</a>
                 <a href="./ReservarCita.html">Clínica</a>
@@ -42,7 +42,7 @@
         <div class="signup-container">
 
             <div class="form-container">
-                <h2>Creación de Cuenta</h2>
+                <h2 id="txtInicio">Creación de Cuenta</h2>
                 <form>
                     <label for="txtidentificacion" id="lblidentificacion" class="lblInput">Número de Cédula</label>
                     <input type="number" id="txtidentificacion" required min="" max="">
@@ -84,7 +84,8 @@
                 </form>
             </div>
 
-            <button type=button id="btnRegistrar" class="form-btn">Registrar</button>
+            <button type=button id="btnRegistrar" class="form-btn">Guardar</button>
+
         </div>
     </section>
 
@@ -100,9 +101,9 @@
     <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>    
     <script src="./js/controllers/ControllerGeneral.js"></script>
     <script src="js/Constantes.js"></script>
+    <script src="js/services/CrudPersonasService.js"></script>
     <script src="./js/services/PersonaService.js"></script>
-    <script src="./js/controllers/CreacionCuentaUsuarioController.js"></script>
-    <script src="./js/services/CrudPersonasService.js"></script>
+    <script src="./js/controllers/CreacionCuentaUsuarioController.js"></script>  
 
 </body>
 

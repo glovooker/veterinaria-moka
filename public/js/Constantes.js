@@ -55,6 +55,32 @@ function formatDate(date) {
         ].join(':')
     );
 }
+
 function padTo2Digits(num) {
     return num.toString().padStart(2, '0');
+}
+
+function ObtenerEstadoCita(pEstado){
+    switch ((pEstado)) {
+        case 'R':            
+            return 'Registrado';    
+        case 'A':            
+            return 'Aprobado';   
+        case 'C':            
+            return 'Cancelado';                 
+        case 'F':            
+            return 'Finalizado';
+        case 'P':            
+            return 'Pagado';    
+    }
+}
+
+function ObtenerTipoCita(pTipo){
+    switch (pTipo) {
+        case 'C':            
+            return 'Cita';    
+        default:
+            return 'Reservación';
+    }
+
 }

@@ -7,13 +7,14 @@ const schemaCita = new mongoose.Schema({
     HoraInicio: {type: String, required: true, unique: false},
     FecFinal: {type: String, required: false, unique: false},
     HoraFinal: {type: String, required: false, unique: false}, 
-    Tipo: {type: Number, required: true, unique: false}, 
-    Observaviones: {type: String, required: false, unique: false},   
+    Tipo: {type: String, required: true, unique: false}, 
+    Observaciones: {type: String, required: false, unique: false},   
     MotivoCancela: {type: String, required: false, unique: false}, 
-    Estado: {type: Number, required: true, unique: false}, 
-    Veterinario : {type: Schema.ObjectId, ref: "Usuario" }, 
-    Cliente : {type: Schema.ObjectId, ref: "Cliente" },
-    Mascota : {type: Schema.ObjectId, ref: "Mascota" }
+    Estado: {type: String, required: true, unique: false}, 
+    Estrellas:{type: Number, requiered: true, unique: false},
+    _idVeterinario: {type: String, required: false, unique: false}, 
+    _idCliente: {type: String, required: true, unique: false}, 
+    _idMascota : {type: String, required: true, unique: false}
 });
 
 module.exports = mongoose.model('Cita', schemaCita, 'Citas');

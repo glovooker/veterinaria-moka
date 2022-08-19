@@ -46,7 +46,7 @@ async function ObtenerListaPersonas() {
 async function BuscarPersona(p_id, pCedula) {
     let result = {};
     await axios({
-        method: 'post',
+        method: 'get',
         url: apiUrl + '/BuscarPersona',
         responseType: 'json',
         params: {
@@ -61,7 +61,7 @@ async function BuscarPersona(p_id, pCedula) {
     return result;
 }
 
-async function ModificarPersona(p_id, pCedula, pNombre, pCorreo, pPassword,pTelefono,pDireccion,pPerfilFB,pPerfilIG, pPerfilTW, pFotoPerfil,pEstado) {
+async function ModificarPersona(p_id, pCedula, pNombre, pCorreo, pPassword,pTelefono,pDireccion,pRol,pPerfilFB,pPerfilIG, pPerfilTW, pFotoPerfil,pEstado) {
     let result = {};
     await axios({
         method: 'post',
@@ -75,6 +75,7 @@ async function ModificarPersona(p_id, pCedula, pNombre, pCorreo, pPassword,pTele
             'Password': pPassword,
             'Telefono': pTelefono,
             'Direccion': pDireccion,
+            'Rol': pRol,
             'PerfilFB': pPerfilFB,
             'PerfilIG': pPerfilIG,
             'PerfilTW': pPerfilTW,            
@@ -104,4 +105,5 @@ async function BuscarPersonaPorId(p_id){
         console.log(err);
     });
     return result;
+
 }
