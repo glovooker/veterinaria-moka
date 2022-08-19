@@ -1,5 +1,33 @@
 'use strict';
 
+async function GenerarCita(pFecInicio, pHoraInicio, pFecFinal, pHoraFinal,pTipo,pObservaciones,pMotivoCancela,pEstado,p_idVeterinario,p_idCliente,p_idMascota) {
+    let result = {};
+    await axios({
+        method: 'post',
+        url: apiUrl + '/RegistrarCita',
+        responseType: 'json',
+        data: { 
+            'FecInicio': pFecInicio,
+            'HoraInicio': pHoraInicio,
+            'FecFinal': pFecFinal,
+            'HoraFinal': pHoraFinal,
+            'Tipo': pTipo,
+            'Observaciones': pObservaciones,
+            'MotivoCancela': pMotivoCancela,
+            'Estado': pEstado,
+            '_idVeterinario': p_idVeterinario,
+            '_idCliente': p_idCliente,
+            '_idMascota': p_idMascota
+        }
+    }).then((res) => {
+        result = res.data;
+        console.log(result);
+    }).catch((err) => {
+        console.log(err);
+    });
+    return result;
+}
+
 async function ObtenerListaCitas() {
     let result = {};
     await axios({

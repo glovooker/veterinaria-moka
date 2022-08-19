@@ -53,6 +53,31 @@ router.get('/ListarPersonas', (req, res)=>{
     }).sort({Nombre:1, Rol:1});
 });
 
+router.get('/ListarPersonasRol', (req, res)=>{ 
+    let params = req.query;
+    if (
+      params.Rol != '' &&
+      params.Rol != null &&
+      params.Rol != undefined
+    ) {    
+    Persona.find({Rol: params.Rol },(err, ListaPersonasBD) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj:'No se pudo obtener los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera satisfactoria',
+                ListaPersonasBD
+            });
+        }
+    }).sort({Nombre:1});
+  }
+});
+
 router.get('/BuscarPersona', (req, res) => {
     let params = req.query;
     if (params.Cedula != "" && params.Cedula != null && params.Cedula != undefined) {

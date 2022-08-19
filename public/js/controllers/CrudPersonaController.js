@@ -125,15 +125,76 @@ async function ImprimirDatos() {
                 }
             };
 
+            
             btnInactivar.type = 'button';
             btnInactivar.innerText = '💡'; 
             btnInactivar.title = 'Activar/Desactivar';
             btnInactivar.classList.add('eliminarBtn');
 
+            ////////////////////////////////////////////////////
+            //Crear Mascotas a la persona
+            ////////////////////////////////////////////////////            
+            let btnMascota = document.createElement('button');
+            btnMascota.onclick = function(){                
+                const timeoutId = setTimeout(function(){
+                window.location.replace("./MascotaCreacion.html?_idC="+listaPersonas[i]._id);
+            }, 1000);  
+            };
+            btnMascota.type = 'button';
+            btnMascota.innerText = '🐕​';
+            btnMascota.title = 'Crear Mascota';
+            btnMascota.classList.add('DetalleBtn');
+            ////////////////////////////////////////////////////
+            //Crear cita a la persona
+            ////////////////////////////////////////////////////            
+            let btnCita = document.createElement('button');
+            btnCita.onclick = function(){                
+                const timeoutId = setTimeout(function(){
+                window.location.replace("./CrearCita.html?_idC="+listaPersonas[i]._id);
+            }, 1000);  
+            };
+            btnCita.type = 'button';
+            btnCita.innerText = '📅​';
+            btnCita.title = 'Crear Cita';
+            btnCita.classList.add('modificarBtn');      
+            ////////////////////////////////////////////////////
+            //Crear reservacion a la persona
+            ////////////////////////////////////////////////////            
+            let btnHotel = document.createElement('button');
+            btnHotel.onclick = function(){                
+                const timeoutId = setTimeout(function(){
+                window.location.replace("./CrearReservacion.html?_idC="+listaPersonas[i]._id);
+            }, 1000);  
+            };
+            btnHotel.type = 'button';
+            btnHotel.innerText = '🏨';
+            btnHotel.title = 'Crear Reservacion';
+            btnHotel.classList.add('DetalleBtn');                     
+            ////////////////////////////////////////////////////
+            //Crear tarjetas a la persona
+            ////////////////////////////////////////////////////            
+            let btnTarjeta = document.createElement('button');
+            btnTarjeta.onclick = function(){                
+                const timeoutId = setTimeout(function(){
+                window.location.replace("./MetodosPagoCreacion.html?_idC="+listaPersonas[i]._id);
+            }, 1000);  
+            };
+            btnTarjeta.type = 'button';
+            btnTarjeta.innerText = '💳​';
+            btnTarjeta.title = 'Crear Tarjeta';
+            btnTarjeta.classList.add('eliminarBtn');
+            ////////////////////////////////////////////////////            
+
             let divBtns = document.createElement('div');
             divBtns.appendChild(btnPerfil);
             divBtns.appendChild(btnEdit);            
             divBtns.appendChild(btnInactivar);
+            divBtns.appendChild(btnMascota);
+            divBtns.appendChild(btnCita);
+            divBtns.appendChild(btnHotel);
+            divBtns.appendChild(btnTarjeta);
+
+            ///////////////////////////////////////////////////
 
             celdaCedula.innerHTML = listaPersonas[i].Cedula;
             celdaNombre.innerHTML = listaPersonas[i].Nombre;

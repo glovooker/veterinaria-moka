@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/StyleGeneral.css">
     <link rel="stylesheet" href="./css/Tabla.css">
     <link rel="stylesheet" href="./css/webfont/stylesheet.css">
-    <title>Moka | Clínica</title>
+    <title>Moka | Hotel</title>
 </head>
 
 <body>
@@ -41,7 +41,7 @@
     <section class="visualizacion-citas">
         <div class="citas-container">
             <div class="title-container-mis-citas">                
-                <h2>Consulta General de Citas</h2>
+                <h2>Consulta General de Reservaciones</h2>
             </div>
 
             <div class="filter-container"> 
@@ -55,13 +55,14 @@
                 <table class="table" id="tablaCitas">
                     <thead>
                         <tr>
-                            <th>Fecha</th>
+                            <th>Fecha Entrada</th>
                             <th>Hora</th>
-                            <th>Veterinario</th>
+                            <th>Fecha Salida</th>
+                            <th>Hora</th>
                             <th>Cliente</th>                            
                             <th>Mascota</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
+                            <th>Estado</th> 
+                            <th>Acciones</th>                            
                         </tr>
                     </thead>
                     <tbody id="tbdCitas"></tbody>
@@ -88,7 +89,7 @@
     <script src="./js/services/CrudPersonasService.js"></script>
     <script src="./js/services/MascotaService.js"></script> 
     <script src="./js/services/CitasServices.js"></script>
-    <script src="./js/controllers/CrudCitasController.js" ></script>
+    <script src="./js/controllers/CrudReservacionesController.js" ></script>
 
 
 </body>

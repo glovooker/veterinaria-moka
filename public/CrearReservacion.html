@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/StyleGeneral.css">
-    <link rel="stylesheet" href="./css/ReservarCita.css">
+    <link rel="stylesheet" href="./css/ReservarHabitacion.css">
     <link rel="stylesheet" href="./css/Tabla.css">
     <link rel="stylesheet" href="./css/webfont/stylesheet.css">
-    <title>Moka | Clínica</title>
+    <title>Moka | Hotel</title>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
                 <a id="linkVolver" href="">
                     <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
                 </a>
-            </div>
+            </div>            
             <div class="navegation-container">
                 <a href="./PaginaInicio.html">Inicio</a>
                 <a href="./ReservarCita.html">Clínica</a>
@@ -39,11 +39,12 @@
         </nav>
     </header>
 
-    <section class="reservar-cita">
+
+    <section class="reservar-habitacion">
         <div class="form-container">
-            <div class="title-container-reservar-cita">
-                <i class="fa-solid fa-book-medical"></i>
-                <h2>Reservar una Cita</h2>
+            <div class="title-container-reservar-habitacion">
+                <i class="fa-solid fa-shield-cat"></i>
+                <h2>Reservar una Habitación</h2>
             </div>
 
             <div class="form-select">
@@ -54,28 +55,32 @@
             </div>
 
             <div class="form-date">
-                <label for="txtFechaIni" id="lblFechaCita" class="lblInput">Fecha de la Cita</label>
+                <label for="txtFechaIni" id="lblFechaCita" class="lblInput">Fecha de Ingreso</label>
                 <input type="date" id="txtFechaIni" required>
             </div>
 
             <div class="form-time">
-                <label for="txtHoraCitaIni" id="lblHoraCita" class="lblInput">Hora de la Cita</label>
+                <label for="txtHoraCitaIni" id="lblHoraCita" class="lblInput">Hora de Ingreso</label>
                 <input type="time" id="txtHoraCitaIni" required>
             </div>
 
-            <div class="form-select">
-                <label for="selDoctor" id="lblMedico" class="lblSelect">Seleccione un Veterinario</label>
-                <select id="selDoctor" required>
-                    <option value="">-Seleccione un Veterinario-</option> 
-                </select>
+            <div class="form-date">
+                <label for="txtFechaFin" id="lblFechaCitaFin" class="lblInput">Fecha de Salida</label>
+                <input type="date" id="txtFechaFin" required>
+            </div>
+
+            <div class="form-time">
+                <label for="txtHoraCitaFin" id="lblHoraCitaFin" class="lblInput">Hora de Salida</label>
+                <input type="time" id="txtHoraCitaFin" required>
             </div>
 
             <div class="form-text-area">
-                <label for="txtMotivoCita" id="lblMotivoCita" class="lblTextArea">Indique el Motivo de la Cita</label>
+                <label for="txtMotivoCita" id="lblMotivoCita" class="lblTextArea">Indique cuidados para su mascota</label>
                 <textarea id="txtMotivoCita" cols="30" rows="9" required></textarea>
-            </div>
+            </div>            
 
             <button type="button" id="btnRegistrar" class="form-btn">Registrar</button>
+
         </div>
     </section>
 
@@ -96,8 +101,8 @@
     <script src="./js/services/PersonaService.js"></script>
     <script src="./js/services/MascotaService.js"></script>
     <script src="./js/services/CitasServices.js"></script>
-    <script src="./js/controllers/CrearCitaController.js"></script>   
-   
+    <script src="./js/controllers/CrearReservacionController.js"></script>     
+
 </body>
 
 </html>

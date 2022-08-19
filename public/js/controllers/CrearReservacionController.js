@@ -5,9 +5,9 @@
   let idCita = urlParams.get("_idCita"); 
   let idClteCita;
 
-  let fechaIni = document.getElementById("txtFechaIni");   
+  let fechaIni = document.getElementById("txtFechaIni");  
+  let fechaFin = document.getElementById("txtFechaFin");  
   let selMascotas = document.getElementById("selMascotas");
-  let selDoctor = document.getElementById("selDoctor");
   let linkVolver = document.getElementById('linkVolver'); 
 
   btnRegistrar.addEventListener("click", Validaciones);
@@ -19,8 +19,7 @@
     idClteCita = PersonaLogueada._id; 
   }
 
-  imprimirMascotasCliente(idClteCita);
-  imprimirDoctores();
+  imprimirMascotasCliente(idClteCita); 
 
 //////////////////////////////////////////////////////////////////////////
 //Llenar select de mascotas
@@ -35,18 +34,6 @@ async function imprimirMascotasCliente(pidClteCita) {
     }
   }
 
-////////////////////////////////////////////////////////////////////////// 
-//Llenar select de doctores
-async function imprimirDoctores() {
-    let option;
-    let listaDoc = await GetPersonasRol(2);
-    for (let i = 0; i < listaDoc.length; i++) {
-      option = document.createElement("option");
-      option.value = listaDoc[i]._id;
-      option.text = listaDoc[i].Nombre;
-      selDoctor.appendChild(option);
-    }
-  }
 //////////////////////////////////////////////////////////////////////////
 //validaciones de los campos 
 function Validaciones() {
@@ -64,25 +51,26 @@ function Validaciones() {
 function ValidarFecha() {
   let fecHoy =  new Date();
   let fechaCita = new Date(fechaIni.value.replace('-','/'));
+  let fechaCitaFin = new Date(fechaFin.value.replace('-','/'));
 
-  if (fechaCita < fecHoy) { 
-    ImprimirMsjError("La fecha de la reservación debe ser mayor a hoy ");
+  if (fechaCita < fecHoy) {
+    ImprimirMsjError("La fecha de la cita  debe ser mayor a hoy");
     ResaltarInputInvalido("txtFechaIni");
     ResaltarLabelInvalido("txtFechaIni");
     return false;
   }
+  if (fechaCitaFin <= fechaCita) {
+    ImprimirMsjError("La fecha de salida debe ser posterior a la de ingreso");
+    ResaltarInputInvalido("txtFechaFin");
+    ResaltarLabelInvalido("txtFechaFin");
+    return false;   
+  }
 }
 ///////////////////////////////////////////////////////////////////////////
  async function CrearCita(){
-   let estadoCita;
-   if (PersonaLogueada.Rol ==3) {
-      estadoCita = 'R';
-   }else{
-      estadoCita = 'A';
-   }
-
-   let result = await GenerarCita(fechaIni.value,
-   document.getElementById("txtHoraCitaIni").value,"","","C", document.getElementById("txtMotivoCita").value,"",estadoCita,selDoctor.value,idClteCita,selMascotas.value);
+//(pFecInicio, pHoraInicio, pFecFinal, pHoraFinal,pTipo,pObservaciones,
+//pMotivoCancela,pEstado,p_idVeterinario,p_idCliente,p_idMascota)  
+   let result = await GenerarCita(fechaIni.value, document.getElementById("txtHoraCitaIni").value, fechaFin.value, document.getElementById("txtHoraCitaFin").value, "R", document.getElementById("txtMotivoCita").value, "","A","",idClteCita,selMascotas.value);
 
    if (result.resultado == true) {
        ImprimirMsjSuccess(result.msj);
@@ -90,7 +78,7 @@ function ValidarFecha() {
            if (PersonaLogueada.Rol ==3) {  
               window.location.replace("./PaginaInicio.html");
             } else {
-              window.location.replace("./CrudCitas.html");
+              window.location.replace("./CrudReservaciones.html");
             }
 
             }, 2000);         

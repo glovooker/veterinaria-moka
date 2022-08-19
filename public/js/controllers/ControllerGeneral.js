@@ -258,7 +258,7 @@ function ValidarCampos() {
         textAreas[i].value == undefined
       ) {
         ImprimirMsjError(
-          "Este valor es requerido: " + lblTextAreas[i].textContent
+           lblTextAreas[i].textContent + " es requerido, ¡Favor validar! "
         );
         ResaltarInputInvalido(textAreas[i].id);
         ResaltarLabelInvalido(lblTextAreas[i].id);
