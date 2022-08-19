@@ -88,9 +88,15 @@ async function ImprimirDatos() {
            let btnInactivar = document.createElement('button');
             btnInactivar.onclick = async function(){
                 let confirmacion = false;
-                let msj = 'Desea inactivar el registro de ' + listaPersonas[i].Nombre;
+                let msj;
+                let vEstado; 
+
                 if  (listaPersonas[i].Estado == 0){
                     msj = 'Desea activar el registro de ' + listaPersonas[i].Nombre;
+                    vEstado = 1;
+                } else  {
+                    msj  = 'Desea inactivar el registro de ' + listaPersonas[i].Nombre;
+                    vEstado = 0;
                 }
 
                 await Swal.fire({
@@ -102,13 +108,8 @@ async function ImprimirDatos() {
                 }).then((res) => {
                     confirmacion = res.isConfirmed;
                 });
-                if (confirmacion == true) {                    
-                    let vEstado = 0;
-                    if  (listaPersonas[i].Estado == 0){
-                        vEstado = 1;
-                    }
-
-                    let result =  await ModificarPersona(listaPersonas[i]._id, listaPersonas[i].Cedula, listaPersonas[i].Nombre, listaPersonas[i].Correo, listaPersonas[i].Password, listaPersonas[i].Telefono, listaPersonas[i].Direccion, listaPersonas[i].Rol, listaPersonas[i].PerfilFB, listaPersonas[i].PerfilIG, listaPersonas[i].PerfilTW, listaPersonas[i].FotoPerfil, vEstado); 
+                if (confirmacion == true) {                  
+                    let result =  await ModificarPersona(listaPersonas[i]._id, listaPersonas[i].Cedula, listaPersonas[i].Nombre, listaPersonas[i].Correo, listaPersonas[i].Password, listaPersonas[i].Telefono, listaPersonas[i].Direccion, listaPersonas[i].Rol,listaPersonas[i].PerfilFB, listaPersonas[i].PerfilIG, listaPersonas[i].PerfilTW, listaPersonas[i].FotoPerfil, vEstado); 
 
                     if (result.resultado == true) {
                         ImprimirMsjSuccess(result.msj);
@@ -120,15 +121,76 @@ async function ImprimirDatos() {
                 }
             };
 
+            
             btnInactivar.type = 'button';
             btnInactivar.innerText = '💡'; 
             btnInactivar.title = 'Activar/Desactivar';
             btnInactivar.classList.add('eliminarBtn');
 
+            ////////////////////////////////////////////////////
+            //Crear Mascotas a la persona
+            ////////////////////////////////////////////////////            
+            let btnMascota = document.createElement('button');
+            btnMascota.onclick = function(){                
+                const timeoutId = setTimeout(function(){
+                window.location.replace("./MascotaCreacion.html?_idC="+listaPersonas[i]._id);
+            }, 1000);  
+            };
+            btnMascota.type = 'button';
+            btnMascota.innerText = '🐕​';
+            btnMascota.title = 'Crear Mascota';
+            btnMascota.classList.add('DetalleBtn');
+            ////////////////////////////////////////////////////
+            //Crear cita a la persona
+            ////////////////////////////////////////////////////            
+            let btnCita = document.createElement('button');
+            btnCita.onclick = function(){                
+                const timeoutId = setTimeout(function(){
+                window.location.replace("./CrearCita.html?_idC="+listaPersonas[i]._id);
+            }, 1000);  
+            };
+            btnCita.type = 'button';
+            btnCita.innerText = '📅​';
+            btnCita.title = 'Crear Cita';
+            btnCita.classList.add('modificarBtn');      
+            ////////////////////////////////////////////////////
+            //Crear reservacion a la persona
+            ////////////////////////////////////////////////////            
+            let btnHotel = document.createElement('button');
+            btnHotel.onclick = function(){                
+                const timeoutId = setTimeout(function(){
+                window.location.replace("./CrearReservacion.html?_idC="+listaPersonas[i]._id);
+            }, 1000);  
+            };
+            btnHotel.type = 'button';
+            btnHotel.innerText = '🏨';
+            btnHotel.title = 'Crear Reservacion';
+            btnHotel.classList.add('DetalleBtn');                     
+            ////////////////////////////////////////////////////
+            //Crear tarjetas a la persona
+            ////////////////////////////////////////////////////            
+            let btnTarjeta = document.createElement('button');
+            btnTarjeta.onclick = function(){                
+                const timeoutId = setTimeout(function(){
+                window.location.replace("./MetodosPagoCreacion.html?_idC="+listaPersonas[i]._id);
+            }, 1000);  
+            };
+            btnTarjeta.type = 'button';
+            btnTarjeta.innerText = '💳​';
+            btnTarjeta.title = 'Crear Tarjeta';
+            btnTarjeta.classList.add('eliminarBtn');
+            ////////////////////////////////////////////////////            
+
             let divBtns = document.createElement('div');
             divBtns.appendChild(btnPerfil);
             divBtns.appendChild(btnEdit);            
             divBtns.appendChild(btnInactivar);
+            divBtns.appendChild(btnMascota);
+            divBtns.appendChild(btnCita);
+            divBtns.appendChild(btnHotel);
+            divBtns.appendChild(btnTarjeta);
+
+            ///////////////////////////////////////////////////
 
             celdaCedula.innerHTML = listaPersonas[i].Cedula;
             celdaNombre.innerHTML = listaPersonas[i].Nombre;

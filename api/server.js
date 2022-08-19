@@ -49,5 +49,11 @@ function hadleError(res, reason, message, code) {
 //conexion a todas las rutas del BackEnd
  const personas = require('./Routes/PersonaRouter');
  app.use('/api', personas);
-// const personas = require('./Routes/PersonaRoute');
-// app.use('/api',personas);
+
+ const mascota = require('./Routes/MascotaRouter');
+ app.use('/api',mascota);
+ 
+ const citas = require('./Routes/CitaRouter');
+ app.use('/api', citas); 
+
+

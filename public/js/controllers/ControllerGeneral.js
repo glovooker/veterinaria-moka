@@ -150,6 +150,7 @@ function ValidarCampos() {
       }
 
       //valido los campos INPUTS tipo NUMBER
+      //valido los campos INPUTS tipo NUMBER
       if (inputs[i].type.toLowerCase() == "number") {
         if (
           inputs[i].value == "" ||
@@ -163,7 +164,28 @@ function ValidarCampos() {
           ResaltarInputInvalido(inputs[i].id);
           ResaltarLabelInvalido(lblInputs[i].id);
           return false;
-        }
+        } else {if ( Number(inputs[i].min) != "" && 
+            Number(inputs[i].min)  != null && 
+            Number(inputs[i].min)  != undefined ) {
+              if (Number(inputs[i].value) < Number(inputs[i].min)) {
+                ImprimirMsjError('Cantidad '+inputs[i].value+' debe ser mayor a ' + inputs[i].min + ' ¡Favor validar!');            
+                ResaltarInputInvalido(inputs[i].id);
+                ResaltarLabelInvalido(lblInputs[i].id);
+                return false;
+              }
+            }
+            //
+            if ( Number(inputs[i].max) != "" && 
+            Number(inputs[i].max)  != null && 
+            Number(inputs[i].max)  != undefined ) {
+              if ( Number(inputs[i].value) > Number(inputs[i].max)) {
+                ImprimirMsjError('Cantidad '+inputs[i].value +' debe ser menor o igual a ' +inputs[i].max + ' ¡Favor validar!');            
+                ResaltarInputInvalido(inputs[i].id);
+                ResaltarLabelInvalido(lblInputs[i].id);
+                return false;
+              }
+            }            
+       }
       }
     }
   } //fin validar inputs
@@ -236,7 +258,7 @@ function ValidarCampos() {
         textAreas[i].value == undefined
       ) {
         ImprimirMsjError(
-          "Este valor es requerido: " + lblTextAreas[i].textContent
+           lblTextAreas[i].textContent + " es requerido, ¡Favor validar! "
         );
         ResaltarInputInvalido(textAreas[i].id);
         ResaltarLabelInvalido(lblTextAreas[i].id);

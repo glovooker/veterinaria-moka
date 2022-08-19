@@ -43,10 +43,27 @@ async function ObtenerListaPersonas() {
     return result;
 }
 
+async function ObtenerPersonasRol(pRol) {
+    let result = {};
+    await axios({
+        method: 'get',
+        url: apiUrl + '/ListarPersonasRol',
+        responseType: 'json',
+        params: {
+            'Rol': pRol 
+        }        
+    }).then((res) => {
+        result = res.data;
+    }).catch((err) => {
+        console.log(err);
+    });
+    return result;
+}
+
 async function BuscarPersona(p_id, pCedula) {
     let result = {};
     await axios({
-        method: 'post',
+        method: 'get',
         url: apiUrl + '/BuscarPersona',
         responseType: 'json',
         params: {
@@ -89,4 +106,3 @@ async function ModificarPersona(p_id, pCedula, pNombre, pCorreo, pPassword,pTele
     });
     return result;
 }
-
