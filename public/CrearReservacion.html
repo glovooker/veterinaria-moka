@@ -48,37 +48,36 @@
             </div>
 
             <div class="form-select">
-                <label for="txtMascota" id="lblMascota" class="lblSelect">Seleccione una Mascota</label>
-                <select id="txtMascota" required>
-                    <option value="">-Seleccione-</option> 
+                <label for="selMascotas" id="lblTipoMascota" class="lblSelect">Mascota</label>
+                <select id="selMascotas" required>
+                    <option value="">-Seleccione una Mascota-</option>
                 </select>
             </div>
 
             <div class="form-date">
-                <label for="txtFechaDeEntrada" id="lblFechaDeEntrada" class="lblInput">Fecha de Entrada</label>
-                <input type="date" id="txtFechaDeEntrada" required>
+                <label for="txtFechaIni" id="lblFechaCita" class="lblInput">Fecha de Ingreso</label>
+                <input type="date" id="txtFechaIni" required>
             </div>
 
             <div class="form-time">
-                <label for="txtHoraDeEntrada" id="lblHoraDeEntrada" class="lblInput">Hora de Entrada</label>
-                <input type="time" id="txtHoraDeEntrada" required>
+                <label for="txtHoraCitaIni" id="lblHoraCita" class="lblInput">Hora de Ingreso</label>
+                <input type="time" id="txtHoraCitaIni" required>
             </div>
 
             <div class="form-date">
-                <label for="txtFechaDeSalida" id="lblFechaDeSalida" class="lblInput">Fecha de Salida</label>
-                <input type="date" id="txtFechaDeSalida" required>
+                <label for="txtFechaFin" id="lblFechaCitaFin" class="lblInput">Fecha de Salida</label>
+                <input type="date" id="txtFechaFin" required>
             </div>
 
             <div class="form-time">
-                <label for="txtHoraDeSalida" id="lblHoraDeSalida" class="lblInput">Hora de Salida</label>
-                <input type="time" id="txtHoraDeSalida" required>
+                <label for="txtHoraCitaFin" id="lblHoraCitaFin" class="lblInput">Hora de Salida</label>
+                <input type="time" id="txtHoraCitaFin" required>
             </div>
 
             <div class="form-text-area">
-                <label for="txtCuidadosExtras" id="lblCuidadosExtras" class="lblTextArea">Indique los Cuidados para su
-                    Mascota</label>
-                <textarea id="txtCuidadosExtras" cols="30" rows="9" required></textarea>
-            </div>
+                <label for="txtMotivoCita" id="lblMotivoCita" class="lblTextArea">Indique cuidados para su mascota</label>
+                <textarea id="txtMotivoCita" cols="30" rows="9" required></textarea>
+            </div>            
 
             <button type="button" id="btnRegistrar" class="form-btn">Registrar</button>
 
@@ -92,13 +91,17 @@
         </a>
     </footer>
 
-    <script src="./js/services/EliminarReservacionesService.js"></script>
-    <script src="./js/controllers/EliminarReseController.js"></script>
-    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="./js/services/ReservarHabitacionServices.js"></script>
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>    
+    <script src="./js/controllers/ControllerUtilidades.js"></script>
     <script src="./js/controllers/ControllerGeneral.js"></script>
-    <script src="./js/controllers/ReservarHabitacionController.js"></script>
+    <script src="js/Constantes.js"></script> 
+    <script src="./js/services/InicioDeSesionService.js"></script>
+    <script src="./js/services/PersonaService.js"></script>
+    <script src="./js/services/MascotaService.js"></script>
+    <script src="./js/services/CitasServices.js"></script>
+    <script src="./js/controllers/CrearReservacionController.js"></script>     
 
 </body>
 

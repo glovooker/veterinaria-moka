@@ -50,7 +50,7 @@ router.get('/ListarCitas', (req, res)=>{
                 ListaCitasBD
             });
         }
-    }).sort({FecInicio:1, _idVeterinario:1, _idCliente:1,_idMascota:1});
+    }).sort({FecInicio:-1, HoraInicio:1,FecFinal:1,FecFinal:1,_idVeterinario:1, _idCliente:1,_idMascota:1});
 });
 
 router.post('/ModificarCita', function(req, res){
