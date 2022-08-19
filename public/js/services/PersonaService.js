@@ -89,3 +89,21 @@ async function ModificarPersona(p_id, pCedula, pNombre, pCorreo, pPassword,pTele
     });
     return result;
 }
+
+async function BuscarPersonaPorId(p_id){
+    let result = {};
+    await axios({
+        method: 'get',
+        url: apiUrl + '/BuscarPersonaPorId',
+        responseType: 'json',
+        params: { 
+            '_id': p_id
+        }
+    }).then((res) => {
+        result = res.data;
+    }).catch((err) => {
+        console.log(err);
+    });
+    return result;
+
+}

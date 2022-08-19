@@ -50,6 +50,9 @@ function hadleError(res, reason, message, code) {
  const personas = require('./Routes/PersonaRouter');
  app.use('/api', personas);
 
+const facturas = require('./Routes/FacturaRoute');
+app.use('/api', facturas);
+
  const mascota = require('./Routes/MascotaRouter');
  app.use('/api',mascota);
  

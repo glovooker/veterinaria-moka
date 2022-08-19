@@ -152,4 +152,24 @@ router.post('/ModificarPersona', function(req, res){
     );
 });
 
+router.get('/BuscarPersonaPorId',(req, res) => {
+    let params = req.query;
+    Persona.findOne({_id: params._id},(err,personaDB)=>{
+        if(err || personaDB===null){
+            res.json({
+                resultado:false,
+                msj:'No se pudo obtener datos',
+                err
+            });
+        }else{
+            res.json({
+                resultado:true,
+                msj:'Datos encontrados',
+                personaDB
+
+            })
+        }
+    });
+});
+
 module.exports = router;
