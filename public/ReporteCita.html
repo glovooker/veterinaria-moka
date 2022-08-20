@@ -33,20 +33,9 @@
                 <h3>Filtros</h3>
                 <div>
                     <form>
-                        <label for="txtVet">Veterinario asignado</label>
-                        <input type="text" id="txtVet">
-                        <label for="ranking">Ranking</label>
-                        <input type="text" id="ranking">
-                        <label for="txtUser">Nombre del cliente</label>
-                        <input type="text" id="txtUser">
-                        <label for="mascotatxt">Nombre de la mascota</label>
-                        <input type="text" id="mascotatxt">
-                        <label for="dtFecha">Fecha</label>
-                        <input type="date">
+                      
                     </form>
                 </div>
-                <button id="bttn" type="button" onclick="limpiar()">Limpiar Filtros</button>
-                <button  type="button" id="buscar" onclick="filtrar()">Buscar</button>
             </div>
             <div>
                 <table id="tablaReportes">
@@ -55,10 +44,11 @@
                         <tr>
                             <th>Nombre del cliente</th>
                             <th>Nombre de la mascota</th>
-                            <th>Veterinario</th>
                             <th>Fecha</th>
                             <th>Hora</th>
-                            <th>Ranking</th>
+                            <th>Veterinario asignado</th>
+                            
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -73,11 +63,19 @@
     <footer>
         <h5>Clever Solutions - 2022</h5>
     </footer>
+
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script src="js/Constantes.js"></script>
+    <script src="js/services/CitasServices.js"></script>
+    <script src="js/services/CrudPersonasService.js"></script>
+    <script src="js/controllers/VisualizacionReportesCitasController.js"></script>
 </body>
 
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="./js/services/ServiceReportes.js"></script>
-<script src="./js/controllers/VisualizacionReportesCitasController.js"></script>
 
 
 </html>
