@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/StyleGeneral.css">
+    <link rel="stylesheet" href="./css/Mascotas.css">
+    <link rel="stylesheet" href="./css/Tabla.css">
+    <link rel="stylesheet" href="./css/webfont/stylesheet.css">
+    <title>Moka | Mascotas</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a id="linkVolver" href="">
+                    <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
+                </a>
+            </div>
+            <div class="navegation-container">
+                <a href="./PaginaInicio.html">Inicio</a>
+                <a href="./ReservarCita.html">Clínica</a>
+                <a href="./ReservarHabitacion.html">Hotel</a>
+            </div>
+            <div class="profile-dropdown">
+                <a href="" class="profile-icon">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="./Cliente.html">Mi Perfil</a>
+                    <a href="./Mascotas.html">Mascotas</a>
+                    <a href="./InicioDeSesion.html">Cerrar Sesión</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="reservar-cita">
+        <div class="form-container">
+            <div class="title-container-reservar-cita">
+                <i class="fa-solid fa-paw"></i>
+                <h2>Registrar Mascota</h2>
+            </div>
+
+            <div class="form-date">
+                <label for="txtNombreMascota" id="lblNombreMascota" class="lblInput">Nombre de la Mascota</label>
+                <input type="text" id="txtNombreMascota" required>
+            </div>
+
+            <div class="form-select">
+                <label for="txtTipoDeMascota" id="lblMedico" class="lblSelect">Tipo de Mascota</label>
+                <select id="txtTipoDeMascota" required>
+                    <option value="">-Seleccione-</option>
+                    <option value="1">Perro</option>
+                    <option value="2">Gato</option>
+                    <option value="3">Vaca</option>
+                    <option value="4">Hamster</option>
+                </select>
+            </div>
+            <br>
+
+            <div class="form-date">
+                <label for="btnSubirImg" id="lblSubirImg">Foto de la Mascota</label>
+                <button type="button" id="btnSubirImg" class="form-btn">Subir Imagen</button>
+            </div>
+
+            <div class="form-text-area">
+                <label for="txtInfoAdicional" id="lblInfoAdicional" class="lblTextArea">Información
+                    Adicional</label>
+                <textarea id="txtInfoAdicional" cols="30" rows="9" required></textarea>
+            </div>
+
+            <button type="button" id="btnRegistrar" class="form-btn">Registrar</button>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <h5>Powered by</h5>
+        <a href="https://glovooker.github.io/landing-page-bisoft-1/">
+            <img src="./img/LogoCleverSolutions.svg" alt="Logo Clever Solutions">
+        </a>
+    </footer>
+
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./js/controllers/ControllerGeneral.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="./js/services/MascotaService.js"></script>
+    <script src="./js/controllers/MascotasController.js"></script>
+    <script src="./js/controllers/RegistroMascotaController.js"></script>
+    <script src="./js/services/CrudMascotasService.js"></script>
+
+
+</body>
+
+</html>
