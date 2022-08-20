@@ -13,7 +13,7 @@ router.post('/RegistrarFactura', (req,res) => {
         Identificacion:  body.Identificacion,
         TotalAPagar: body.TotalAPagar,
         Fecha: body.Fecha,
-        Estado: 0,
+        Estado: 1,
         NumeroFactura:body.NumeroFactura
 
     });
@@ -122,5 +122,35 @@ router.get('/BuscarFacturaPorId', (req, res) => {
         }
     });
 });
+
+
+
+router.post('/ModificarEstado', function(req, res){
+    let body = req.body;
+    Factura.updateOne({_id: body._id},{
+       $set: {
+        Estado: body.Estado
+       }
+    }, (err, info) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo actualizar los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se actualizaron de manera satisfactoria',
+                info
+            });
+        }
+    }
+    );
+});
+
+
+
+
 
 module.exports = router;

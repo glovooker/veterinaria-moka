@@ -84,3 +84,13 @@ function ObtenerTipoCita(pTipo){
     }
 
 }
+
+
+function ObtenerEstadoFactura(pEstado){
+    switch (Number(pEstado)) {
+        case 1:            
+            return 'Pendiente';    
+        default:
+            return 'Pagada';
+    }
+}

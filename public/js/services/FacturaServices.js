@@ -58,3 +58,22 @@ async function ObtenerFacturaBaseDatos(){
     return result;
 }
 
+
+
+async function ActualizarEstadoFactura(p_id,pEstado) {
+    let result = {};
+    await axios({
+        method: 'post',
+        url: apiUrl + '/ModificarEstado',
+        responseType: 'json',
+        data: {
+            '_id': p_id,
+            'Estado' :pEstado 
+        }
+    }).then((res) => {
+        result = res.data;
+    }).catch((err) => {
+        console.log(err);
+    });
+    return result;
+}

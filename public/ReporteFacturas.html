@@ -43,6 +43,7 @@
                             <th>Cliente</th>
                             <th>Fecha</th>
                             <th>Monto Facturado</th>
+                            <th>Estado</th>
                             <th>Acciones</th>
 
                         </tr>
@@ -52,8 +53,18 @@
                     </tbody>
                     <tfoot></tfoot>
                 </table>
-                <label for="txtTotal">Total de ganancias:</label>
-                <output name="" for="" id="txtTotal"></output>
+                <div>
+                    <h1>Resumen</h1>
+                    <label for="txtTotal">Total de ganancias por facturas pagadas:</label>
+                    <output name="" for="" id="txtTotal"></output><br>
+                    <label for="txtTotalPendientes">Total de dinero por facturas pendientes:</label>
+                    <output name="" for="" id="txtTotalPendientes"></output><br>
+                    <label for="txtContPagadas">Facturas pagadas:</label>
+                    <output name="" for="" id="txtContPagadas"></output><br>
+                    <label for="txtContPendientes">Facturas pendientes:</label>
+                    <output name="" for="" id="txtContPendientes"></output>
+                </div>
+
             </div>
         </container>
     </form>
