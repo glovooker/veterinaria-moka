@@ -4,7 +4,12 @@ const cuerpoTabla = document.querySelector("#tblTarjetas tbody");
 let tarjetas = [];
 
 const inicializarListas = async () => {
-  tarjetas = await getDatos("/obtener-tarjetas");
+  let persona = JSON.parse(localStorage.getItem("datosPersonaConsultada"));
+  let _idC = persona._id;
+  // console.log(_idC);
+  tarjetas = await getDatos(`/ListarTarjetasCliente?_idC=${_idC}`);
+  // console.log(tar
+  // console.log(tarjetas);
   mostrarTabla();
 };
 
@@ -14,6 +19,7 @@ const mostrarTabla = async () => {
   tarjetas.forEach((tarjeta) => {
     let fila = cuerpoTabla.insertRow();
     let numerot = String(tarjeta.NumTarjeta);
+    // fila.insertCell().innerText = tarjeta._idC;
     fila.insertCell().innerText = "************" + numerot.slice(-4);
     fila.insertCell().innerText = tarjeta.FecExpira;
     fila.insertCell().innerText = tarjeta.Nombre;
@@ -38,7 +44,7 @@ const mostrarTabla = async () => {
         confirmButtonText: "¡Sí, eliminar!",
       }).then((result) => {
         if (result.isConfirmed) {
-          eliminarDatos("/EliminarTarjetas", tarjeta._id);
+          eliminarDatos("/EliminarTarjetas", tarjeta._idC);
           Swal.fire("¡Tarjeta eliminada!", "La tarjeta fue borrada", "success");
         }
       });

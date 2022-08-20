@@ -39,7 +39,10 @@ let CrearTarjeta = () => {
   let expiracion = document.getElementById("txtExpiracion");
   let ccv = document.getElementById("txtCVV");
   let nombreTarjeta = document.getElementById("txtNombreTarjeta");
+  let persona = JSON.parse(localStorage.getItem("datosPersonaConsultada"));
+  // console.log(persona);
   let Tarjeta = {
+    _idC: persona._id,
     NumTarjeta: numTarjeta.value,
     FecExpira: expiracion.value,
     Cvv: ccv.value,

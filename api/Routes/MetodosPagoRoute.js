@@ -8,6 +8,7 @@ const Tarjeta = require("../Models/MetodosPagoModel");
 router.post("/RegistrarTarjeta", (req, res) => {
   let body = req.body;
   let nuevaTarjeta = new Tarjeta({
+    _idC: body._idC,
     NumTarjeta: body.NumTarjeta,
     FecExpira: body.FecExpira,
     Cvv: body.Cvv,
@@ -46,9 +47,31 @@ router.get("/obtener-tarjetas", (req, res) => {
   });
 });
 
+router.get("/ListarTarjetasCliente", (req, res) => {
+  let params = req.query;
+  // console.log(params._idC);
+  if (params._idC != "" && params._idC != null && params._idC != undefined) {
+    Tarjeta.find({ _idC: params._idC }, (err, tarjetaDB) => {
+      if (err) {
+        res.json({
+          resultado: false,
+          msj: "No se pudo obtener datos: ",
+          err,
+        });
+      } else {
+        res.json({
+          resultado: true,
+          msj: "Los datos se obtuvieron de manera correcta por id: ",
+          tarjetaDB,
+        });
+      }
+    });
+  }
+});
+
 router.delete("/EliminarTarjetas", function (req, res) {
   let body = req.body;
-  Tarjeta.remove({ _id: body._id }, (err, result) => {
+  Tarjeta.remove({ _idC: body._idC }, (err, result) => {
     if (err) {
       res.json({
         resultado: false,
@@ -66,28 +89,3 @@ router.delete("/EliminarTarjetas", function (req, res) {
 });
 
 module.exports = router;
-
-// router.get("/ListarTarjetasCliente", (req, res) => {
-//   let params = req.query;
-//   if (
-//     params._idPersona != "" &&
-//     params._idPersona != null &&
-//     params._idPersona != undefined
-//   ) {
-//     Tarjeta.find({ _idPersona: params._idPersona }, (err, tarjetaDB) => {
-//       if (err) {
-//         res.json({
-//           resultado: false,
-//           msj: "No se pudo obtener datos: ",
-//           err,
-//         });
-//       } else {
-//         res.json({
-//           resultado: true,
-//           msj: "Los datos se obtuvieron de manera correcta por id: ",
-//           tarjetaDB,
-//         });
-//       }
-//     });
-//   }
-// });
