@@ -1,17 +1,20 @@
 'use strict';
 
 let PersonaLogueada = GetSesionActiva();
+console.log(PersonaLogueada);
 
 const inputFiltro = document.getElementById('txtFiltro');
+linkVolver.addEventListener("click", Volver);
 //inputFiltro.addEventListener('keyup', ImprimirDatos);
 
 let listaCitas = [];
+
 GetListaCitas();
 
 async function GetListaCitas() {
-    let result = await ObtenerListaCitas();
+    let result = await ObtenerListaCitas('C');
     if (result != {} && result.resultado == true) {
-        listaCitas = result.ListaCitasBD;
+        listaCitas = result.ListaCitasBD;       
         ImprimirDatos(); 
     } else {
         imprimirMsjError(result.msj);
@@ -25,6 +28,7 @@ async function ImprimirDatos() {
     tbody.innerHTML = '';
 
     for (let i = 0; i < listaCitas.length; i++) { 
+        
         ////////////////////////////////////////////////////////////////////
         let veterinario = await DatosPersona(listaCitas[i]._idVeterinario,null); 
         let cliente = await DatosPersona(listaCitas[i]._idCliente,null);           
@@ -37,7 +41,6 @@ async function ImprimirDatos() {
         estadoCita.toLowerCase().includes(filtro) 
         ){  */
         //////////////////////////////////////////////////////////////////    
-        if (listaCitas[i].Tipo == 'C') {
             if ((PersonaLogueada.Rol==0||PersonaLogueada.Rol==1)
             ||(PersonaLogueada.Rol==2 && PersonaLogueada._id==listaCitas[i]._idVeterinario)
             ||(PersonaLogueada.Rol==3 && PersonaLogueada._id==listaCitas[i]._idCliente)) {
@@ -50,20 +53,8 @@ async function ImprimirDatos() {
                 let celdaCliente = fila.insertCell();
                 let celdaMascota = fila.insertCell();
                 let celdaEstado = fila.insertCell(); 
+                let celdaObservaciones = fila.insertCell(); 
                 let celdaAcciones = fila.insertCell();
-
-                ////////////////////////////////////////////////////
-                //Detalle de la Cita
-                ////////////////////////////////////////////////////
-                let btnDetalle = document.createElement('button');
-                btnDetalle.onclick = function(){              
-                    const timeoutId = setTimeout(function(){                   
-                    window.location.replace("./CrearCita.html?id="+ listaCitas[i]._id);}, 1000);  
-                };
-                btnDetalle.type = 'button';
-                btnDetalle.innerText = '🔍​';
-                btnDetalle.title = 'Ver Detalle Cita';
-                btnDetalle.classList.add('DetalleBtn');
 
                 ////////////////////////////////////////////////////
                 //Aprobar Cita
@@ -89,7 +80,6 @@ async function ImprimirDatos() {
                         } else {
                             ImprimirMsjError(result.msj);
                         }
-
                         await GetListaCitas();
                     }
                 };
@@ -210,7 +200,6 @@ async function ImprimirDatos() {
                 ////////////////////////////////////
 
                 let divBtns = document.createElement('div');
-                divBtns.appendChild(btnDetalle);
 
                 if (PersonaLogueada.Rol == 0 || PersonaLogueada.Rol == 1){
                     if (listaCitas[i].Estado == 'R'){
@@ -241,11 +230,17 @@ async function ImprimirDatos() {
                 celdaCliente.innerHTML = cliente.Nombre ;   
                 celdaMascota.innerHTML = mascota.Nombre; 
                 celdaEstado.innerHTML = estadoCita;
+                celdaObservaciones.innerHTML =listaCitas[i].Observaciones;
                 celdaAcciones.appendChild(divBtns);
-            } //roles
-        }//citas
-       //}//filtros
-       
+            } //roles 
+       //}//filtros       
     }
 }
 
+function Volver(){         
+    if (PersonaLogueada.Rol !=3){    
+      linkVolver.href = "./CrudPersonas.html";  
+    } else {
+      linkVolver.href = "./PaginaInicio.html";
+    }
+  }

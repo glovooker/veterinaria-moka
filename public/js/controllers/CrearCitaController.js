@@ -1,8 +1,8 @@
 'use strict';
   let PersonaLogueada = GetSesionActiva();
   let queryString = window.location.search;
-  let urlParams = new URLSearchParams(queryString);
-  let idCita = urlParams.get("_idCita"); 
+  let urlParams = new URLSearchParams(queryString); 
+
   let idClteCita;
 
   let fechaIni = document.getElementById("txtFechaIni");   
@@ -21,6 +21,7 @@
 
   imprimirMascotasCliente(idClteCita);
   imprimirDoctores();
+  desplegarDatosConsultados();
 
 //////////////////////////////////////////////////////////////////////////
 //Llenar select de mascotas
@@ -41,24 +42,26 @@ async function imprimirDoctores() {
     let option;
     let listaDoc = await GetPersonasRol(2);
     for (let i = 0; i < listaDoc.length; i++) {
-      option = document.createElement("option");
-      option.value = listaDoc[i]._id;
-      option.text = listaDoc[i].Nombre;
-      selDoctor.appendChild(option);
+      if (listaDoc[i].Estado == 1){
+        option = document.createElement("option");
+        option.value = listaDoc[i]._id;
+        option.text = listaDoc[i].Nombre;
+        selDoctor.appendChild(option);
+      }  
     }
   }
 //////////////////////////////////////////////////////////////////////////
 //validaciones de los campos 
 function Validaciones() {
-  if (ValidarCampos() == false) {
-    return false;
-  } else if (ValidarFecha() == false) {
-    return false;
-  } else {
-  /*********************************************************************/
-    CrearCita(); 
-  /*********************************************************************/
-  }
+    if (ValidarCampos() == false) {
+      return false;
+    } else if (ValidarFecha() == false) {
+      return false;
+    } else {
+    /*********************************************************************/
+      CrearCita(); 
+    /*********************************************************************/
+    } 
 }
 ////////////////////////////////////////////////////////////////////////
 function ValidarFecha() {
@@ -98,10 +101,11 @@ function ValidarFecha() {
            ImprimirMsjError(result.msj); 
       }
   }
+  ///////////////////////////////////////////////
   
   function Volver(){         
     if (PersonaLogueada.Rol !=3){    
-      linkVolver.href = "./CrudPersonas.html";  
+      linkVolver.href = "./CrudCitas.html";  
     } else {
       linkVolver.href = "./PaginaInicio.html";
     }

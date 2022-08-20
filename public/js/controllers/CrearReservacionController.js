@@ -2,7 +2,7 @@
   let PersonaLogueada = GetSesionActiva();
   let queryString = window.location.search;
   let urlParams = new URLSearchParams(queryString);
-  let idCita = urlParams.get("_idCita"); 
+ 
   let idClteCita;
 
   let fechaIni = document.getElementById("txtFechaIni");  
