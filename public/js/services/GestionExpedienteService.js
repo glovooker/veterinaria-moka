@@ -56,14 +56,14 @@ async function ActualizarExpediente(p_id, pNombre,pDuenno,pUsuario, pEspecie, pE
     return result;
 };
 
-async function RegistrarExpediente(sNombre, pDuenno, pUsuario, pEspecie, pEstrellas, pObservaciones, pFoto, pPadecimientos, pCitas, pReservaciones) {
+async function RegistrarExpediente(pNombre, pDuenno, pUsuario, pEspecie, pEstrellas, pObservaciones, pFoto, pPadecimientos, pCitas, pReservaciones, pNumeroExpediente) {
     let result = {};
     await axios({
         method: 'post',
         url: apiUrl + '/RegistrarExpediente',
         responseType: 'json',
         data: {
-            'Nombre': sNombre,
+            'Nombre': pNombre,
             'Duenno': pDuenno,
             'Usuario': pUsuario,
             'Especie': pEspecie,
@@ -72,7 +72,8 @@ async function RegistrarExpediente(sNombre, pDuenno, pUsuario, pEspecie, pEstrel
             'FotoPerfil': pFoto,
             'Padecimientos': pPadecimientos,
             'Citas': pCitas,
-            'Reservaciones': pReservaciones
+            'Reservaciones': pReservaciones,
+            'NumeroExpediente': pNumeroExpediente,
         }
     }).then((res) => {
         if (res.data.resultado == false) {
@@ -93,3 +94,5 @@ async function RegistrarExpediente(sNombre, pDuenno, pUsuario, pEspecie, pEstrel
     });
     return result;
 }
+
+

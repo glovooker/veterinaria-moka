@@ -7,6 +7,7 @@ const Expediente = require("../Models/ExpedienteModel");
 router.post('/RegistrarExpediente', (req, res)=>{
     let body = req.body;
     let nuevoExpediente = new Expediente({
+        NumeroExpediente: body.NumeroExpediente,
         Nombre: body.Nombre,
         Duenno: body.Duenno,
         Usuario: body.Usuario,

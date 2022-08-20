@@ -1,6 +1,7 @@
 'use strict';
 
 let botonRegistrar = document.getElementById('btnRegistrar');
+let inputNumExpediente = document.getElementById('txtNumExpediente');
 let inputNombre = document.getElementById('txtNombre');
 let inputDuenno = document.getElementById('txtDuenno');
 let inputUsuario = document.getElementById('txtUsuario');
@@ -44,7 +45,7 @@ function CargarInfo(pExpediente, pBoton) {
     } else {
         document.getElementById('titleExpediente').innerHTML = 'Actualizar expediente';
         document.getElementById('btnRegistrar').value = 'Actualizar'
-
+        
         inputNombre.value = pExpediente.Nombre;
         inputDuenno.value = pExpediente.Duenno; 
         inputUsuario.value = pExpediente.Usuario;
@@ -71,22 +72,25 @@ async function RegistrarDataExp() {
     let sPadecimientos = inputPadecimientos.value;
     let nCitas = inputCitas.value;
     let nReservaciones = inputReservaciones.value;
+    let sNumeroExpediente = inputNumExpediente.value;
     let sFoto = ''; /*fotoMascota.src*/
     let s_id = input_id.value
 
-    if (Validar(sNombre, sDuenno, sUser, sEspecie, nEstrellas, sObservaciones, sPadecimientos, nCitas, nReservaciones) == false) {
+    
+
+    if (Validar(sNumeroExpediente,sNombre, sDuenno, sUser, sEspecie, nEstrellas, sObservaciones, sPadecimientos, nCitas, nReservaciones) == false) {
         return;
     }
 
     let result = null;
     if (s_id != null && s_id != '' && s_id != undefined) {
-        result = await ActualizarExpediente(s_id, sNombre, sDuenno, sUser, sEspecie, nEstrellas, sObservaciones,sFoto, sPadecimientos, nCitas, nReservaciones);
+        result = await ActualizarExpediente(s_id,sNombre, sDuenno, sUser, sEspecie, nEstrellas, sObservaciones,sFoto, sPadecimientos, nCitas, nReservaciones);
     } else {
-        result = await RegistrarExpediente(sNombre, sDuenno, sUser, sEspecie, nEstrellas, sObservaciones, sFoto, sPadecimientos, nCitas, nReservaciones);
+        result = await RegistrarExpediente(sNombre, sDuenno, sUser, sEspecie, nEstrellas, sObservaciones, sFoto, sPadecimientos, nCitas, nReservaciones, sNumeroExpediente);
     }
 
     if(result == null || result == undefined){
-        imprimirError('Ha ocurrido un error')
+        imprimirError('Ha ocurrido un error');
     }else if (result.resultado == false) {
         imprimirError(result.msj);
         console.log(result)
@@ -103,7 +107,7 @@ async function RegistrarDataExp() {
     
 }
 
-function Validar(pNombre, sDuenno, sUser, pEspecie, pEstrellas, pObservaciones, pPadecimientos, pCitas, pReservaciones) {
+function Validar(pNumeroExpediente, pNombre, sDuenno, sUser, pEspecie, pEstrellas, pObservaciones, pPadecimientos, pCitas, pReservaciones) {
     if (pNombre == '' || pNombre == null || pNombre == undefined) {
         LabelInvalido('lblNombre');
         InputInvalido('txtNombre');
@@ -157,6 +161,13 @@ function Validar(pNombre, sDuenno, sUser, pEspecie, pEstrellas, pObservaciones, 
         LabelInvalido('lblReservaciones');
         InputInvalido('txtReservaciones');
         imprimirError('Por favor indique una cantidad de reservaciones');
+        return false;
+    }
+    
+    if (pNumeroExpediente == '' || pNumeroExpediente == null || pNumeroExpediente == undefined || pNumeroExpediente < 0) {
+        LabelInvalido('lblNumExpediente');
+        InputInvalido('txtNumExpediente');
+        imprimirError('Por favor asigne el número de expediente');
         return false;
     }
 }

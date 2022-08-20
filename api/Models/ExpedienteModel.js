@@ -3,7 +3,6 @@
 const mongoose = require('mongoose');
 
 const schemaExpediente = new mongoose.Schema({
-    NumeroExpediente:{type: Number, requiered: true, unique: true},
     Nombre: {type: String, requiered: true, unique: false},
     Duenno: {type: String, requiered: true, unique: false},
     Usuario: {type: String, requiered: true, unique: false},
@@ -14,6 +13,7 @@ const schemaExpediente = new mongoose.Schema({
     Padecimientos: {type: String, requiered:false, unique: false},
     Citas: {type: Number, requiered:false, unique: false},
     Reservaciones: {type: Number, requiered:false, unique: false},
+    NumeroExpediente:{type: Number, requiered: true, unique: true},
     //Cliente : {type: Schema.ObjectId, ref: "Cliente" }
 });
 
