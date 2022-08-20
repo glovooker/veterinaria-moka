@@ -8,6 +8,8 @@ router.post('/RegistrarExpediente', (req, res)=>{
     let body = req.body;
     let nuevoExpediente = new Expediente({
         Nombre: body.Nombre,
+        Duenno: body.Duenno,
+        Usuario: body.Usuario,
         Especie: body.Especie,
         Estrellas: body.Estrellas,
         Observaciones: body.Observaciones,
@@ -87,6 +89,25 @@ router.put('/ActualizarExpediente', function(req, res){
                 resultado:false,
                 msj: 'Los datos se han actualizado con éxtio',
                 info
+            });
+        }
+    });
+});
+
+router.get('/BuscarExpedientePorId', (req, res) => {
+    let params = req.query;
+    Expediente.findOne({ _id: params._id }, (err, expedienteDB) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener datos del objeto solicitado: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                expedienteDB
             });
         }
     });

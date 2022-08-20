@@ -55,9 +55,17 @@
 
                 <input type="hidden" id="txt_id">
                 <div id="row">
-                    <div id="column">
+                    <div>
                         <label id="lblNombre" for="txtNombre">Nombre</label>
                         <input type="text" id="txtNombre">
+                    </div>
+                    <div>
+                        <label id="lblDuenno" for="txtDuenno">Dueño</label>
+                        <input type="text" id="txtDuenno">
+                    </div>
+                    <div>
+                        <label id="lblUsuario" for="txtUsuario">Usuario</label>
+                        <input type="text" id="txtUsuario">
                     </div>
                     <div>
                         <label id="lblEspecie" for="txtEspecie">Especie</label>
@@ -87,12 +95,20 @@
                         <input id="txtReservaciones" type="number">
                     </div>
                     <div>
-                        <input type="button" id="btnRegistrar" value="Registrar">
+                        <input type="button" id="btnRegistrar" onclick="" value="Registrar">
                     </div>
                 </div>
             </form>
         </section>
     </body>
+
+    <script src='//unpkg.com/axios/dist/axios.min.js'></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./js/Constantes.js"></script>
+
+    <script src="./js/services/GestionExpedienteService.js"></script>
+    <script src="./js/controllers/GestionExpedienteController.js"></script>
 </body>
 
 </html>

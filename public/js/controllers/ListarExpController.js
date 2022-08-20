@@ -8,13 +8,13 @@ let listaExpediente = [];
 
 ObtenerExpedienteLista();
 
-async function ObtenerExpedienteLista(){
+async function ObtenerExpedienteLista() {
     let result = await GetExpediente();
-    if(result != {} && result.resultado == true){
+    if (result != {} && result.resultado == true) {
         listaExpediente = result.ListaExpedienteDB;
         imprimirDatos();
         console.log(listaExpediente)
-    }else{
+    } else {
         imprimirError(result.msj);
         return;
     }
@@ -46,14 +46,15 @@ async function imprimirDatos() {
             let celdaReservaciones = fila.insertCell();
             let celdaAcciones = fila.insertCell();
 
-            /*let btnDelete = document.createElement('button');
-            btnDelete.onclick = function(){
-
+            let btnEditar = document.createElement('button');
+            btnEditar.onclick = async function(){
+                window.location.href = 'Actualizar_RegistrarExpediente.html?_id=' + listaExpediente[i]._id;
             };
-            btnDelete.type = 'button';
-            btnDelete.innerText = '✏️';
-            btnDelete.title = 'EDITAR';
-            btnDelete.classList.add('btnTabla');*/
+
+            btnEditar.type = 'button';
+            btnEditar.innerText = '✏️';
+            btnEditar.title = 'EDITAR';
+            btnEditar.classList.add('btnTabla');
 
             let btnDelete = document.createElement('button');
             btnDelete.onclick = async function(){
@@ -61,31 +62,35 @@ async function imprimirDatos() {
                 await Swal.fire({
                     title: 'Desea eliminar el expediente de ' + listaExpediente[i].Nombre,
                     showDenyButton: true,
-                    confirmButtonText: 'Confirmar',
+                    confirmbButtonText: 'Confirmar',
                     denyButtonText: 'Cancelar',
                     icon: 'warning'
-                }).then((res) =>{
+                }).then((res)=>{
                     confirmacion = res.isConfirmed;
                 });
                 if(confirmacion == true){
-                    let result = await EliminarExpediente(listaExpediente[i]._Id);
+                    let result = await EliminarExpediente(listaExpediente[i]._id);
                     if(result.resultado == true){
                         Exito(result.msj);
                     }else{
                         imprimirError(result.msj);
                     }
-                    await ObtenerExpedienteLista();
+                    await GetExpediente();
                 }
             };
+
             btnDelete.type = 'button';
             btnDelete.innerText = '🗑️';
             btnDelete.title = 'ELIMINAR';
-            btnDelete.classList.add('btnTabla')
+            btnDelete.classList.add('btnTabla');
 
             let divButtons = document.createElement('div');
+            divButtons.appendChild(btnEditar);
             divButtons.appendChild(btnDelete);
 
             celdaNombre.innerHTML = listaExpediente[i].Nombre;
+            celdaDuennoMascota.innerHTML = listaExpediente[i].Duenno;
+            celdaUsuario.innerHTML = listaExpediente[i].Usuario
             celdaEspecie.innerHTML = listaExpediente[i].Especie;
             celdaEstrellas.innerHTML = listaExpediente[i].Estrellas;
             celdaObservaciones.innerHTML = listaExpediente[i].Observaciones;
