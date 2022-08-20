@@ -28,12 +28,15 @@ async function GenerarCita(pFecInicio, pHoraInicio, pFecFinal, pHoraFinal,pTipo,
     return result;
 }
 
-async function ObtenerListaCitas() {
+async function ObtenerListaCitas(pTipo) {
     let result = {};
     await axios({
         method: 'get',
         url: apiUrl + '/ListarCitas',
-        responseType: 'json'
+        responseType: 'json',
+        params: {
+            'Tipo': pTipo
+        }
     }).then((res) => {
         result = res.data;
     }).catch((err) => {
@@ -50,7 +53,7 @@ async function BuscarCita(p_id) {
         url: apiUrl + '/BuscarCita',
         responseType: 'json',
         params: {
-            '_id': p_id 
+            '_id': p_id
         }
     }).then((res) => {
         result = res.data;

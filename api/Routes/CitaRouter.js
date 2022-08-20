@@ -36,7 +36,9 @@ router.post('/RegistrarCita',(req, res)=>{
 });
 
 router.get('/ListarCitas', (req, res)=>{ 
-    Cita.find((err, ListaCitasBD) => {
+    let params = req.query;
+    if (params.Tipo != "" && params.Tipo!= null && params.Tipo!= undefined){  
+    Cita.find({Tipo: params.Tipo}, (err, ListaCitasBD) => {        
         if (err) {
             res.json({
                 resultado: false,
@@ -51,6 +53,7 @@ router.get('/ListarCitas', (req, res)=>{
             });
         }
     }).sort({FecInicio:-1, HoraInicio:1,FecFinal:1,FecFinal:1,_idVeterinario:1, _idCliente:1,_idMascota:1});
+}
 });
 
 router.post('/ModificarCita', function(req, res){
