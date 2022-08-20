@@ -12,6 +12,31 @@ let btnGuardar = document.getElementById('btnGuardarFactura')
 btnAgregar.addEventListener('click', Agregar);
 btnGuardar.addEventListener('click', Guardar);
 
+
+
+//descomentar cuando este listo para usar
+
+/* function getParamsURL() {
+    queryString = window.location.search;
+
+    urlParams = new URLSearchParams(queryString);
+    
+    _id = urlParams.get('_id');
+    
+    // console.log(_id);
+
+    if (_id != null && _id != undefined) {
+        return _id;
+    }
+} */
+
+
+
+
+
+
+
+
 async function Guardar(){
  /*    console.log(arregloDetallesFacturas); */
     if (arregloDetallesFacturas.length===0){
@@ -23,7 +48,8 @@ async function Guardar(){
           return false
     }
     let fechaActual = new Date();
-    let sIdentificacion = '62fb00b77ae9d47603242085' //aqui se refiere al id_cliente  no la cedula  QUEMADA X AHORA
+    let sIdentificacion = '62fb01ee7ae9d47603242089' //aqui se refiere al id_cliente  no la cedula  QUEMADA X AHORA
+    /* let sIdentificacion = getParamsURL(); */ //descomentar cuando este listo para usar y eliminar la linea anterior
     await ObtenerListaFacturas();
     let result = await RegistrarFactura(sIdentificacion,sumaTotal,fechaActual, JSON.stringify(arregloDetallesFacturas),numeroFactura);
     if (result == null || result == undefined) {

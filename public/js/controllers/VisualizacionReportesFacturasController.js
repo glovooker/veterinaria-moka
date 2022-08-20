@@ -136,7 +136,7 @@ async function ImprimirDatos() {
             let fechaFacturacion = new Date(arregloListaFacturas[i].Fecha.replace('Z',''));
             celdaFecha.innerHTML = fechaFacturacion.getDate() + '/' + (fechaFacturacion.getMonth() +1) + '/' + fechaFacturacion.getFullYear();
             
-            celdaMontoFacturado.innerHTML = '₡'+arregloListaFacturas[i].TotalAPagar;
+            celdaMontoFacturado.innerHTML = '₡'+formatoNumero(arregloListaFacturas[i].TotalAPagar);
             celdaEstado. innerHTML = ObtenerEstadoFactura(arregloListaFacturas[i].Estado);
             celdaAcciones.appendChild(divBtns);
             if (ObtenerEstadoFactura(arregloListaFacturas[i].Estado) === 'Pagada'){
@@ -153,8 +153,8 @@ async function ImprimirDatos() {
 
 
     }
-    outputTotal.innerHTML = '₡'+ sumaTotal
-    outputTotalPendientes.innerHTML = '₡'+ sumaTotalPendientes;
+    outputTotal.innerHTML = '₡'+ formatoNumero(sumaTotal);
+    outputTotalPendientes.innerHTML = '₡'+ formatoNumero(sumaTotalPendientes);
     outputContPagadas.innerHTML = contPagadas;
     outputContPendientes.innerHTML = contPendientes;
     outputTotalFacturas.innerHTML = arregloListaFacturas.length;
@@ -219,7 +219,7 @@ function ImprimirDatosFiltroFecha(pLista) {
             let fechaFacturacion = new Date(pLista[i].Fecha.replace('Z',''));
             celdaFecha.innerHTML = fechaFacturacion.getDate() + '/' + (fechaFacturacion.getMonth() +1) + '/' + fechaFacturacion.getFullYear();
             
-            celdaMontoFacturado.innerHTML = '₡'+pLista[i].TotalAPagar;
+            celdaMontoFacturado.innerHTML = '₡'+formatoNumero(pLista[i].TotalAPagar);
             celdaEstado. innerHTML = ObtenerEstadoFactura(pLista[i].Estado);
             celdaAcciones.appendChild(divBtns);
             if (ObtenerEstadoFactura(pLista[i].Estado) === 'Pagada'){
@@ -236,8 +236,8 @@ function ImprimirDatosFiltroFecha(pLista) {
 
 
     }
-    outputTotal.innerHTML = '₡'+ sumaTotal
-    outputTotalPendientes.innerHTML = '₡'+ sumaTotalPendientes;
+    outputTotal.innerHTML = '₡'+ formatoNumero(sumaTotal);
+    outputTotalPendientes.innerHTML = '₡'+ formatoNumero(sumaTotalPendientes);
     outputContPagadas.innerHTML = contPagadas;
     outputContPendientes.innerHTML = contPendientes;
     outputTotalFacturas.innerHTML = arregloListaFacturas.length;
