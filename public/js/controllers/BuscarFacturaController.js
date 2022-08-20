@@ -108,7 +108,7 @@ function ImprimirDatosDetalles(){
             celdaSubtotal.innerHTML = '₡' +  listaDetalles[i].SubTotal; 
             document.getElementById('outputTotal').innerHTML= '₡' + totalAPagar;
             document.getElementById('outputNumeroFactura').innerHTML= numeroFactura;
-            fecha = new Date(fechaFactura);
+            fecha = new Date(fechaFactura.replace('Z',''));
             fechaFormateada = formatDate(fecha);
         
             document.getElementById('outputFecha').innerHTML= fechaFormateada;

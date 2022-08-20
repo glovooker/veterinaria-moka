@@ -23,9 +23,25 @@ async function Guardar(){
           return false
     }
     let fechaActual = new Date();
-    let sIdentificacion = '62f414620fc58edc6cdbd19f' //aqui se refiere al id_cliente  no la cedula  QUEMADA X AHORA
+    let sIdentificacion = '62fb00b77ae9d47603242085' //aqui se refiere al id_cliente  no la cedula  QUEMADA X AHORA
     await ObtenerListaFacturas();
-    await RegistrarFactura(sIdentificacion,sumaTotal,fechaActual, JSON.stringify(arregloDetallesFacturas),numeroFactura);
+    let result = await RegistrarFactura(sIdentificacion,sumaTotal,fechaActual, JSON.stringify(arregloDetallesFacturas),numeroFactura);
+    if (result == null || result == undefined) {
+        ImprimirMsjError('Ocurrio un error, intente de nuevo');
+    } else if (result.resultado == false) {
+        ImprimirMsjError(result.msj);
+        console.log(result);
+    } else {
+        //ImprimirMsjSuccess(result.msj);
+        Swal.fire({
+            title: 'Excelente!',
+            text: result.msj,
+            icon: 'success',
+            confirmButtonText: 'Ok'
+        }).then(res => {
+            location.href = 'AdminPersonas.html';
+        });
+    }
     Limpiar();
 }
 

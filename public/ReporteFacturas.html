@@ -29,10 +29,21 @@
     <form action="" id="formulario">
         <container>
             <h3>Filtros</h3>
+            <form id="filtrosTablasFecha">
+                <label for="txtFechaInicio" class="lblInput">Fecha Inicio</label>
+                <input type="date" id="txtFechaInicio" required>
+                <label for="txtFechaHasta" class="lblInput">Fecha Fin</label>
+                <input type="date" id="txtFechaHasta" required>
+                <button type="button" id="btnFiltroFechas">Filtrar por fecha</button>
+                <button type="button" id="btnLimpiar">Limpiar filtro</button>
+            </form>
             <div id="FiltroTablas">
                 <label for="txtFiltro">Filtrar</label>
-                <input type="text" id="txtFiltro">
+                <input type="text" id="txtFiltro" placeholder="Ingresa No.factura o Estado">
             </div>
+            
+            
+
            
             
                 <table>
@@ -62,7 +73,9 @@
                     <label for="txtContPagadas">Facturas pagadas:</label>
                     <output name="" for="" id="txtContPagadas"></output><br>
                     <label for="txtContPendientes">Facturas pendientes:</label>
-                    <output name="" for="" id="txtContPendientes"></output>
+                    <output name="" for="" id="txtContPendientes"></output><br>
+                    <label for="txtTotalFacturas">Total de facturas registradas:</label>
+                    <output name="" for="" id="txtTotalFacturas"></output>
                 </div>
 
             </div>
@@ -79,6 +92,7 @@
 <script src="js/services/ReporteFacturasServices.js"></script>
 <script src="js/services/PersonaService.js"></script>
 <script src="js/controllers/VisualizacionReportesFacturasController.js"></script>
+<script src="js/controllers/ControllerGeneral.js"></script>
 
 
 </html>

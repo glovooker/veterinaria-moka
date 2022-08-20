@@ -51,7 +51,7 @@ router.get('/ListarFacturas', (req, res) => {
           ListaFacturasDB,
         });
       }
-    });
+    }).sort({Fecha:'desc'});
   });
 
 
@@ -149,6 +149,36 @@ router.post('/ModificarEstado', function(req, res){
     );
 });
 
+
+
+
+
+
+// este es solo para pruebas NO UTILIZAR YA QUE LA FACTURA NO SE MODIFICA SOLO EL ESTADO QUE ESTA ARRIBA SU FUNCION
+router.post('/ModificarFacturaTesting', function(req, res){
+    let body = req.body;
+    Factura.updateOne({_id: body._id},{
+       $set: {
+        Fecha: body.Fecha,
+        Identificacion: body.Identificacion
+       }
+    }, (err, info) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo actualizar los datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se actualizaron de manera satisfactoria',
+                info
+            });
+        }
+    }
+    );
+});
 
 
 
