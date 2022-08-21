@@ -50,17 +50,25 @@
                     <label for="outCliente">Cliente</label>
                     <output id="outCliente"></output>
 
-                    <label for="outValoracion">Valoración de la Mascota</label>
-                    <output id="outValoracion">
+                    <label for="txtValoracion">Valoración de la Mascota</label>
+                    <select  id="txtValoracion" required>
+                        <option disabled selected>Escoja una Valoración</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                   <!--  <output id="outValoracion">
                         <i class="fa-solid fa-star" id="star1"></i>
                         <i class="fa-solid fa-star" id="star2"></i>
                         <i class="fa-solid fa-star" id="star3"></i>
                         <i class="fa-solid fa-star" id="star4"></i>
                         <i class="fa-regular fa-star" id="star5"></i>
-                    </output>
+                    </output> -->
 
                     <label for="txtObservaciones" id="lblObservaciones" class="lblTextArea">Observaciones</label>
-                    <textarea name="" id="txtObservaciones" cols="30" rows="9"></textarea>
+                    <textarea name="" id="txtObservaciones" cols="30" rows="9" required></textarea>
 
                     </select>
                 </div>
@@ -76,9 +84,20 @@
             </a>
         </footer>
 
-        <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="./js/controllers/ControllerGeneral.js"></script>
+        <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+
+
+        script src="js/Constantes.js"></script>
+        <script src="js/Constantes.js"></script>
+        <script src="js/services/CitasServices.js"></script>
+        <script src="js/services/PersonaService.js"></script>
+        <script src="js/services/CrudPersonasService.js"></script>
+        <script src="js/services/MascotaService.js"></script> 
+        <script src="js/controllers/ControllerUtilidades.js"></script>
+        <script src="js/controllers/FinalizarCitaReservacion.js"></script>
+        <script src="js/controllers/ControllerGeneral.js"></script>
 
     </body>
 
