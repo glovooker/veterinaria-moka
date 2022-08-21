@@ -1,16 +1,17 @@
 'use strict';
 /*para filtrar*/
 const inputFiltro = document.getElementById('txtFiltro');
-inputFiltro.addEventListener('keyup', ImprimirDatos);
+inputFiltro.addEventListener('keyup', ObtenerListaFacturas);
 let outputTotal = document.getElementById('txtTotal');
 let outputTotalPendientes = document.getElementById('txtTotalPendientes');
 let outputContPagadas = document.getElementById('txtContPagadas');
 let outputContPendientes = document.getElementById('txtContPendientes');
 let outputTotalFacturas = document.getElementById('txtTotalFacturas')
-let arregloListaFacturas = [];
+/* let arregloListaFacturas = []; */
 let listaPersonas = [];
 let nombrePersona;
 let posicionJ;
+let facturasTotal = 0;
 
 let btnfiltroFecha = document.getElementById('btnFiltroFechas');
 let inputFechaInicio = document.getElementById('txtFechaInicio');
@@ -22,7 +23,7 @@ let btnLimpiar = document.getElementById('btnLimpiar')
 btnfiltroFecha.addEventListener('click', FiltrarPorFechas);
 btnLimpiar.addEventListener('click',Limpiar)
 
-function FiltrarPorFechas(){
+async function FiltrarPorFechas(){
     if (ValidarCampos()===false){
         return false
     }else{
@@ -30,15 +31,21 @@ function FiltrarPorFechas(){
             return false
         }
     }
-    let lista = arregloListaFacturas.filter(n => n.Fecha > inputFechaInicio.value && n.Fecha <= inputFechaHasta.value);
-    ImprimirDatosFiltroFecha(lista);
+    let arregloListaFacturas = [];
+    let result = await ObtenerFacturaBaseDatos();
+    if (result != {} && result.resultado == true) {
+        arregloListaFacturas = result.ListaFacturasDB;
+    }
+
+    let lista = arregloListaFacturas.filter(n => n.Fecha >= inputFechaInicio.value && n.Fecha <= inputFechaHasta.value);
+    ImprimirDatos(lista);
   
     }
 
 function Limpiar(){
     inputFechaInicio.value = '';
     inputFechaHasta.value='';
-    ImprimirDatos();
+    ObtenerListaFacturas();
 }
 
 
@@ -67,9 +74,11 @@ ObtenerListaFacturas();
 async function ObtenerListaFacturas() {
     let result = await ObtenerFacturaBaseDatos();
     if (result != {} && result.resultado == true) {
-        arregloListaFacturas = result.ListaFacturasDB;
+        let arregloListaFacturas = result.ListaFacturasDB;
+        facturasTotal = arregloListaFacturas.length;
+        console.log(facturasTotal);
         await GetListaPersonas();
-        ImprimirDatos();
+        ImprimirDatos(arregloListaFacturas);
     } else {
         ImprimirMsjError(result.msj);
         return;
@@ -86,7 +95,7 @@ async function GetListaPersonas() {
     }
 }
 
-async function ImprimirDatos() {
+async function ImprimirDatos(arregloListaFacturas) {
     let filtro = inputFiltro.value;
     let tbody = document.getElementById('tablaReportes');
     tbody.innerHTML = '';
@@ -157,7 +166,7 @@ async function ImprimirDatos() {
     outputTotalPendientes.innerHTML = '₡'+ formatoNumero(sumaTotalPendientes);
     outputContPagadas.innerHTML = contPagadas;
     outputContPendientes.innerHTML = contPendientes;
-    outputTotalFacturas.innerHTML = arregloListaFacturas.length;
+    outputTotalFacturas.innerHTML = facturasTotal
 
 }
     
@@ -169,7 +178,7 @@ async function ImprimirDatos() {
 /********/
 
 
-function ImprimirDatosFiltroFecha(pLista) {
+/* function ImprimirDatosFiltroFecha(pLista) {
     let filtro = inputFiltro.value;
     let tbody = document.getElementById('tablaReportes');
     tbody.innerHTML = '';
@@ -241,5 +250,5 @@ function ImprimirDatosFiltroFecha(pLista) {
     outputContPagadas.innerHTML = contPagadas;
     outputContPendientes.innerHTML = contPendientes;
     outputTotalFacturas.innerHTML = arregloListaFacturas.length;
-}
+} */
     
