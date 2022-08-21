@@ -1,6 +1,6 @@
 'use strict';
 const inputFiltro = document.getElementById('txtFiltro');
-inputFiltro.addEventListener('keyup', ImprimirDatos);
+inputFiltro.addEventListener('keyup', GetListaCitas);
 
 
 /* let listaCitas = []; */
@@ -10,10 +10,67 @@ let listaMascotas=[];
 GetListaCitas()
 /******************/
 
+let btnfiltroFecha = document.getElementById('btnFiltroFechas');
+let inputFechaInicio = document.getElementById('txtFechaInicio');
+let inputFechaHasta = document.getElementById('txtFechaFin');
+let btnLimpiar = document.getElementById('btnLimpiar')
+
+
+
+btnfiltroFecha.addEventListener('click', FiltrarPorFechas);
+btnLimpiar.addEventListener('click',Limpiar)
+
+async function FiltrarPorFechas(){
+    if (ValidarCampos()===false){
+        return false
+    }else{
+        if(ValidarFecha()===false){
+            return false
+        }
+    }
+    let listaCitas=[]
+    let result = await ObtenerListaCitas('C');
+    
+    if (result != {} && result.resultado == true) {
+        listaCitas = result.ListaCitasBD;
+    }
+    let lista = listaCitas.filter(n => n.FecInicio >= inputFechaInicio.value && n.FecInicio <= inputFechaHasta.value);
+     console.log(lista)
+    ImprimirDatos(lista);
+  
+    }
+
+function Limpiar(){
+    inputFechaInicio.value = '';
+    inputFechaHasta.value='';
+    GetListaCitas();
+}
+
+
+
+function ValidarFecha() {
+    let fechaInicio = new Date(inputFechaInicio.value.replace('-','/'));
+    let fechaFinal = new Date(inputFechaHasta.value.replace('-','/'));
+  
+    if (fechaInicio > fechaFinal) { 
+      ImprimirMsjError("La fecha de la inicio debe ser menor a la fecha final ");
+      ResaltarInputInvalido("txtFechaIni");
+      ResaltarLabelInvalido("txtFechaIni");
+      return false;
+    }
+  }
+
+
+
+
+
+/*************************************/
+
 async function GetListaCitas() {
     let result = await ObtenerListaCitas('C');
     if (result != {} && result.resultado == true) {
         let listaCitas = result.ListaCitasBD;
+        console.log(listaCitas)
         await GetListaPersonas();  
         await GetListaMascota(); 
         ImprimirDatos(listaCitas); 
@@ -75,7 +132,7 @@ async function ImprimirDatos(listaCitas) {
             btnVer.title = 'VER FACTURA';
             let divBtns = document.createElement('div');
             divBtns.appendChild(btnVer); */
-            let fechaCita = new Date(listaCitas[i].FecInicio.replace('Z',''));
+            let fechaCita = new Date(listaCitas[i].FecInicio.replace('-','/'));
             celdaFecha.innerHTML = fechaCita.getDate() + '/' + (fechaCita.getMonth() +1) + '/' + fechaCita.getFullYear();
 
             for (let j = 0; j < listaPersonas.length; j++){

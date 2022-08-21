@@ -39,11 +39,12 @@
             </div>
             <div>
                 <form id="filtrosFechas">
-                    <label for="txtFechaInicio">Fecha Inicio</label>
-                    <input type="date" id="txtFechaInicio">
-                    <label for="txtFechaFin">Fecha Final</label>
-                    <input type="date" id="txtFechaFin">
-                    <button type="button" id="btnFiltrarFechas">Filtrar por fechas</button>
+                    <label for="txtFechaInicio" class="lblInput">Fecha Inicio</label>
+                    <input type="date" id="txtFechaInicio" required>
+                    <label for="txtFechaFin" class="lblInput">Fecha Final</label>
+                    <input type="date" id="txtFechaFin" required>
+                    <button type="button" id="btnFiltroFechas">Filtrar por fechas</button>
+                    <button type="button" id="btnLimpiar">Limpiar filtros</button>
                 </form>
                 <div id="FiltroTablas">
                     <label for="txtFiltro">Filtrar</label>
@@ -88,6 +89,7 @@
     <script src="./js/services/CrudPersonasService.js"></script>
     <script src="./js/services/MascotaService.js"></script> 
     <script src="js/controllers/VisualizacionReportesCitasController.js"></script>
+    <script src="js/controllers/ControllerGeneral.js"></script>
 </body>
 
 
