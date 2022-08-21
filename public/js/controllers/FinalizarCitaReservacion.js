@@ -2,6 +2,8 @@
 let queryString, urlParams
 let _id;/* id de la cita o reservacion */
 let citasDB, idCliente, idMascota, clienteDB, nombreCliente, mascotaDB, nombreMascota; 
+let estrellas = document.getElementById('txtValoracion');
+let observaciones = document.getElementById('txtObservaciones');
 let btnFinalizar = document.getElementById('btnFinalizar');
 btnFinalizar.addEventListener('click', GuardarDatos);
 
@@ -53,9 +55,10 @@ function imprimirDatosEnPantalla(cliente,mascota){
         
 
 
-function GuardarDatos(){
-    estrellas = document.getElementById('txtValoracion');
-    observaciones = document.getElementById('txtObservaciones');
+async function GuardarDatos(){
+    if(ValidarCampos()===false){
+        return false;
+    }
     result = await ModificarCita(_id,'Cancelacion','C',estrellas.value); 
     
     if(result != null && result.resultado == false){
