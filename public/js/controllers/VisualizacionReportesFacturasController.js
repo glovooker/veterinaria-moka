@@ -76,7 +76,7 @@ async function ObtenerListaFacturas() {
     if (result != {} && result.resultado == true) {
         let arregloListaFacturas = result.ListaFacturasDB;
         facturasTotal = arregloListaFacturas.length;
-        console.log(facturasTotal);
+        console.log(arregloListaFacturas);
         await GetListaPersonas();
         ImprimirDatos(arregloListaFacturas);
     } else {
