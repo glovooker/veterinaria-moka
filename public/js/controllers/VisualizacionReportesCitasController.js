@@ -6,6 +6,7 @@ inputFiltro.addEventListener('keyup', GetListaCitas);
 /* let listaCitas = []; */
 let listaPersonas=[];
 let listaMascotas=[];
+let totalCitas;
 /****llamada de funcion***/
 GetListaCitas()
 /******************/
@@ -70,6 +71,7 @@ async function GetListaCitas() {
     let result = await ObtenerListaCitas('C');
     if (result != {} && result.resultado == true) {
         let listaCitas = result.ListaCitasBD;
+        totalCitas = listaCitas.length;
         console.log(listaCitas)
         await GetListaPersonas();  
         await GetListaMascota(); 
@@ -106,6 +108,9 @@ async function ImprimirDatos(listaCitas) {
     let tbody = document.getElementById('tablaReportes');
     let vetNombre,clienteNombre,mascotaNombre; 
     tbody.innerHTML = '';
+    let contFinalizadas=0;
+    let contCanceladas=0;
+    let contAprobadas=0
 
     
     
@@ -120,6 +125,7 @@ async function ImprimirDatos(listaCitas) {
             let celdaHoraFinal = fila.insertCell();
             let celdaNombreVet = fila.insertCell();
             let celdaEstado = fila.insertCell();
+            let celdaObservaciones = fila.insertCell();
             let celdaAcciones = fila.insertCell();
             
 
@@ -163,7 +169,25 @@ async function ImprimirDatos(listaCitas) {
             
             celdaNombreVet.innerHTML = vetNombre;
             celdaEstado.innerHTML = ObtenerEstadoCita(listaCitas[i].Estado);
+            if(ObtenerEstadoCita(listaCitas[i].Estado)==='Aprobado'){
+                contAprobadas=contAprobadas+1
+            }
+            if(ObtenerEstadoCita(listaCitas[i].Estado)==='Finalizado'){
+                contFinalizadas=contFinalizadas+1
+            }
+            if (ObtenerEstadoCita(listaCitas[i].Estado)==='Cancelado'){
+                contCanceladas=contCanceladas+1
+            }
+            celdaObservaciones.innerHTML = listaCitas[i].Observaciones;
+            
 
         }
     }
+    document.getElementById('outputTotalCitas').innerHTML =  totalCitas;
+    document.getElementById('outputAprobadas').innerHTML = contAprobadas
+    document.getElementById('outputFinalizadas').innerHTML = contFinalizadas
+    document.getElementById('outputCanceladas').innerHTML = contCanceladas
 }
+    
+    
+    
