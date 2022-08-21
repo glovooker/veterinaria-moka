@@ -3,7 +3,7 @@ const inputFiltro = document.getElementById('txtFiltro');
 inputFiltro.addEventListener('keyup', ImprimirDatos);
 
 
-let listaCitas = [];
+/* let listaCitas = []; */
 let listaPersonas=[];
 let listaMascotas=[];
 /****llamada de funcion***/
@@ -13,10 +13,10 @@ GetListaCitas()
 async function GetListaCitas() {
     let result = await ObtenerListaCitas('C');
     if (result != {} && result.resultado == true) {
-        listaCitas = result.ListaCitasBD;
+        let listaCitas = result.ListaCitasBD;
         await GetListaPersonas();  
         await GetListaMascota(); 
-        ImprimirDatos(); 
+        ImprimirDatos(listaCitas); 
     } else {
         imprimirMsjError(result.msj);
         return;
@@ -44,7 +44,7 @@ async function  GetListaMascota() {
     }
 }
 
-async function ImprimirDatos() {
+async function ImprimirDatos(listaCitas) {
     let filtro = inputFiltro.value;
     let tbody = document.getElementById('tablaReportes');
     let vetNombre,clienteNombre,mascotaNombre; 
