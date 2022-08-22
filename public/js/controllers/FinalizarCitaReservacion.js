@@ -53,7 +53,7 @@ function imprimirDatosEnPantalla(cliente,mascota){
 
 }
         
-/* (p_id, pMotivoCancela, pEstado, pEstrellas) */
+/* (p_id, pMotivoCancela, pEstado, pEstrellas) => orden de modificar cita parametros */ 
 
 async function GuardarDatos(){
     if(ValidarCampos()===false){
