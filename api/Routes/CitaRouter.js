@@ -18,7 +18,9 @@ router.post('/RegistrarCita',(req, res)=>{
         Estrellas: 0,
         _idVeterinario: body._idVeterinario,
         _idCliente: body._idCliente,
-        _idMascota: body._idMascota 
+        _idMascota: body._idMascota,
+        EstrellasVeterinario: 0,
+        ObservacionesVeterinario: ""
     });
     nuevaCita.save((err, citaDB) =>{
         if (err) {
@@ -62,7 +64,10 @@ router.post('/ModificarCita', function(req, res){
        $set: {
              MotivoCancela: body.MotivoCancela,
              Estado: body.Estado,
-             Estrellas: body.Estrellas
+             Estrellas: body.Estrellas,
+             Estrellas: body.EstrellasVeterinario,
+             ObservacionesVeterinario: body.ObservacionesVeterinario
+
         }       
     }, (err, info) => {
         if (err) {

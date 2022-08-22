@@ -63,7 +63,7 @@ async function BuscarCita(p_id) {
     return result;
   }
 
-  async function ModificarCita(p_id, pMotivoCancela, pEstado, pEstrellas) {
+  async function ModificarCita(p_id, pMotivoCancela, pEstado, pEstrellas, pEstrellasVeterinario, pObservacionesVeterinario) {
     let result = {};
     await axios({
         method: 'post',
@@ -73,7 +73,9 @@ async function BuscarCita(p_id) {
             '_id': p_id,
             'MotivoCancela': pMotivoCancela,
             'Estado': pEstado,
-            'Estrellas': pEstrellas
+            'Estrellas': pEstrellas,
+            'EstrellasVeterinario':pEstrellasVeterinario,
+            'ObservacionesVeterinario': pObservacionesVeterinario
         }
     }).then((res) => {
         result = res.data;

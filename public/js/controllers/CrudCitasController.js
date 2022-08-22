@@ -73,7 +73,7 @@ async function ImprimirDatos() {
                     });
                     if (confirmacion == true) {
 
-                        let result =  await ModificarCita(listaCitas[i]._id,'','A',listaCitas[i].Estrellas); 
+                        let result =  await ModificarCita(listaCitas[i]._id,'','A',listaCitas[i].Estrellas,listaCitas[i].EstrellasVeterinario,listaCitas[i].ObservacionesVeterinario); 
 
                         if (result.resultado == true) {
                             ImprimirMsjSuccess(result.msj);
@@ -105,7 +105,7 @@ async function ImprimirDatos() {
                     });
                     if (confirmacion == true) {
 
-                        let result =  await ModificarCita(listaCitas[i]._id,'Cancelacion','C',listaCitas[i].Estrellas); 
+                        let result =  await ModificarCita(listaCitas[i]._id,'Cancelacion','C',listaCitas[i].Estrellas, listaCitas[i].EstrellasVeterinario, listaCitas[i].ObservacionesVeterinario); 
 
                         if (result.resultado == true) {
                             ImprimirMsjSuccess(result.msj);
@@ -141,15 +141,6 @@ async function ImprimirDatos() {
                         confirmacion = res.isConfirmed;
                     });
                     if (confirmacion == true) {
-
-                        let result =  await ModificarCita(listaCitas[i]._id,'','F',listaCitas[i].Estrellas); 
-
-                        if (result.resultado == true) {
-                            ImprimirMsjSuccess(result.msj);
-                        } else {
-                            ImprimirMsjError(result.msj);
-                        }
-
                         window.location.replace("./FinalizarCitaReservacion.html?_idCita="+ listaCitas[i]._id);   
                     }
                 };
@@ -177,15 +168,6 @@ async function ImprimirDatos() {
                         confirmacion = res.isConfirmed;
                     });
                     if (confirmacion == true) {
-    
-                        let result =  await ModificarCita(listaCitas[i]._id,'','F',listaCitas[i].Estrellas); 
-    
-                        if (result.resultado == true) {
-                            ImprimirMsjSuccess(result.msj);
-                        } else {
-                            ImprimirMsjError(result.msj);
-                        }
-    
                         window.location.replace("./ReservacionPagoServicios.html?id="+ listaCitas[i]._id);   
                     }
                 };
