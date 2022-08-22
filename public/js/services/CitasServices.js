@@ -72,7 +72,6 @@ async function BuscarCita(p_id) {
         data: {
             '_id': p_id,
             'MotivoCancela': pMotivoCancela,
-            'Estado': pEstado,
             'Estrellas': pEstrellas
         }
     }).then((res) => {
