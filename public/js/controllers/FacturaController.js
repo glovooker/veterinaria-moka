@@ -3,6 +3,8 @@ let arregloDetallesFacturas = [];
 let arregloListaFacturas=[];
 let numeroFactura;
 let sumaTotal;
+let queryString, urlParams
+let _id;/* id del cliente */
 
 let inputCantidad = document.getElementById('txtCantidad');
 let inputDescripcion = document.getElementById('txtDescripcion');
@@ -16,19 +18,19 @@ btnGuardar.addEventListener('click', Guardar);
 
 //descomentar cuando este listo para usar
 
-/* function getParamsURL() {
+function getParamsURL() {
     queryString = window.location.search;
 
     urlParams = new URLSearchParams(queryString);
     
     _id = urlParams.get('_id');
     
-    // console.log(_id);
+    console.log(_id);
 
     if (_id != null && _id != undefined) {
         return _id;
     }
-} */
+} 
 
 
 
@@ -48,8 +50,8 @@ async function Guardar(){
           return false
     }
     let fechaActual = new Date();
-    let sIdentificacion = '62fb01ee7ae9d47603242089' //aqui se refiere al id_cliente  no la cedula  QUEMADA X AHORA
-    /* let sIdentificacion = getParamsURL(); */ //descomentar cuando este listo para usar y eliminar la linea anterior
+    let sIdentificacion = getParamsURL(); 
+    console.log(sIdentificacion);
     await ObtenerListaFacturas();
     let result = await RegistrarFactura(sIdentificacion,sumaTotal,fechaActual, JSON.stringify(arregloDetallesFacturas),numeroFactura);
     if (result == null || result == undefined) {
@@ -65,7 +67,7 @@ async function Guardar(){
             icon: 'success',
             confirmButtonText: 'Ok'
         }).then(res => {
-            location.href = 'AdminPersonas.html';
+            location.href = 'CrudCitas.html';
         });
     }
     Limpiar();
