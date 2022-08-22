@@ -53,13 +53,15 @@ function imprimirDatosEnPantalla(cliente,mascota){
 
 }
         
-
+/* (p_id, pMotivoCancela, pEstado, pEstrellas) */
 
 async function GuardarDatos(){
     if(ValidarCampos()===false){
         return false;
     }
-    result = await ModificarCita(_id,'Cancelacion','C',estrellas.value); 
+let result = await ModificarCita(_id,'','F',estrellas.value); 
+console.log(estrellas.value);
+console.log(observaciones.value);
     
     if(result != null && result.resultado == false){
         imprimirMsjError(result.msj);
@@ -70,11 +72,16 @@ async function GuardarDatos(){
             text: result.msj,
             icon: 'success',
             confirmButtonText: 'Ok'
-        })
+        }).then(res => {
+            location.href = 'crudCitas.html'
+        });
     }
 }
         
-        
+function Limpiar(){
+estrellas.value = '';
+observaciones.value='';
+}      
         
 
 
