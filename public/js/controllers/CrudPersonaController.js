@@ -185,14 +185,19 @@ async function ImprimirDatos() {
             btnTarjeta.classList.add('eliminarBtn');
             ////////////////////////////////////////////////////            
 
-            let divBtns = document.createElement('div');
-            divBtns.appendChild(btnPerfil);
-            divBtns.appendChild(btnEdit);            
+            let divBtns = document.createElement('div');            
             divBtns.appendChild(btnInactivar);
-            divBtns.appendChild(btnMascota);
-            divBtns.appendChild(btnCita);
-            divBtns.appendChild(btnHotel);
-            divBtns.appendChild(btnTarjeta);
+            divBtns.appendChild(btnPerfil);
+
+            if (listaPersonas[i].Estado == 1) {            
+                divBtns.appendChild(btnEdit);
+                if (listaPersonas[i].Rol == 3) {
+                divBtns.appendChild(btnMascota);
+                divBtns.appendChild(btnCita);
+                divBtns.appendChild(btnHotel);
+                divBtns.appendChild(btnTarjeta);
+                }
+            }
 
             ///////////////////////////////////////////////////
 
