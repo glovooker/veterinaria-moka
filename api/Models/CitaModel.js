@@ -14,7 +14,9 @@ const schemaCita = new mongoose.Schema({
     Estrellas:{type: Number, requiered: true, unique: false},
     _idVeterinario: {type: String, required: false, unique: false}, 
     _idCliente: {type: String, required: true, unique: false}, 
-    _idMascota : {type: String, required: true, unique: false}
+    _idMascota : {type: String, required: true, unique: false},
+    EstrellasVeterinario:{type: Number, requiered: true, unique: false},
+    ObservacionesVeterinario: {type: String, required: false, unique: false},
 });
 
 module.exports = mongoose.model('Cita', schemaCita, 'Citas');
