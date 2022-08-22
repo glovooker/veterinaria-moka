@@ -58,6 +58,9 @@ function hadleError(res, reason, message, code) {
 
 //conexion a todas las rutas del BackEnd
 
+const expediente = require('./Routes/ExpedienteRoute');
+app.use('/api', expediente);
+
 app.use('/api', require('./Routes/MetodosPagoRoute'));
 
 const personas = require('./Routes/PersonaRouter');
