@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./css/InicioDeSesion.css">
+    <link rel="stylesheet" href="./css/CreacionCuenta.css">
     <link rel="stylesheet" href="./css/StyleGeneral.css">
     <link rel="stylesheet" href="./css/webfont/stylesheet.css">
-    <title>Moka | Inicio de Sesión</title>
+    <title>Moka | Registrarme</title>
 </head>
 
 <body>
     <header>
         <nav class="navbar">
             <div class="logo-container">
-                <a href="./InicioDeSesion.html">
+                <a id="linkVolver" href="">
                     <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
                 </a>
             </div>
@@ -38,25 +38,42 @@
         </nav>
     </header>
 
-    <section class="login">
-        <div class="login-container">
+    <section class="signup">
+        <div class="signup-container">
+
             <div class="form-container">
-                <h2>Iniciar Sesión</h2>
+                <h2 id="txtInicio">Creación de Cuenta</h2>
                 <form>
+                    <label for="txtidentificacion" id="lblidentificacion" class="lblInput">Número de Cédula</label>
+                    <input type="number" id="txtidentificacion" required min="" max="">
+
+                    <label for="txtNombre" id="lblNombre" class="lblInput">Nombre Completo</label>
+                    <input type="text" id="txtNombre" required>
+
                     <label for="txtCorreo" id="lblCorreo" class="lblInput">Correo Electrónico</label>
                     <input type="email" id="txtCorreo" required>
-                    <br>
-                    <label for="txtContrasenna" class="lblInput">Contraseña</label>
-                    <input type="password" id="txtContrasenna" required>
+
+                    <label for="txtPass" id="lblPass" class="lblInput">Contraseña</label>
+                    <input type="password" id="txtPass" required>
+
+                    <label for="txtPass2" id="lblPass2" class="lblInput">Confirmar Contraseña</label>
+                    <input type="password" id="txtPass2" required>
+
+                    <label for="txtTelefono" id="lblTelefono" class="lblInput">Número de Teléfono</label>
+                    <input type="number" id="txtTelefono" title="Número de teléfono sin guiones" required>
+
+                    <label for="txtDireccion" id="lblDireccion" class="lblInput">Dirección</label>
+                    <input type="text" id="txtDireccion" class="clsDireccion" required>
                 </form>
             </div>
+            <div class="account">¿No tienes cuenta? <br><a href="./InicioDeSesion.html">Ingresa aquí</a>
+            </div>
 
-            <div class="no-account">¿No tienes cuenta? <br><a href="./CrearCuentaCliente.html">Crea una aquí</a></div>
 
-            <button type="button" id="btnIngresar" class="form-btn">Ingresar</button>
-
+            <button type=button id="btnRegistrar" class="form-btn">Guardar</button>
         </div>
     </section>
+
     <footer class="footer">
         <h5>Powered by</h5>
         <a href="https://glovooker.github.io/landing-page-bisoft-1/">
@@ -69,9 +86,12 @@
     <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>    
     <script src="./js/controllers/ControllerGeneral.js"></script>
     <script src="js/Constantes.js"></script>
-    <script src="./js/services/PersonaService.js"></script>  
-    <script src="./js/services/InicioDeSesionService.js"></script>
-    <script src="./js/controllers/InicioDeSesionController.js"></script>
+    <script src="js/services/CrudPersonasService.js"></script>
+    <script src="./js/services/PersonaService.js"></script>
+    <script src="./js/controllers/CreacionCuentaController.js"></script>
+
 </body>
 
 </html>
+
+

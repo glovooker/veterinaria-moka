@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/Tabla.css">
+</head>
+<body>
+    <main>
+        <form id="formularioFacturas">
+            <label for="txtCantidad" class="lblInput">Cantidad</label>
+            <input type="number" id="txtCantidad" required><br>
+            <label for="txtDescripcion" class="lblInput">Descripcion</label>
+            <input type="text" id="txtDescripcion" required><br>
+            <label for="txtPrecio" class="lblInput">Precio Unitario</label>
+            <input type="number" id="txtPrecio" required>
+            <button type="button" id="btnAgregar">Agregar</button><br>
+            <button type="button" id="btnGuardarFactura">Procesar Factura</button>
+        </form>
+
+
+
+        <table id="tblFactura" class="table">
+            <thead>
+                <tr>
+                    <th>Cantidad</th>
+                    <th>Descripcion</th>
+                    <th>Precio Unitario</th>
+                    <th>SubTotal</th>
+                    <th>acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tbdFactura"></tbody>
+            <tfoot id="tftFactura"></tfoot>
+        </table>
+
+    </main>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/Constantes.js"></script>
+<script src="js/Services/FacturaServices.js"></script>
+<script src="js/Controllers/FacturaController.js"></script>
+<script src="js/Controllers/ControllerGeneral.js"></script>
+</html>

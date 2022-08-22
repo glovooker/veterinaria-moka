@@ -5,7 +5,7 @@ let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
 let acc = urlParams.get('acc'); //M = Modificar C=Crear nuevo(CrudPersonas.html)
 if (acc == null) {
-  acc = 'N'; //Nuevo  (no se llama desde el CRUD)  
+  acc = 'N'; //Nuevo  (no se llama desde el CRUD)
 } 
 
 btnRegistrar.addEventListener("click", Validaciones);
@@ -61,7 +61,10 @@ function ValidarPass() {
      document.getElementById("txtPass").value,      
      document.getElementById("txtTelefono").value,
      document.getElementById("txtDireccion").value,
-     3,"","","",""); 
+     document.getElementById("selRol").value, 
+     document.getElementById("txtFacebook").value,
+     document.getElementById("txtInstagram").value,
+     document.getElementById("txtTwitter").value,""); 
 
    if (result.resultado == true) {
        ImprimirMsjSuccess(result.msj);
@@ -90,10 +93,10 @@ function ValidarPass() {
       document.getElementById("txtPass").value,      
       document.getElementById("txtTelefono").value,
       document.getElementById("txtDireccion").value,
-      3,
-      personaConsultada.PerfilFB,
-      personaConsultada.PerfilIG,
-      personaConsultada.PerfilTW,
+      document.getElementById("selRol").value,
+      document.getElementById("txtFacebook").value,
+      document.getElementById("txtInstagram").value,
+      document.getElementById("txtTwitter").value,
       personaConsultada.FotoPerfil,
       personaConsultada.Estado); 
  
@@ -115,6 +118,10 @@ function ValidarPass() {
         document.getElementById("txtPass2").value = personaConsultada.Password;      
         document.getElementById("txtTelefono").value = personaConsultada.Telefono;
         document.getElementById("txtDireccion").value = personaConsultada.Direccion;
+        document.getElementById("selRol").value = personaConsultada.Rol;
+        document.getElementById("txtFacebook").value = personaConsultada.PerfilFB; 
+        document.getElementById("txtInstagram").value = personaConsultada.PerfilIG;
+        document.getElementById("txtTwitter").value = personaConsultada.PerfilTW;
     }
   }
 

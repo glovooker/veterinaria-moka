@@ -37,9 +37,19 @@
 }
 
 .table .eliminarBtn {
-    background-color: #E07A5F;
+    width: 35px;
+    height: 35px;    
+    background-color: #873e2a;
 }
 
 .table .modificarBtn {
-    background-color: #3D405B;
+    width: 35px;
+    height: 35px;
+    background-color: #4a54ad;
+}
+
+.table .DetalleBtn {
+    width: 35px;
+    height: 35px;
+    background-color: #38726f;
 }
