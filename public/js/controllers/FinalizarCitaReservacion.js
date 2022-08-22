@@ -59,7 +59,8 @@ async function GuardarDatos(){
     if(ValidarCampos()===false){
         return false;
     }
-let result = await ModificarCita(_id,'','F',estrellas.value); 
+let result = await ModificarCita(_id,'','F',estrellas.value);
+console.log(idCliente)
 console.log(estrellas.value);
 console.log(observaciones.value);
     
@@ -73,7 +74,7 @@ console.log(observaciones.value);
             icon: 'success',
             confirmButtonText: 'Ok'
         }).then(res => {
-            location.href = 'crudCitas.html'
+            location.href = 'facturas.html?_id=' + idCliente
         });
     }
 }
