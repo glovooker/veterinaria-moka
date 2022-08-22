@@ -29,8 +29,12 @@ async function ImprimirDatos() {
     for (let i = 0; i < listaPersonas.length; i++) { 
 
         if(listaPersonas[i].Nombre.toLowerCase().includes(filtro)|| 
-           ObtenerRol(listaPersonas[i].Rol).toLowerCase().includes(filtro) || 
-           ObtenerEstado(listaPersonas[i].Estado).toLowerCase().includes(filtro)
+        ObtenerRol(listaPersonas[i].Rol).toLowerCase().includes(filtro) || 
+        ObtenerEstado(listaPersonas[i].Estado).toLowerCase().includes(filtro)|| 
+        listaPersonas[i].Correo.toLowerCase().includes(filtro)||
+        listaPersonas[i].Cedula.toString().includes(filtro)||
+        listaPersonas[i].Telefono.toString().includes(filtro)
+
         ){ 
             let fila = tbody.insertRow();
             let celdaCedula = fila.insertCell();

@@ -30,7 +30,7 @@ async function FiltrarPorFechas(){
         }
     }
     let listaCitas=[]
-    let result = await ObtenerListaCitas('C');
+    let result = await ObtenerListaCitas('R');
     
     if (result != {} && result.resultado == true) {
         listaCitas = result.ListaCitasBD;
@@ -68,7 +68,7 @@ function ValidarFecha() {
 /*************************************/
 
 async function GetListaCitas() {
-    let result = await ObtenerListaCitas('C');
+    let result = await ObtenerListaCitas('R');
     if (result != {} && result.resultado == true) {
         let listaCitas = result.ListaCitasBD;
         totalCitas = listaCitas.length;
@@ -106,11 +106,11 @@ async function  GetListaMascota() {
 async function ImprimirDatos(listaCitas) {
     let filtro = inputFiltro.value;
     let tbody = document.getElementById('tablaReportes');
-    let vetNombre,clienteNombre,mascotaNombre; 
+    let clienteNombre,mascotaNombre; 
     tbody.innerHTML = '';
-    let contFinalizadas=0;
+   /*  let contFinalizadas=0;
     let contCanceladas=0;
-    let contAprobadas=0
+    let contAprobadas=0 */
 
     
     
@@ -118,15 +118,15 @@ async function ImprimirDatos(listaCitas) {
           
         if(ObtenerEstadoCita(listaCitas[i].Estado).toLowerCase().includes(filtro)) {
             let fila = tbody.insertRow();
-            let celdaFecha = fila.insertCell();
-            let celdaNombreCliente = fila.insertCell();
-            let celdaNombreMascota= fila.insertCell();
+            let celdaFechaEntrada = fila.insertCell();
+            let celdaFechaSalida = fila.insertCell();
             let celdaHoraInicio = fila.insertCell();
             let celdaHoraFinal = fila.insertCell();
-            let celdaNombreVet = fila.insertCell();
-            let celdaEstado = fila.insertCell();
+            let celdaNombreCliente = fila.insertCell();
+            let celdaNombreMascota= fila.insertCell();
             let celdaObservaciones = fila.insertCell();
-            let celdaAcciones = fila.insertCell();
+           /*  let celdaAcciones = fila.insertCell(); */
+        
             
 
             /* let btnVer = document.createElement('button');
@@ -139,7 +139,14 @@ async function ImprimirDatos(listaCitas) {
             let divBtns = document.createElement('div');
             divBtns.appendChild(btnVer); */
             let fechaCita = new Date(listaCitas[i].FecInicio.replace('-','/'));
-            celdaFecha.innerHTML = fechaCita.getDate() + '/' + (fechaCita.getMonth() +1) + '/' + fechaCita.getFullYear();
+            celdaFechaEntrada.innerHTML = fechaCita.getDate() + '/' + (fechaCita.getMonth() +1) + '/' + fechaCita.getFullYear();
+
+
+            let fechaCitaSalida = new Date(listaCitas[i].FecFinal.replace('-','/'));
+            celdaFechaSalida.innerHTML = fechaCitaSalida.getDate() + '/' + (fechaCitaSalida.getMonth() +1) + '/' + fechaCitaSalida.getFullYear();
+
+            celdaHoraInicio.innerHTML = listaCitas[i].HoraInicio;
+            celdaHoraFinal.innerHTML = listaCitas[i].HoraFinal;
 
             for (let j = 0; j < listaPersonas.length; j++){
                 if(listaPersonas[j]._id===listaCitas[i]._idCliente){
@@ -156,20 +163,19 @@ async function ImprimirDatos(listaCitas) {
             }
             celdaNombreMascota.innerHTML = mascotaNombre;
             
-            for (let l = 0; l < listaPersonas.length; l++){
+          /*   for (let l = 0; l < listaPersonas.length; l++){
                 if(listaPersonas[l]._id===listaCitas[i]._idVeterinario){
                     vetNombre = listaPersonas[l].Nombre;
                     break;
                 }
-            }
+            } */
             
 
-            celdaHoraInicio.innerHTML = listaCitas[i].HoraInicio;
-            celdaHoraFinal.innerHTML = listaCitas[i].HoraFinal;
+           
             
-            celdaNombreVet.innerHTML = vetNombre;
-            celdaEstado.innerHTML = ObtenerEstadoCita(listaCitas[i].Estado);
-            if(ObtenerEstadoCita(listaCitas[i].Estado)==='Aprobado'){
+          /*   celdaNombreVet.innerHTML = vetNombre; */
+          /*   celdaEstado.innerHTML = ObtenerEstadoCita(listaCitas[i].Estado); */
+          /*   if(ObtenerEstadoCita(listaCitas[i].Estado)==='Aprobado'){
                 contAprobadas=contAprobadas+1
             }
             if(ObtenerEstadoCita(listaCitas[i].Estado)==='Finalizado'){
@@ -177,17 +183,18 @@ async function ImprimirDatos(listaCitas) {
             }
             if (ObtenerEstadoCita(listaCitas[i].Estado)==='Cancelado'){
                 contCanceladas=contCanceladas+1
-            }
+            } */
             celdaObservaciones.innerHTML = listaCitas[i].Observaciones;
             
 
         }
     }
     document.getElementById('outputTotalCitas').innerHTML =  totalCitas;
-    document.getElementById('outputAprobadas').innerHTML = contAprobadas
+  /*   document.getElementById('outputAprobadas').innerHTML = contAprobadas
     document.getElementById('outputFinalizadas').innerHTML = contFinalizadas
-    document.getElementById('outputCanceladas').innerHTML = contCanceladas
+    document.getElementById('outputCanceladas').innerHTML = contCanceladas */
 }
     
     
     
+

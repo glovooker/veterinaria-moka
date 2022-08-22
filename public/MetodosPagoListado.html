@@ -6,10 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./css/PaginaInicio.css">
     <link rel="stylesheet" href="./css/StyleGeneral.css">
+    <link rel="stylesheet" href="./css/MetodosPago.css">
+    <link rel="stylesheet" href="./css/Tabla.css">
     <link rel="stylesheet" href="./css/webfont/stylesheet.css">
-    <title>Moka Vet & Hotel</title>
+    <title>Moka | Métodos de Pago</title>
 </head>
 
 <body>
@@ -32,41 +33,38 @@
                 <div class="dropdown-content">
                     <a href="./Cliente.html">Mi Perfil</a>
                     <a href="./Mascotas.html">Mascotas</a>
-                    <a href="">Facturas</a>
-                    <a href="">Métodos de pago</a>
-                    <a href="">Citas</a>
-                    <a href="">Reservaciones</a>
                     <a href="./InicioDeSesion.html">Cerrar Sesión</a>
                 </div>
             </div>
         </nav>
     </header>
 
-    <div class="banner">
-        <img src="./img/BannerPaginaInicio.jpg" alt="Banner de Bienvenida">
+    <h3>Tabla de tarjetas</h3>
+
+
+    <div class="table-filters">
+        <table class="table" id="tblTarjetas">
+            <thead>
+                <tr>
+                    <th>
+                        Numero Tarjeta
+                    </th>
+                    <th>
+                        Fecha de Expiración
+                    </th>
+                    <th>
+                        Nombre Tarjeta Habiente
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
-    <section class="welcome">
-        <div class="welcome-container">
-            <h2>¡Bienvenido a Moka!</h2>
 
-            <h3>¿Cómo te podemos ayudar?</h3>
-
-            <div class="area-btns-container">
-                <div class="btn vet-btn">
-                    <a href="./ReservarCita.html">
-                        <i class="fa-solid fa-house-medical"></i>
-                        <p>Clínica</p>
-                    </a>
-                </div>
-                <div class="btn hotel-btn">
-                    <a href="./ReservarHabitacion.html">
-                        <i class="fa-solid fa-hotel"></i>
-                        <p>Hotel</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
     <footer class="footer">
         <h5>Powered by</h5>
         <a href="https://glovooker.github.io/landing-page-bisoft-1/">
@@ -74,7 +72,13 @@
         </a>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="js/services/MetodosPagoService.js"></script>
+    <script src="js/controllers/EnlistarMetodosPagoController.js"></script>
+
+
 </body>
 
 </html>
