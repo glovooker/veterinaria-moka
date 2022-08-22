@@ -1,7 +1,8 @@
 'use strict'
+let queryString, urlParams
 let listaDetalles = [];
 //Se busca la factura en especifico con el id de la factura, luego en la factura se obtiene el id del cliente(campo identificacion) y con ese id se busca los datos del cliente en buscar persona.
-let _id = '62fae8a64cacf559098bb262'; //id de la factura
+let _id; //id de la factura
 let numeroFactura;
 let identificacionPersona;
 let fechaFactura;
@@ -12,7 +13,26 @@ let nombrePersona;
 let emailPersona;
 let TelefonoPersona;
 let cedulaPersona;
-ObtenerFactura();
+
+/**********/
+getParamsURL();
+
+async function getParamsURL() {
+    queryString = window.location.search;
+
+    urlParams = new URLSearchParams(queryString);
+    
+    _id = urlParams.get('_id');
+    
+    // console.log(_id);
+
+    if (_id != null && _id != undefined) {
+        await ObtenerFactura();;
+    }
+}
+
+/**********/
+
 
 
 async function ObtenerFactura(){
@@ -88,7 +108,7 @@ function ImprimirDatosDetalles(){
             celdaSubtotal.innerHTML = '₡' +  listaDetalles[i].SubTotal; 
             document.getElementById('outputTotal').innerHTML= '₡' + totalAPagar;
             document.getElementById('outputNumeroFactura').innerHTML= numeroFactura;
-            fecha = new Date(fechaFactura);
+            fecha = new Date(fechaFactura.replace('Z',''));
             fechaFormateada = formatDate(fecha);
         
             document.getElementById('outputFecha').innerHTML= fechaFormateada;

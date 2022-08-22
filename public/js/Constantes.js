@@ -114,3 +114,18 @@ function ObtenerTipoCita(pTipo) {
       return 'Reservación';
   }
 }
+
+function ObtenerEstadoFactura(pEstado) {
+  switch (Number(pEstado)) {
+    case 1:
+      return 'Pendiente';
+    default:
+      return 'Pagada';
+  }
+}
+
+const formatoNumero = (number) => {
+  const exp = /(\d)(?=(\d{3})+(?!\d))/g;
+  const rep = '$1,';
+  return number.toString().replace(exp, rep);
+};
