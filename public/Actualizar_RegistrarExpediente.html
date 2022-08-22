@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expediente</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/StyleGeneral.css">
+    <link rel="stylesheet" href="./css/Expediente.css">
+    <link rel="stylesheet" href="./css/Tabla.css">
+    <link rel="stylesheet" href="./css/webfont/stylesheet.css">
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gestionar Expediente</title>
+    </head>
+
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="logo-container">
+                    <a href="./PaginaInicio.html">
+                        <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
+                    </a>
+                </div>
+                <div class="navegation-container">
+                    <a href="./PaginaInicio.html">Inicio</a>
+                    <a href="./ReservarCita.html">Clínica</a>
+                    <a href="./ReservarHabitacion.html">Hotel</a>
+                </div>
+                <div class="profile-dropdown">
+                    <a href="" class="profile-icon">
+                        <i class="fa-solid fa-circle-user"></i>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="./Cliente.html">Mi Perfil</a>
+                        <a href="./Mascotas.html">Mascotas</a>
+                        <a href="./InicioDeSesion.html">Cerrar Sesión</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <section>
+            <form action="">
+                <h3 id="titleExpediente"></h3>
+
+                <input type="hidden" id="txt_id">
+                <div id="row">
+                    <div>
+                        <label id="lblNombre" for="txtNombre">Nombre</label>
+                        <input type="text" id="txtNombre">
+                    </div>
+                    <div>
+                        <label id="lblDuenno" for="txtDuenno">Dueño</label>
+                        <input type="text" id="txtDuenno">
+                    </div>
+                    <div>
+                        <label id="lblUsuario" for="txtUsuario">Usuario</label>
+                        <input type="text" id="txtUsuario">
+                    </div>
+                    <div>
+                        <label id="lblEspecie" for="txtEspecie">Especie</label>
+                        <input type="text" id="txtEspecie">
+                    </div>
+                    <div>
+                        <label id="lblEstrellas" for="numEstrellas">Estrellas</label>
+                        <input type="number" id="numEstrellas">
+                    </div>
+                    <div>
+                        <label id="lblObservaciones" for="txtObservaciones">Observaciones</label>
+                        <input id="txtObservaciones" type="text">
+                    </div>
+                    <div>
+                        <label id="lblPadecimientos" for="txtPadecimientos">Padecimientos</label>
+                        <input type="text" id="txtPadecimientos">
+                    </div>
+                    <div>
+                        <label id="lblCitas" for="txtCitas">Citas</label>
+                        <input id="txtCitas" type="number">
+                    </div>
+                    <div>
+                        <label id="lblReservaciones" for="txtReservaciones">Reservaciones</label>
+                        <input id="txtReservaciones" type="number">
+                    </div>
+                    <div>
+                        <label id="lblNumExpediente" for="txtNumExpediente">Asignar número de expediente</label>
+                        <input id="txtNumExpediente" type="number">
+                    </div>
+                    <div>
+                        <input type="button" id="btnRegistrar" onclick="" value="Registrar">
+                    </div>
+                </div>
+            </form>
+        </section>
+    </body>
+
+    <script src='//unpkg.com/axios/dist/axios.min.js'></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="./js/Constantes.js"></script>
+
+    <script src="./js/services/GestionExpedienteService.js"></script>
+    <script src="./js/controllers/GestionExpedienteController.js"></script>
+</body>
+
+</html>

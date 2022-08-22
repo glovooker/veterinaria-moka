@@ -28,37 +28,56 @@
 <body>
     <form action="" id="formulario">
         <container>
-            <h1>Visualización Reportes Finanzas</h1>
-            <div>
-                <h3>Filtros</h3>
-                <div>
-                    <form>
-                        <label for="dateFilter">Fecha</label>
-                        <input type="date" id="dateFilter">
-                        <label for="numbFact">Numero de factura</label>
-                        <input type="text" id="numbFact" min="0">
-                    </form>
-                </div>
-                <button id="bttn" type="button" onclick="limpiar()" >Limpiar Filtros</button>
-                <input type="button" onClick="filtrarNum()" value="Filtrar">
+            <h3>Filtros</h3>
+            <form id="filtrosTablasFecha">
+                <label for="txtFechaInicio" class="lblInput">Fecha Inicio</label>
+                <input type="date" id="txtFechaInicio" required>
+                <label for="txtFechaHasta" class="lblInput">Fecha Fin</label>
+                <input type="date" id="txtFechaHasta" required>
+                <button type="button" id="btnFiltroFechas">Filtrar por fecha</button>
+                <button type="button" id="btnLimpiar">Limpiar filtro</button>
+            </form>
+            <div id="FiltroTablas">
+                <label for="txtFiltro">Filtrar</label>
+                <input type="text" id="txtFiltro" placeholder="Ingresa No.factura o Estado">
             </div>
-            <div>
-                <table id="tablaReportes">
+            
+            
+
+           
+            
+                <table>
                     <caption>Reportes</caption>
                     <thead>
                         <tr>
                             <th>Numero de Factura</th>
-                            <th>Dinero</th>
+                            <th>Cliente</th>
                             <th>Fecha</th>
+                            <th>Monto Facturado</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tablaReportes">
                         
                     </tbody>
                     <tfoot></tfoot>
                 </table>
-                <label for="resumenDineroTot">Total</label>
-                <output name="" for="" id="resumenDinero"></output>
+                <div>
+                    <h1>Resumen</h1>
+                    <label for="txtTotal">Total de ganancias por facturas pagadas:</label>
+                    <output name="" for="" id="txtTotal"></output><br>
+                    <label for="txtTotalPendientes">Total de dinero por facturas pendientes:</label>
+                    <output name="" for="" id="txtTotalPendientes"></output><br>
+                    <label for="txtContPagadas">Facturas pagadas:</label>
+                    <output name="" for="" id="txtContPagadas"></output><br>
+                    <label for="txtContPendientes">Facturas pendientes:</label>
+                    <output name="" for="" id="txtContPendientes"></output><br>
+                    <label for="txtTotalFacturas">Total de facturas Registradas:</label>
+                    <output name="" for="" id="txtTotalFacturas"></output>
+                </div>
+
             </div>
         </container>
     </form>
@@ -67,10 +86,13 @@
         <h5>Clever Solutions - 2022</h5>
     </footer>
 </body>
-
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="./js/services/ServiceReportes.js"></script>
-<script src="./js/controllers/VisualizacionReportesFacturasController.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/Constantes.js"></script>
+<script src="js/services/ReporteFacturasServices.js"></script>
+<script src="js/services/PersonaService.js"></script>
+<script src="js/controllers/VisualizacionReportesFacturasController.js"></script>
+<script src="js/controllers/ControllerGeneral.js"></script>
 
 
 </html>
