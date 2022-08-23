@@ -61,6 +61,7 @@ function ValidarPass() {
      document.getElementById("txtPass").value,      
      document.getElementById("txtTelefono").value,
      document.getElementById("txtDireccion").value,
+     document.getElementById('ImgCliente').src,
      3,"","","",""); 
 
    if (result.resultado == true) {
@@ -90,6 +91,7 @@ function ValidarPass() {
       document.getElementById("txtPass").value,      
       document.getElementById("txtTelefono").value,
       document.getElementById("txtDireccion").value,
+      document.getElementById('ImgCliente').src,
       3,
       personaConsultada.PerfilFB,
       personaConsultada.PerfilIG,
@@ -115,6 +117,7 @@ function ValidarPass() {
         document.getElementById("txtPass2").value = personaConsultada.Password;      
         document.getElementById("txtTelefono").value = personaConsultada.Telefono;
         document.getElementById("txtDireccion").value = personaConsultada.Direccion;
+        document.getElementById("ImgCliente").value = personaConsultada.FotoPerfil;
     }
   }
 
