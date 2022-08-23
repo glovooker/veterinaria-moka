@@ -53,13 +53,13 @@ function imprimirDatosEnPantalla(cliente,mascota){
 
 }
         
-/* (p_id, pMotivoCancela, pEstado, pEstrellas) => orden de modificar cita parametros */ 
+/* (p_id, pMotivoCancela, pEstado, pEstrellas, pEstrellasVeterinario, pObservacionesVeterinario) */ 
 
 async function GuardarDatos(){
     if(ValidarCampos()===false){
         return false;
     }
-let result = await ModificarCita(_id,'','F',estrellas.value);
+let result = await ModificarCita(_id,'','F',estrellas.value,'',observaciones);
 console.log(idCliente)
 console.log(estrellas.value);
 console.log(observaciones.value);
