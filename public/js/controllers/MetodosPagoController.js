@@ -17,6 +17,7 @@ function Validaciones() {
       icon: 'success',
       confirmButtonText: 'Ok',
     });
+
     return true;
   }
 }
