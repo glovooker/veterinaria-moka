@@ -65,7 +65,7 @@ router.post('/ModificarCita', function(req, res){
              MotivoCancela: body.MotivoCancela,
              Estado: body.Estado,
              Estrellas: body.Estrellas,
-             Estrellas: body.EstrellasVeterinario,
+             EstrellasVeterinario: body.EstrellasVeterinario,
              ObservacionesVeterinario: body.ObservacionesVeterinario
 
         }       
