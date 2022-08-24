@@ -15,30 +15,6 @@ GetListaMascota()
 
 
 
-/* btnfiltroFecha.addEventListener('click', FiltrarPorFechas); */
-/* btnLimpiar.addEventListener('click',Limpiar) */
-
-/* async function FiltrarPorFechas(){
-    if (ValidarCampos()===false){
-        return false
-    }else{
-        if(ValidarFecha()===false){
-            return false
-        }
-    }
-    let listaMascotas=[]
-    let result = await ObtenerListaMascota();
-    
-    if (result != {} && result.resultado == true) {
-        listaMascotas = result.ListaMascotaBD;
-    }
-    let lista = listaCitas.filter(n => n.FecInicio >= inputFechaInicio.value && n.FecInicio <= inputFechaHasta.value);
-     console.log(lista)
-    ImprimirDatos(lista);
-  
-    } */
-
-
 
 
 
@@ -51,7 +27,7 @@ async function  GetListaMascota() {
     let result = await ObtenerListaMascota();
     if (result != {} && result.resultado == true) {
         let listaMascotas = result.ListaMascotaBD;
-        console.log(listaMascotas);
+       /*  console.log(listaMascotas); */
         await GetListaPersonas();  
         await GetListaCitas(); 
         await GetListaReservacion();
@@ -66,7 +42,7 @@ async function GetListaCitas() {
     let result = await ObtenerListaCitas('C');
     if (result != {} && result.resultado == true) {
         listaCitas = result.ListaCitasBD;
-        console.log(listaCitas);
+      /*   console.log(listaCitas); */
     } else {
         imprimirMsjError(result.msj);
         return;
@@ -77,7 +53,7 @@ async function GetListaReservacion() {
     let result = await ObtenerListaCitas('R');
     if (result != {} && result.resultado == true) {
         listaReservacion = result.ListaCitasBD;
-        console.log(listaReservacion);
+        /* console.log(listaReservacion); */
     } else {
         imprimirMsjError(result.msj);
         return;
@@ -88,7 +64,7 @@ async function GetListaPersonas() {
     let result = await ObtenerListaPersonas();
     if (result != {} && result.resultado == true) {
         listaPersonas = result.ListaPersonasBD;
-        console.log(listaPersonas)
+      /*   console.log(listaPersonas) */
     } else {
         imprimirMsjError(result.msj);
         return;
@@ -107,35 +83,22 @@ async function ImprimirDatos(listaMascotas) {
     
     
     for (let i = 0; i < listaMascotas.length; i++) {
+        for (let j = 0; j < listaPersonas.length; j++){
+            if(listaPersonas[j]._id===listaMascotas[i].IdPersona){
+                clienteNombre = listaPersonas[j].Nombre;
+            }
+        }
           
-        if(listaMascotas[i].Nombre.toLowerCase().includes(filtro)) {
+        if(listaMascotas[i].Nombre.toLowerCase().includes(filtro)
+        || clienteNombre.toLowerCase().includes(filtro)) {
             let fila = tbody.insertRow();
             let celdaNombreMascota= fila.insertCell();
             let celdaNombreCliente = fila.insertCell();
             let celdaValoracion = fila.insertCell();
-           /*  let celdaAcciones = fila.insertCell(); */
-            
-            
-
-            /* let btnVer = document.createElement('button');
-            btnVer.onclick = function(){
-                location.href = 'VistaFactura.html?_id=' + arregloListaFacturas[i]._id
-            };
-            btnVer.type = 'button';
-            btnVer.innerText = '🔍';
-            btnVer.title = 'VER FACTURA';
-            let divBtns = document.createElement('div');
-            divBtns.appendChild(btnVer); */
-            /* let fechaCita = new Date(listaCitas[i].FecInicio.replace('-','/'));
-            celdaFecha.innerHTML = fechaCita.getDate() + '/' + (fechaCita.getMonth() +1) + '/' + fechaCita.getFullYear();
-            */
+           
 
             celdaNombreMascota.innerHTML = listaMascotas[i].Nombre;
-            for (let j = 0; j < listaPersonas.length; j++){
-                if(listaPersonas[j]._id===listaMascotas[i].IdPersona){
-                    clienteNombre = listaPersonas[j].Nombre;
-                }
-            }
+            
             celdaNombreCliente.innerHTML = clienteNombre;
 
             for (let k = 0; k < listaCitas.length; k++){
@@ -165,7 +128,7 @@ async function ImprimirDatos(listaMascotas) {
 
             
             
-            /* celdaNombreVet.innerHTML = vetNombre; */
+            
             
             
 
