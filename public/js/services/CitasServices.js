@@ -28,12 +28,15 @@ async function GenerarCita(pFecInicio, pHoraInicio, pFecFinal, pHoraFinal,pTipo,
     return result;
 }
 
-async function ObtenerListaCitas() {
+async function ObtenerListaCitas(pTipo) {
     let result = {};
     await axios({
         method: 'get',
         url: apiUrl + '/ListarCitas',
-        responseType: 'json'
+        responseType: 'json',
+        params: {
+            'Tipo': pTipo
+        }
     }).then((res) => {
         result = res.data;
     }).catch((err) => {
@@ -50,7 +53,7 @@ async function BuscarCita(p_id) {
         url: apiUrl + '/BuscarCita',
         responseType: 'json',
         params: {
-            '_id': p_id 
+            '_id': p_id
         }
     }).then((res) => {
         result = res.data;
@@ -60,7 +63,7 @@ async function BuscarCita(p_id) {
     return result;
   }
 
-  async function ModificarCita(p_id, pMotivoCancela, pEstado, pEstrellas) {
+  async function ModificarCita(p_id, pMotivoCancela, pEstado, pEstrellas, pEstrellasVeterinario, pObservacionesVeterinario) {
     let result = {};
     await axios({
         method: 'post',
@@ -70,7 +73,9 @@ async function BuscarCita(p_id) {
             '_id': p_id,
             'MotivoCancela': pMotivoCancela,
             'Estado': pEstado,
-            'Estrellas': pEstrellas
+            'Estrellas': pEstrellas,
+            'EstrellasVeterinario':pEstrellasVeterinario,
+            'ObservacionesVeterinario': pObservacionesVeterinario
         }
     }).then((res) => {
         result = res.data;

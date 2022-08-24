@@ -29,8 +29,12 @@ async function ImprimirDatos() {
     for (let i = 0; i < listaPersonas.length; i++) { 
 
         if(listaPersonas[i].Nombre.toLowerCase().includes(filtro)|| 
-           ObtenerRol(listaPersonas[i].Rol).toLowerCase().includes(filtro) || 
-           ObtenerEstado(listaPersonas[i].Estado).toLowerCase().includes(filtro)
+        ObtenerRol(listaPersonas[i].Rol).toLowerCase().includes(filtro) || 
+        ObtenerEstado(listaPersonas[i].Estado).toLowerCase().includes(filtro)|| 
+        listaPersonas[i].Correo.toLowerCase().includes(filtro)||
+        listaPersonas[i].Cedula.toString().includes(filtro)||
+        listaPersonas[i].Telefono.toString().includes(filtro)
+
         ){ 
             let fila = tbody.insertRow();
             let celdaCedula = fila.insertCell();
@@ -181,14 +185,19 @@ async function ImprimirDatos() {
             btnTarjeta.classList.add('eliminarBtn');
             ////////////////////////////////////////////////////            
 
-            let divBtns = document.createElement('div');
-            divBtns.appendChild(btnPerfil);
-            divBtns.appendChild(btnEdit);            
+            let divBtns = document.createElement('div');            
             divBtns.appendChild(btnInactivar);
-            divBtns.appendChild(btnMascota);
-            divBtns.appendChild(btnCita);
-            divBtns.appendChild(btnHotel);
-            divBtns.appendChild(btnTarjeta);
+            divBtns.appendChild(btnPerfil);
+
+            if (listaPersonas[i].Estado == 1) {            
+                divBtns.appendChild(btnEdit);
+                if (listaPersonas[i].Rol == 3) {
+                divBtns.appendChild(btnMascota);
+                divBtns.appendChild(btnCita);
+                divBtns.appendChild(btnHotel);
+                divBtns.appendChild(btnTarjeta);
+                }
+            }
 
             ///////////////////////////////////////////////////
 

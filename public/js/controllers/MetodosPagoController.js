@@ -1,8 +1,5 @@
 'use strict';
 
-let pNumCliente = 4;
-let pCliente = 'Cris Hemsworth';
-
 btnRegistrar.addEventListener('click', Validaciones);
 
 function Validaciones() {
@@ -12,14 +9,8 @@ function Validaciones() {
     return false;
   } else {
     /***********************************************************************/
-    guardarMetodoPago(
-      pNumCliente,
-      pCliente,
-      document.getElementById('txtNumTarjeta').value,
-      document.getElementById('txtExpiracion').value,
-      document.getElementById('txtCVV').value,
-      document.getElementById('txtNombreTarjeta').value
-    );
+    CrearTarjeta();
+    /***********************************************************************/
     Swal.fire({
       title: 'Success!',
       text: 'Todos los campos requeridos han sido ingresados',
@@ -43,3 +34,20 @@ function ValidarFecha() {
     return false;
   }
 }
+
+let CrearTarjeta = () => {
+  let numTarjeta = document.getElementById('txtNumTarjeta');
+  let expiracion = document.getElementById('txtExpiracion');
+  let ccv = document.getElementById('txtCVV');
+  let nombreTarjeta = document.getElementById('txtNombreTarjeta');
+  let persona = JSON.parse(localStorage.getItem('datosSesionActiva'));
+  // console.log(persona);
+  let Tarjeta = {
+    _idC: persona._id,
+    NumTarjeta: numTarjeta.value,
+    FecExpira: expiracion.value,
+    Cvv: ccv.value,
+    Nombre: nombreTarjeta.value,
+  };
+  RegistrarTarjetaDatos('RegistrarTarjeta', Tarjeta);
+};
