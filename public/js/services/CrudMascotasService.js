@@ -1,5 +1,26 @@
-//Clever Solutions
 'use strict';
+
+function SetMascotaConsultada(pDatosMascota) {
+  localStorage.setItem('datosMascotaConsultada', JSON.stringify(pDatosMascota));
+  console.log(pDatosMascota);
+}
+
+function LimpiarLSMascotaConsultada() {
+  localStorage.removeItem('datosMascotaConsultada');
+}
+
+function GetMascotaConsultada() {
+  let datosMascotaConsultada = null;
+  let localStorageData = localStorage.getItem('datosMascotaConsultada');
+  if (
+    localStorageData != null &&
+    localStorageData != undefined &&
+    localStorageData != ''
+  ) {
+    datosMascotaConsultada = JSON.parse(localStorageData);
+  }
+  return datosMascotaConsultada;
+}
 
 async function RegistrarMascota(
   pNombre,
@@ -52,17 +73,19 @@ async function ObtenerListaMascota() {
 async function BuscarMascota(p_id) {
   let result = {};
   await axios({
-      method: 'get',
-      url: apiUrl + '/BuscarMascota',
-      responseType: 'json',
-      params: {
-          '_id': p_id 
-      }
-  }).then((res) => {
+    method: 'get',
+    url: apiUrl + '/BuscarMascota',
+    responseType: 'json',
+    params: {
+      '_id': p_id,
+    },
+  })
+    .then((res) => {
       result = res.data;
-  }).catch((err) => {
+    })
+    .catch((err) => {
       console.log(err);
-  });
+    });
   return result;
 }
 
