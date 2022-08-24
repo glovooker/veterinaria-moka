@@ -118,7 +118,7 @@ async function ImprimirDatos(arregloListaFacturas) {
 
             let btnVer = document.createElement('button');
             btnVer.onclick = function(){
-                location.href = 'VistaFactura.html?_id=' + arregloListaFacturas[i]._id
+                location.href = 'VistaFactura.html?_idFactura=' + arregloListaFacturas[i]._id
             };
             btnVer.type = 'button';
             btnVer.innerText = '🔍';

@@ -22,7 +22,7 @@ async function getParamsURL() {
 
     urlParams = new URLSearchParams(queryString);
     
-    _id = urlParams.get('_id');
+    _id = urlParams.get('_idFactura');
     
     // console.log(_id);
 
