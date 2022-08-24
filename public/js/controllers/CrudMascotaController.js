@@ -1,5 +1,7 @@
 'use strict';
 
+let btnMascota1 = document.getElementById('btnMascota1'); 
+
 btnMascota1.addEventListener('click', CrearMascota1);
 
 const inputFiltro = document.getElementById('txtFiltro');
@@ -107,7 +109,7 @@ async function CrearMascota() {
     document.getElementById('txtTipoDeMascota').value,
     '5',
     document.getElementById('txtInfoAdicional').value,
-    '', // document.getElementById('fotoMascota').value,
+    document.getElementById('btnSubirImg').value,
     JSON.parse(localStorage.getItem('datosPersonaConsultada'))._id
   );
 

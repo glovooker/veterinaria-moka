@@ -12,7 +12,7 @@ let inputPadecimientos = document.getElementById('txtPadecimientos');
 let inputCitas = document.getElementById('txtCitas');
 let inputReservaciones = document.getElementById('txtReservaciones');
 let input_id = document.getElementById('txt_id');
-/*let fotoMascota = document.getElementById('imgPet');*/
+let fotoMascota = document.getElementById('imgPet');
 
 botonRegistrar.addEventListener('click', RegistrarDataExp);
 
@@ -56,7 +56,7 @@ function CargarInfo(pExpediente, pBoton) {
         inputCitas.value = pExpediente.Citas;
         inputReservaciones.value = pExpediente.Reservaciones;
         input_id.value = pExpediente._id;
-        
+        fotoMascota.src = pExpediente.FotoPerfil;
         
 
     }
@@ -69,12 +69,12 @@ async function RegistrarDataExp() {
     let sEspecie = inputEspecie.value;
     let nEstrellas = inputEstrellas.value;
     let sObservaciones = inputObservaciones.value;
+    let sFoto = fotoMascota.src;
     let sPadecimientos = inputPadecimientos.value;
     let nCitas = inputCitas.value;
     let nReservaciones = inputReservaciones.value;
     let sNumeroExpediente = inputNumExpediente.value;
-    let sFoto = ''; /*fotoMascota.src*/
-    let s_id = input_id.value
+    let s_id = input_id.value;
 
     
 

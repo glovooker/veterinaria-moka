@@ -56,6 +56,10 @@
                 <input type="hidden" id="txt_id">
                 <div id="row">
                     <div>
+                        <img id="imgPet" class="clase">
+                        <button id="subirFoto" type="button" onclick="AbrirCloudinary('imgPet')" >Subir foto</button>
+                    </div>
+                    <div>
                         <label id="lblNombre" for="txtNombre">Nombre</label>
                         <input type="text" id="txtNombre">
                     </div>
@@ -104,10 +108,12 @@
     </body>
 
     <script src='//unpkg.com/axios/dist/axios.min.js'></script>
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="./js/Constantes.js"></script>
 
+    <script src="./js/services/ImagenesService.js" ></script>
     <script src="./js/services/GestionExpedienteService.js"></script>
     <script src="./js/controllers/GestionExpedienteController.js"></script>
 </body>
