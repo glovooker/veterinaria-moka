@@ -19,7 +19,7 @@
                 <a id="linkVolver" href="">
                     <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
                 </a>
-            </div>            
+            </div>
             <div class="navegation-container">
                 <!-- <a href="./PaginaInicio.html">Inicio</a>
                 <a href="./ReservarCita.html">Clínica</a>
@@ -71,16 +71,19 @@
                         <option value="1">Secretario(a)</option>
                         <option value="2">Veterinario(a)</option>
                     </select>
-        
+
                     <label for="txtFacebook" id="lblFacebook" class="lblInput">Perfil Facebook</label>
                     <input type="text" id="txtFacebook">
-        
+
                     <label for="txtInstagram" id="lblInstagram" class="lblInput">Perfil Instagram</label>
                     <input type="text" id="txtInstagram">
-                    
-                    <label for="txtTwitter" id="lblTwitter" class="lblInput">Perfil Twitter</label>
-                    <input type="text" id="txtTwitter">                    
 
+                    <label for="txtTwitter" id="lblTwitter" class="lblInput">Perfil Twitter</label>
+                    <input type="text" id="txtTwitter">
+
+                    <img id="ImgCliente" class="uploaded-img">
+                    <button type="button" class="form-btn" onclick="AbrirCloudinary('ImgCliente')">Subir Foto de
+                        Perfil</button>
                 </form>
             </div>
 
@@ -98,15 +101,15 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>    
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script src="./js/controllers/ControllerGeneral.js"></script>
     <script src="js/Constantes.js"></script>
+    <script src="./js/services/ImagenesService.js"></script>
     <script src="js/services/CrudPersonasService.js"></script>
     <script src="./js/services/PersonaService.js"></script>
-    <script src="./js/controllers/CreacionCuentaUsuarioController.js"></script>  
+    <script src="./js/controllers/CreacionCuentaUsuarioController.js"></script>
 
 </body>
 
 </html>
-
-

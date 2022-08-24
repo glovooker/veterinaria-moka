@@ -65,15 +65,16 @@
                     <label for="txtDireccion" id="lblDireccion" class="lblInput">Dirección</label>
                     <input type="text" id="txtDireccion" class="clsDireccion" required>
 
-                    <img id="ImgCliente" class="">
-                    <button type="button" onclick="AbrirCloudinary('ImgCliente')">Subir fotografía</button>
+                    <img id="ImgCliente" class="uploaded-img">
+                    <button type="button" class="form-btn" onclick="AbrirCloudinary('ImgCliente')">Subir Foto de
+                        Perfil</button>
                 </form>
             </div>
             <div class="account">¿No tienes cuenta? <br><a href="./InicioDeSesion.html">Ingresa aquí</a>
             </div>
 
 
-            <button type=button id="btnRegistrar" class="form-btn">Guardar</button>
+            <button type="button" id="btnRegistrar" class="form-btn">Guardar</button>
         </div>
     </section>
 
@@ -87,7 +88,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>    
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
     <script src="./js/controllers/ControllerGeneral.js"></script>
     <script src="js/Constantes.js"></script>
     <script src="./js/services/ImagenesService.js"></script>
@@ -98,5 +99,3 @@
 </body>
 
 </html>
-
-
