@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualización De Reportes</title>
+    <title>Visualización De Reportes Calificación</title>
 </head>
 <header>
     <nav>
@@ -28,43 +28,65 @@
 <body>
     <form action="" id="formulario">
         <container>
-            <h1>Visualización Reportes Calificación</h1>
+            <h1>Visualización Reportes Valoración de Estrellas</h1>
             <div>
                 <h3>Filtros</h3>
-                <label for="">Veterinario</label>
-                <input type="text">
                 <div>
                     <form>
+                      
                     </form>
                 </div>
-                <button id="bttn" type="button" onclick="limpiar()" >Limpiar Filtros</button>
             </div>
             <div>
-                <table id="tablaReportes">
+                
+                <div id="FiltroTablas">
+                    <label for="txtFiltro">Filtrar</label>
+                    <input type="text" id="txtFiltro" placeholder="Filtrar por mascota">
+                </div>
+                <table>
                     <caption>Reportes</caption>
                     <thead>
                         <tr>
-                            <th>Doctor</th>
-                            <th>Calificación</th>
+                            
+                            <th>Nombre de la mascota</th>
+                            <th>Nombre del cliente</th>
+                            <th>Valoración</th>
+                            
                         </tr>
                     </thead>
-                    <tbody>
-                        
-                    </tbody>
+                    <tbody id="tablaReportes"></tbody>
                     <tfoot></tfoot>
                 </table>
+
+
+
+                
             </div>
+                            
+                            
+                        
         </container>
     </form>
 
     <footer>
         <h5>Clever Solutions - 2022</h5>
     </footer>
+
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script src="js/Constantes.js"></script>
+    <script src="js/services/CitasServices.js"></script>
+    <script src="./js/services/PersonaService.js"></script>
+    <script src="./js/services/CrudPersonasService.js"></script>
+    <script src="./js/services/MascotaService.js"></script> 
+    <script src="js/controllers/ReporteCalificacion.js"></script>
+    <script src="js/controllers/ControllerGeneral.js"></script>
 </body>
 
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="./js/services/ServiceReportes.js"></script>
-<script src="./js/controllers/VisualizacionReportesCalifiController.js"></script>
 
 
 </html>

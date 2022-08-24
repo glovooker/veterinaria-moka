@@ -1,22 +1,35 @@
-'user strict'
+'user strict';
 
-let nombre = document.getElementById('outNombre');
-let tipoMascota = document.getElementById('txtTipoMascota');
-let padecimientos = document.getElementById('txtPadecimientos');
-let duennoMascota = document.getElementById('txtDuennoMascota')
-let perfilCliente = 'thor';/* aca colocamos el nombre del usuario cliente que queramos obtener los datos*/
+let mascotaConsultada = GetMascotaConsultada();
+let queryString = window.location.search;
+let urlParams = new URLSearchParams(queryString);
+let acc = urlParams.get('acc'); //Q = query
+if (acc == null) {
+  acc = 'D'; //Desplegar  (no se llama desde el CRUD)
+}
+linkVolver.addEventListener('click', Volver);
 
-ImprimirInformacion();
+async function desplegarDatosConsultados() {
+  let owner = await DatosPersona(mascotaConsultada.IdPersona);
 
-function ImprimirInformacion(){
-    let DatosCliente = obtenerDatos(perfilCliente);
-    console.log(DatosCliente)
-
-    if (DatosCliente!=null){
-        nombre.value = DatosCliente.Mascota;
-        tipoMascota.value = DatosCliente.TipoMascota;
-        padecimientos.value = DatosCliente.Padecimientos;
-        duennoMascota.value = DatosCliente.Nombre;
-    }
+  if (mascotaConsultada != null) {
+    document.getElementById('outNombre').value = mascotaConsultada.Nombre;
+    document.getElementById('txtTipoMascota').value = mascotaConsultada.Especie;
+    document.getElementById('txtEstrellas').value = mascotaConsultada.Estrellas;
+    document.getElementById('txtDueñoMascota').value = owner.Nombre;
+    document.getElementById('txtPadecimientos').value =
+      mascotaConsultada.Observaciones;
+  }
 }
 
+function Volver() {
+  LimpiarLSMascotaConsultada();
+  let linkVolver = document.getElementById('linkVolver');
+  if (acc == 'Q') {
+    linkVolver.href = './CrudMascotas.html';
+  } else {
+    linkVolver.href = './PaginaInicio.html';
+  }
+}
+
+desplegarDatosConsultados();

@@ -3,7 +3,15 @@
 
 let btnRegistrar = document.getElementById("btnRegistrar");
 
+let queryString = window.location.search;
+let urlParams = new URLSearchParams(queryString);
+let acc = urlParams.get('acc'); 
+if (acc == null) {
+  acc = 'N'; 
+} 
+
 btnRegistrar.addEventListener("click", ReservarCita);
+linkVolver.addEventListener("click", Volver);
 
 function ModificarMascota() {
   Swal.fire({
@@ -67,4 +75,14 @@ function BorrarMascota() {
       Swal.fire("¡Borrada!", "Ha borrado su mascota exitosamente.", "success");
     }
   });
+}
+
+function Volver(){
+  LimpiarLSMascotaConsultada();
+  let linkVolver = document.getElementById('linkVolver');     
+  if (acc == 'C' || acc == 'M'){    
+    linkVolver.href = "./CrudMascotas.html";  
+  } else {
+    linkVolver.href = "./PaginaInicio.html";
+  }
 }

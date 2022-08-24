@@ -5,58 +5,95 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mascota</title>
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/Cliente.css">
+    <link rel="stylesheet" href="./css/StyleGeneral.css">
+    <link rel="stylesheet" href="./css/webfont/stylesheet.css">
+    <title>Moka | Perfil Mascota</title>
 </head>
-<header>
-    <nav>
-        <div class="logo-container">
-            <a href="#">
-                <img src="" alt="Logo">
-            </a>
-            <h2>Veterinaria Moka</h2>
-        </div>
-
-        <div class="navegation-container">
-            <a href="">Inicio</a>
-            <a href="">Clínica</a>
-            <a href="">Hotel</a>
-        </div>
-
-    </nav>
-</header>
 
 <body>
-    <div>
-        <h1>Mascota</h1>
-    </div>
-    <section id="section1">
-        <div>
-            <div>
-                <img src="" alt="">
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <a id="linkVolver" href="">
+                    <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
+                </a>
             </div>
-            <div>
-                <label for="outNombre">Nombre:</label>
-                <output id="outNombre" name="" for=""></output>
-                <br>
-                <label for="txtTipoMascota">Tipo de mascota:</label>
-                <output id="txtTipoMascota"></output>
-                <br>
-                <label for="txtDuennoMascota">Dueño de la mascota:</label>
-                <output id="txtDuennoMascota"></output>
+            <div class="navegation-container">
+                <a href="./PaginaInicio.html">Inicio</a>
+                <a href="./ReservarCita.html">Clínica</a>
+                <a href="./ReservarHabitacion.html">Hotel</a>
             </div>
-            <div>
-                <h3>Detalles</h3>
-                <label for="txtPadecimientos">Padecimientos:</label>
-                <output id="txtPadecimientos"></output>
+            <div class="profile-dropdown">
+                <a href="" class="profile-icon">
+                    <i class="fa-solid fa-circle-user"></i>
+                </a>
+                <div class="dropdown-content">
+                    <a href="./Cliente.html">Mi Perfil</a>
+                    <a href="./Mascotas.html">Mascotas</a>
+                    <a href="./InicioDeSesion.html">Cerrar Sesión</a>
+                </div>
+            </div>
+        </nav>
+    </header>
 
+    <section id="section1" class="profile">
+        <div class="profile-container">
+
+            <h2>Mi Mascota</h2>
+
+            <div class="outputs-container">
+
+                <div class="info-container">
+                    <div class="profile-icon">
+                        <i class="fa-solid fa-dog"></i>
+                    </div>
+                    <h3>Información general de la mascota</h3>
+                    <div class="outputs">
+                        <label for="outNombre">Nombre:</label>
+                        <output id="outNombre" name="" for=""></output>
+                        <br>
+                        <label for="txtTipoMascota">Tipo de mascota:</label>
+                        <output id="txtTipoMascota"></output>
+                        <br>
+                        <label for="txtEstrellas">Estrellas:</label>
+                        <output id="txtEstrellas"></output>
+                        <br>
+                        <label for="txtDueñoMascota">Dueño de la mascota:</label>
+                        <output id="txtDueñoMascota"></output>
+                    </div>
+                </div>
+
+                <div class="contact-container">
+                    <h3>Detalles</h3>
+                    <div class="outputs">
+                        <label for="txtPadecimientos">Padecimientos:</label>
+                        <output id="txtPadecimientos"></output>
+                    </div>
+                </div>
             </div>
+        </div>
         </div>
     </section>
 
-    <footer>
-        <h5>Clever Solutions - 2022</h5>
+    <footer class="footer">
+        <h5>Powered by</h5>
+        <a href="https://glovooker.github.io/landing-page-bisoft-1/">
+            <img src="./img/LogoCleverSolutions.svg" alt="Logo Clever Solutions">
+        </a>
     </footer>
-    <script src="js/services/UsuariosService.js"></script>
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="js/Constantes.js"></script>
+    <script src="js/controllers/ControllerUtilidades.js"></script>
+    <script src="js/controllers/CrudPersonaController.js"></script>
+    <script src="js/services/CrudPersonasService.js"></script>
+    <script src="./js/services/PersonaService.js"></script>
+    <script src="js/services/CrudMascotasService.js"></script>
     <script src="js/controllers/PerfilMascotaController.js"></script>
 </body>
 

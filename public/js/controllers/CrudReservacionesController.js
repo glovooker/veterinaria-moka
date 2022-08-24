@@ -3,13 +3,14 @@
 let PersonaLogueada = GetSesionActiva();
 
 const inputFiltro = document.getElementById('txtFiltro');
+linkVolver.addEventListener("click", Volver);
 //inputFiltro.addEventListener('keyup', ImprimirDatos);
 
 let listaCitas = [];
 GetListaCitas();
 
 async function GetListaCitas() {
-    let result = await ObtenerListaCitas();
+    let result = await ObtenerListaCitas('R');
     if (result != {} && result.resultado == true) {
         listaCitas = result.ListaCitasBD;
         ImprimirDatos(); 
@@ -35,7 +36,6 @@ async function ImprimirDatos() {
         estadoCita.toLowerCase().includes(filtro) 
         ){  */
         //////////////////////////////////////////////////////////////////    
-        if (listaCitas[i].Tipo == 'R') {
             if ((PersonaLogueada.Rol==0||PersonaLogueada.Rol==1)
             ||(PersonaLogueada.Rol==3 && PersonaLogueada._id==listaCitas[i]._idCliente)) {
             //////////////////////////////////////////////////////////////////
@@ -48,20 +48,9 @@ async function ImprimirDatos() {
                 let celdaCliente = fila.insertCell();
                 let celdaMascota = fila.insertCell();
                 let celdaEstado = fila.insertCell(); 
+                let celdaObservaciones = fila.insertCell(); 
                 let celdaAcciones = fila.insertCell();
 
-                ////////////////////////////////////////////////////
-                //Detalle de la Reservación
-                ////////////////////////////////////////////////////
-                let btnDetalle = document.createElement('button');
-                btnDetalle.onclick = function(){              
-                    const timeoutId = setTimeout(function(){                   
-                    window.location.replace("./CrearCita.html?id="+ listaCitas[i]._id);}, 1000);  
-                };
-                btnDetalle.type = 'button';
-                btnDetalle.innerText = '🔍​';
-                btnDetalle.title = 'Ver Detalle Reservación';
-                btnDetalle.classList.add('DetalleBtn');
                 ////////////////////////////////////////////////////
                 //Cancelar Reservación
                 ////////////////////////////////////////////////////
@@ -79,7 +68,7 @@ async function ImprimirDatos() {
                     });
                     if (confirmacion == true) {
 
-                        let result =  await ModificarCita(listaCitas[i]._id,'Cancelacion','C',listaCitas[i].Estrellas); 
+                        let result =  await ModificarCita(listaCitas[i]._id,'Cancelacion','C',listaCitas[i].Estrellas,listaCitas[i].EstrellasVeterinario, listaCitas[i].ObservacionesVeterinario); 
 
                         if (result.resultado == true) {
                             ImprimirMsjSuccess(result.msj);
@@ -115,15 +104,6 @@ async function ImprimirDatos() {
                         confirmacion = res.isConfirmed;
                     });
                     if (confirmacion == true) {
-
-                        let result =  await ModificarCita(listaCitas[i]._id,'','F',listaCitas[i].Estrellas); 
-
-                        if (result.resultado == true) {
-                            ImprimirMsjSuccess(result.msj);
-                        } else {
-                            ImprimirMsjError(result.msj);
-                        }
-
                         window.location.replace("./FinalizarCitaReservacion.html?_idCita="+ listaCitas[i]._id);   
                     }
                 };
@@ -150,16 +130,7 @@ async function ImprimirDatos() {
                     }).then((res) => {
                         confirmacion = res.isConfirmed;
                     });
-                    if (confirmacion == true) {
-    
-                        let result =  await ModificarCita(listaCitas[i]._id,'','F',listaCitas[i].Estrellas); 
-    
-                        if (result.resultado == true) {
-                            ImprimirMsjSuccess(result.msj);
-                        } else {
-                            ImprimirMsjError(result.msj);
-                        }
-    
+                    if (confirmacion == true) {   
                         window.location.replace("./ReservacionPagoServicios.html?id="+ listaCitas[i]._id);   
                     }
                 };
@@ -174,8 +145,7 @@ async function ImprimirDatos() {
                 ////////////////////////////////////
 
                 let divBtns = document.createElement('div');
-                divBtns.appendChild(btnDetalle);
-
+ 
                 if (listaCitas[i].Estado == 'R' || listaCitas[i].Estado == 'A'){
                     divBtns.appendChild(btnCancelar); 
                 }
@@ -200,11 +170,18 @@ async function ImprimirDatos() {
                 celdaCliente.innerHTML = cliente.Nombre ;   
                 celdaMascota.innerHTML = mascota.Nombre; 
                 celdaEstado.innerHTML = estadoCita;
+                celdaObservaciones.innerHTML =listaCitas[i].Observaciones;
                 celdaAcciones.appendChild(divBtns);
-            } //roles
-        }//Reservaciones
+            } //roles 
        //}//filtros
        
     }
 }
 
+function Volver(){         
+    if (PersonaLogueada.Rol !=3){    
+      linkVolver.href = "./CrudPersonas.html";  
+    } else {
+      linkVolver.href = "./PaginaInicio.html";
+    }
+  }

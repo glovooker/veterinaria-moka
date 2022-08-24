@@ -33,7 +33,17 @@ label {
     font-family: "lexendbold";
     align-self: flex-start;
 }
-
+/* revisar */
+input {
+    width: 36%;
+    height: 2vh;
+    border-radius: 10px;
+    border: 2px solid #a56905;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "lexendregular";
+}
 output {
     width: 40%;
     height: 2vh;

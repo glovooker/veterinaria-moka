@@ -33,51 +33,84 @@
                 <h3>Filtros</h3>
                 <div>
                     <form>
-                        <label for="txtVet">Veterinario asignado</label>
-                        <input type="text" id="txtVet">
-                        <label for="ranking">Ranking</label>
-                        <input type="text" id="ranking">
-                        <label for="txtUser">Nombre del cliente</label>
-                        <input type="text" id="txtUser">
-                        <label for="mascotatxt">Nombre de la mascota</label>
-                        <input type="text" id="mascotatxt">
-                        <label for="dtFecha">Fecha</label>
-                        <input type="date">
+                      
                     </form>
                 </div>
-                <button id="bttn" type="button" onclick="limpiar()">Limpiar Filtros</button>
-                <button  type="button" id="buscar" onclick="filtrar()">Buscar</button>
             </div>
             <div>
-                <table id="tablaReportes">
+                <form id="filtrosFechas">
+                    <label for="txtFechaInicio" class="lblInput">Fecha Inicio</label>
+                    <input type="date" id="txtFechaInicio" required>
+                    <label for="txtFechaFin" class="lblInput">Fecha Final</label>
+                    <input type="date" id="txtFechaFin" required>
+                    <button type="button" id="btnFiltroFechas">Filtrar por fechas</button>
+                    <button type="button" id="btnLimpiar">Limpiar filtros</button>
+                </form>
+                <div id="FiltroTablas">
+                    <label for="txtFiltro">Filtrar</label>
+                    <input type="text" id="txtFiltro" placeholder="Filtrar">
+                </div>
+                <table>
                     <caption>Reportes</caption>
                     <thead>
                         <tr>
+                            <th>Fecha</th>
                             <th>Nombre del cliente</th>
                             <th>Nombre de la mascota</th>
-                            <th>Veterinario</th>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Ranking</th>
+                            <th>Hora Inicio</th>
+                            <th>Hora Final</th>
+                            <th>Veterinario asignado</th>
+                            <th>Estado de la cita</th>
+                            <th>Observaciones de la cita</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        
-                    </tbody>
+                    <tbody id="tablaReportes"></tbody>
                     <tfoot></tfoot>
                 </table>
+                <h2>Resumen</h2>
+
+                <label for="outputTotalCitas">Total de citas Registradas:</label>
+                <ouput id="outputTotalCitas"></ouput><br>
+
+                <label for="outputAprobadas">Total de citas Activas:</label>
+                <ouput id="outputAprobadas"></ouput><br>
+
+                
+                <label for="outputFinalizadas">Total de citas Finalizadas:</label>
+                <ouput id="outputFinalizadas"></ouput><br>
+
+                <label for="outputCanceladas">Total de citas Canceladas:</label>
+                <ouput id="outputCanceladas"></ouput>
+
+
+
+                
             </div>
+                            
+                            
+                        
         </container>
     </form>
 
     <footer>
         <h5>Clever Solutions - 2022</h5>
     </footer>
+
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script src="js/Constantes.js"></script>
+    <script src="js/services/CitasServices.js"></script>
+    <script src="./js/services/PersonaService.js"></script>
+    <script src="./js/services/CrudPersonasService.js"></script>
+    <script src="./js/services/MascotaService.js"></script> 
+    <script src="js/controllers/VisualizacionReportesCitasController.js"></script>
+    <script src="js/controllers/ControllerGeneral.js"></script>
 </body>
 
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="./js/services/ServiceReportes.js"></script>
-<script src="./js/controllers/VisualizacionReportesCitasController.js"></script>
 
 
 </html>

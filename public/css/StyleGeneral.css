@@ -106,3 +106,12 @@ body {
   margin: 0;
   margin-bottom: 25px;
 }
+
+#row{
+  text-align: center;
+}
+
+#row label{
+  display: block;
+  margin: 20px;
+}
