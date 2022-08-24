@@ -115,8 +115,25 @@ async function ImprimirDatos(listaCitas) {
     
     
     for (let i = 0; i < listaCitas.length; i++) {
+        for (let j = 0; j < listaPersonas.length; j++){
+            if(listaPersonas[j]._id===listaCitas[i]._idCliente){
+                clienteNombre = listaPersonas[j].Nombre;
+                break;
+            }
+        }
+        for (let k = 0; k < listaMascotas.length; k++){
+            if(listaMascotas[k]._id===listaCitas[i]._idMascota){
+                mascotaNombre = listaMascotas[k].Nombre;
+                break;
+            }
+        }
           
-        if(ObtenerEstadoCita(listaCitas[i].Estado).toLowerCase().includes(filtro)) {
+        if(ObtenerEstadoCita(listaCitas[i].Estado).toLowerCase().includes(filtro) ||listaCitas[i].FecInicio.toString().includes(filtro) ||listaCitas[i].FecFinal.toString().includes(filtro)
+        || listaCitas[i].HoraInicio.toString().includes(filtro)
+        || listaCitas[i].HoraFinal.toString().includes(filtro)
+        || clienteNombre.toLowerCase().includes(filtro)
+        || mascotaNombre.toLowerCase().includes(filtro)
+        || listaCitas[i].Observaciones.toLowerCase().includes(filtro)) {
             let fila = tbody.insertRow();
             let celdaFechaEntrada = fila.insertCell();
             let celdaFechaSalida = fila.insertCell();
@@ -125,19 +142,7 @@ async function ImprimirDatos(listaCitas) {
             let celdaNombreCliente = fila.insertCell();
             let celdaNombreMascota= fila.insertCell();
             let celdaObservaciones = fila.insertCell();
-           /*  let celdaAcciones = fila.insertCell(); */
         
-            
-
-            /* let btnVer = document.createElement('button');
-            btnVer.onclick = function(){
-                location.href = 'VistaFactura.html?_id=' + arregloListaFacturas[i]._id
-            };
-            btnVer.type = 'button';
-            btnVer.innerText = '🔍';
-            btnVer.title = 'VER FACTURA';
-            let divBtns = document.createElement('div');
-            divBtns.appendChild(btnVer); */
             let fechaCita = new Date(listaCitas[i].FecInicio.replace('-','/'));
             celdaFechaEntrada.innerHTML = fechaCita.getDate() + '/' + (fechaCita.getMonth() +1) + '/' + fechaCita.getFullYear();
 
@@ -148,42 +153,17 @@ async function ImprimirDatos(listaCitas) {
             celdaHoraInicio.innerHTML = listaCitas[i].HoraInicio;
             celdaHoraFinal.innerHTML = listaCitas[i].HoraFinal;
 
-            for (let j = 0; j < listaPersonas.length; j++){
-                if(listaPersonas[j]._id===listaCitas[i]._idCliente){
-                    clienteNombre = listaPersonas[j].Nombre;
-                    break;
-                }
-            }
+            
             celdaNombreCliente.innerHTML = clienteNombre;
-            for (let k = 0; k < listaMascotas.length; k++){
-                if(listaMascotas[k]._id===listaCitas[i]._idMascota){
-                    mascotaNombre = listaMascotas[k].Nombre;
-                    break;
-                }
-            }
+            
             celdaNombreMascota.innerHTML = mascotaNombre;
             
-          /*   for (let l = 0; l < listaPersonas.length; l++){
-                if(listaPersonas[l]._id===listaCitas[i]._idVeterinario){
-                    vetNombre = listaPersonas[l].Nombre;
-                    break;
-                }
-            } */
+
             
 
            
             
-          /*   celdaNombreVet.innerHTML = vetNombre; */
-          /*   celdaEstado.innerHTML = ObtenerEstadoCita(listaCitas[i].Estado); */
-          /*   if(ObtenerEstadoCita(listaCitas[i].Estado)==='Aprobado'){
-                contAprobadas=contAprobadas+1
-            }
-            if(ObtenerEstadoCita(listaCitas[i].Estado)==='Finalizado'){
-                contFinalizadas=contFinalizadas+1
-            }
-            if (ObtenerEstadoCita(listaCitas[i].Estado)==='Cancelado'){
-                contCanceladas=contCanceladas+1
-            } */
+
             celdaObservaciones.innerHTML = listaCitas[i].Observaciones;
             
 

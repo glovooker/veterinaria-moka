@@ -9,7 +9,7 @@ let outputContPendientes = document.getElementById('txtContPendientes');
 let outputTotalFacturas = document.getElementById('txtTotalFacturas')
 /* let arregloListaFacturas = []; */
 let listaPersonas = [];
-let nombrePersona;
+
 let posicionJ;
 let facturasTotal = 0;
 
@@ -37,9 +37,10 @@ async function FiltrarPorFechas(){
         arregloListaFacturas = result.ListaFacturasDB;
     }
 
-    let lista = arregloListaFacturas.filter(n => n.Fecha >= inputFechaInicio.value && n.Fecha <= inputFechaHasta.value);
-    ImprimirDatos(lista);
-  
+    let lista = arregloListaFacturas.filter(
+        n => n.Fecha.substring(0,10)>= inputFechaInicio.value 
+        && n.Fecha.substring(0,10) <= inputFechaHasta.value);
+        ImprimirDatos(lista);
     }
 
 function Limpiar(){
@@ -99,15 +100,28 @@ async function ImprimirDatos(arregloListaFacturas) {
     let filtro = inputFiltro.value;
     let tbody = document.getElementById('tablaReportes');
     tbody.innerHTML = '';
-    
+    let nombrePersona;
     let sumaTotal = 0;
     let sumaTotalPendientes = 0;
     let contPendientes = 0;
     let contPagadas = 0;
     
     
+    
     for (let i = 0; i < arregloListaFacturas.length; i++) {
-        if(arregloListaFacturas[i].NumeroFactura.toString().includes(filtro) || ObtenerEstadoFactura(arregloListaFacturas[i].Estado).toLowerCase().includes(filtro)) {
+        for (let j = 0; j < listaPersonas.length; j++){
+            if (listaPersonas[j]._id === arregloListaFacturas[i].Identificacion){
+                nombrePersona = listaPersonas[j].Nombre;
+                posicionJ = j;
+                break;
+            }
+        }
+
+
+        if(arregloListaFacturas[i].NumeroFactura.toString().includes(filtro) || ObtenerEstadoFactura(arregloListaFacturas[i].Estado).toLowerCase().includes(filtro)
+        || arregloListaFacturas[i].Fecha.toString().includes(filtro) || nombrePersona.toLowerCase().includes(filtro)
+        || arregloListaFacturas[i].TotalAPagar.toString().includes(filtro) 
+        || arregloListaFacturas[i].NumeroFactura.toString().includes(filtro)) {
             let fila = tbody.insertRow();
             let celdaNumeroFactura = fila.insertCell();
             let celdaCliente = fila.insertCell();
@@ -118,7 +132,7 @@ async function ImprimirDatos(arregloListaFacturas) {
 
             let btnVer = document.createElement('button');
             btnVer.onclick = function(){
-                location.href = 'VistaFactura.html?_id=' + arregloListaFacturas[i]._id
+                location.href = 'VistaFactura.html?_idFactura=' + arregloListaFacturas[i]._id
             };
             btnVer.type = 'button';
             btnVer.innerText = '🔍';
@@ -132,13 +146,7 @@ async function ImprimirDatos(arregloListaFacturas) {
             celdaNumeroFactura.innerHTML = arregloListaFacturas[i].NumeroFactura;
             
 
-            for (let j = 0; j < listaPersonas.length; j++){
-                if (listaPersonas[j]._id === arregloListaFacturas[i].Identificacion){
-                    nombrePersona = listaPersonas[j].Nombre
-                    posicionJ = j;
-                }
-
-            }
+            
     
             celdaCliente.innerHTML = nombrePersona;
 

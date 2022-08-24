@@ -36,7 +36,7 @@ async function FiltrarPorFechas(){
         listaCitas = result.ListaCitasBD;
     }
     let lista = listaCitas.filter(n => n.FecInicio >= inputFechaInicio.value && n.FecInicio <= inputFechaHasta.value);
-     console.log(lista)
+    /*  console.log(lista) */
     ImprimirDatos(lista);
   
     }
@@ -72,7 +72,7 @@ async function GetListaCitas() {
     if (result != {} && result.resultado == true) {
         let listaCitas = result.ListaCitasBD;
         totalCitas = listaCitas.length;
-        console.log(listaCitas)
+        /* console.log(listaCitas) */
         await GetListaPersonas();  
         await GetListaMascota(); 
         ImprimirDatos(listaCitas); 
@@ -115,8 +115,29 @@ async function ImprimirDatos(listaCitas) {
     
     
     for (let i = 0; i < listaCitas.length; i++) {
+        for (let j = 0; j < listaPersonas.length; j++){
+            if(listaPersonas[j]._id===listaCitas[i]._idCliente){
+                clienteNombre = listaPersonas[j].Nombre;
+                break;
+            }
+        }
+        for (let k = 0; k < listaMascotas.length; k++){
+            if(listaMascotas[k]._id===listaCitas[i]._idMascota){
+                mascotaNombre = listaMascotas[k].Nombre;
+                break;
+            }
+        }
+        for (let l = 0; l < listaPersonas.length; l++){
+            if(listaPersonas[l]._id===listaCitas[i]._idVeterinario){
+                vetNombre = listaPersonas[l].Nombre;
+                break;
+            }
+        }
+
           
-        if(ObtenerEstadoCita(listaCitas[i].Estado).toLowerCase().includes(filtro)) {
+        if(ObtenerEstadoCita(listaCitas[i].Estado).toLowerCase().includes(filtro) || 
+        clienteNombre.toLowerCase().includes(filtro) || listaCitas[i].FecInicio.toString().includes(filtro)
+        || mascotaNombre.toLowerCase().includes(filtro) || vetNombre.toLowerCase().includes(filtro) || listaCitas[i].HoraInicio.toString().includes(filtro) || listaCitas[i].HoraFinal.toString().includes(filtro) || listaCitas[i].Observaciones.toLowerCase().includes(filtro)) {
             let fila = tbody.insertRow();
             let celdaFecha = fila.insertCell();
             let celdaNombreCliente = fila.insertCell();
@@ -141,27 +162,12 @@ async function ImprimirDatos(listaCitas) {
             let fechaCita = new Date(listaCitas[i].FecInicio.replace('-','/'));
             celdaFecha.innerHTML = fechaCita.getDate() + '/' + (fechaCita.getMonth() +1) + '/' + fechaCita.getFullYear();
 
-            for (let j = 0; j < listaPersonas.length; j++){
-                if(listaPersonas[j]._id===listaCitas[i]._idCliente){
-                    clienteNombre = listaPersonas[j].Nombre;
-                    break;
-                }
-            }
+           
             celdaNombreCliente.innerHTML = clienteNombre;
-            for (let k = 0; k < listaMascotas.length; k++){
-                if(listaMascotas[k]._id===listaCitas[i]._idMascota){
-                    mascotaNombre = listaMascotas[k].Nombre;
-                    break;
-                }
-            }
+            
             celdaNombreMascota.innerHTML = mascotaNombre;
             
-            for (let l = 0; l < listaPersonas.length; l++){
-                if(listaPersonas[l]._id===listaCitas[i]._idVeterinario){
-                    vetNombre = listaPersonas[l].Nombre;
-                    break;
-                }
-            }
+           
             
 
             celdaHoraInicio.innerHTML = listaCitas[i].HoraInicio;
