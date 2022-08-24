@@ -37,9 +37,10 @@ async function FiltrarPorFechas(){
         arregloListaFacturas = result.ListaFacturasDB;
     }
 
-    let lista = arregloListaFacturas.filter(n => n.Fecha >= inputFechaInicio.value && n.Fecha <= inputFechaHasta.value);
-    ImprimirDatos(lista);
-  
+    let lista = arregloListaFacturas.filter(
+        n => n.Fecha.substring(0,10)>= inputFechaInicio.value 
+        && n.Fecha.substring(0,10) <= inputFechaHasta.value);
+        ImprimirDatos(lista);
     }
 
 function Limpiar(){
