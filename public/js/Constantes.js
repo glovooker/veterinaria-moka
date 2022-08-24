@@ -129,3 +129,14 @@ const formatoNumero = (number) => {
   const rep = '$1,';
   return number.toString().replace(exp, rep);
 };
+
+
+//funcion para truncar numeros
+    
+function trunc (x, posiciones = 0) {
+  var s = x.toString()
+  var l = s.length
+  var decimalLength = s.indexOf('.') + 1
+  var numStr = s.substr(0, decimalLength + posiciones)
+  return Number(numStr)
+}
