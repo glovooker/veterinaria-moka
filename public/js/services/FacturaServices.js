@@ -1,6 +1,6 @@
 'use strict'
 
-async function RegistrarFactura(pIdentificacion, pSumaTotal, pFecha, pDetalles,pNumeroFactura) {
+async function RegistrarFactura(pIdentificacion, pSumaTotal, pFecha, pDetalles,pNumeroFactura,idCita) {
     let result = {};
     await axios({
         method: 'post',
@@ -10,7 +10,8 @@ async function RegistrarFactura(pIdentificacion, pSumaTotal, pFecha, pDetalles,p
             'Identificacion': pIdentificacion,
             'TotalAPagar': pSumaTotal,
             'Fecha': pFecha,
-            'NumeroFactura': pNumeroFactura
+            'NumeroFactura': pNumeroFactura,
+            '_idCita': idCita
         }
     }).then(async(res) => {
         result = res.data;

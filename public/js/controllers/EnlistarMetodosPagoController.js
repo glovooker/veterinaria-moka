@@ -1,17 +1,27 @@
 'use strict';
 
+let PersonaLogueada = GetSesionActiva();
+console.log(PersonaLogueada);
 const cuerpoTabla = document.querySelector('#tblTarjetas tbody');
 let tarjetas = [];
 
-const inicializarListas = async () => {
-  let persona = JSON.parse(localStorage.getItem('datosSesionActiva'));
-  let _idC = persona._id;
-  // console.log(_idC);
-  tarjetas = await getDatos(`/ListarTarjetasCliente?_idC=${_idC}`);
-  // console.log(tar
-  // console.log(tarjetas);
-  mostrarTabla();
-};
+async function ListarTarjetasPorRol() {
+  if (PersonaLogueada.Rol == 1 || PersonaLogueada.Rol == 0) {
+    let persona = JSON.parse(localStorage.getItem('datosSesionActiva'));
+    let _idC = persona._id;
+    tarjetas = await getDatos(`/obtener-tarjetas`);
+    console.log(tarjetas);
+    mostrarTabla();
+  } else if (PersonaLogueada.Rol == 3) {
+    let persona = JSON.parse(localStorage.getItem('datosSesionActiva'));
+    let _idC = persona._id;
+    // console.log(_idC);
+    tarjetas = await getDatos(`/ListarTarjetasCliente?_idC=${_idC}`);
+    // console.log(tar
+    console.log(tarjetas);
+    mostrarTabla();
+  }
+}
 
 const mostrarTabla = async () => {
   cuerpoTabla.innerHTML = '';
@@ -44,11 +54,12 @@ const mostrarTabla = async () => {
         confirmButtonText: '¡Sí, eliminar!',
       }).then((result) => {
         if (result.isConfirmed) {
-          eliminarDatos('/EliminarTarjetas', tarjeta._idC);
+          console.log(tarjeta.Nombre);
+          eliminarDatos('/EliminarTarjetas', tarjeta._id);
           Swal.fire('¡Tarjeta eliminada!', 'La tarjeta fue borrada', 'success');
         }
       });
     });
   });
 };
-inicializarListas();
+ListarTarjetasPorRol();

@@ -1,19 +1,42 @@
 // Clever Solutions
-"use strict";
+'use strict';
 
-//let btnRegistrar = document.getElementById("btnRegistrar");
-let personaConsultada;
+
+let btnRegistrar = document.getElementById('btnRegistrar');
+
+
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
-let acc = urlParams.get('acc'); 
+let acc = urlParams.get('acc');
 if (acc == null) {
-  acc = 'N'; 
-} 
+  acc = 'N';
+}
 
 btnRegistrar.addEventListener("click", Validaciones);
 linkVolver.addEventListener("click", Volver);
 
 desplegarDatosConsultados();
+
+function ModificarMascota() {
+  Swal.fire({
+    title: '¿Está seguro que desea modificar su mascota?',
+    text: '¡Esta acción no se puede revertir!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3D405B',
+    cancelButtonColor: '#E07A5F',
+    cancelButtonText: '¡Cancelar!',
+    confirmButtonText: '¡Sí, modifíquela!',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire(
+        '¡Modificada!',
+        'Ha modificado su mascota exitosamente.',
+        'success'
+      );
+    }
+  });
+}
 
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -23,6 +46,7 @@ function Validaciones() {
   if (ValidarCampos() == false) {
     return false;
   } else {
+
     /*********************************************************************/
     if (acc == 'M') {
       ActualizarMascota();
@@ -85,19 +109,19 @@ async function CrearMascota() {
 
 function BorrarMascota() {
   Swal.fire({
-    title: "¿Está seguro que desea borrar la mascota?",
-    text: "¡Esta acción no se puede revertir!",
-    icon: "warning",
+    title: '¿Está seguro que desea borrar la mascota?',
+    text: '¡Esta acción no se puede revertir!',
+    icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "¡Sí, bórrala!",
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: '¡Sí, bórrala!',
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire("¡Borrada!", "Ha borrado su mascota exitosamente.", "success");
+      Swal.fire('¡Borrada!', 'Ha borrado su mascota exitosamente.', 'success');
     }
   });
-}
+
 
 function desplegarDatosConsultados() {
   if (acc == 'M') {
@@ -119,4 +143,3 @@ function desplegarDatosConsultados() {
 //     linkVolver.href = "./PaginaInicio.html";
 //   }
 // }
-

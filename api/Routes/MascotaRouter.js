@@ -10,8 +10,8 @@ router.post('/RegistrarMascota', (req, res) => {
     Nombre: body.Nombre,
     Especie: body.Especie,
     Estrellas: body.Estrellas,
-    FotoMascota: body.FotoMascota,
     Observaciones: body.Observaciones,
+    FotoMascota: body.FotoMascota,
     IdPersona: body.IdPersona,
   });
   nuevaMascota.save((err, mascotaDB) => {

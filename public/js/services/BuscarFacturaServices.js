@@ -48,3 +48,23 @@ async function ObtenerFacturaBaseDatos() {
     });
     return result;
 } */
+
+
+
+
+async function BuscarFacturaPoridCita(p_Idcita){
+    let result = {};
+    await axios({
+        method: 'get',
+        url: apiUrl + '/BuscarFacturaPor_idCita',
+        responseType: 'json',
+        params: { 
+            '_idCita': p_Idcita
+        }
+    }).then((res) => {
+        result = res.data;
+    }).catch((err) => {
+        console.log(err);
+    });
+    return result;
+}

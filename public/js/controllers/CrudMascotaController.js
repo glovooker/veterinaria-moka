@@ -1,7 +1,8 @@
 'use strict';
 
-let PersonaLogueada = GetSesionActiva();
-console.log(PersonaLogueada);
+let btnMascota1 = document.getElementById('btnMascota1');
+
+btnMascota1.addEventListener('click', CrearMascota1);
 
 const inputFiltro = document.getElementById('txtFiltro');
 inputFiltro.addEventListener('keyup', ImprimirDatos);
@@ -23,7 +24,7 @@ async function GetListaMascota() {
 
 async function ImprimirDatos() {
   let filtro = inputFiltro.value.toLowerCase();
-  var tbody = document.getElementById('tbdMascotas');
+  let tbody = document.getElementById('tbdMascotas');
   tbody.innerHTML = '';
 
   for (let i = 0; i < listaMascota.length; i++) {
@@ -109,6 +110,19 @@ async function ImprimirDatos() {
   }
 }
 
+function CrearMascota1() {
+  window.location.replace('./RegistrarMascota.html?acc=C');
+}
+
+async function CrearMascota() {
+  let result = await RegistrarMascota(
+    document.getElementById('txtNombreMascota').value,
+    document.getElementById('txtTipoDeMascota').value,
+    '5',
+    document.getElementById('txtInfoAdicional').value,
+    document.getElementById('btnSubirImg').value,
+    JSON.parse(localStorage.getItem('datosPersonaConsultada'))._id
+  );
 
   if (result.resultado == true) {
     ImprimirMsjSuccess(result.msj);

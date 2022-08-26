@@ -1,11 +1,11 @@
-"use strict";
+'use strict';
 
-const express = require("express");
-const mongoose = require("mongoose");
+const express = require('express');
+const mongoose = require('mongoose');
 const router = express.Router();
-const Tarjeta = require("../Models/MetodosPagoModel");
+const Tarjeta = require('../Models/MetodosPagoModel');
 
-router.post("/RegistrarTarjeta", (req, res) => {
+router.post('/RegistrarTarjeta', (req, res) => {
   let body = req.body;
   let nuevaTarjeta = new Tarjeta({
     _idC: body._idC,
@@ -18,50 +18,50 @@ router.post("/RegistrarTarjeta", (req, res) => {
     if (err) {
       res.json({
         resultado: false,
-        msj: "No se pudo registrar la tarjeta, ocurrio el siguiente error: ",
+        msj: 'No se pudo registrar la tarjeta, ocurrio el siguiente error: ',
         err,
       });
     } else {
       res.json({
         resultado: true,
-        msj: "Registro realizado de manera correcta",
+        msj: 'Registro realizado de manera correcta',
         tarjetaDB,
       });
     }
   });
 });
 
-router.get("/obtener-tarjetas", (req, res) => {
-  Tarjeta.find((error, lista) => {
-    if (error) {
+router.get('/obtener-tarjetas', (req, res) => {
+  Tarjeta.find((err, tarjetaDB) => {
+    if (err) {
       res.json({
-        msj: "No se pudo hacer el listado de usuarios",
-        error,
+        msj: 'No se pudo hacer el listado de usuarios',
+        err,
       });
     } else {
       res.json({
-        msj: "Usuario listados correctamente",
-        lista,
+        msj: 'Usuario listados correctamente',
+        tarjetaDB,
       });
     }
   });
 });
 
-router.get("/ListarTarjetasCliente", (req, res) => {
+router.get('/ListarTarjetasCliente', (req, res) => {
   let params = req.query;
   // console.log(params._idC);
-  if (params._idC != "" && params._idC != null && params._idC != undefined) {
+  if (params._idC != '' && params._idC != null && params._idC != undefined) {
     Tarjeta.find({ _idC: params._idC }, (err, tarjetaDB) => {
       if (err) {
         res.json({
           resultado: false,
-          msj: "No se pudo obtener datos: ",
+          msj: 'No se pudo obtener datos: ',
           err,
         });
       } else {
         res.json({
           resultado: true,
-          msj: "Los datos se obtuvieron de manera correcta por id: ",
+          msj: 'Los datos se obtuvieron de manera correcta por id: ',
           tarjetaDB,
         });
       }
@@ -69,19 +69,19 @@ router.get("/ListarTarjetasCliente", (req, res) => {
   }
 });
 
-router.delete("/EliminarTarjetas", function (req, res) {
+router.delete('/EliminarTarjetas', function (req, res) {
   let body = req.body;
-  Tarjeta.remove({ _idC: body._idC }, (err, result) => {
+  Tarjeta.deleteMany({ _id: body._id }, (err, result) => {
     if (err) {
       res.json({
         resultado: false,
-        msj: "No se pudo eliminar los datos: ",
+        msj: 'No se pudo eliminar los datos: ',
         err,
       });
     } else {
       res.json({
         resultado: true,
-        msj: "Los datos se eliminarion de manera correcta",
+        msj: 'Los datos se eliminarion de manera correcta',
         result,
       });
     }

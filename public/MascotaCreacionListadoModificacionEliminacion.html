@@ -65,7 +65,8 @@
 
             <div class="form-date">
                 <label for="btnSubirImg" id="lblSubirImg">Foto de la Mascota</label>
-                <button type="button" id="btnSubirImg" class="form-btn">Subir Imagen</button>
+                <img id="FotoMas" >
+                <button type="button" onclick="AbrirCloudinary('FotoMas')" id="btnSubirImg" class="form-btn">Subir Imagen</button>
             </div>
 
             <div class="form-text-area">
@@ -113,6 +114,8 @@
     <script src="./js/controllers/ControllerGeneral.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+    <script src="./js/services/ImagenesService.js" ></script>
     <script src="./js/services/MascotasService.js"></script>
     <script src="./js/controllers/MascotasController.js"></script>
     <script src="./js/controllers/RegistroMascotaController.js"></script>

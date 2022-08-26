@@ -13,30 +13,7 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo-container">
-                <a id="linkVolver" href="">
-                    <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
-                </a>
-            </div>
-            <div class="navegation-container">
-                <!-- <a href="./PaginaInicio.html">Inicio</a>
-                <a href="./ReservarCita.html">Clínica</a>
-                <a href="./ReservarHabitacion.html">Hotel</a>
-                <a href="./SobreNosotros.html">Sobre Nosotros</a> -->
-            </div>
-            <div class="profile-dropdown">
-                <a href="" class="profile-icon">
-                    <i class="fa-solid fa-circle-user"></i>
-                </a>
-                <div class="dropdown-content">
-                    <a href="./InicioDeSesion.html">Iniciar Sesión</a>
-                    <a href="./CreacionCuenta.html">Registrarme</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <header id="navbarContainer"></header>
 
     <section class="signup">
         <div class="signup-container">
@@ -64,13 +41,17 @@
 
                     <label for="txtDireccion" id="lblDireccion" class="lblInput">Dirección</label>
                     <input type="text" id="txtDireccion" class="clsDireccion" required>
+
+                    <img id="ImgCliente" class="uploaded-img">
+                    <button type="button" class="form-btn" onclick="AbrirCloudinary('ImgCliente')">Subir Foto de
+                        Perfil</button>
                 </form>
             </div>
             <div class="account">¿No tienes cuenta? <br><a href="./InicioDeSesion.html">Ingresa aquí</a>
             </div>
 
 
-            <button type=button id="btnRegistrar" class="form-btn">Guardar</button>
+            <button type="button" id="btnRegistrar" class="form-btn">Guardar</button>
         </div>
     </section>
 
@@ -82,10 +63,13 @@
     </footer>
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>    
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
     <script src="./js/controllers/ControllerGeneral.js"></script>
+    <script src="./js/services/InicioDeSesionService.js"></script>
     <script src="js/Constantes.js"></script>
+    <script src="./js/services/ImagenesService.js"></script>
     <script src="js/services/CrudPersonasService.js"></script>
     <script src="./js/services/PersonaService.js"></script>
     <script src="./js/controllers/CreacionCuentaController.js"></script>
@@ -93,5 +77,3 @@
 </body>
 
 </html>
-
-

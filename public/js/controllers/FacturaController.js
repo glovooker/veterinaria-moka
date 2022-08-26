@@ -5,6 +5,7 @@ let numeroFactura;
 let sumaTotal;
 let queryString, urlParams
 let _id;/* id del cliente */
+let idCita;
 
 let inputCantidad = document.getElementById('txtCantidad');
 let inputDescripcion = document.getElementById('txtDescripcion');
@@ -24,6 +25,7 @@ function getParamsURL() {
     urlParams = new URLSearchParams(queryString);
     
     _id = urlParams.get('_id');
+    idCita = urlParams.get('_idCita')
     
     console.log(_id);
 
@@ -53,7 +55,7 @@ async function Guardar(){
     let sIdentificacion = getParamsURL(); 
     console.log(sIdentificacion);
     await ObtenerListaFacturas();
-    let result = await RegistrarFactura(sIdentificacion,sumaTotal,fechaActual, JSON.stringify(arregloDetallesFacturas),numeroFactura);
+    let result = await RegistrarFactura(sIdentificacion,sumaTotal,fechaActual, JSON.stringify(arregloDetallesFacturas),numeroFactura,idCita);
     if (result == null || result == undefined) {
         ImprimirMsjError('Ocurrio un error, intente de nuevo');
     } else if (result.resultado == false) {

@@ -3,6 +3,8 @@
 btnRegistrar.addEventListener('click', Validaciones);
 
 function Validaciones() {
+  let persona = JSON.parse(localStorage.getItem('datosSesionActiva'));
+  console.log(persona);
   if (ValidarCampos() == false) {
     return false;
   } else if (ValidarFecha() == false) {
