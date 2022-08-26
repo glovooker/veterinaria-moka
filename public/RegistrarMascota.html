@@ -43,7 +43,7 @@
         <div class="form-container">
             <div class="title-container-reservar-cita">
                 <i class="fa-solid fa-paw"></i>
-                <h2>Registrar Mascota</h2>
+                <h2 id="txtInicio">Registrar Mascota</h2>
             </div>
 
             <div class="form-date">
@@ -65,7 +65,8 @@
 
             <div class="form-date">
                 <label for="btnSubirImg" id="lblSubirImg">Foto de la Mascota</label>
-                <button type="button" id="btnSubirImg" class="form-btn">Subir Imagen</button>
+                <img id="imgMasc">
+                <button type="button" id="btnSubirImg" class="form-btn" onclick="AbrirCloudinary('imgMasc')">Subir Imagen</button>
             </div>
 
             <div class="form-text-area">
@@ -74,10 +75,9 @@
                 <textarea id="txtInfoAdicional" cols="30" rows="9" required></textarea>
             </div>
 
-            <button type="button" id="btnRegistrarMascota" class="form-btn" onclick="CrearMascota()">Registrar</button>
+            <button type="button" id="btnRegistrar" class="form-btn">Registrar</button>
         </div>
     </section>
-
 
     <footer class="footer">
         <h5>Powered by</h5>
@@ -88,14 +88,18 @@
 
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script> 
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+
     <script src="./js/controllers/ControllerGeneral.js"></script>
     <script src="./js/controllers/ControllerUtilidades.js"></script>
     <script src="js/Constantes.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="./js/services/ImagenesService.js"></script>
     <script src="./js/services/CrudMascotasService.js"></script>
     <script src="./js/controllers/CrudMascotaController.js"></script>
-
+    <script src="./js/controllers/RegistroMascotaController.js"></script> 
+    
 
 </body>
 
