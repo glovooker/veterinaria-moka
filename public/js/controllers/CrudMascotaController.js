@@ -1,6 +1,7 @@
 'use strict';
 
-btnMascota1.addEventListener('click', CrearMascota1);
+let PersonaLogueada = GetSesionActiva();
+console.log(PersonaLogueada);
 
 const inputFiltro = document.getElementById('txtFiltro');
 inputFiltro.addEventListener('keyup', ImprimirDatos);
@@ -26,11 +27,19 @@ async function ImprimirDatos() {
   tbody.innerHTML = '';
 
   for (let i = 0; i < listaMascota.length; i++) {
-    if (listaMascota[i].Nombre.toLowerCase().includes(filtro)) {
+
+    ////////////////////////////////////////////////////////////////////
+    if (listaMascota[i].Nombre.toLowerCase().includes(filtro) 
+    ) {
+    //FILTROS //////////////////////////////////////////////////////////
+    
+
+    if ((PersonaLogueada.Rol==0||PersonaLogueada.Rol==1)
+    ||(PersonaLogueada.Rol==2)
+    ||(PersonaLogueada.Rol==3 && PersonaLogueada._id==listaMascota[i].IdPersona)) {
       let fila = tbody.insertRow();
       let celdaNombre = fila.insertCell();
       let celdaEspecie = fila.insertCell();
-      let celdaEstrellas = fila.insertCell();
       let celdaObservaciones = fila.insertCell();
       let celdaAcciones = fila.insertCell();
 
@@ -51,65 +60,55 @@ async function ImprimirDatos() {
       btnVerMascota.classList.add('DetalleBtn');
 
       ////////////////////////////////////////////////////
-      //Crear Cita
+      //MODIFICAR MASCOTA
       ////////////////////////////////////////////////////
-      let btnCrearCita = document.createElement('button');
-      btnCrearCita.onclick = function () {
+      let btnEdit = document.createElement('button');
+      btnEdit.onclick = function(){
         LimpiarLSMascotaConsultada();
         SetMascotaConsultada(listaMascota[i]);
-        const timeoutId = setTimeout(function () {
-          window.location.replace('./CrearCita.html?acc=Q');
+        const timeoutId = setTimeout(function(){
+          window.location.replace('./RegistrarMascota.html?_id='+ listaMascota[i]._id);
         }, 1000);
-      };
-      btnCrearCita.type = 'button';
-      btnCrearCita.innerText = '📝​';
-      btnCrearCita.title = 'Crear Cita';
-      btnCrearCita.classList.add('modificarBtn');
+      };                
+      
+      btnEdit.type = 'button';
+      btnEdit.innerText = '✏️​';
+      btnEdit.title = 'Editar';
+      btnEdit.classList.add('modificarBtn');
 
       ////////////////////////////////////////////////////
-      //Crear Reservación
+      //Expediente Detalle
       ////////////////////////////////////////////////////
       let btnCrearReser = document.createElement('button');
       btnCrearReser.onclick = function () {
         LimpiarLSMascotaConsultada();
         SetMascotaConsultada(listaMascota[i]);
         const timeoutId = setTimeout(function () {
-          window.location.replace('./CrearReservacion.html?acc=Q');
+          window.location.replace('./ExpedienteDetalle.html?acc=Q');
         }, 1000);
       };
 
       btnCrearReser.type = 'button';
-      btnCrearReser.innerText = '🏥';
-      btnCrearReser.title = 'Crear Reservacion';
+      btnCrearReser.innerText = '📝';
+      btnCrearReser.title = 'Expediente';
       btnCrearReser.classList.add('eliminarBtn');
 
       let divBtns = document.createElement('div');
       divBtns.appendChild(btnVerMascota);
-      divBtns.appendChild(btnCrearCita);
+      divBtns.appendChild(btnEdit);
       divBtns.appendChild(btnCrearReser);
+      //////////////////////////////////////////////////
+      //Imorimir Datos de la Cita
+      ///////////////////////////////////////////////////
 
       celdaNombre.innerHTML = listaMascota[i].Nombre;
       celdaEspecie.innerHTML = listaMascota[i].Especie;
-      celdaEstrellas.innerHTML = listaMascota[i].Estrellas;
-      celdaObservaciones.innerHTML = listaMascota[i].Observaciones;
+      celdaObservaciones.innerHTML =listaMascota[i].Observaciones;
       celdaAcciones.appendChild(divBtns);
     }
   }
 }
 
-function CrearMascota1() {
-  window.location.replace('./RegistrarMascota.html?acc=C');
-}
-
-async function CrearMascota() {
-  let result = await RegistrarMascota(
-    document.getElementById('txtNombreMascota').value,
-    document.getElementById('txtTipoDeMascota').value,
-    '5',
-    document.getElementById('txtInfoAdicional').value,
-    '', // document.getElementById('fotoMascota').value,
-    JSON.parse(localStorage.getItem('datosPersonaConsultada'))._id
-  );
 
   if (result.resultado == true) {
     ImprimirMsjSuccess(result.msj);
@@ -124,3 +123,4 @@ async function CrearMascota() {
     ImprimirMsjError(result.msj);
   }
 }
+

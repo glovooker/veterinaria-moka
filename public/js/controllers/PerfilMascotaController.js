@@ -15,7 +15,6 @@ async function desplegarDatosConsultados() {
   if (mascotaConsultada != null) {
     document.getElementById('outNombre').value = mascotaConsultada.Nombre;
     document.getElementById('txtTipoMascota').value = mascotaConsultada.Especie;
-    document.getElementById('txtEstrellas').value = mascotaConsultada.Estrellas;
     document.getElementById('txtDueñoMascota').value = owner.Nombre;
     document.getElementById('txtPadecimientos').value =
       mascotaConsultada.Observaciones;
