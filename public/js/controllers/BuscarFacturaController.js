@@ -3,6 +3,7 @@ let queryString, urlParams
 let listaDetalles = [];
 //Se busca la factura en especifico con el id de la factura, luego en la factura se obtiene el id del cliente(campo identificacion) y con ese id se busca los datos del cliente en buscar persona.
 let _id; //id de la factura
+let idCita;
 let numeroFactura;
 let identificacionPersona;
 let fechaFactura;
@@ -28,7 +29,11 @@ async function getParamsURL() {
     // console.log(_id);
 
     if (_id != null && _id != undefined) {
-        await ObtenerFactura();;
+        await ObtenerFactura();
+    }else{
+        if(idCita != null && idCita != undefined){
+            await ObtenerFacturaPorIdCita();
+        }
     }
 }
 
@@ -38,6 +43,26 @@ async function getParamsURL() {
 
 async function ObtenerFactura(){
     let result = await BuscarFacturaPorId(_id);
+
+    if(result != {} && result.resultado == true){
+        datosFactura =  result.FacturaDB;
+        listaDetalles = datosFactura.Detalles;
+        numeroFactura = datosFactura.NumeroFactura;
+        identificacionPersona = datosFactura.Identificacion;
+        fechaFactura = datosFactura.Fecha;
+        totalAPagar = datosFactura.TotalAPagar;
+        
+        await ObtenerPersona();
+        console.log(datosFactura);
+        ImprimirDatosDetalles();
+    }else{
+        imprimirMsjError(result.msj);
+        return;
+    }
+}
+
+async function ObtenerFacturaPorIdCita(){
+    let result = await BuscarFacturaPoridCita(idCita);
 
     if(result != {} && result.resultado == true){
         datosFactura =  result.FacturaDB;
@@ -75,17 +100,6 @@ async function ObtenerPersona(){
         return;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 function ImprimirDatosDetalles(){
     let fecha;
@@ -132,35 +146,5 @@ function ImprimirDatosDetalles(){
 
 
 
-
-
-
-
-            
-// LISTAR FACTURAS
-
-
-/* ObtenerListaFacturas();
-
-
-
-
-
-
-async function ObtenerListaFacturas() {
-    let result = await ObtenerFacturaBaseDatos();
-    if (result != {} && result.resultado == true) {
-        arregloFacturas= result.ListaFacturasDB;
-        console.log(arregloFacturas);
-    } else {
-        imprimirMsjError(result.msj);
-        return;
-    }
-}
- */
-
-      /*   document.getElementById('outputNumeroFactura').innerHTML = id_factura.toUpperCase();
-            document.getElementById('outputFecha').innerHTML = fechaFactura;
-            document.getElementById('outputTotal').innerHTML = '₡'+ totalAPagar;
-            document.getElementById('outputIdentificacion').innerHTML = identificacionPersona; 
-            document.getElementById('outputNombre').innerHTML = personaNombre;  */
+    
+    
