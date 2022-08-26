@@ -9,7 +9,6 @@ router.post('/RegistrarMascota', (req, res) => {
   let nuevaMascota = new Mascota({
     Nombre: body.Nombre,
     Especie: body.Especie,
-    Estrellas: body.Estrellas,
     Observaciones: body.Observaciones,
     FotoMascota: body.FotoMascota,
     IdPersona: body.IdPersona,
@@ -50,32 +49,30 @@ router.get('/ListarMascota', (req, res) => {
 });
 
 router.get('/BuscarMascota', (req, res) => {
-    let params = req.query;
-    if (params._id != "" && params._id != null && params._id!= undefined) {
-       Mascota.findOne({_id: params._id}, (err, mascotaDB) => {
-            if (err) {
-                res.json({
-                    resultado: false,
-                    msj: 'No se pudo obtener datos: ',
-                    err
-                });
-            } else {
-
-                res.json({
-                    resultado: true,
-                    msj: 'Los datos se obtuvieron de manera correcta por id: ',
-                    mascotaDB
-                });
-            }
-        } 
-        );
-    }
-} );
+  let params = req.query;
+  if (params._id != '' && params._id != null && params._id != undefined) {
+    Mascota.findOne({ _id: params._id }, (err, mascotaDB) => {
+      if (err) {
+        res.json({
+          resultado: false,
+          msj: 'No se pudo obtener datos: ',
+          err,
+        });
+      } else {
+        res.json({
+          resultado: true,
+          msj: 'Los datos se obtuvieron de manera correcta por id: ',
+          mascotaDB,
+        });
+      }
+    });
+  }
+});
 
 router.post('/ModificarMascota', function (req, res) {
   let body = req.body;
-  Mascota.updateOne(
-    { IdPersona: body.IdPersona },
+  Mascota.updateMany(
+    { _id: body._id },
     {
       $set: req.body,
     },
@@ -88,7 +85,7 @@ router.post('/ModificarMascota', function (req, res) {
         });
       } else {
         res.json({
-          resultado: false,
+          resultado: true,
           msj: 'Los datos se han actualizado con éxito',
           info,
         });

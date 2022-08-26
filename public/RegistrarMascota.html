@@ -20,7 +20,7 @@
         <div class="form-container">
             <div class="title-container-reservar-cita">
                 <i class="fa-solid fa-paw"></i>
-                <h2>Registrar Mascota</h2>
+                <h2 id="txtInicio">Registrar Mascota</h2>
             </div>
 
             <div class="form-date">
@@ -53,10 +53,9 @@
                 <textarea id="txtInfoAdicional" cols="30" rows="9" required></textarea>
             </div>
 
-            <button type="button" id="btnRegistrarMascota" class="form-btn" onclick="CrearMascota()">Registrar</button>
+            <button type="button" id="btnRegistrar" class="form-btn">Registrar</button>
         </div>
     </section>
-
 
     <footer class="footer">
         <h5>Powered by</h5>
@@ -77,6 +76,7 @@
     <script src="./js/services/ImagenesService.js"></script>
     <script src="./js/services/CrudMascotasService.js"></script>
     <script src="./js/controllers/CrudMascotaController.js"></script>
+    <script src="./js/controllers/RegistroMascotaController.js"></script>
 
 
 </body>
