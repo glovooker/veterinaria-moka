@@ -68,7 +68,6 @@ router.get('/BuscarPersona', (req, res) => {
     params.Cedula != undefined
   ) {
     Persona.findOne({ Cedula: params.Cedula }, (err, personaDB) => {
-
       if (err) {
         res.json({
           resultado: false,
@@ -76,7 +75,6 @@ router.get('/BuscarPersona', (req, res) => {
           err,
         });
       } else {
-
         res.json({
           resultado: true,
           msj: 'Los datos se obtuvieron de manera correcta: ',
@@ -143,12 +141,10 @@ router.get('/AutenticarPersona', (req, res) => {
             personaDB,
           });
         }
-
       }
     }
   );
 });
-
 
 router.post('/ModificarPersona', function (req, res) {
   let body = req.body;
@@ -196,6 +192,25 @@ router.get('/BuscarPersonaPorId', (req, res) => {
 router.get('/BuscarCorreoPorId', (req, res) => {
   let params = req.query;
   Persona.findOne({ Correo: params.Correo }, (err, personaDB) => {
+    if (err || personaDB === null) {
+      res.json({
+        resultado: false,
+        msj: 'No se pudo obtener datos',
+        err,
+      });
+    } else {
+      res.json({
+        resultado: true,
+        msj: 'Datos encontrados',
+        personaDB,
+      });
+    }
+  });
+});
+
+router.get('/ListarPersonasRol', (req, res) => {
+  let params = req.query;
+  Persona.find({ Rol: params.Rol }, (err, personaDB) => {
     if (err || personaDB === null) {
       res.json({
         resultado: false,

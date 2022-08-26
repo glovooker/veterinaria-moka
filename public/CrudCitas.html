@@ -15,16 +15,21 @@
 <body>
     <header id="navbarContainer"></header>
 
-    <section class="visualizacion-citas">
-        <div class="citas-container">
-            <div class="title-container-mis-citas">
-                <h2>Consulta General de Citas</h2>
+    <section class="visualizacion">
+        <div class="container">
+            <div class="title-container">
+                <h2>Listado de Citas</h2>
             </div>
 
             <div class="filter-container">
                 <div class="filter">
-                    <label for="txtFiltro" id="lblFiltro"><i class="fa-solid fa-filter"></i>Filtro</label>
+                    <label for="txtFiltro" id="lblFiltro"><i class="fa-solid fa-magnifying-glass"></i></label>
                     <input type="text" id="txtFiltro">
+                </div>
+
+                <div class="action-btns">
+                    <button type=button style="visibility: hidden;"></button>
+                    <button type=button><a href="./CrearCita.html">Agendar Cita</a></button>
                 </div>
             </div>
 
@@ -32,13 +37,13 @@
                 <table class="table" id="tablaCitas">
                     <thead>
                         <tr>
-                            <th>Fecha</th>
-                            <th>Hora</th>
-                            <th>Veterinario</th>
-                            <th>Cliente</th>
-                            <th>Mascota</th>
-                            <th>Estado</th>
-                            <th>Motivo</th>
+                            <th><i class="fa-solid fa-sort"></i> Fecha</th>
+                            <th><i class="fa-solid fa-sort"></i> Hora</th>
+                            <th><i class="fa-solid fa-sort"></i> Veterinario</th>
+                            <th><i class="fa-solid fa-sort"></i> Cliente</th>
+                            <th><i class="fa-solid fa-sort"></i> Mascota</th>
+                            <th><i class="fa-solid fa-sort"></i> Estado</th>
+                            <th><i class="fa-solid fa-sort"></i> Motivo</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>

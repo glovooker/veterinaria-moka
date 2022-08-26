@@ -5,109 +5,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte de Citas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/StyleGeneral.css">
+    <link rel="stylesheet" href="./css/Tabla.css">
+    <link rel="stylesheet" href="./css/webfont/stylesheet.css">
+    <title>Moka | Reporte de Citas</title>
 </head>
-<header>
-    <nav>
-        <div class="logo-container">
-            <a href="#">
-                <img src="" alt="Logo">
-            </a>
-            <h2>Veterinaria Moka</h2>
-        </div>
-
-        <div class="navegation-container">
-            <a href="">Inicio</a>
-            <a href="">Clínica</a>
-            <a href="">Hotel</a>
-        </div>
-
-    </nav>
-</header>
 
 <body>
-    <form action="" id="formulario">
-        <container>
-            <h1>Reportería de Citas</h1>
-            <div>
-                <h3>Filtros</h3>
-                <div>
-                    <form>
+    <header id="navbarContainer"></header>
 
-                    </form>
-                </div>
+    <section class="visualizacion">
+        <div class="container">
+
+            <div class="title-container">
+                <h2>Reporte de Citas</h2>
             </div>
-            <div>
-                <form id="filtrosFechas">
+
+            <div class="filter-container">
+                <div class="filter" id="FiltroTablas">
+                    <label for="txtFiltro" id="lblFiltro"><i class="fa-solid fa-magnifying-glass"></i></label>
+                    <input type="text" id="txtFiltro">
+                </div>
+
+                <form class="date-filter" id="filtrosTablasFecha">
                     <label for="txtFechaInicio" class="lblInput">Fecha Inicio</label>
                     <input type="date" id="txtFechaInicio" required>
-                    <label for="txtFechaFin" class="lblInput">Fecha Final</label>
-                    <input type="date" id="txtFechaFin" required>
-                    <button type="button" id="btnFiltroFechas">Filtrar por fechas</button>
-                    <button type="button" id="btnLimpiar">Limpiar filtros</button>
+                    <label for="txtFechaHasta" class="lblInput">Fecha Fin</label>
+                    <input type="date" id="txtFechaHasta" required>
+                    <button type="button" id="btnFiltroFechas">Filtrar por fecha</button>
+                    <button type="button" id="btnLimpiar">Limpiar filtro</button>
                 </form>
-                <div id="FiltroTablas">
-                    <label for="txtFiltro">Filtrar</label>
-                    <input type="text" id="txtFiltro" placeholder="Filtrar">
-                </div>
-                <table>
-                    <caption>Reportes</caption>
+            </div>
+
+            <div class="table-filters">
+                <table class="table">
                     <thead>
                         <tr>
-                            <th>Fecha</th>
-                            <th>Nombre del cliente</th>
-                            <th>Nombre de la mascota</th>
-                            <th>Hora</th>
-                            <th>Veterinario asignado</th>
-                            <th>Estado de la cita</th>
-                            <th>Observaciones de la cita</th>
+                            <th><i class="fa-solid fa-sort"></i> Fecha</th>
+                            <th><i class="fa-solid fa-sort"></i> Nombre del cliente</th>
+                            <th><i class="fa-solid fa-sort"></i> Nombre de la mascota</th>
+                            <th><i class="fa-solid fa-sort"></i> Hora</th>
+                            <th><i class="fa-solid fa-sort"></i> Veterinario asignado</th>
+                            <th><i class="fa-solid fa-sort"></i> Estado de la cita</th>
+                            <th><i class="fa-solid fa-sort"></i> Observaciones de la cita</th>
                         </tr>
                     </thead>
                     <tbody id="tablaReportes"></tbody>
                     <tfoot></tfoot>
                 </table>
-                <h2>Resumen</h2>
-
-                <label for="outputTotalCitas">Total de Citas Registradas:</label>
-                <ouput id="outputTotalCitas"></ouput><br>
-
-                <label for="outputAprobadas">Total de Citas Activas:</label>
-                <ouput id="outputAprobadas"></ouput><br>
-
-
-                <label for="outputFinalizadas">Total de Citas Finalizadas:</label>
-                <ouput id="outputFinalizadas"></ouput><br>
-
-                <label for="outputCanceladas">Total de Citas Canceladas:</label>
-                <ouput id="outputCanceladas"></ouput>
-
-
-
-
             </div>
+        </div>
+    </section>
 
-
-
-        </container>
-    </form>
-
-    <footer>
-        <h5>Clever Solutions - 2022</h5>
+    <footer class="footer">
+        <h5>Powered by</h5>
+        <a href="https://glovooker.github.io/landing-page-bisoft-1/">
+            <img src="./img/LogoCleverSolutions.svg" alt="Logo Clever Solutions">
+        </a>
     </footer>
-
-
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
-    <script src="js/Constantes.js"></script>
-    <script src="js/services/CitasServices.js"></script>
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/services/InicioDeSesionService.js"></script>
+    <script src="./js/Constantes.js"></script>
+    <script src="./js/services/CitasServices.js"></script>
     <script src="./js/services/PersonaService.js"></script>
     <script src="./js/services/CrudPersonasService.js"></script>
     <script src="./js/services/CrudMascotasService.js"></script>
-    <script src="js/controllers/VisualizacionReportesCitasController.js"></script>
-    <script src="js/controllers/ControllerGeneral.js"></script>
+    <script src="./js/controllers/VisualizacionReportesCitasController.js"></script>
+    <script src="./js/controllers/ControllerGeneral.js"></script>
 </body>
 
 

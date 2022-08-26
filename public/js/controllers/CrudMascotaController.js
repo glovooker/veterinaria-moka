@@ -30,8 +30,6 @@ async function ImprimirDatos() {
   let tbody = document.getElementById('tbdMascotas');
   tbody.innerHTML = '';
 
-  console.log(listaMascota);
-
   for (let i = 0; i < listaMascota.length; i++) {
     let mascotaNombre = listaMascota[i].Nombre;
     let mascotaEspecie = listaMascota[i].Especie;
@@ -118,7 +116,7 @@ async function ImprimirDatos() {
           divBtns.appendChild(btnEdit);
           divBtns.appendChild(btnCrearReser);
           //////////////////////////////////////////////////
-          //Imorimir Datos de la Cita
+          //Imorimir Datos de la Mascota
           ///////////////////////////////////////////////////
 
           celdaNombre.innerHTML = listaMascota[i].Nombre;
@@ -161,19 +159,19 @@ async function CrearMascota() {
 
 $(document).ready(() => {
   $('th').each(function (columna) {
-      $(this).click(function () {
-          let datos = $('table').find('tbody > tr').get();
+    $(this).click(function () {
+      let datos = $('table').find('tbody > tr').get();
 
-          datos.sort(function (a, b) {
-              let valor1 = $(a).children('td').eq(columna).text().toUpperCase();
-              let valor2 = $(b).children('td').eq(columna).text().toUpperCase();
+      datos.sort(function (a, b) {
+        let valor1 = $(a).children('td').eq(columna).text().toUpperCase();
+        let valor2 = $(b).children('td').eq(columna).text().toUpperCase();
 
-              return valor1 < valor2 ? -1 : valor1 > valor2 ? 1 : 0;
-          });
-
-          $.each(datos, function (indice, elemento) {
-              $('tbody').append(elemento);
-          });
+        return valor1 < valor2 ? -1 : valor1 > valor2 ? 1 : 0;
       });
+
+      $.each(datos, function (indice, elemento) {
+        $('tbody').append(elemento);
+      });
+    });
   });
 });
