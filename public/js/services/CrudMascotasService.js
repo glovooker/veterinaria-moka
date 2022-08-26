@@ -89,7 +89,7 @@ async function BuscarMascota(p_id) {
   return result;
 }
 
-async function ModificarMascota(
+async function ModificarMascota(p_id,
   pNombre,
   pEspecie,
   pEstrellas,
@@ -103,6 +103,7 @@ async function ModificarMascota(
     url: apiUrl + '/ModificarMascota',
     responseType: 'json',
     data: {
+      '_id':p_id,
       'Nombre': pNombre,
       'Especie': pEspecie,
       'Estrellas': pEstrellas,
