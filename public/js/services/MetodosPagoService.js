@@ -1,27 +1,27 @@
-"use strict";
+'use strict';
 
 const RegistrarTarjetaDatos = async (pendPoint, data) => {
   let url = `http://localhost:3000/api/${pendPoint}`;
 
   await axios({
     url: url,
-    method: "post",
-    responseType: "json",
+    method: 'post',
+    responseType: 'json',
     data: data,
   })
     .then((response) => {
       Swal.fire({
-        icon: "success",
-        title: "Felicidades",
+        icon: 'success',
+        title: 'Felicidades',
         text: response.data.msj,
       }).then(() => {
-        // window.location.href = ;
+        window.location.href = 'MetodosPagoListado.html';
       });
     })
     .catch((error) => {
       Swal.fire({
-        icon: "error",
-        title: "Ha ocurrido un error",
+        icon: 'error',
+        title: 'Ha ocurrido un error',
         text: error,
       });
     });
@@ -33,8 +33,8 @@ const getDatos = async (endpoint) => {
   let listaDatos = [];
   await axios({
     url: url,
-    method: "get",
-    responseType: "json",
+    method: 'get',
+    responseType: 'json',
   })
     .then((response) => {
       // console.log(response.data);
@@ -42,7 +42,7 @@ const getDatos = async (endpoint) => {
     })
     .catch((error) => {
       Swal.fire({
-        icon: "error",
+        icon: 'error',
         text: error,
       });
     });
@@ -50,19 +50,35 @@ const getDatos = async (endpoint) => {
   return listaDatos;
 };
 
-const eliminarDatos = async (endpoint, _idC) => {
+async function ObtenerListaTarjetas() {
+  let result = {};
+  await axios({
+    method: 'get',
+    url: apiUrl + '/ListarMascota',
+    responseType: 'json',
+  })
+    .then((res) => {
+      result = res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  return result;
+}
+
+const eliminarDatos = async (endpoint, _id) => {
   let url = `http://localhost:3000/api/${endpoint}`;
   await axios({
     url: url,
-    method: "delete",
-    responseType: "json",
+    method: 'delete',
+    responseType: 'json',
     data: {
-      _idC: _idC,
+      _id: _id,
     },
   })
     .then((response) => {
       Swal.fire({
-        icon: "success",
+        icon: 'success',
         title: response.data.msj,
       });
       setTimeout(() => {
@@ -71,7 +87,7 @@ const eliminarDatos = async (endpoint, _idC) => {
     })
     .catch((error) => {
       Swal.fire({
-        icon: "error",
+        icon: 'error',
         text: error,
       });
     });

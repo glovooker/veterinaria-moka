@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const Persona = require('../Models/PersonaModel');
+const mailer = require('../Templates/RegistroTemplate');
 
 router.post('/RegistrarPersona', (req, res) => {
   let body = req.body;
@@ -33,6 +34,10 @@ router.post('/RegistrarPersona', (req, res) => {
         msj: 'Registro realizado exitosamente',
         personaDB,
       });
+
+      let nombreCompleto = personaDB.Nombre;
+      let correo = personaDB.Correo;
+      mailer.EnviarMail(nombreCompleto, correo);
     }
   });
 });
@@ -63,6 +68,7 @@ router.get('/BuscarPersona', (req, res) => {
     params.Cedula != undefined
   ) {
     Persona.findOne({ Cedula: params.Cedula }, (err, personaDB) => {
+
       if (err) {
         res.json({
           resultado: false,
@@ -70,6 +76,7 @@ router.get('/BuscarPersona', (req, res) => {
           err,
         });
       } else {
+
         res.json({
           resultado: true,
           msj: 'Los datos se obtuvieron de manera correcta: ',
@@ -136,10 +143,12 @@ router.get('/AutenticarPersona', (req, res) => {
             personaDB,
           });
         }
+
       }
     }
   );
 });
+
 
 router.post('/ModificarPersona', function (req, res) {
   let body = req.body;
@@ -184,10 +193,9 @@ router.get('/BuscarPersonaPorId', (req, res) => {
     }
   });
 });
-
-router.get('/ListarPersonasRol', (req, res) => {
+router.get('/BuscarCorreoPorId', (req, res) => {
   let params = req.query;
-  Persona.find({ Rol: params.Rol }, (err, personaDB) => {
+  Persona.findOne({ Correo: params.Correo }, (err, personaDB) => {
     if (err || personaDB === null) {
       res.json({
         resultado: false,
