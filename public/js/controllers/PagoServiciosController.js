@@ -1,8 +1,11 @@
 'use strict';
 
-let PersonaLogueada = GetSesionActiva();
+// let mascotaConsultada = GetMascotaConsultada();
+
 let queryString = window.location.search;
 let urlParams = new URLSearchParams(queryString);
+
+let _id = urlParams.get('_id');
 
 let mascotaOutput = document.getElementById('outMascota');
 let clienteOuput = document.getElementById('outCliente');
@@ -15,15 +18,16 @@ let boton_realizar = document.getElementById('btnPagar');
 let btnAgregarMetodo = document.getElementById('btnAgregarMetodo');
 
 
+CargarDatos();
 
-
-
-async function CargarDatos() {
-    let consultante = await DatosPersona(mascotaConsultada.IdPersona);
-
-    mascotaOutput.value = mascotaConsultada.Nombre;
-    clienteOuput.value = consultante.Duenno;
-    totalPagar.value = pCita.Usuario;
-    selectMetodo.value = pCita.Especie;
+function CargarDatos(pPersona, pMascota, pFactura){
+    mascotaOutput.value = pMascota.Nombre;
+    clienteOuput.value = pPersona.Nombre;
+    totalPagar.value = pFactura.TotalAPagar;
 }
+
+
+
+
+
 
