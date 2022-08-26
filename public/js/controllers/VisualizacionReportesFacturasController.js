@@ -131,8 +131,12 @@ async function ImprimirDatos(arregloListaFacturas) {
 
       let btnVer = document.createElement('button');
       btnVer.onclick = function () {
-        location.href =
-          'VistaFactura.html?_idFactura=' + arregloListaFacturas[i]._id;
+        window.open(
+          'http://127.0.0.1:5500/public/VistaFactura.html?_idFactura=' +
+            arregloListaFacturas[i]._id,
+          '_blank'
+        );
+        btnVer.setAttribute('target', '_blank');
       };
       btnVer.type = 'button';
       btnVer.innerText = '🔍';

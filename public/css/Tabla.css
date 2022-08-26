@@ -1,7 +1,8 @@
 .table {
     margin-top: 5vh;
     margin-bottom: 5vh;
-    width: 80%;
+    min-width: 80vw;
+    width: 100%;
     height: 100%;
     border: 2px #81b29a solid;
     text-align: center;
@@ -12,6 +13,13 @@
 .table thead tr {
     background-color: #81b29a;
     color: #fff;
+    font-family: "lexendbold";
+    font-size: 2.5vh;
+}
+
+.table thead tr i {
+    font-size: 2vh;
+    cursor: pointer;
 }
 
 .table th {
@@ -21,6 +29,8 @@
 .table td {
     padding: 1.5vh;
     border-bottom: 2px #81b29a solid;
+    font-family: "lexendregular";
+    font-size: 1.8vh;
 }
 
 .table td button {
@@ -38,7 +48,7 @@
 
 .table .eliminarBtn {
     width: 35px;
-    height: 35px;    
+    height: 35px;
     background-color: #873e2a;
 }
 

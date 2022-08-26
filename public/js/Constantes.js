@@ -139,33 +139,33 @@ const formatoNumero = (number) => {
   return number.toString().replace(exp, rep);
 };
 
-    
-function trunc (x, posiciones = 0) {
-  var s = x.toString()
-  var l = s.length
-  var decimalLength = s.indexOf('.') + 1
-  var numStr = s.substr(0, decimalLength + posiciones)
-  return Number(numStr)
+function trunc(x, posiciones = 0) {
+  var s = x.toString();
+  var l = s.length;
+  var decimalLength = s.indexOf('.') + 1;
+  var numStr = s.substr(0, decimalLength + posiciones);
+  return Number(numStr);
 }
 
-// $(document).ready(() => {
-//   $('th').each(function (columna) {
-//       $(this).click(function () {
-//           let datos = $('table').find('tbody > tr').get();
 
-//           datos.sort(function (a, b) {
-//               let valor1 = $(a).children('td').eq(columna).text().toUpperCase();
-//               let valor2 = $(b).children('td').eq(columna).text().toUpperCase();
+$(document).ready(() => {
+  $('th').each(function (columna) {
+    $(this).click(function () {
+      let datos = $('table').find('tbody > tr').get();
 
-//               return valor1 < valor2 ? -1 : valor1 > valor2 ? 1 : 0;
-//           });
+      datos.sort(function (a, b) {
+        let valor1 = $(a).children('td').eq(columna).text().toUpperCase();
+        let valor2 = $(b).children('td').eq(columna).text().toUpperCase();
 
-//           $.each(datos, function (indice, elemento) {
-//               $('tbody').append(elemento);
-//           });
-//       });
-//   });
-// });
+        return valor1 < valor2 ? -1 : valor1 > valor2 ? 1 : 0;
+      });
+
+      $.each(datos, function (indice, elemento) {
+        $('tbody').append(elemento);
+      });
+    });
+  });
+});
 
 //funcion para truncar numeros
 function trunc(x, posiciones = 0) {
@@ -195,8 +195,8 @@ function ConstruirNavbar() {
             </div>
             <div class="navegation-container">
                 <a href="./PaginaInicio.html">Inicio</a>
-                <a href="./CrudCitas.html">Clínica</a>
-                <a href="./CrudReservaciones.html">Hotel</a>
+                <a href="./ReporteCita.html">Clínica</a>
+                <a href="./ReporteReservacion.html">Hotel</a>
             </div>
             <div class="profile-dropdown">
                 <a href="" class="profile-icon">
@@ -207,11 +207,9 @@ function ConstruirNavbar() {
                     <a href="./CrudMascotas.html">Mascotas</a>
                     <a href="./CrearCuentaUsuario.html">Registrar Usuario</a>
                     <a href="./CrudPersonas.html">Administrar Usuarios</a>
-                    <a href="./CrearCita.html">Citas</a>
-                    <a href="./CrearReservacion.html">Reservaciones</a>
                     <a href="./ReporteFacturas.html">Facturación</a>
-                    <a href="./ReporteCalificacionDoctor.html">Calificaciones Doctores</a>
-                    <a href="./ReporteCalificacionDoctor.html">Calificaciones Mascotas</a>
+                    <a href="./ReporteCalificacion.html">Calificaciones Mascotas</a>
+                    <a href="./ReporteCalificacionVeterinario.html">Calificaciones Doctores</a>
                     <a id="cerrarSesion">Cerrar Sesión</a>
 
                 </div>
@@ -250,10 +248,10 @@ function ConstruirNavbar() {
                 <div class="dropdown-content">
                     <a id="btnPerfilNav">Mi Perfil</a>
                     <a href="./CrudMascotas.html">Mascotas</a>
-                    <a href="./UsuariosCreacionListadoModificacionEliminacion.html">Registrar Usuario</a>
+                    <a href="./CrearCuentaCliente.html">Registrar Cliente</a>
                     <a href="./ReporteCita.html">Citas</a>
                     <a href="./ReporteReservacion.html">Reservaciones</a>
-                    <a href="">Tarjetas</a>
+                    <a href="">Métodos de Pago</a>
                     <a id="cerrarSesion">Cerrar Sesión</a>
 
                 </div>
@@ -283,7 +281,7 @@ function ConstruirNavbar() {
             <div class="navegation-container">
                 <a href="./PaginaInicio.html">Inicio</a>
                 <a href="./CrudCitas.html">Clínica</a>
-                <a href="./CrudReservaciones.html">Hotel</a>
+                <a href="./CrudReservaciones.html">Expedientes</a>
             </div>
             <div class="profile-dropdown">
                 <a href="" class="profile-icon">
@@ -291,7 +289,6 @@ function ConstruirNavbar() {
                 </a>
                 <div class="dropdown-content">
                     <a id="btnPerfilNav">Mi Perfil</a>
-                    <a href="./CrudMascotas.html">Mascotas</a>
                     <a id="cerrarSesion">Cerrar Sesión</a>
                 </div>
             </div>
@@ -329,7 +326,7 @@ function ConstruirNavbar() {
                 <div class="dropdown-content">
                     <a id="btnPerfilNav">Mi Perfil</a>
                     <a href="./CrudMascotas.html">Mascotas</a>
-                    <a href="./MetodosPagoListado.html">Métodos de pago</a>
+                    <a href="./MetodosPagoListado.html">Métodos de Pago</a>
                     <a href="./CrearCita.html">Crear Cita</a>
                     <a href="./CrearReservacion.html">Crear Reservación</a>
                     <a id="cerrarSesion">Cerrar Sesión</a>

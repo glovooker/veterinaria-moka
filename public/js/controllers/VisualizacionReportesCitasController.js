@@ -140,11 +140,9 @@ async function ImprimirDatos(listaCitas) {
       let celdaNombreCliente = fila.insertCell();
       let celdaNombreMascota = fila.insertCell();
       let celdaHoraInicio = fila.insertCell();
-      let celdaHoraFinal = fila.insertCell();
       let celdaNombreVet = fila.insertCell();
       let celdaEstado = fila.insertCell();
       let celdaObservaciones = fila.insertCell();
-      let celdaAcciones = fila.insertCell();
 
       /* let btnVer = document.createElement('button');
             btnVer.onclick = function(){
@@ -168,9 +166,9 @@ async function ImprimirDatos(listaCitas) {
       celdaNombreMascota.innerHTML = mascotaNombre;
 
       celdaHoraInicio.innerHTML = listaCitas[i].HoraInicio;
-      celdaHoraFinal.innerHTML = listaCitas[i].HoraFinal;
 
       celdaNombreVet.innerHTML = vetNombre;
+
       celdaEstado.innerHTML = ObtenerEstadoCita(listaCitas[i].Estado);
       if (ObtenerEstadoCita(listaCitas[i].Estado) === 'Aprobado') {
         contAprobadas = contAprobadas + 1;
@@ -184,8 +182,8 @@ async function ImprimirDatos(listaCitas) {
       celdaObservaciones.innerHTML = listaCitas[i].Observaciones;
     }
   }
-  document.getElementById('outputTotalCitas').innerHTML = totalCitas;
-  document.getElementById('outputAprobadas').innerHTML = contAprobadas;
-  document.getElementById('outputFinalizadas').innerHTML = contFinalizadas;
-  document.getElementById('outputCanceladas').innerHTML = contCanceladas;
+  // document.getElementById('outputTotalCitas').innerHTML = totalCitas;
+  // document.getElementById('outputAprobadas').innerHTML = contAprobadas;
+  // document.getElementById('outputFinalizadas').innerHTML = contFinalizadas;
+  // document.getElementById('outputCanceladas').innerHTML = contCanceladas;
 }

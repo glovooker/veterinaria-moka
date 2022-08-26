@@ -9,24 +9,27 @@
     <link rel="stylesheet" href="./css/StyleGeneral.css">
     <link rel="stylesheet" href="./css/Tabla.css">
     <link rel="stylesheet" href="./css/webfont/stylesheet.css">
-    <title>Moka | Clínica</title>
+    <title>Moka | Usuarios</title>
 </head>
 
 <body>
     <header id="navbarContainer"></header>
 
-    <section class="visualizacion-citas">
-        <div class="citas-container">
-            <div class="title-container-mis-citas">
-                <h2>Consulta General de Personas</h2>
-
+    <section class="visualizacion">
+        <div class="container">
+            <div class="title-container">
+                <h2>Administración de Usuarios</h2>
             </div>
 
             <div class="filter-container">
                 <div class="filter">
-                    <label for="txtFiltro" id="lblFiltro"><i class="fa-solid fa-filter"></i>Filtro</label>
+                    <label for="txtFiltro" id="lblFiltro"><i class="fa-solid fa-magnifying-glass"></i></label>
                     <input type="text" id="txtFiltro">
+                </div>
 
+                <div class="action-btns">
+                    <button type=button id="btnUser">Crear Usuario</button>
+                    <button type=button id="btnCliente">Crear Cliente</button>
                 </div>
             </div>
 
@@ -34,18 +37,13 @@
                 <table class="table" id="tablaPersonas">
                     <thead>
                         <tr>
-                            <th>Cédula</th>
-                            <th>Nombre <i class="fa-solid fa-filter"></i> </th>
-                            <th>Correo</th>
-                            <th>Telefono</th>
-                            <th>Rol <i class="fa-solid fa-filter"></i></th>
-                            <th>Estado <i class="fa-solid fa-filter"></i></th>
-                            <th>Acciones
-                                <button type=button id="btnUser" class="fa-solid fa-circle-plus"
-                                    title="Crear Usuario"></button>
-                                <button type=button id="btnCliente" class="fa-solid fa-square-plus"
-                                    title="Crear Cliente"></button>
-                            </th>
+                            <th><i class="fa-solid fa-sort"></i> Cédula</th>
+                            <th><i class="fa-solid fa-sort"></i> Nombre</th>
+                            <th><i class="fa-solid fa-sort"></i> Correo</th>
+                            <th><i class="fa-solid fa-sort"></i> Telefono</th>
+                            <th><i class="fa-solid fa-sort"></i> Rol</th>
+                            <th><i class="fa-solid fa-sort"></i> Estado</th>
+                            <th>Acciones</th>
                     </thead>
                     <tbody id="tbdPersonas"></tbody>
                     <tfoot id="tftPersonas"></tfoot>
