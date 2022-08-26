@@ -41,42 +41,42 @@
                 <label for="txtFiltro">Filtrar</label>
                 <input type="text" id="txtFiltro" placeholder="Filtrar">
             </div>
-            
-            
 
-           
-            
-                <table>
-                    <caption>Reportes</caption>
-                    <thead>
-                        <tr>
-                            <th>Numero de Factura</th>
-                            <th>Cliente</th>
-                            <th>Fecha</th>
-                            <th>Monto Facturado</th>
-                            <th>Estado</th>
-                            <th>Acciones</th>
 
-                        </tr>
-                    </thead>
-                    <tbody id="tablaReportes">
-                        
-                    </tbody>
-                    <tfoot></tfoot>
-                </table>
-                <div>
-                    <h1>Resumen</h1>
-                    <label for="txtTotal">Total de ganancias por facturas pagadas:</label>
-                    <output name="" for="" id="txtTotal"></output><br>
-                    <label for="txtTotalPendientes">Total de dinero por facturas pendientes:</label>
-                    <output name="" for="" id="txtTotalPendientes"></output><br>
-                    <label for="txtContPagadas">Facturas pagadas:</label>
-                    <output name="" for="" id="txtContPagadas"></output><br>
-                    <label for="txtContPendientes">Facturas pendientes:</label>
-                    <output name="" for="" id="txtContPendientes"></output><br>
-                    <label for="txtTotalFacturas">Total de facturas Registradas:</label>
-                    <output name="" for="" id="txtTotalFacturas"></output>
-                </div>
+
+
+
+            <table>
+                <caption>Reportes</caption>
+                <thead>
+                    <tr>
+                        <th>Numero de Factura</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Monto Facturado</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+
+                    </tr>
+                </thead>
+                <tbody id="tablaReportes">
+
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+            <div>
+                <h1>Resumen</h1>
+                <label for="txtTotal">Total de ganancias por facturas pagadas:</label>
+                <output name="" for="" id="txtTotal"></output><br>
+                <label for="txtTotalPendientes">Total de dinero por facturas pendientes:</label>
+                <output name="" for="" id="txtTotalPendientes"></output><br>
+                <label for="txtContPagadas">Facturas pagadas:</label>
+                <output name="" for="" id="txtContPagadas"></output><br>
+                <label for="txtContPendientes">Facturas pendientes:</label>
+                <output name="" for="" id="txtContPendientes"></output><br>
+                <label for="txtTotalFacturas">Total de facturas Registradas:</label>
+                <output name="" for="" id="txtTotalFacturas"></output>
+            </div>
 
             </div>
         </container>
@@ -88,6 +88,8 @@
 </body>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/services/InicioDeSesionService.js"></script>
 <script src="js/Constantes.js"></script>
 <script src="js/services/ReporteFacturasServices.js"></script>
 <script src="js/services/PersonaService.js"></script>

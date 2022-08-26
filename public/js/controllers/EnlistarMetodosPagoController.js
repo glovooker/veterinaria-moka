@@ -62,4 +62,24 @@ const mostrarTabla = async () => {
     });
   });
 };
-ListarTarjetasPorRol();
+inicializarListas();
+
+
+$(document).ready(() => {
+  $('th').each(function (columna) {
+      $(this).click(function () {
+          let datos = $('table').find('tbody > tr').get();
+
+          datos.sort(function (a, b) {
+              let valor1 = $(a).children('td').eq(columna).text().toUpperCase();
+              let valor2 = $(b).children('td').eq(columna).text().toUpperCase();
+
+              return valor1 < valor2 ? -1 : valor1 > valor2 ? 1 : 0;
+          });
+
+          $.each(datos, function (indice, elemento) {
+              $('tbody').append(elemento);
+          });
+      });
+  });
+});
