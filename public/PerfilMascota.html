@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./css/Cliente.css">
+    <link rel="stylesheet" href="./css/Perfil.css">
     <link rel="stylesheet" href="./css/StyleGeneral.css">
     <link rel="stylesheet" href="./css/webfont/stylesheet.css">
     <title>Moka | Perfil Mascota</title>
@@ -21,33 +21,33 @@
             <h2>Mi Mascota</h2>
 
             <div class="outputs-container">
-
-                <div class="info-container">
-                    <div class="profile-icon">
-                        <i class="fa-solid fa-dog"></i>
-                    </div>
-                    <h3>Información general de la mascota</h3>
-                    <div class="outputs">
-                        <label for="outNombre">Nombre:</label>
-                        <output id="outNombre" name="" for=""></output>
-                        <br>
-                        <label for="txtTipoMascota">Tipo de mascota:</label>
-                        <output id="txtTipoMascota"></output>
-                        <br>
-                        <label for="txtDueñoMascota">Dueño de la mascota:</label>
-                        <output id="txtDueñoMascota"></output>
-                    </div>
+                <div class="profile-icon">
+                    <img id="MascotaFoto" alt="">
                 </div>
+                <div class="profile-info-container">
+                    <div class="info-container">
+                        <h3>Información General</h3>
+                        <div class="outputs">
+                            <label for="outNombre">Nombre:</label>
+                            <output id="outNombre" name="" for=""></output>
+                            <br>
+                            <label for="txtTipoMascota">Tipo de mascota:</label>
+                            <output id="txtTipoMascota"></output>
+                            <br>
+                            <label for="txtDueñoMascota">Dueño de la mascota:</label>
+                            <output id="txtDueñoMascota"></output>
+                        </div>
+                    </div>
 
-                <div class="contact-container">
-                    <h3>Detalles</h3>
-                    <div class="outputs">
-                        <label for="txtPadecimientos">Padecimientos:</label>
-                        <output id="txtPadecimientos"></output>
+                    <div class="contact-container">
+                        <h3>Detalles</h3>
+                        <div class="outputs">
+                            <label for="txtPadecimientos">Padecimientos:</label>
+                            <output id="txtPadecimientos"></output>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
 
@@ -62,6 +62,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="./js/jquery.min.js"></script>
     <script src="./js/services/InicioDeSesionService.js"></script>
     <script src="js/Constantes.js"></script>
     <script src="js/controllers/ControllerUtilidades.js"></script>

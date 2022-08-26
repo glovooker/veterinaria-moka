@@ -280,7 +280,7 @@ function ConstruirNavbar() {
             <div class="navegation-container">
                 <a href="./PaginaInicio.html">Inicio</a>
                 <a href="./CrudCitas.html">Clínica</a>
-                <a href="./CrudReservaciones.html">Expedientes</a>
+                <a href="./ExpedienteListado.html">Expedientes</a>
             </div>
             <div class="profile-dropdown">
                 <a href="" class="profile-icon">

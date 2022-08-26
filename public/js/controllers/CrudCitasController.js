@@ -40,6 +40,8 @@ async function ImprimirDatos() {
     let mascotaNombre = mascota.Nombre;
     let estadoCitaActual = estadoCita;
 
+    console.log(listaCitas[i]);
+
     if (
       veterinarioNombre != null &&
       clienteNombre != null &&
