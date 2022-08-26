@@ -6,37 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./css/PaginaInicio.css">
     <link rel="stylesheet" href="./css/StyleGeneral.css">
+    <link rel="stylesheet" href="./css/PaginaInicio.css">
     <link rel="stylesheet" href="./css/webfont/stylesheet.css">
     <title>Moka Vet & Hotel</title>
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo-container">
-                <a href="./PaginaInicio.html">
-                    <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
-                </a>
-            </div>
-            <div class="navegation-container">
-                <a href="./PaginaInicio.html">Inicio</a>
-                <a href="./ReservarCita.html">Clínica</a>
-                <a href="./ReservarHabitacion.html">Hotel</a>
-            </div>
-            <div class="profile-dropdown">
-                <a href="" class="profile-icon">
-                    <i class="fa-solid fa-circle-user"></i>
-                </a>
-                <div class="dropdown-content">
-                    <a href="./Cliente.html">Mi Perfil</a>
-                    <a href="./Mascotas.html">Mascotas</a>
-                    <a href="./InicioDeSesion.html">Cerrar Sesión</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <header id="navbarContainer"></header>
 
     <div class="banner">
         <img src="./img/BannerPaginaInicio.jpg" alt="Banner de Bienvenida">
@@ -44,20 +21,64 @@
     <section class="welcome">
         <div class="welcome-container">
             <h2>¡Bienvenido a Moka!</h2>
-
-            <h3>¿Cómo te podemos ayudar?</h3>
-
+            <p>Somos una clínica veterinaria que cuidará de tu mascota tanto como tú. Ofrecemos atención y asistencia
+                las
+                24 horas del día, todos los días. <br><br>
+                ¿Buscas dónde hospedar a tu mascota? ¡No te preocupes! Nuestro servicio de hotel para mascotas también
+                está disponible a través de este portal. <br><br>
+                ¡Y todo está a un click de distancia!
+            </p>
             <div class="area-btns-container">
-                <div class="btn vet-btn">
-                    <a href="./ReservarCita.html">
-                        <i class="fa-solid fa-house-medical"></i>
-                        <p>Clínica</p>
+                <div class="btn hotel-btn">
+                    <a href="./SobreNosotros.html">
+                        <i class="fas fa-users"></i>
+                        <p>Sobre Nosotros</p>
                     </a>
                 </div>
-                <div class="btn hotel-btn">
-                    <a href="./ReservarHabitacion.html">
-                        <i class="fa-solid fa-hotel"></i>
-                        <p>Hotel</p>
+            </div>
+        </div>
+        <div class="welcome-image">
+            <img src="./img/WelcomeImage.jpg" alt="Pawsome">
+        </div>
+    </section>
+
+    <section class="advantages">
+        <div class="advantages-image">
+            <img src="./img/AdvantagesImage.jpg" alt="Happy Kitten">
+        </div>
+        <div class="advantages-container">
+            <h2>¿Por qué Confiar en Nosotros?</h2>
+            <ul>
+                <li>Ofrecemos tanto atención médica como hospedaje para tu mascota en el momento en el que lo necesites.
+                </li>
+                <li>¡Nada de Filas! Reserva tu cita o tu habitación para tu mascota cuando quieras, desde la comodidad
+                    de tu hogar.</li>
+                <li>Estamos atentos a los cuidados que tu mascota necesita. La cuidaremos con el mismo cariño con el que
+                    tú lo harías.</li>
+            </ul>
+        </div>
+    </section>
+    <section class="disadvantages">
+        <div class="disadvantages-image">
+            <img src="./img/DisadvantagesImage.jpg" alt="Sad Dog">
+        </div>
+        <div class="disadvantages-container">
+            <h2>Todos Tenemos Nuestros Límites</h2>
+            <ul>
+                <li>Actualmente, solo poseemos un local en todo el país. ¡Es por esto que te alentamos a usar la
+                    plataforma para evitar aglomeraciones y mejorar tu experiencia!
+                </li>
+                <li>De momento, no poseemos sistema de pago en efectivo. ¡Pero no desesperes! Puedes pagar el servicio
+                    que te hemos ofrecido y calificarlo dentro de nuestro sitio.</li>
+                <li>Nuestro personal trabaja muy duro para traerte a tí y a tu mascota la mejor atención. Es por esto
+                    que te agradecemos tu comprensión si tienes dificultad para encontrar un doctor para reservar tu
+                    cita. ¡Puedes averiguar más sobre quién cuidará de tu mascota en el botón de abajo!</li>
+            </ul>
+            <div class="area-btns-container">
+                <div class="btn vet-btn">
+                    <a href="./NuestrosMedicos.html">
+                        <i class="fas fa-user-md"></i>
+                        <p>Nuestros Médicos</p>
                     </a>
                 </div>
             </div>
@@ -65,12 +86,14 @@
     </section>
     <footer class="footer">
         <h5>Powered by</h5>
-        <a href="https://glovooker.github.io/landing-page-bisoft-1/">
+        <a href="https://glovooker.github.io/landing-page-bisoft-1/" target="_blank">
             <img src="./img/LogoCleverSolutions.svg" alt="Logo Clever Solutions">
         </a>
     </footer>
 
     <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="./js/services/InicioDeSesionService.js"></script>
+    <script src="./js/Constantes.js"></script>
 </body>
 
 </html>
