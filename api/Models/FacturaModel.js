@@ -12,7 +12,8 @@ const schemaFacturas = new mongoose.Schema({
     TotalAPagar: { type: Number, required: false, unique: false}, 
     Fecha: { type: Date, required: false, unique: false},
     Estado: { type: Number, required: false, unique: false},
-    NumeroFactura: {type:Number, required: false, unique: false}
+    NumeroFactura: {type:Number, required: false, unique: false},
+    _idCita: {type:String, required: false, unique: false}
 
 
 });

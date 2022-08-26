@@ -39,203 +39,183 @@ async function ImprimirDatos() {
         mascota.Nombre.toLowerCase().includes(filtro)|| 
         estadoCita.toLowerCase().includes(filtro) 
         ){  */
-    //////////////////////////////////////////////////////////////////
-    if (
-      PersonaLogueada.Rol == 0 ||
-      PersonaLogueada.Rol == 1 ||
-      (PersonaLogueada.Rol == 2 &&
-        PersonaLogueada._id == listaCitas[i]._idVeterinario) ||
-      (PersonaLogueada.Rol == 3 &&
-        PersonaLogueada._id == listaCitas[i]._idCliente)
-    ) {
-      //////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////    
+            if ((PersonaLogueada.Rol==0||PersonaLogueada.Rol==1)
+            ||(PersonaLogueada.Rol==2 && PersonaLogueada._id==listaCitas[i]._idVeterinario)
+            ||(PersonaLogueada.Rol==3 && PersonaLogueada._id==listaCitas[i]._idCliente)) {
+            //////////////////////////////////////////////////////////////////
 
-      let fila = tbody.insertRow();
-      let celdaFecha = fila.insertCell();
-      let celdaHora = fila.insertCell();
-      let celdaVeterinario = fila.insertCell();
-      let celdaCliente = fila.insertCell();
-      let celdaMascota = fila.insertCell();
-      let celdaEstado = fila.insertCell();
-      let celdaObservaciones = fila.insertCell();
-      let celdaAcciones = fila.insertCell();
+                let fila = tbody.insertRow();
+                let celdaFecha = fila.insertCell();
+                let celdaHora = fila.insertCell();
+                let celdaVeterinario = fila.insertCell();
+                let celdaCliente = fila.insertCell();
+                let celdaMascota = fila.insertCell();
+                let celdaEstado = fila.insertCell(); 
+                let celdaObservaciones = fila.insertCell(); 
+                let celdaAcciones = fila.insertCell();
 
-      ////////////////////////////////////////////////////
-      //Aprobar Cita
-      ////////////////////////////////////////////////////
-      let btnAprobar = document.createElement('button');
-      btnAprobar.onclick = async function () {
-        let confirmacion = false;
-        await Swal.fire({
-          title: 'Desea Aprobar la cita ' + mascota.Nombre,
-          showDenyButton: true,
-          confirmButtonText: 'Confirmar',
-          denyButtonText: 'Cancelar',
-          icon: 'warning',
-        }).then((res) => {
-          confirmacion = res.isConfirmed;
-        });
-        if (confirmacion == true) {
-          let result = await ModificarCita(
-            listaCitas[i]._id,
-            '',
-            'A',
-            listaCitas[i].Estrellas,
-            listaCitas[i].EstrellasVeterinario,
-            listaCitas[i].ObservacionesVeterinario
-          );
+                ////////////////////////////////////////////////////
+                //Aprobar Cita
+                ////////////////////////////////////////////////////            
+                let btnAprobar = document.createElement('button');
+                btnAprobar.onclick = async function(){
+                    let confirmacion = false;
+                    await Swal.fire({
+                        title: 'Desea Aprobar la cita ' + mascota.Nombre,
+                        showDenyButton: true,
+                        confirmButtonText: 'Confirmar',
+                        denyButtonText: 'Cancelar',
+                        icon: 'warning'
+                    }).then((res) => {
+                        confirmacion = res.isConfirmed;
+                    });
+                    if (confirmacion == true) {
 
-          if (result.resultado == true) {
-            ImprimirMsjSuccess(result.msj);
-          } else {
-            ImprimirMsjError(result.msj);
-          }
-          await GetListaCitas();
-        }
-      };
-      btnAprobar.type = 'button';
-      btnAprobar.innerText = 'A​';
-      btnAprobar.title = 'Aprobar Cita';
-      btnAprobar.classList.add('DetalleBtn');
+                        let result =  await ModificarCita(listaCitas[i]._id,'','A',listaCitas[i].Estrellas,listaCitas[i].EstrellasVeterinario,listaCitas[i].ObservacionesVeterinario); 
 
-      ////////////////////////////////////////////////////
-      //Cancelar Cita
-      ////////////////////////////////////////////////////
-      let btnCancelar = document.createElement('button');
-      btnCancelar.onclick = async function () {
-        let confirmacion = false;
-        await Swal.fire({
-          title: 'Desea Cancelar la cita ' + mascota.Nombre,
-          showDenyButton: true,
-          confirmButtonText: 'Confirmar',
-          denyButtonText: 'Cancelar',
-          icon: 'warning',
-        }).then((res) => {
-          confirmacion = res.isConfirmed;
-        });
-        if (confirmacion == true) {
-          let result = await ModificarCita(
-            listaCitas[i]._id,
-            'Cancelacion',
-            'C',
-            listaCitas[i].Estrellas,
-            listaCitas[i].EstrellasVeterinario,
-            listaCitas[i].ObservacionesVeterinario
-          );
+                        if (result.resultado == true) {
+                            ImprimirMsjSuccess(result.msj);
+                        } else {
+                            ImprimirMsjError(result.msj);
+                        }
+                        await GetListaCitas();
+                    }
+                };
+                btnAprobar.type = 'button';
+                btnAprobar.innerText = 'A​';
+                btnAprobar.title = 'Aprobar Cita';
+                btnAprobar.classList.add('DetalleBtn');
 
-          if (result.resultado == true) {
-            ImprimirMsjSuccess(result.msj);
-          } else {
-            ImprimirMsjError(result.msj);
-          }
+                ////////////////////////////////////////////////////
+                //Cancelar Cita
+                ////////////////////////////////////////////////////
+                let btnCancelar = document.createElement('button');
+                btnCancelar.onclick = async function(){
+                    let confirmacion = false;
+                    await Swal.fire({
+                        title: 'Desea Cancelar la cita ' + mascota.Nombre,
+                        showDenyButton: true,
+                        confirmButtonText: 'Confirmar',
+                        denyButtonText: 'Cancelar',
+                        icon: 'warning'
+                    }).then((res) => {
+                        confirmacion = res.isConfirmed;
+                    });
+                    if (confirmacion == true) {
 
-          await GetListaCitas();
-        }
-      };
+                        let result =  await ModificarCita(listaCitas[i]._id,'Cancelacion','C',listaCitas[i].Estrellas, listaCitas[i].EstrellasVeterinario, listaCitas[i].ObservacionesVeterinario); 
 
-      btnCancelar.type = 'button';
-      btnCancelar.innerText = 'C​';
-      btnCancelar.title = 'Cancelar Cita';
-      btnCancelar.classList.add('modificarBtn');
+                        if (result.resultado == true) {
+                            ImprimirMsjSuccess(result.msj);
+                        } else {
+                            ImprimirMsjError(result.msj);
+                        }
 
-      ////////////////////////////////////////////////////
-      //Finalizar Cita
-      ////////////////////////////////////////////////////
-      let btnFinalizar = document.createElement('button');
+                        await GetListaCitas();
+                    }
+                };
 
-      btnFinalizar.onclick = async function () {
-        let confirmacion = false;
 
-        await Swal.fire({
-          title: 'Desea finalizar la cita ' + mascota.Nombre,
-          showDenyButton: true,
-          confirmButtonText: 'Confirmar',
-          denyButtonText: 'Cancelar',
-          icon: 'warning',
-        }).then((res) => {
-          confirmacion = res.isConfirmed;
-        });
-        if (confirmacion == true) {
-          window.location.replace(
-            './FinalizarCitaReservacion.html?_idCita=' + listaCitas[i]._id
-          );
-        }
-      };
+                btnCancelar.type = 'button';
+                btnCancelar.innerText = 'C​';
+                btnCancelar.title = 'Cancelar Cita';
+                btnCancelar.classList.add('modificarBtn');
 
-      btnFinalizar.type = 'button';
-      btnFinalizar.innerText = 'F';
-      btnFinalizar.title = 'Finalizar Cita';
-      btnFinalizar.classList.add('eliminarBtn');
+                ////////////////////////////////////////////////////
+                //Finalizar Cita
+                ////////////////////////////////////////////////////            
+            let btnFinalizar = document.createElement('button');
 
-      ////////////////////////////////////////////////////
-      //Pagar Cita
-      ////////////////////////////////////////////////////
-      let btnPagar = document.createElement('button');
+            btnFinalizar.onclick = async function(){
+                    let confirmacion = false; 
 
-      btnPagar.onclick = async function () {
-        let confirmacion = false;
+                    await Swal.fire({
+                        title: 'Desea finalizar la cita ' + mascota.Nombre,
+                        showDenyButton: true,
+                        confirmButtonText: 'Confirmar',
+                        denyButtonText: 'Cancelar',
+                        icon: 'warning'
+                    }).then((res) => {
+                        confirmacion = res.isConfirmed;
+                    });
+                    if (confirmacion == true) {
+                        window.location.replace("./FinalizarCitaReservacion.html?_idCita="+ listaCitas[i]._id);   
+                    }
+                };
 
-        await Swal.fire({
-          title: 'Desea pagar la cita ' + mascota.Nombre,
-          showDenyButton: true,
-          confirmButtonText: 'Confirmar',
-          denyButtonText: 'Cancelar',
-          icon: 'warning',
-        }).then((res) => {
-          confirmacion = res.isConfirmed;
-        });
-        if (confirmacion == true) {
-          window.location.replace(
-            './ReservacionPagoServicios.html?id=' + listaCitas[i]._id
-          );
-        }
-      };
+                btnFinalizar.type = 'button';
+                btnFinalizar.innerText = 'F'; 
+                btnFinalizar.title = 'Finalizar Cita';
+                btnFinalizar.classList.add('eliminarBtn');
 
-      btnPagar.type = 'button';
-      btnPagar.innerText = 'P';
-      btnPagar.title = 'Pagar Cita';
-      btnPagar.classList.add('modificarBtn');
+                ////////////////////////////////////////////////////
+                //Pagar Cita
+                ////////////////////////////////////////////////////            
+                let btnPagar = document.createElement('button');
 
-      ////////////////////////////////////
-      //Incluir los botones en Acciones
-      ////////////////////////////////////
+                btnPagar.onclick = async function(){
+                    let confirmacion = false; 
+    
+                    await Swal.fire({
+                        title: 'Desea pagar la cita ' + mascota.Nombre,
+                        showDenyButton: true,
+                        confirmButtonText: 'Confirmar',
+                        denyButtonText: 'Cancelar',
+                        icon: 'warning'
+                    }).then((res) => {
+                        confirmacion = res.isConfirmed;
+                    });
+                    if (confirmacion == true) {
+                        window.location.replace("./ReservacionPagoServicios.html?idCita="+ listaCitas[i]._id);   
+                    }
+                };
+    
+                btnPagar.type = 'button';
+                btnPagar.innerText = 'P'; 
+                btnPagar.title = 'Pagar Cita';
+                btnPagar.classList.add('modificarBtn');            
 
-      let divBtns = document.createElement('div');
+                ////////////////////////////////////
+                //Incluir los botones en Acciones
+                ////////////////////////////////////
 
-      if (PersonaLogueada.Rol == 0 || PersonaLogueada.Rol == 1) {
-        if (listaCitas[i].Estado == 'R') {
-          divBtns.appendChild(btnAprobar);
-        }
-      }
+                let divBtns = document.createElement('div');
 
-      if (listaCitas[i].Estado == 'R' || listaCitas[i].Estado == 'A') {
-        divBtns.appendChild(btnCancelar);
-      }
+                if (PersonaLogueada.Rol == 0 || PersonaLogueada.Rol == 1){
+                    if (listaCitas[i].Estado == 'R'){
+                        divBtns.appendChild(btnAprobar);
+                    }
+                }
 
-      if (PersonaLogueada.Rol == 0 || PersonaLogueada.Rol == 2) {
-        if (listaCitas[i].Estado == 'A') {
-          divBtns.appendChild(btnFinalizar);
-        }
-      }
+                if (listaCitas[i].Estado == 'R' || listaCitas[i].Estado == 'A'){
+                    divBtns.appendChild(btnCancelar); 
+                }
 
-      if (listaCitas[i].Estado == 'F') {
-        divBtns.appendChild(btnPagar);
-      }
+                if (PersonaLogueada.Rol == 0 || PersonaLogueada.Rol == 2){
+                    if (listaCitas[i].Estado == 'A'){           
+                        divBtns.appendChild(btnFinalizar);
+                    }
+                }    
 
-      ///////////////////////////////////////////
-      //Imorimir Datos de la Cita
-      ///////////////////////////////////////////
-      celdaFecha.innerHTML = listaCitas[i].FecInicio;
-      celdaHora.innerHTML = listaCitas[i].HoraInicio;
-      celdaVeterinario.innerHTML = veterinario.Nombre;
-      celdaCliente.innerHTML = cliente.Nombre;
-      celdaMascota.innerHTML = mascota.Nombre;
-      celdaEstado.innerHTML = estadoCita;
-      celdaObservaciones.innerHTML = listaCitas[i].Observaciones;
-      celdaAcciones.appendChild(divBtns);
-    } //roles
-    //}//filtros
-  }
+                if (listaCitas[i].Estado == 'F'){    
+                    divBtns.appendChild(btnPagar);
+                }
+
+                ///////////////////////////////////////////
+                //Imorimir Datos de la Cita
+                ///////////////////////////////////////////
+                celdaFecha.innerHTML = listaCitas[i].FecInicio;
+                celdaHora.innerHTML = listaCitas[i].HoraInicio;
+                celdaVeterinario.innerHTML = veterinario.Nombre;
+                celdaCliente.innerHTML = cliente.Nombre ;   
+                celdaMascota.innerHTML = mascota.Nombre; 
+                celdaEstado.innerHTML = estadoCita;
+                celdaObservaciones.innerHTML =listaCitas[i].Observaciones;
+                celdaAcciones.appendChild(divBtns);
+            } //roles 
+       //}//filtros       
+    }
 }
 
 function Volver() {

@@ -14,7 +14,8 @@ router.post('/RegistrarFactura', (req,res) => {
         TotalAPagar: body.TotalAPagar,
         Fecha: body.Fecha,
         Estado: 1,
-        NumeroFactura:body.NumeroFactura
+        NumeroFactura:body.NumeroFactura,
+        _idCita: body._idCita,
 
     });
     nuevaFactura.save((err,FacturaDB) => {
@@ -179,6 +180,26 @@ router.post('/ModificarFacturaTesting', function(req, res){
     }
     );
 });
+
+router.get('/BuscarFacturaPor_idCita', (req, res) => {
+    let params = req.query;
+    Factura.findOne({ _idCita: params._idCita }, (err, FacturaDB) => {
+        if (err) {
+            res.json({
+                resultado: false,
+                msj: 'No se pudo obtener datos: ',
+                err
+            });
+        } else {
+            res.json({
+                resultado: true,
+                msj: 'Los datos se obtuvieron de manera correcta: ',
+                FacturaDB
+            });
+        }
+    });
+});
+
 
 
 
