@@ -9,7 +9,6 @@ if (acc == null) {
 }
 
 btnRegistrar.addEventListener('click', Validaciones);
-linkVolver.addEventListener('click', Volver);
 
 desplegarDatosConsultados();
 
@@ -128,15 +127,5 @@ function desplegarDatosConsultados() {
     document.getElementById('txtTelefono').value = personaConsultada.Telefono;
     document.getElementById('txtDireccion').value = personaConsultada.Direccion;
     document.getElementById('ImgCliente').value = personaConsultada.FotoPerfil;
-  }
-}
-
-function Volver() {
-  LimpiarLSPersonaConsultada();
-  let linkVolver = document.getElementById('linkVolver');
-  if (acc == 'C' || acc == 'M') {
-    linkVolver.href = './CrudPersonas.html';
-  } else {
-    linkVolver.href = './PaginaInicio.html';
   }
 }

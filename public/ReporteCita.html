@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualización De Reportes</title>
+    <title>Reporte de Citas</title>
 </head>
 <header>
     <nav>
@@ -28,12 +28,12 @@
 <body>
     <form action="" id="formulario">
         <container>
-            <h1>Visualización Reportes Citas</h1>
+            <h1>Reportería de Citas</h1>
             <div>
                 <h3>Filtros</h3>
                 <div>
                     <form>
-                      
+
                     </form>
                 </div>
             </div>
@@ -57,8 +57,7 @@
                             <th>Fecha</th>
                             <th>Nombre del cliente</th>
                             <th>Nombre de la mascota</th>
-                            <th>Hora Inicio</th>
-                            <th>Hora Final</th>
+                            <th>Hora</th>
                             <th>Veterinario asignado</th>
                             <th>Estado de la cita</th>
                             <th>Observaciones de la cita</th>
@@ -69,26 +68,26 @@
                 </table>
                 <h2>Resumen</h2>
 
-                <label for="outputTotalCitas">Total de citas Registradas:</label>
+                <label for="outputTotalCitas">Total de Citas Registradas:</label>
                 <ouput id="outputTotalCitas"></ouput><br>
 
-                <label for="outputAprobadas">Total de citas Activas:</label>
+                <label for="outputAprobadas">Total de Citas Activas:</label>
                 <ouput id="outputAprobadas"></ouput><br>
 
-                
-                <label for="outputFinalizadas">Total de citas Finalizadas:</label>
+
+                <label for="outputFinalizadas">Total de Citas Finalizadas:</label>
                 <ouput id="outputFinalizadas"></ouput><br>
 
-                <label for="outputCanceladas">Total de citas Canceladas:</label>
+                <label for="outputCanceladas">Total de Citas Canceladas:</label>
                 <ouput id="outputCanceladas"></ouput>
 
 
 
-                
+
             </div>
-                            
-                            
-                        
+
+
+
         </container>
     </form>
 
@@ -106,7 +105,7 @@
     <script src="js/services/CitasServices.js"></script>
     <script src="./js/services/PersonaService.js"></script>
     <script src="./js/services/CrudPersonasService.js"></script>
-    <script src="./js/services/MascotaService.js"></script> 
+    <script src="./js/services/CrudMascotasService.js"></script>
     <script src="js/controllers/VisualizacionReportesCitasController.js"></script>
     <script src="js/controllers/ControllerGeneral.js"></script>
 </body>

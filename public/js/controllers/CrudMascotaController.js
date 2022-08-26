@@ -1,8 +1,10 @@
 'use strict';
 
-let btnMascota1 = document.getElementById('btnMascota1'); 
+let btnMascota1 = document.getElementById('btnMascota1');
 
-btnMascota1.addEventListener('click', CrearMascota1);
+// btnMascota1.addEventListener('click', CrearMascota1);
+
+let PersonaLogueada = GetSesionActiva();
 
 const inputFiltro = document.getElementById('txtFiltro');
 inputFiltro.addEventListener('keyup', ImprimirDatos);
@@ -23,78 +25,108 @@ async function GetListaMascota() {
 }
 
 async function ImprimirDatos() {
-  let filtro = inputFiltro.value.toLowerCase();
-  var tbody = document.getElementById('tbdMascotas');
+  let filtro = inputFiltro.value;
+  filtro = filtro.toLowerCase();
+  let tbody = document.getElementById('tbdMascotas');
   tbody.innerHTML = '';
 
+  console.log(listaMascota);
+
   for (let i = 0; i < listaMascota.length; i++) {
-    if (listaMascota[i].Nombre.toLowerCase().includes(filtro)) {
-      let fila = tbody.insertRow();
-      let celdaNombre = fila.insertCell();
-      let celdaEspecie = fila.insertCell();
-      let celdaEstrellas = fila.insertCell();
-      let celdaObservaciones = fila.insertCell();
-      let celdaAcciones = fila.insertCell();
+    let mascotaNombre = listaMascota[i].Nombre;
+    let mascotaEspecie = listaMascota[i].Especie;
 
-      ////////////////////////////////////////////////////
-      //VER PERFIL MASCOTA
-      ////////////////////////////////////////////////////
-      let btnVerMascota = document.createElement('button');
-      btnVerMascota.onclick = function () {
-        LimpiarLSMascotaConsultada();
-        SetMascotaConsultada(listaMascota[i]);
-        const timeoutId = setTimeout(function () {
-          window.location.replace('./PerfilMascota.html?acc=Q');
-        }, 1000);
-      };
-      btnVerMascota.type = 'button';
-      btnVerMascota.innerText = '🔍​';
-      btnVerMascota.title = 'Ver Perfil Mascota';
-      btnVerMascota.classList.add('DetalleBtn');
+    if (
+      mascotaNombre != null &&
+      mascotaEspecie != null &&
+      mascotaNombre != undefined &&
+      mascotaEspecie != undefined
+    ) {
+      mascotaNombre = mascotaNombre.toLowerCase();
+      mascotaEspecie = mascotaEspecie.toLowerCase();
+      ////////////////////////////////////////////////////////////////////
+      if (mascotaNombre.includes(filtro) || mascotaEspecie.includes(filtro)) {
+        //FILTROS //////////////////////////////////////////////////////////
+        if (
+          PersonaLogueada.Rol == 0 ||
+          PersonaLogueada.Rol == 1 ||
+          (PersonaLogueada.Rol == 2 &&
+            PersonaLogueada._id == listaMascota[i].IdPersona) ||
+          (PersonaLogueada.Rol == 3 &&
+            PersonaLogueada._id == listaMascota[i].IdPersona)
+        ) {
+          let fila = tbody.insertRow();
+          let celdaNombre = fila.insertCell();
+          let celdaEspecie = fila.insertCell();
+          let celdaObservaciones = fila.insertCell();
+          let celdaAcciones = fila.insertCell();
 
-      ////////////////////////////////////////////////////
-      //Crear Cita
-      ////////////////////////////////////////////////////
-      let btnCrearCita = document.createElement('button');
-      btnCrearCita.onclick = function () {
-        LimpiarLSMascotaConsultada();
-        SetMascotaConsultada(listaMascota[i]);
-        const timeoutId = setTimeout(function () {
-          window.location.replace('./CrearCita.html?acc=Q');
-        }, 1000);
-      };
-      btnCrearCita.type = 'button';
-      btnCrearCita.innerText = '📝​';
-      btnCrearCita.title = 'Crear Cita';
-      btnCrearCita.classList.add('modificarBtn');
+          ////////////////////////////////////////////////////
+          //VER PERFIL MASCOTA
+          ////////////////////////////////////////////////////
+          let btnVerMascota = document.createElement('button');
+          btnVerMascota.onclick = function () {
+            LimpiarLSMascotaConsultada();
+            SetMascotaConsultada(listaMascota[i]);
+            const timeoutId = setTimeout(function () {
+              window.location.replace('./PerfilMascota.html?acc=Q');
+            }, 1000);
+          };
+          btnVerMascota.type = 'button';
+          btnVerMascota.innerText = '🔍​';
+          btnVerMascota.title = 'Ver Perfil Mascota';
+          btnVerMascota.classList.add('DetalleBtn');
 
-      ////////////////////////////////////////////////////
-      //Crear Reservación
-      ////////////////////////////////////////////////////
-      let btnCrearReser = document.createElement('button');
-      btnCrearReser.onclick = function () {
-        LimpiarLSMascotaConsultada();
-        SetMascotaConsultada(listaMascota[i]);
-        const timeoutId = setTimeout(function () {
-          window.location.replace('./CrearReservacion.html?acc=Q');
-        }, 1000);
-      };
+          ////////////////////////////////////////////////////
+          //MODIFICAR MASCOTA
+          ////////////////////////////////////////////////////
+          let btnEdit = document.createElement('button');
+          btnEdit.onclick = function () {
+            LimpiarLSMascotaConsultada();
+            SetMascotaConsultada(listaMascota[i]);
+            const timeoutId = setTimeout(function () {
+              window.location.replace(
+                './RegistrarMascota.html?acc=M&_id=' + listaMascota[i]._id
+              );
+            }, 1000);
+          };
 
-      btnCrearReser.type = 'button';
-      btnCrearReser.innerText = '🏥';
-      btnCrearReser.title = 'Crear Reservacion';
-      btnCrearReser.classList.add('eliminarBtn');
+          btnEdit.type = 'button';
+          btnEdit.innerText = '✏️​';
+          btnEdit.title = 'Editar';
+          btnEdit.classList.add('modificarBtn');
 
-      let divBtns = document.createElement('div');
-      divBtns.appendChild(btnVerMascota);
-      divBtns.appendChild(btnCrearCita);
-      divBtns.appendChild(btnCrearReser);
+          ////////////////////////////////////////////////////
+          //Expediente Detalle
+          ////////////////////////////////////////////////////
+          let btnCrearReser = document.createElement('button');
+          btnCrearReser.onclick = function () {
+            LimpiarLSMascotaConsultada();
+            SetMascotaConsultada(listaMascota[i]);
+            const timeoutId = setTimeout(function () {
+              window.location.replace('./ExpedienteDetalle.html?acc=Q');
+            }, 1000);
+          };
 
-      celdaNombre.innerHTML = listaMascota[i].Nombre;
-      celdaEspecie.innerHTML = listaMascota[i].Especie;
-      celdaEstrellas.innerHTML = listaMascota[i].Estrellas;
-      celdaObservaciones.innerHTML = listaMascota[i].Observaciones;
-      celdaAcciones.appendChild(divBtns);
+          btnCrearReser.type = 'button';
+          btnCrearReser.innerText = '📝';
+          btnCrearReser.title = 'Expediente';
+          btnCrearReser.classList.add('eliminarBtn');
+
+          let divBtns = document.createElement('div');
+          divBtns.appendChild(btnVerMascota);
+          divBtns.appendChild(btnEdit);
+          divBtns.appendChild(btnCrearReser);
+          //////////////////////////////////////////////////
+          //Imorimir Datos de la Cita
+          ///////////////////////////////////////////////////
+
+          celdaNombre.innerHTML = listaMascota[i].Nombre;
+          celdaEspecie.innerHTML = listaMascota[i].Especie;
+          celdaObservaciones.innerHTML = listaMascota[i].Observaciones;
+          celdaAcciones.appendChild(divBtns);
+        }
+      }
     }
   }
 }

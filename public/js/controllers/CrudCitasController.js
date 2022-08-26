@@ -4,8 +4,7 @@ let PersonaLogueada = GetSesionActiva();
 console.log(PersonaLogueada);
 
 const inputFiltro = document.getElementById('txtFiltro');
-linkVolver.addEventListener("click", Volver);
-//inputFiltro.addEventListener('keyup', ImprimirDatos);
+inputFiltro.addEventListener('keyup', ImprimirDatos);
 
 let listaCitas = [];
 

@@ -3,7 +3,6 @@
 let PersonaLogueada = GetSesionActiva();
 
 const inputFiltro = document.getElementById('txtFiltro');
-linkVolver.addEventListener("click", Volver);
 //inputFiltro.addEventListener('keyup', ImprimirDatos);
 
 let listaCitas = [];
