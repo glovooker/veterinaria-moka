@@ -14,30 +14,7 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo-container">
-                <a id="linkVolver" href="">
-                    <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
-                </a>
-            </div>
-            <div class="navegation-container">
-                <a href="./PaginaInicio.html">Inicio</a>
-                <a href="./ReservarCita.html">Clínica</a>
-                <a href="./ReservarHabitacion.html">Hotel</a>
-            </div>
-            <div class="profile-dropdown">
-                <a href="" class="profile-icon">
-                    <i class="fa-solid fa-circle-user"></i>
-                </a>
-                <div class="dropdown-content">
-                    <a href="./Cliente.html">Mi Perfil</a>
-                    <a href="./Mascotas.html">Mascotas</a>
-                    <a href="./InicioDeSesion.html">Cerrar Sesión</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <header id="navbarContainer"></header>
 
     <section class="reservar-cita">
         <div class="form-container">
@@ -66,7 +43,8 @@
             <div class="form-date">
                 <label for="btnSubirImg" id="lblSubirImg">Foto de la Mascota</label>
                 <img id="imgMasc">
-                <button type="button" id="btnSubirImg" class="form-btn" onclick="AbrirCloudinary('imgMasc')">Subir Imagen</button>
+                <button type="button" id="btnSubirImg" class="form-btn" onclick="AbrirCloudinary('imgMasc')">Subir
+                    Imagen</button>
             </div>
 
             <div class="form-text-area">
@@ -89,12 +67,13 @@
 
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="./js/controllers/ControllerGeneral.js"></script>
-    <script src="./js/controllers/ControllerUtilidades.js"></script>
-    <script src="js/Constantes.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="./js/services/InicioDeSesionService.js"></script>
+    <script src="js/Constantes.js"></script>
+    <script src="./js/controllers/ControllerGeneral.js"></script>
+    <script src="./js/controllers/ControllerUtilidades.js"></script>
     <script src="./js/services/ImagenesService.js"></script>
     <script src="./js/services/CrudMascotasService.js"></script>
     <script src="./js/controllers/CrudMascotaController.js"></script>

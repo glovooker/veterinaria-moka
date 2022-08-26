@@ -27,8 +27,9 @@ async function ObtenerMascotasCliente(pIdPersona) {
 
 async function GetPersonasRol(pRol) {
   let result = await ObtenerPersonasRol(pRol);
+  console.log(result);
   if (result != {} && result.resultado == true) {
-    return result.ListaPersonasBD;
+    return result.personaDB;
   } else {
     return ' ';
   }

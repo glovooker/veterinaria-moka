@@ -8,7 +8,6 @@ let acc = urlParams.get('acc'); //Q = query
 if (acc == null) {
   acc = 'D'; //Desplegar  (no se llama desde el CRUD)
 }
-linkVolver.addEventListener('click', Volver);
 
 function desplegarDatosConsultados() {
   if (personaConsultada != null) {
@@ -21,15 +20,5 @@ function desplegarDatosConsultados() {
     document.getElementById('linkFB').href = personaConsultada.PerfilFB;
     document.getElementById('linkIG').href = personaConsultada.PerfilIG;
     document.getElementById('linkTW').href = personaConsultada.PerfilTW;
-  }
-}
-
-function Volver() {
-  LimpiarLSPersonaConsultada();
-  let linkVolver = document.getElementById('linkVolver');
-  if (acc == 'Q') {
-    linkVolver.href = './CrudPersonas.html';
-  } else {
-    linkVolver.href = './PaginaInicio.html';
   }
 }

@@ -1,6 +1,6 @@
 'use strict';
 
-let btnMascota1 = document.getElementById('btnMascota1'); 
+let btnMascota1 = document.getElementById('btnMascota1');
 
 btnMascota1.addEventListener('click', CrearMascota1);
 
@@ -24,7 +24,7 @@ async function GetListaMascota() {
 
 async function ImprimirDatos() {
   let filtro = inputFiltro.value.toLowerCase();
-  var tbody = document.getElementById('tbdMascotas');
+  let tbody = document.getElementById('tbdMascotas');
   tbody.innerHTML = '';
 
   for (let i = 0; i < listaMascota.length; i++) {

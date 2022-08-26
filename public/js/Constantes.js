@@ -23,6 +23,15 @@ function ObtenerRol(pRol) {
   }
 }
 
+function SetPersonaConsultada(pDatosPersona) {
+  localStorage.setItem('datosPersonaConsultada', JSON.stringify(pDatosPersona));
+  console.log(pDatosPersona);
+}
+
+function LimpiarLSPersonaConsultada() {
+  localStorage.removeItem('datosPersonaConsultada');
+}
+
 function ImprimirMsjError(msj) {
   Swal.fire({
     title: 'Error!',
@@ -158,7 +167,7 @@ function ConstruirNavbar() {
                 </a>
             </div>
             <div class="navegation-container">
-                <a href="./IndexAdmin.html">Inicio</a>
+                <a href="./PaginaInicio.html">Inicio</a>
                 <a href="./CrudCitas.html">Clínica</a>
                 <a href="./CrudReservaciones.html">Hotel</a>
             </div>
@@ -167,8 +176,8 @@ function ConstruirNavbar() {
                     <i class="fa-solid fa-circle-user"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="./Cliente.html">Mi Perfil</a>
-                    <a href="./Mascotas.html">Mascotas</a>
+                    <a id="btnPerfilNav">Mi Perfil</a>
+                    <a href="./CrudMascotas.html">Mascotas</a>
                     <a href="./CrearCuentaUsuario.html">Registrar Usuario</a>
                     <a href="./CrudPersonas.html">Administrar Usuarios</a>
                     <a href="./CrearCita.html">Citas</a>
@@ -184,6 +193,15 @@ function ConstruirNavbar() {
 
       navContainer.appendChild(navbar);
 
+      let btnPerfilNav = document.getElementById('btnPerfilNav');
+      btnPerfilNav.onclick = function () {
+        LimpiarLSPersonaConsultada();
+        SetPersonaConsultada(personaLoggeada);
+        const timeoutId = setTimeout(function () {
+          window.location.replace('./PerfilPersona.html?acc=Q');
+        }, 1000);
+      };
+
       const cerrarSesion = document.getElementById('cerrarSesion');
       cerrarSesion.addEventListener('click', CerrarSesionActiva);
     } else if (personaLoggeada.Rol == 1) {
@@ -195,16 +213,16 @@ function ConstruirNavbar() {
             </div>
             <div class="navegation-container">
                 <a href="./PaginaInicio.html">Inicio</a>
-                <a href="./ReservarCita.html">Clínica</a>
-                <a href="./ReservarHabitacion.html">Hotel</a>
+                <a href="./CrudCitas.html">Clínica</a>
+                <a href="./CrudReservaciones.html">Hotel</a>
             </div>
             <div class="profile-dropdown">
                 <a href="" class="profile-icon">
                     <i class="fa-solid fa-circle-user"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="./Cliente.html">Mi Perfil</a>
-                    <a href="./Mascotas.html">Mascotas</a>
+                    <a id="btnPerfilNav">Mi Perfil</a>
+                    <a href="./CrudMascotas.html">Mascotas</a>
                     <a href="./UsuariosCreacionListadoModificacionEliminacion.html">Registrar Usuario</a>
                     <a href="./ReporteCita.html">Citas</a>
                     <a href="./ReporteReservacion.html">Reservaciones</a>
@@ -217,6 +235,15 @@ function ConstruirNavbar() {
 
       navContainer.appendChild(navbar);
 
+      let btnPerfilNav = document.getElementById('btnPerfilNav');
+      btnPerfilNav.onclick = function () {
+        LimpiarLSPersonaConsultada();
+        SetPersonaConsultada(personaLoggeada);
+        const timeoutId = setTimeout(function () {
+          window.location.replace('./PerfilPersona.html?acc=Q');
+        }, 1000);
+      };
+
       const cerrarSesion = document.getElementById('cerrarSesion');
       cerrarSesion.addEventListener('click', CerrarSesionActiva);
     } else if (personaLoggeada.Rol == 2) {
@@ -228,23 +255,31 @@ function ConstruirNavbar() {
             </div>
             <div class="navegation-container">
                 <a href="./PaginaInicio.html">Inicio</a>
-                <a href="./ReservarCita.html">Clínica</a>
-                <a href="./ReservarHabitacion.html">Hotel</a>
+                <a href="./CrudCitas.html">Clínica</a>
+                <a href="./CrudReservaciones.html">Hotel</a>
             </div>
             <div class="profile-dropdown">
                 <a href="" class="profile-icon">
                     <i class="fa-solid fa-circle-user"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="./Cliente.html">Mi Perfil</a>
-                    <a href="./Mascotas.html">Mascotas</a>
+                    <a id="btnPerfilNav">Mi Perfil</a>
+                    <a href="./CrudMascotas.html">Mascotas</a>
                     <a id="cerrarSesion">Cerrar Sesión</a>
-
                 </div>
             </div>
       `;
 
       navContainer.appendChild(navbar);
+
+      let btnPerfilNav = document.getElementById('btnPerfilNav');
+      btnPerfilNav.onclick = function () {
+        LimpiarLSPersonaConsultada();
+        SetPersonaConsultada(personaLoggeada);
+        const timeoutId = setTimeout(function () {
+          window.location.replace('./PerfilPersona.html?acc=Q');
+        }, 1000);
+      };
 
       const cerrarSesion = document.getElementById('cerrarSesion');
       cerrarSesion.addEventListener('click', CerrarSesionActiva);
@@ -257,26 +292,34 @@ function ConstruirNavbar() {
             </div>
             <div class="navegation-container">
                 <a href="./PaginaInicio.html">Inicio</a>
-                <a href="./ReservarCita.html">Clínica</a>
-                <a href="./ReservarHabitacion.html">Hotel</a>
+                <a href="./CrudCitas.html">Citas</a>
+                <a href="./CrudReservaciones.html">Habitaciones</a>
             </div>
             <div class="profile-dropdown">
                 <a href="" class="profile-icon">
                     <i class="fa-solid fa-circle-user"></i>
                 </a>
                 <div class="dropdown-content">
-                    <a href="./Cliente.html">Mi Perfil</a>
-                    <a href="./Mascotas.html">Mascotas</a>
-                    <a href="">Facturas</a>
-                    <a href="">Métodos de pago</a>
-                    <a href="">Citas</a>
-                    <a href="">Reservaciones</a>
+                    <a id="btnPerfilNav">Mi Perfil</a>
+                    <a href="./CrudMascotas.html">Mascotas</a>
+                    <a href="./MetodosPagoListado.html">Métodos de pago</a>
+                    <a href="./CrearCita.html">Crear Cita</a>
+                    <a href="./CrearReservacion.html">Crear Reservación</a>
                     <a id="cerrarSesion">Cerrar Sesión</a>
                 </div>
             </div>
       `;
 
       navContainer.appendChild(navbar);
+
+      let btnPerfilNav = document.getElementById('btnPerfilNav');
+      btnPerfilNav.onclick = function () {
+        LimpiarLSPersonaConsultada();
+        SetPersonaConsultada(personaLoggeada);
+        const timeoutId = setTimeout(function () {
+          window.location.replace('./PerfilPersona.html?acc=Q');
+        }, 1000);
+      };
 
       const cerrarSesion = document.getElementById('cerrarSesion');
       cerrarSesion.addEventListener('click', CerrarSesionActiva);
@@ -306,34 +349,4 @@ function ConstruirNavbar() {
 
     navContainer.appendChild(navbar);
   }
-
-  // for (let i = 0; i < listaVeterinarios.length; i++) {
-  //   let veterinario = listaVeterinarios[i];
-  //   console.log(veterinario);
-  //   const doctorProfile = document.createElement('div');
-  //   doctorProfile.classList.add('doctor-profile');
-  //   doctorProfile.setAttribute('id', veterinario._id);
-  //   doctorProfile.innerHTML = `
-  //       <div class="doctor-image">
-  //           <img src="${veterinario.FotoPerfil}" alt="Fotografía ${veterinario.Nombre}">
-  //       </div>
-  //       <div class="doctor-info">
-  //       <h3>${veterinario.Nombre}</h3>
-  //       <p><strong>Correo Electrónico: </strong>${veterinario.Correo}</p>
-  //       <p><strong>Teléfono: </strong>${veterinario.Telefono}</p>
-  //       <div class="socials-container">
-  //               <a href="${veterinario.PerfilFB}" target="_blank">
-  //                   <i class="fa-brands fa-facebook-f"></i>
-  //               </a>
-  //               <a href="${veterinario.PerfilIG}" target="_blank">
-  //                   <i class="fa-brands fa-instagram"></i>
-  //               </a>
-  //               <a href="${veterinario.PerfilTW}" target="_blank">
-  //                   <i class="fa-brands fa-twitter"></i>
-  //               </a>
-  //           </div>
-  //   `;
-
-  //   container.appendChild(doctorProfile);
-  // }
 }

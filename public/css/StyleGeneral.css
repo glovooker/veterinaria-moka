@@ -79,6 +79,7 @@ body {
   font-size: 2.2vh;
   font-weight: 600;
   font-family: "lexendbold";
+  cursor: pointer;
 }
 
 .dropdown-content a:hover {
