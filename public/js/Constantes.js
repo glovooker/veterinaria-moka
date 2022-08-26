@@ -147,6 +147,7 @@ function trunc(x, posiciones = 0) {
   return Number(numStr);
 }
 
+
 $(document).ready(() => {
   $('th').each(function (columna) {
     $(this).click(function () {
