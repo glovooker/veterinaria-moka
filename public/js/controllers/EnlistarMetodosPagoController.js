@@ -62,7 +62,6 @@ const mostrarTabla = async () => {
     });
   });
 };
-inicializarListas();
 
 
 $(document).ready(() => {
