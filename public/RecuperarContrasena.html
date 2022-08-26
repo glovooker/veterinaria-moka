@@ -30,46 +30,30 @@
     <h1>Seguridad</h1>
 
     <div>
-        <h1>Cambiar Contraseña</h1>
+        <h1>Recuperar Contraseña</h1>
         <container>
             <form>
-                <label for="txtNewPass" id="lblNewPass" class="lblInput">Nueva Contraseña</label>
-                <input type="password" id="txtNewPass" required>
-                <label for="txtNewPass2" id="lblNewPass2" class="lblInput">Confirmar Contraseña</label>
-                <input type="password" id="txtNewPass2" required>
-            </form>
-        </container>
-    </div>
-
-    <div>
-        <label for="txtPass" id="lblPass" class="lblInput">Contraseña</label>
-        <input type="password" id="txtPass" required>
-    </div>
-
-    <div>
-        <button type=button id="btnGuardarCambios">Guardar cambios</button>
-    </div>
-
-
-    <div>
-        <h1>Cambiar Correo</h1>
-        <container>
-            <form>
-                <label for="txtEmail" id="lblEmail" class="lblInput">Cambiar Correo</label>
+                <label for="txtEmail" id="lblEmail" class="lblInput">Correo</label>
                 <input type="email" id="txtEmail" required>
-                <label for="txtNewEmail" id="lblNewEmail" class="lblInput">Confirmar Correo</label>
-                <input type="email" id="txtNewEmail" required>
             </form>
         </container>
+    </div>
+
+    <div>
+        <button type=button id="btnRegistrar">Registrar</button>
     </div>
 
     <footer>
         <h5>Clever Solutions - 2022</h5>
     </footer>
 
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/Constantes.js"></script>
     <script src="./js/controllers/ControllerGeneral.js"></script>
-    <script src="./js/controllers/RecuperarContraseñaController.js"></script>
+    <script src="./js/controllers/RecuperarContrasenaController.js"></script>
+    <script src="./js/services/RecuperarContrasenaServices.js"></script>
 
 </body>
 

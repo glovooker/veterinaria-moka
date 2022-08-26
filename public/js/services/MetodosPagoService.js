@@ -50,14 +50,30 @@ const getDatos = async (endpoint) => {
   return listaDatos;
 };
 
-const eliminarDatos = async (endpoint, _idC) => {
+async function ObtenerListaTarjetas() {
+  let result = {};
+  await axios({
+    method: 'get',
+    url: apiUrl + '/ListarMascota',
+    responseType: 'json',
+  })
+    .then((res) => {
+      result = res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  return result;
+}
+
+const eliminarDatos = async (endpoint, _id) => {
   let url = `http://localhost:3000/api/${endpoint}`;
   await axios({
     url: url,
     method: 'delete',
     responseType: 'json',
     data: {
-      _idC: _idC,
+      _id: _id,
     },
   })
     .then((response) => {
