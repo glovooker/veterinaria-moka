@@ -1,5 +1,8 @@
 'use strict';
 
+let PersonaLogueada = GetSesionActiva();
+console.log(PersonaLogueada);
+
 const cuerpoTabla = document.getElementById('tbdPlatillos');
 const inputFiltro = document.getElementById('filtro');
 inputFiltro.addEventListener('keyup', imprimirDatos);
@@ -27,6 +30,8 @@ async function imprimirDatos() {
 
     for (let i = 0; i < listaExpediente.length; i++) {
 
+
+
         if (listaExpediente[i].Nombre.toLowerCase().includes(filtro) ||
             listaExpediente[i].Especie.toLowerCase().includes(filtro) ||
             listaExpediente[i].Estrellas.toString().includes(filtro) ||
@@ -47,7 +52,7 @@ async function imprimirDatos() {
             let celdaAcciones = fila.insertCell();
 
             let btnEditar = document.createElement('button');
-            btnEditar.onclick = async function(){
+            btnEditar.onclick = async function () {
                 window.location.href = 'Actualizar_RegistrarExpediente.html?_id=' + listaExpediente[i]._id;
             };
 
@@ -57,7 +62,7 @@ async function imprimirDatos() {
             btnEditar.classList.add('btnTabla');
 
             let btnDelete = document.createElement('button');
-            btnDelete.onclick = async function(){
+            btnDelete.onclick = async function () {
                 let confirmacion = false;
                 await Swal.fire({
                     title: 'Desea eliminar el expediente de ' + listaExpediente[i].Nombre,
@@ -65,14 +70,14 @@ async function imprimirDatos() {
                     confirmbButtonText: 'Confirmar',
                     denyButtonText: 'Cancelar',
                     icon: 'warning'
-                }).then((res)=>{
+                }).then((res) => {
                     confirmacion = res.isConfirmed;
                 });
-                if(confirmacion == true){
+                if (confirmacion == true) {
                     let result = await EliminarExpediente(listaExpediente[i]._id);
-                    if(result.resultado == true){
+                    if (result.resultado == true) {
                         Exito(result.msj);
-                    }else{
+                    } else {
                         imprimirError(result.msj);
                     }
                     await GetExpediente();
@@ -88,6 +93,7 @@ async function imprimirDatos() {
             divButtons.appendChild(btnEditar);
             divButtons.appendChild(btnDelete);
 
+            celdaNumeroExpediente.innerHTML = listaExpediente[i].NumeroExpediente;
             celdaNombre.innerHTML = listaExpediente[i].Nombre;
             celdaDuennoMascota.innerHTML = listaExpediente[i].Duenno;
             celdaUsuario.innerHTML = listaExpediente[i].Usuario
@@ -98,8 +104,26 @@ async function imprimirDatos() {
             celdaCitas.innerHTML = listaExpediente[i].Citas;
             celdaReservaciones.innerHTML = listaExpediente[i].Reservaciones;
             celdaAcciones.appendChild(divButtons);
-        }
-
-    }
-
+        }//Logins
+    }//Filtros
 }
+
+
+$(document).ready(() => {
+    $('th').each(function (columna) {
+        $(this).click(function () {
+            let datos = $('table').find('tbody > tr').get();
+
+            datos.sort(function (a, b) {
+                let valor1 = $(a).children('td').eq(columna).text().toUpperCase();
+                let valor2 = $(b).children('td').eq(columna).text().toUpperCase();
+
+                return valor1 < valor2 ? -1 : valor1 > valor2 ? 1 : 0;
+            });
+
+            $.each(datos, function (indice, elemento) {
+                $('tbody').append(elemento);
+            });
+        });
+    });
+});

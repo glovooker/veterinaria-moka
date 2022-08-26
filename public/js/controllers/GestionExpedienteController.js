@@ -1,5 +1,9 @@
 'use strict';
 
+let PersonaLogueada = GetSesionActiva();
+let query_string = window.location.search;
+let urlParam = new URLSearchParams(queryString); 
+
 let botonRegistrar = document.getElementById('btnRegistrar');
 let inputNumExpediente = document.getElementById('txtNumExpediente');
 let inputNombre = document.getElementById('txtNombre');
