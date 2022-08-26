@@ -168,7 +168,7 @@ async function ImprimirDatos() {
                         confirmacion = res.isConfirmed;
                     });
                     if (confirmacion == true) {
-                        window.location.replace("./ReservacionPagoServicios.html?id="+ listaCitas[i]._id);   
+                        window.location.replace("./ReservacionPagoServicios.html?idCita="+ listaCitas[i]._id);   
                     }
                 };
     
