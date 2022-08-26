@@ -4,7 +4,7 @@ let PersonaLogueada = GetSesionActiva();
 console.log(PersonaLogueada);
 
 const inputFiltro = document.getElementById('txtFiltro');
-linkVolver.addEventListener("click", Volver);
+linkVolver.addEventListener('click', Volver);
 //inputFiltro.addEventListener('keyup', ImprimirDatos);
 
 let listaCitas = [];
@@ -12,30 +12,29 @@ let listaCitas = [];
 GetListaCitas();
 
 async function GetListaCitas() {
-    let result = await ObtenerListaCitas('C');
-    if (result != {} && result.resultado == true) {
-        listaCitas = result.ListaCitasBD;       
-        ImprimirDatos(); 
-    } else {
-        imprimirMsjError(result.msj);
-        return;
-    }
+  let result = await ObtenerListaCitas('C');
+  if (result != {} && result.resultado == true) {
+    listaCitas = result.ListaCitasBD;
+    ImprimirDatos();
+  } else {
+    imprimirMsjError(result.msj);
+    return;
+  }
 }
 
 async function ImprimirDatos() {
-    let filtro = inputFiltro.value.toLowerCase();
-    var tbody = document.getElementById('tbdCitas');
-    tbody.innerHTML = '';
+  let filtro = inputFiltro.value.toLowerCase();
+  let tbody = document.getElementById('tbdCitas');
+  tbody.innerHTML = '';
 
-    for (let i = 0; i < listaCitas.length; i++) { 
-        
-        ////////////////////////////////////////////////////////////////////
-        let veterinario = await DatosPersona(listaCitas[i]._idVeterinario,null); 
-        let cliente = await DatosPersona(listaCitas[i]._idCliente,null);           
-        let mascota = await DatosMascota(listaCitas[i]._idMascota);     
-        let estadoCita = ObtenerEstadoCita(listaCitas[i].Estado);   
-        //FILTROS //////////////////////////////////////////////////////////
-        /* if(veterinario.Nombre.toLowerCase().includes(filtro)|| 
+  for (let i = 0; i < listaCitas.length; i++) {
+    ////////////////////////////////////////////////////////////////////
+    let veterinario = await DatosPersona(listaCitas[i]._idVeterinario, null);
+    let cliente = await DatosPersona(listaCitas[i]._idCliente, null);
+    let mascota = await DatosMascota(listaCitas[i]._idMascota);
+    let estadoCita = ObtenerEstadoCita(listaCitas[i].Estado);
+    //FILTROS //////////////////////////////////////////////////////////
+    /* if(veterinario.Nombre.toLowerCase().includes(filtro)|| 
         cliente.Nombre.toLowerCase().includes(filtro)|| 
         mascota.Nombre.toLowerCase().includes(filtro)|| 
         estadoCita.toLowerCase().includes(filtro) 
@@ -219,10 +218,10 @@ async function ImprimirDatos() {
     }
 }
 
-function Volver(){         
-    if (PersonaLogueada.Rol !=3){    
-      linkVolver.href = "./CrudPersonas.html";  
-    } else {
-      linkVolver.href = "./PaginaInicio.html";
-    }
+function Volver() {
+  if (PersonaLogueada.Rol != 3) {
+    linkVolver.href = './CrudPersonas.html';
+  } else {
+    linkVolver.href = './PaginaInicio.html';
   }
+}
