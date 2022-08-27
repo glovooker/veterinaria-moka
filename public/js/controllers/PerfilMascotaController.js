@@ -16,6 +16,7 @@ async function desplegarDatosConsultados() {
     document.getElementById('txtTipoMascota').value = mascotaConsultada.Especie;
     document.getElementById('txtDueñoMascota').value = owner.Nombre;
     document.getElementById('txtPadecimientos').value =
+    document.getElementById('MascotaFoto').src = mascotaConsultada.FotoMascota;
       mascotaConsultada.Observaciones;
   }
 }
