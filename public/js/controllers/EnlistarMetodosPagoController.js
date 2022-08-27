@@ -30,7 +30,7 @@ const mostrarTabla = async () => {
     let fila = cuerpoTabla.insertRow();
     let numerot = String(tarjeta.NumTarjeta);
     // fila.insertCell().innerText = tarjeta._idC;
-    fila.insertCell().innerText = '************' + numerot.slice(-4);
+    fila.insertCell().innerText = '****' + numerot.slice(-4);
     fila.insertCell().innerText = tarjeta.FecExpira;
     fila.insertCell().innerText = tarjeta.Nombre;
     let tdAcciones = fila.insertCell();
@@ -62,24 +62,4 @@ const mostrarTabla = async () => {
     });
   });
 };
-inicializarListas();
-
-
-$(document).ready(() => {
-  $('th').each(function (columna) {
-      $(this).click(function () {
-          let datos = $('table').find('tbody > tr').get();
-
-          datos.sort(function (a, b) {
-              let valor1 = $(a).children('td').eq(columna).text().toUpperCase();
-              let valor2 = $(b).children('td').eq(columna).text().toUpperCase();
-
-              return valor1 < valor2 ? -1 : valor1 > valor2 ? 1 : 0;
-          });
-
-          $.each(datos, function (indice, elemento) {
-              $('tbody').append(elemento);
-          });
-      });
-  });
-});
+ListarTarjetasPorRol();

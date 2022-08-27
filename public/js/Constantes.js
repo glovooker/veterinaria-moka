@@ -147,7 +147,6 @@ function trunc(x, posiciones = 0) {
   return Number(numStr);
 }
 
-
 $(document).ready(() => {
   $('th').each(function (columna) {
     $(this).click(function () {
@@ -251,7 +250,7 @@ function ConstruirNavbar() {
                     <a href="./CrearCuentaCliente.html">Registrar Cliente</a>
                     <a href="./ReporteCita.html">Citas</a>
                     <a href="./ReporteReservacion.html">Reservaciones</a>
-                    <a href="">Métodos de Pago</a>
+                    <a href="./MetodosPagoListado.html">Métodos de Pago</a>
                     <a id="cerrarSesion">Cerrar Sesión</a>
 
                 </div>

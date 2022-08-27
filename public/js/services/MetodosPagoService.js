@@ -93,6 +93,22 @@ const eliminarDatos = async (endpoint, _id) => {
     });
 };
 
+async function ObtenerMetodosDePago() {
+  let result = {};
+  await axios({
+    method: 'get',
+    url: apiUrl + '/obtener-tarjetas',
+    responseType: 'json',
+  })
+    .then((res) => {
+      result = res.data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  return result;
+}
+
 // const getDatosMetodos = async (endpoint) => {
 //   let url = `http://localhost:3000/api${endpoint}`;
 //   let listaDatosMetodos = [];
@@ -155,7 +171,7 @@ const eliminarDatos = async (endpoint, _id) => {
 //   {
 //     NumCliente: 1,
 //     Cliente: "Andrey Villalobos",
-//     NumTarjeta: "************8436",
+//     NumTarjeta: "******8436",
 //     Vencimiento: "31/07/2025",
 //     CVV: "123",
 //     TarjetaHabiente: "Andrey Villalobos",
@@ -163,7 +179,7 @@ const eliminarDatos = async (endpoint, _id) => {
 //   {
 //     NumCliente: 2,
 //     Cliente: "Johel Lopez",
-//     NumTarjeta: "************3579",
+//     NumTarjeta: "******3579",
 //     Vencimiento: "31/12/2023",
 //     CVV: "456",
 //     TarjetaHabiente: "Johel Lopez",
@@ -171,7 +187,7 @@ const eliminarDatos = async (endpoint, _id) => {
 //   {
 //     NumCliente: 3,
 //     Cliente: "Randall Badilla",
-//     NumTarjeta: "************1597",
+//     NumTarjeta: "******1597",
 //     Vencimiento: "31/01/2026",
 //     CVV: "789",
 //     TarjetaHabiente: "Randall Badilla",
@@ -179,7 +195,7 @@ const eliminarDatos = async (endpoint, _id) => {
 //   {
 //     NumCliente: 4,
 //     Cliente: "Cris Hemsworth",
-//     NumTarjeta: "************7591",
+//     NumTarjeta: "******7591",
 //     Vencimiento: "30/05/2024",
 //     CVV: "987",
 //     TarjetaHabiente: "Cris Hemsworth",
@@ -187,7 +203,7 @@ const eliminarDatos = async (endpoint, _id) => {
 //   {
 //     NumCliente: 4,
 //     Cliente: "Cris Hemsworth",
-//     NumTarjeta: "************3197",
+//     NumTarjeta: "******3197",
 //     Vencimiento: "31/10/2027",
 //     CVV: "654",
 //     TarjetaHabiente: "Cris Hemsworth",

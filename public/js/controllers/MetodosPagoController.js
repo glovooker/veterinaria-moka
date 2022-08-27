@@ -10,9 +10,9 @@ function Validaciones() {
   } else if (ValidarFecha() == false) {
     return false;
   } else {
-    /***********************************************************************/
+    /*************************/
     CrearTarjeta();
-    /***********************************************************************/
+    /*************************/
     Swal.fire({
       title: 'Success!',
       text: 'Todos los campos requeridos han sido ingresados',

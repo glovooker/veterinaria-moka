@@ -14,30 +14,7 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo-container">
-                <a id="linkVolver" href="">
-                    <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
-                </a>
-            </div>
-            <div class="navegation-container">
-                <a href="./PaginaInicio.html">Inicio</a>
-                <a href="./ReservarCita.html">Clínica</a>
-                <a href="./ReservarHabitacion.html">Hotel</a>
-            </div>
-            <div class="profile-dropdown">
-                <a href="" class="profile-icon">
-                    <i class="fa-solid fa-circle-user"></i>
-                </a>
-                <div class="dropdown-content">
-                    <a href="./Cliente.html">Mi Perfil</a>
-                    <a href="./Mascotas.html">Mascotas</a>
-                    <a href="./InicioDeSesion.html">Cerrar Sesión</a>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <header id="navbarContainer"></header>
 
     <section id="section1" class="profile">
         <div class="profile-container">
@@ -47,56 +24,56 @@
             <div class="outputs-container">
 
                 <div class="info-container">
-                    </div>
-                    <div class="outputs">
-                        <label for="txtNumeroExpediente">Número de expediente:</label>
-                        <output id="txtNumeroExpediente" name="" for=""></output>
-                        <br>
-                        <label for="txtCalificacion">Calificación:</label>
-                        <output id="txtCalificacion"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                </div>
+                <div class="outputs">
+                    <label for="txtNumeroExpediente">Número de expediente:</label>
+                    <output id="txtNumeroExpediente" name="" for=""></output>
+                    <br>
+                    <label for="txtCalificacion">Calificación:</label>
+                    <output id="txtCalificacion"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i></output>
-                    </div>
-
-                    <div class="outputs">
-                        <h3>Datos de la mascota</h3>
-                        <label for="outNombre">Nombre:</label>
-                        <output id="outNombre" name="" for=""></output>
-                        <br>
-                        <label for="txtTipoMascota">Tipo de mascota:</label>
-                        <output id="txtTipoMascota"></output>
-                    </div>
-
-                    <div class="outputs"></div>
-                    <h3>Datos del dueño</h3>
-                        <label for="txtDueñoMascota">Nombre:</label>
-                        <output id="txtDueñoMascota"></output>
-                        <br>
-                        <label for="txtUsuario">Usuario:</label>
-                        <output id="txtUsuario"></output>
-                        <br>
-                        <label for="txtCedula">Numero de identificación:</label>
-                        <output id="txtCedula"></output>
-                        <br>
-                        <label for="txtDireccion">Dirección:</label>
-                        <output id="txtDireccion"></output>
-                        <br>
-                        <label for="txtTelefono">Número de teléfono:</label>
-                        <output id="txtTelefono"></output>
-                        <br>
-                        <label for="txtEmail">Correo electrónico:</label>
-                        <output id="txtEmail"></output>
-                    </div>
                 </div>
 
-                <div class="contact-container">
-                    <h3>Datos Medicos</h3>
-                    <div class="outputs">
-                        <label for="txtPadecimientos">Padecimientos:</label>
-                        <output id="txtPadecimientos"></output>
-                    </div>
+                <div class="outputs">
+                    <h3>Datos de la mascota</h3>
+                    <label for="outNombre">Nombre:</label>
+                    <output id="outNombre" name="" for=""></output>
+                    <br>
+                    <label for="txtTipoMascota">Tipo de mascota:</label>
+                    <output id="txtTipoMascota"></output>
                 </div>
+
+                <div class="outputs"></div>
+                <h3>Datos del dueño</h3>
+                <label for="txtDueñoMascota">Nombre:</label>
+                <output id="txtDueñoMascota"></output>
+                <br>
+                <label for="txtUsuario">Usuario:</label>
+                <output id="txtUsuario"></output>
+                <br>
+                <label for="txtCedula">Numero de identificación:</label>
+                <output id="txtCedula"></output>
+                <br>
+                <label for="txtDireccion">Dirección:</label>
+                <output id="txtDireccion"></output>
+                <br>
+                <label for="txtTelefono">Número de teléfono:</label>
+                <output id="txtTelefono"></output>
+                <br>
+                <label for="txtEmail">Correo electrónico:</label>
+                <output id="txtEmail"></output>
             </div>
+        </div>
+
+        <div class="contact-container">
+            <h3>Datos Medicos</h3>
+            <div class="outputs">
+                <label for="txtPadecimientos">Padecimientos:</label>
+                <output id="txtPadecimientos"></output>
+            </div>
+        </div>
+        </div>
         </div>
         </div>
     </section>
@@ -112,6 +89,8 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/services/InicioDeSesionService.js"></script>
     <script src="js/Constantes.js"></script>
     <script src="js/controllers/ControllerUtilidades.js"></script>
     <script src="js/controllers/CrudPersonaController.js"></script>
