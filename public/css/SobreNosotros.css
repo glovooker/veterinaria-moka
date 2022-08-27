@@ -1,0 +1,353 @@
+.navbar .navegation-container {
+  width: 35%;
+}
+
+body {
+  background-color: #81b29a;
+}
+
+.mapouter {
+  margin-top: 5vh;
+  position: relative;
+  text-align: right;
+  height: 500px;
+  width: 600px;
+}
+
+.gmap_canvas {
+  overflow: hidden;
+  background: none !important;
+  height: 500px;
+  width: 600px;
+}
+
+@media only screen and (max-width: 1500px) {
+  .navbar .navegation-container {
+    visibility: hidden;
+  }
+
+  .profile-dropdown {
+    margin-right: 10vw;
+  }
+
+}
+
+.banner {
+  height: 80vh;
+}
+
+.banner img {
+  object-fit: cover;
+  object-position: bottom;
+  width: 100%;
+  height: 100%;
+}
+
+.about-us {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f4f1de;
+
+}
+
+.about-us-container {
+  margin: 5vh 5vw;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #a56905;
+}
+
+.about-us-container h2 {
+  font-size: 4vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+  align-self: flex-start;
+}
+
+.about-us-container h3 {
+  font-size: 3vh;
+  font-weight: 600;
+  font-family: "lexendmedium";
+}
+
+.about-us-container p {
+  align-self: flex-start;
+  max-width: 90%;
+  font-size: 2.5vh;
+}
+
+.about-us-image img {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  object-fit: cover;
+  width: 30vw;
+  height: 30vw;
+  border-radius: 10%;
+}
+
+.location {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #81b29a;
+
+}
+
+.location-container {
+  margin: 5vh 5vw;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.location-container h2 {
+  font-size: 4vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+  align-self: flex-start;
+}
+
+.location-container h3 {
+  font-size: 3vh;
+  font-weight: 600;
+  font-family: "lexendmedium";
+}
+
+.location-container p {
+  align-self: flex-start;
+  max-width: 90%;
+  font-size: 2.5vh;
+}
+
+.location-map img {
+  max-width: 30vw;
+  border-radius: 10%;
+}
+
+.socials-container {
+  align-self: flex-start;
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.socials-container a {
+  color: white;
+  font-size: 4vh;
+}
+
+.area-btns-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.area-btns-container .btn {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width: 15vw;
+  height: 10vh;
+  padding: 15px;
+  margin: 20px 20px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.area-btns-container .btn a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 2.5vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+}
+
+.area-btns-container .btn a p {
+  margin-top: 5px;
+  align-self: center;
+  justify-self: center;
+  text-align: center;
+}
+
+.area-btns-container .btn a i {
+  margin-top: 25px;
+}
+
+.about-us-container .area-btns-container .btn {
+  background-color: #81b29a;
+}
+
+.location-container .area-btns-container .btn {
+  background-color: #a56905;
+}
+
+@media only screen and (max-width: 1200px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .about-us {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f1de;
+    padding: 2vh;
+  }
+
+  .about-us-container {
+    margin: 5vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #a56905;
+  }
+
+  .about-us-container h2 {
+    font-size: 4vh;
+    font-weight: 600;
+    font-family: "lexendbold";
+    align-self: flex-start;
+  }
+
+  .about-us-container h3 {
+    font-size: 3vh;
+    font-weight: 600;
+    font-family: "lexendmedium";
+  }
+
+  .about-us-container p {
+    align-self: flex-start;
+    max-width: 80%;
+    font-size: 2vh;
+  }
+
+  .about-us-image img {
+    max-width: 40vw;
+    border-radius: 10%;
+  }
+
+  .location {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #81b29a;
+    padding: 2vh;
+  }
+
+  .location-container {
+    margin-top: 5vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  .location-container h2 {
+    font-size: 4vh;
+    font-weight: 600;
+    font-family: "lexendbold";
+    align-self: flex-start;
+  }
+
+  .location-container h3 {
+    font-size: 3vh;
+    font-weight: 600;
+    font-family: "lexendmedium";
+  }
+
+  .location-container p {
+    align-self: flex-start;
+    max-width: 70%;
+    font-size: 2.5vh;
+  }
+
+  .location-image img {
+    max-width: 40vw;
+    border-radius: 10%;
+  }
+
+  .area-btns-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .area-btns-container .btn {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    width: 10vw;
+    height: 10vh;
+    padding: 15px;
+    margin: 20px 20px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .area-btns-container .btn a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #fff;
+    font-size: 2.5vh;
+    font-weight: 600;
+    font-family: "lexendbold";
+  }
+
+  .area-btns-container .btn a p {
+    margin-top: 5px;
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+  }
+
+  .area-btns-container .btn a i {
+    margin-top: 25px;
+  }
+
+}

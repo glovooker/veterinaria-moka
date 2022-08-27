@@ -65,7 +65,7 @@ body {
   display: none;
   position: absolute;
   background-color: #81b29a;
-  min-width: 160px;
+  min-width: 10vw;
   box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
   z-index: 1;
   border-radius: 0 0 10px 10px;
@@ -79,10 +79,11 @@ body {
   font-size: 2.2vh;
   font-weight: 600;
   font-family: "lexendbold";
+  cursor: pointer;
 }
 
 .dropdown-content a:hover {
-  font-size: 2.3vh;
+  font-size: 2.22vh;
   font-weight: 600;
   font-family: "lexendbold";
 }
@@ -107,11 +108,130 @@ body {
   margin-bottom: 25px;
 }
 
-#row{
+#row {
   text-align: center;
 }
 
-#row label{
+#row label {
   display: block;
   margin: 20px;
+}
+
+section {
+  min-height: 55vh;
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5vh 0 5vh 0;
+}
+
+.visualizacion .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.visualizacion .container .title-container {
+  font-size: 2.5vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+  align-self: flex-start;
+  color: #a56905;
+}
+
+.visualizacion .container .filter-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.visualizacion .container .filter-container .date-filter {
+  align-self: center;
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #a56905;
+  font-size: 2.5vh;
+}
+
+.visualizacion .container .filter-container .date-filter input {
+  height: 100%;
+  border: none;
+  border: 2px solid #a56905;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 2vh;
+  font-weight: 200;
+  font-family: "lexendregular";
+  color: #a56905;
+}
+
+.visualizacion .container .filter-container .date-filter button {
+  width: 7vw;
+  height: 7vh;
+  border: none;
+  border-radius: 5px;
+  background-color: #a56905;
+  color: white;
+  font-size: 2vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+  cursor: pointer;
+}
+
+.visualizacion .container .filter-container .action-btns {
+  width: 15vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.visualizacion .container .filter-container .action-btns button {
+  width: 7vw;
+  height: 7vh;
+  border: none;
+  border-radius: 5px;
+  background-color: #a56905;
+  color: white;
+  font-size: 2vh;
+  font-weight: 600;
+  font-family: "lexendbold";
+  cursor: pointer;
+}
+
+.visualizacion .container .filter-container .action-btns button a {
+  color: white;
+  text-decoration: none;
+}
+
+.visualizacion .container .filter-container .filter {
+  width: 15vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.visualizacion .container .filter-container .filter input {
+  height: 3vh;
+  border-radius: 10px;
+  border: 2px solid #a56905;
+  padding: 0 5px 0 5px;
+  font-size: 2vh;
+  font-weight: 200;
+  font-family: "lexendregular";
+  color: #a56905;
+}
+
+.visualizacion .container .filter-container .filter label {
+  font-size: 2vh;
+  color: #a56905;
 }

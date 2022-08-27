@@ -25,7 +25,6 @@ function GetMascotaConsultada() {
 async function RegistrarMascota(
   pNombre,
   pEspecie,
-  pEstrellas,
   pObservaciones,
   pFotoMascota,
   pIdPersona
@@ -38,7 +37,6 @@ async function RegistrarMascota(
     data: {
       'Nombre': pNombre,
       'Especie': pEspecie,
-      'Estrellas': pEstrellas,
       'Observaciones': pObservaciones,
       'FotoMascota': pFotoMascota,
       'IdPersona': pIdPersona,
@@ -90,12 +88,11 @@ async function BuscarMascota(p_id) {
 }
 
 async function ModificarMascota(
+  p_id,
   pNombre,
   pEspecie,
-  pEstrellas,
   pObservaciones,
-  pFotoMascota,
-  pIdPersona
+  pFotoMascota
 ) {
   let result = {};
   await axios({
@@ -103,12 +100,11 @@ async function ModificarMascota(
     url: apiUrl + '/ModificarMascota',
     responseType: 'json',
     data: {
+      '_id': p_id,
       'Nombre': pNombre,
       'Especie': pEspecie,
-      'Estrellas': pEstrellas,
       'Observaciones': pObservaciones,
       'FotoMascota': pFotoMascota,
-      'IdPersona': pIdPersona,
     },
   })
     .then((res) => {

@@ -25,36 +25,17 @@
     </head>
 
     <body>
-        <header>
-            <nav class="navbar">
-                <div class="logo-container">
-                    <a href="./PaginaInicio.html">
-                        <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
-                    </a>
-                </div>
-                <div class="navegation-container">
-                    <a href="./PaginaInicio.html">Inicio</a>
-                    <a href="./ReservarCita.html">Clínica</a>
-                    <a href="./ReservarHabitacion.html">Hotel</a>
-                </div>
-                <div class="profile-dropdown">
-                    <a href="" class="profile-icon">
-                        <i class="fa-solid fa-circle-user"></i>
-                    </a>
-                    <div class="dropdown-content">
-                        <a href="./Cliente.html">Mi Perfil</a>
-                        <a href="./Mascotas.html">Mascotas</a>
-                        <a href="./InicioDeSesion.html">Cerrar Sesión</a>
-                    </div>
-                </div>
-            </nav>
-        </header>
+        <header id="navbarContainer"></header>
         <section>
             <form action="">
                 <h3 id="titleExpediente"></h3>
 
                 <input type="hidden" id="txt_id">
                 <div id="row">
+                    <div>
+                        <img id="imgPet" class="clase">
+                        <button id="subirFoto" type="button" onclick="AbrirCloudinary('imgPet')">Subir foto</button>
+                    </div>
                     <div>
                         <label id="lblNombre" for="txtNombre">Nombre</label>
                         <input type="text" id="txtNombre">
@@ -104,10 +85,14 @@
     </body>
 
     <script src='//unpkg.com/axios/dist/axios.min.js'></script>
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/jquery.min.js"></script>
 
+    <script src="./js/services/InicioDeSesionService.js"></script>
     <script src="./js/Constantes.js"></script>
 
+    <script src="./js/services/ImagenesService.js"></script>
     <script src="./js/services/GestionExpedienteService.js"></script>
     <script src="./js/controllers/GestionExpedienteController.js"></script>
 </body>

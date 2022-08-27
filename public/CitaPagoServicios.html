@@ -13,83 +13,68 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo-container">
-                <a href="./PaginaInicio.html">
-                    <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
-                </a>
+    <header id='navbarContainer'></header>
+    <section id="section1" class="payment">
+        <div class="payment-container">
+            <h2>Pago de Servicios</h2>
+
+            <div class="outputs">
+                <label for="outMascota">Mascota</label>
+                <output id="outMascota"></output>
+
+                <label for="outCliente">Cliente</label>
+                <output id="outCliente"></output>
+
+                <label for="outValoracion">Valoración del Veterinario</label>
+                <output id="outValoracion"><i class="fa-solid fa-star" id="star1"></i><i class="fa-solid fa-star"
+                        id="star2"></i><i class="fa-solid fa-star" id="star3"></i><i class="fa-solid fa-star"
+                        id="star4"></i><i class="fa-regular fa-star" id="star5"></i></output>
+
+                <label for="txtObservaciones" id="lblObservaciones" class="lblTextArea">Observaciones</label>
+                <textarea name="" id="txtObservaciones" cols="30" rows="9"></textarea>
+
+                <label for="outTotal">Total a Pagar </label>
+                <output id="outTotal"></output>
+
+                <label for="selMetodoPago" id="lblMetodoPago" class="lblSelect">Método de Pago</label>
+                <select id="selMetodoPago">
+
+                </select>
+
+                <label for="txtCcv" id="lblCcv" class="lblinput">Confirmar CCV</label>
+                <input type="text" id="txtCcv"></input>
             </div>
-            <div class="navegation-container">
-                <a href="./PaginaInicio.html">Inicio</a>
-                <a href="./ReservarCita.html">Clínica</a>
-                <a href="./ReservarHabitacion.html">Hotel</a>
-            </div>
-            <div class="profile-dropdown">
-                <a href="" class="profile-icon">
-                    <i class="fa-solid fa-circle-user"></i>
-                </a>
-                <div class="dropdown-content">
-                    <a href="./Cliente.html">Mi Perfil</a>
-                    <a href="./Mascotas.html">Mascotas</a>
-                    <a href="./InicioDeSesion.html">Cerrar Sesión</a>
-                </div>
-            </div>
-        </nav>
-    </header>
 
-    <body>
-        <section id="section1" class="payment">
-            <div class="payment-container">
-                <h2>Pago de Servicios</h2>
+            <button type="button" class="form-btn" id="btnPagar">Realizar Pago</button>
+            <button type="button" class="form-btn" id="btnAgregarMetodo">Agregar Método</button>
 
-                <div class="outputs">
-                    <label for="outMascota">Mascota</label>
-                    <output id="outMascota"></output>
+        </div>
+    </section>
 
-                    <label for="outCliente">Cliente</label>
-                    <output id="outCliente"></output>
+    <footer class="footer">
+        <h5>Powered by</h5>
+        <a href="https://glovooker.github.io/landing-page-bisoft-1/">
+            <img src="./img/LogoCleverSolutions.svg" alt="Logo Clever Solutions">
+        </a>
+    </footer>
 
-                    <label for="outValoracion">Valoración del Veterinario</label>
-                    <output id="outValoracion"><i class="fa-solid fa-star" id="star1"></i><i class="fa-solid fa-star"
-                            id="star2"></i><i class="fa-solid fa-star" id="star3"></i><i class="fa-solid fa-star"
-                            id="star4"></i><i class="fa-regular fa-star" id="star5"></i></output>
+    <script src='//unpkg.com/axios/dist/axios.min.js'></script>
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./js/controllers/ControllerGeneral.js"></script>
+    <script src="./js/services/PersonaService.js"></script>
+    <script src="./js/services/InicioDeSesionService.js"></script>
 
-                    <label for="txtObservaciones" id="lblObservaciones" class="lblTextArea">Observaciones</label>
-                    <textarea name="" id="txtObservaciones" cols="30" rows="9"></textarea>
+    <script src="./js/Constantes.js"></script>
 
-                    <label for="outTotal">Total a Pagar </label>
-                    <output id="outTotal"></output>
 
-                    <label for="selMetodoPago" id="lblMetodoPago" class="lblSelect">Método de Pago</label>
-                    <select id="selMetodoPago">
+    <script src="./js/services/MetodosPagoService.js"></script>
+    <script src="js/services/CrudPersonasService.js"></script>
+    <script src="./js/services/CrudMascotasService.js"></script>
+    <script src="./js/services/FacturaServices.js"></script>
+    <script src="./js/services/PagoServiciosService.js"></script>
+    <script src="./js/controllers/PagoServiciosController.js"></script>
 
-                    </select>
-
-                    <label for="txtCcv" id="lblCcv" class="lblinput">Confirmar CCV</label>
-                    <input type="text" id="txtCcv"></input>
-                </div>
-
-                <button type="button" class="form-btn" id="btnPagar">Realizar Pago</button>
-                <button type="button" class="form-btn" id="btnAgregarMetodo">Agregar Método</button>
-
-            </div>
-        </section>
-
-        <footer class="footer">
-            <h5>Powered by</h5>
-            <a href="https://glovooker.github.io/landing-page-bisoft-1/">
-                <img src="./img/LogoCleverSolutions.svg" alt="Logo Clever Solutions">
-            </a>
-        </footer>
-
-        <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="./js/controllers/ControllerGeneral.js"></script>
-        <script src="./js/services/MetodosPagoService.js"></script>
-        <script src="./js/services/PagoServiciosService.js"></script>
-        <script src="./js/controllers/PagoServiciosController.js"></script>
-
-    </body>
+</body>
 
 </html>

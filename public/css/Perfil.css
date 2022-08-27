@@ -1,0 +1,99 @@
+.profile {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-container {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: #a56905;
+    font-size: 2.2vh;
+}
+
+.profile-container h2 {
+    font-size: 4vh;
+    font-weight: 600;
+    font-family: "lexendbold";
+    align-self: flex-start;
+}
+
+
+.info-container {
+    margin: 0 5vh 0 5vh;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #a56905;
+    font-size: 2.2vh;
+}
+
+.profile-icon img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.contact-container {
+    margin: 0 5vh 5vh 5vh;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: #a56905;
+    font-size: 2.2vh;
+}
+
+.socials-container {
+    margin: 0 0 0 5vh;
+    align-self: flex-start;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.socials-container a {
+    color: #a56905;
+    font-size: 4vh;
+}
+
+.outputs-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-info-container {
+    width: 80%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+label {
+    font-size: 2.2vh;
+    font-weight: 600;
+    font-family: "lexendbold";
+    align-self: flex-start;
+}
+
+output {
+    height: 2vh;
+    border-radius: 10px;
+    font-family: "lexendregular";
+}

@@ -14,7 +14,8 @@ const schemaExpediente = new mongoose.Schema({
     Citas: {type: Number, requiered:false, unique: false},
     Reservaciones: {type: Number, requiered:false, unique: false},
     NumeroExpediente:{type: Number, requiered: true, unique: true},
-    //Cliente : {type: Schema.ObjectId, ref: "Cliente" }
+    _idCliente: {type: Number, requiered: true, unique: true},
+    
 });
 
 module.exports = mongoose.model('Expediente', schemaExpediente, 'Expedientes');

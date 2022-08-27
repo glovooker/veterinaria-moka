@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="./css/Expediente.css">
     <link rel="stylesheet" href="./css/Tabla.css">
     <link rel="stylesheet" href="./css/webfont/stylesheet.css">
-    <title>Moka | Expediente</title>
+    <title>Moka | Perfil Mascota</title>
 </head>
 
 <body>
     <header>
         <nav class="navbar">
             <div class="logo-container">
-                <a href="./PaginaInicio.html">
+                <a id="linkVolver" href="">
                     <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
                 </a>
             </div>
@@ -38,128 +38,87 @@
             </div>
         </nav>
     </header>
-    <main>
-        <section class="expediente">
-            <div class="expediente-container">
-                <h2>Expediente</h2>
-                <div>
-                    <label for="txtNumeroExpediente">Número de expediente:</label>
-                    <output>255</output>
-                </div>
-                <div>
-                    <label for="txtCalificacion">Calificación:</label>
-                    <output id="txtCalificacion"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+
+    <section id="section1" class="profile">
+        <div class="profile-container">
+
+            <h2>Expediente</h2>
+
+            <div class="outputs-container">
+
+                <div class="info-container">
+                    </div>
+                    <div class="outputs">
+                        <label for="txtNumeroExpediente">Número de expediente:</label>
+                        <output id="txtNumeroExpediente" name="" for=""></output>
+                        <br>
+                        <label for="txtCalificacion">Calificación:</label>
+                        <output id="txtCalificacion"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
                             class="fa-solid fa-star"></i></output>
-                </div>
-                <div>
-                    <h3>Datos de la mascota</h3>
-                    <label for="outNombre">Nombre:</label>
-                    <output id="outNombre" name="" for="">Whiskers</output>
-                    <br>
-                    <label for="txtTipoMascota">Tipo de mascota:</label>
-                    <output id="txtTipoMascota">Gato</output>
+                    </div>
 
-                </div>
-                <div>
+                    <div class="outputs">
+                        <h3>Datos de la mascota</h3>
+                        <label for="outNombre">Nombre:</label>
+                        <output id="outNombre" name="" for=""></output>
+                        <br>
+                        <label for="txtTipoMascota">Tipo de mascota:</label>
+                        <output id="txtTipoMascota"></output>
+                    </div>
+
+                    <div class="outputs"></div>
                     <h3>Datos del dueño</h3>
-                    <label for="txtDuennoMascota">Nombre:</label>
-                    <output id="txtDuennoMascota">Jeremy Villegas</output>
-                    <br>
-                    <label for="txtUsuario">Usuario:</label>
-                    <output id="txtUsuario">jeville</output>
-                    <br>
-                    <label for="txtIdentificacion">Numero de identificación:</label>
-                    <output id="txtIdentificacion">1-8888-8888</output>
-                    <br>
-                    <label for="txtDireccion">Dirección:</label>
-                    <output id="txtDireccion">Alajuelita, San Jose</output>
-                    <br>
-                    <label for="txtTelefono">Número de teléfono:</label>
-                    <output id="txtTelefono">86203040</output>
-                    <br>
-                    <label for="txtEmail">Correo electrónico:</label>
-                    <output id="txtEmail">jeville@gmail.com</output>
-                </div>
-                <div>
-                    <h3>Datos médicos</h3>
-                    <label for="txtPadecimientos">Padecimientos:</label>
-                    <output id="txtPadecimientos">Fractura en la pata trasera izquierda a causa de un maltratro cuando
-                        era callejero.</output>
-                    <br>
-                </div>
-            </div>
-        </section>
-
-
-
-
-
-        <section class="visualizacion-citas">
-
-            <div class="citas-container">
-                <div class="title-container-mis-citas">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <h2>Citas</h2>
+                        <label for="txtDueñoMascota">Nombre:</label>
+                        <output id="txtDueñoMascota"></output>
+                        <br>
+                        <label for="txtUsuario">Usuario:</label>
+                        <output id="txtUsuario"></output>
+                        <br>
+                        <label for="txtCedula">Numero de identificación:</label>
+                        <output id="txtCedula"></output>
+                        <br>
+                        <label for="txtDireccion">Dirección:</label>
+                        <output id="txtDireccion"></output>
+                        <br>
+                        <label for="txtTelefono">Número de teléfono:</label>
+                        <output id="txtTelefono"></output>
+                        <br>
+                        <label for="txtEmail">Correo electrónico:</label>
+                        <output id="txtEmail"></output>
+                    </div>
                 </div>
 
-                <div class="table-filters">
-                    <table class="table" id="tablaCitasEliminar">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Hora</th>
-                                <th>Doctor</th>
-                                <th>Motivo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                <div class="contact-container">
+                    <h3>Datos Medicos</h3>
+                    <div class="outputs">
+                        <label for="txtPadecimientos">Padecimientos:</label>
+                        <output id="txtPadecimientos"></output>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+        </div>
+    </section>
 
-        <section class="visualizacion-reservaciones">
-
-            <div class="citas-container">
-                <div class="title-container-mis-citas">
-                    <i class="fa-solid fa-calendar-check"></i>
-                    <h2>Reservaciones</h2>
-                </div>
-
-                <div class="table-filters">
-                    <table class="table" id="tablaReservacionesEliminar">
-                        <thead>
-                            <tr>
-                                <th>Fecha</th>
-                                <th>Hora de Entrada</th>
-                                <th>Hora de Salida</th>
-                                <th>Motivo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
+    <footer class="footer">
+        <h5>Powered by</h5>
+        <a href="https://glovooker.github.io/landing-page-bisoft-1/">
+            <img src="./img/LogoCleverSolutions.svg" alt="Logo Clever Solutions">
+        </a>
+    </footer>
 
 
-        <footer class="footer">
-            <h5>Powered by</h5>
-            <a href="https://glovooker.github.io/landing-page-bisoft-1/">
-                <img src="./img/LogoCleverSolutions.svg" alt="Logo Clever Solutions">
-            </a>
-        </footer>
-
-        <script src="./js/controllers/ControllerGeneral.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
-        <script src="./js/services/EliminarCitaService.js"></script>
-        <script src="./js/services/EliminarReservacionesService.js"></script>
-        <script src="./js/controllers/CitasExpedienteController.js"></script>
-        <script src="./js/controllers/ReservacionesExpedienteController.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="js/Constantes.js"></script>
+    <script src="js/controllers/ControllerUtilidades.js"></script>
+    <script src="js/controllers/CrudPersonaController.js"></script>
+    <script src="js/services/CrudPersonasService.js"></script>
+    <script src="./js/services/PersonaService.js"></script>
+    <script src="js/services/CrudMascotasService.js"></script>
+    <script src="js/controllers/CitasExpedienteController.js"></script>
 </body>
 
 </html>

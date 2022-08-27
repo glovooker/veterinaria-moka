@@ -13,62 +13,44 @@
 </head>
 
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo-container">
-                <a id="linkVolver" href="">
-                    <img src="./img/IsologoMoka.png" alt="Logo Moka Vet & Hotel">
-                </a>
+    <header id="navbarContainer"></header>
+
+    <section class="visualizacion">
+        <div class="container">
+            <div class="title-container">
+                <h2>Listado de Reservaciones</h2>
             </div>
-            <div class="navegation-container">
-                <a href="./PaginaInicio.html">Inicio</a>
-                <a href="./ReservarCita.html">Clínica</a>
-                <a href="./ReservarHabitacion.html">Hotel</a>
-            </div>
-            <div class="profile-dropdown">
-                <a href="" class="profile-icon">
-                    <i class="fa-solid fa-circle-user"></i>
-                </a>
-                <div class="dropdown-content">
-                    <a href="./Cliente.html">Mi Perfil</a>
-                    <a href="./Mascotas.html">Mascotas</a>
-                    <a href="./InicioDeSesion.html">Cerrar Sesión</a>
+
+            <div class="filter-container">
+                <div class="filter">
+                    <label for="txtFiltro" id="lblFiltro"><i class="fa-solid fa-magnifying-glass"></i></label>
+                    <input type="text" id="txtFiltro">
+                </div>
+
+                <div class="action-btns">
+                    <button type=button style="visibility: hidden;"></button>
+                    <button type=button><a href="./CrearReservacion.html">Agendar Reservación</a></button>
                 </div>
             </div>
-        </nav>
-    </header>
-
-    <section class="visualizacion-citas">
-        <div class="citas-container">
-            <div class="title-container-mis-citas">                
-                <h2>Consulta General de Reservaciones</h2>
-            </div>
-
-            <div class="filter-container"> 
-                <div class="filter">
-                    <label for="txtFiltro" id="lblFiltro"><i class="fa-solid fa-filter"></i>Filtro</label>
-                    <input type = "text" id="txtFiltro">
-                </div> 
-            </div>                 
 
             <div class="table-filters">
                 <table class="table" id="tablaCitas">
                     <thead>
                         <tr>
-                            <th>Fecha Entrada</th>
-                            <th>Hora</th>
-                            <th>Fecha Salida</th>
-                            <th>Hora</th>
-                            <th>Cliente</th>                            
-                            <th>Mascota</th>
-                            <th>Estado</th>
-                            <th>Observaciones</th> 
-                            <th>Acciones</th>                            
+                            <th><i class="fa-solid fa-sort"></i> Fecha Entrada</th>
+                            <th><i class="fa-solid fa-sort"></i> Hora Entrada</th>
+                            <th><i class="fa-solid fa-sort"></i> Fecha Salida</th>
+                            <th><i class="fa-solid fa-sort"></i> Hora Salida</th>
+                            <th><i class="fa-solid fa-sort"></i> Cliente</th>
+                            <th><i class="fa-solid fa-sort"></i> Mascota</th>
+                            <th><i class="fa-solid fa-sort"></i> Estado</th>
+                            <th><i class="fa-solid fa-sort"></i> Observaciones</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody id="tbdCitas"></tbody>
                     <tfoot id="tftCitas"></tfoot>
-                </table> 
+                </table>
             </div>
         </div>
     </section>
@@ -82,15 +64,16 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>    
+    <script src="https://kit.fontawesome.com/38a85d6a08.js" crossorigin="anonymous"></script>
+    <script src="./js/jquery.min.js"></script>
     <script src="./js/controllers/ControllerUtilidades.js"></script>
-    <script src="js/Constantes.js"></script>
     <script src="./js/services/InicioDeSesionService.js"></script>
+    <script src="js/Constantes.js"></script>
     <script src="./js/services/PersonaService.js"></script>
     <script src="./js/services/CrudPersonasService.js"></script>
-    <script src="./js/services/MascotaService.js"></script> 
+    <script src="./js/services/CrudMascotasService.js"></script>
     <script src="./js/services/CitasServices.js"></script>
-    <script src="./js/controllers/CrudReservacionesController.js" ></script>
+    <script src="./js/controllers/CrudReservacionesController.js"></script>
 
 
 </body>
